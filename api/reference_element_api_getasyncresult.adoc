@@ -1,0 +1,223 @@
+---
+permalink: api/reference_element_api_getasyncresult.html 
+sidebar: sidebar 
+keywords: async,asynchronous,results,result,get,getting,GetAsyncResult 
+summary: 您可以使用 GetAsyncResult 来检索异步方法调用的结果。有些方法调用需要一些时间才能完成，当系统发送初始响应时，这些方法可能还没有完成。要获取方法调用的状态或结果，请使用 GetAsyncResult 轮询方法返回的 asyncHandle 值。 
+---
+= 获取异步结果
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `GetAsyncResult`获取异步方法调用的结果。有些方法调用需要一些时间才能完成，当系统发送初始响应时，这些方法可能还没有完成。要获取方法调用的状态或结果，请使用 `GetAsyncResult`轮询该方法返回的 asyncHandle 值。
+
+`GetAsyncResult`以标准方式返回操作的总体状态（进行中、已完成或出错），但操作返回的实际数据取决于原始方法调用，并且返回的数据在每个方法中都有记录。
+
+如果 keepResult 参数缺失或为 false，则当返回结果时，asyncHandle 将变为非活动状态，并且稍后尝试查询该 asyncHandle 将返回错误。您可以通过将 keepResult 参数设置为 true 来保持 asyncHandle 处于活动状态，以便进行后续查询。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+异步句柄
+ a| 
+从原始异步方法调用返回的值。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+保持结果
+ a| 
+如果为真，GetAsyncResult 在返回异步结果时不会将其删除，从而允许将来对该 asyncHandle 进行查询。
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+状态
+ a| 
+异步方法调用的状态。可能值：
+
+* 运行中：该方法仍在运行。
+* 完成：该方法已完成，结果或错误可用。
+
+ a| 
+string
+
+
+
+ a| 
+结果
+ a| 
+如果异步方法成功完成，则异步操作的结果如下。如果异步操作失败，则此成员不存在。
+ a| 
+string
+
+
+
+ a| 
+错误
+ a| 
+如果状态为完成且异步方法失败，则此成员包含错误详细信息。如果异步操作成功，则此成员不存在。
+ a| 
+string
+
+
+
+ a| 
+结果类型
+ a| 
+异步方法调用正在执行或曾经执行的操作类型。
+ a| 
+string
+
+
+
+ a| 
+细节
+ a| 
+如果状态为“运行中”，则此成员包含与该方法当前操作相关的信息。如果异步方法未运行，则此成员不存在。
+ a| 
+JSON 对象
+
+
+
+ a| 
+创建时间
+ a| 
+异步方法被调用的时间，采用 UTC+0 格式。
+ a| 
+ISO 8601 日期字符串
+
+
+
+ a| 
+上次更新时间
+ a| 
+异步方法状态上次更新的时间，采用 UTC+0 格式。
+ a| 
+ISO 8601 日期字符串
+
+|===
+*注意：* GetAsyncResult 的返回值本质上是标准 JSON 响应的嵌套版本，带有一个额外的状态字段。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "GetAsyncResult",
+  "params": {
+      "asyncHandle" : 389
+},
+"id" : 1
+}
+----
+
+
+== 响应示例：方法错误
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "error": {
+      "code": 500,
+      "message": "DBClient operation requested on a non-existent path at [/asyncresults/1]",
+      "name": "xDBNoSuchPath"
+   },
+   "id": 1
+}
+----
+如果“response”是来自 GetAsyncResult 调用的 JSON 响应对象，那么“response.error”将对应于 GetAsyncResult 方法本身的错误（例如查询不存在的 asyncHandle）。
+
+
+
+== 响应示例：异步任务错误
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "createTime": "2016-01-01T02:05:53Z",
+     "error": {
+       "bvID": 1,
+       "message": "Bulk volume job failed",
+       "name": "xBulkVolumeScriptFailure",
+       "volumeID": 34
+     },
+     "lastUpdateTime": "2016-01-21T02:06:56Z",
+     "resultType": "BulkVolume",
+     "status": "complete"
+   }
+}
+----
+“response.result.error”对应于原始方法调用产生的错误结果。
+
+
+
+== 响应示例：异步任务成功
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "createTime": "2016-01-01T22:29:18Z",
+     "lastUpdateTime": "2016-01-01T22:45:51Z",
+     "result": {
+       "cloneID": 25,
+       "message": "Clone complete.",
+       "volumeID": 47
+     },
+     "resultType": "Clone",
+     "status": "complete"
+   }
+}
+----
+如果调用成功完成，则“response.result.result”是原始方法调用的返回值。
+
+
+
+== 自版本以来的新版本
+
+9.6

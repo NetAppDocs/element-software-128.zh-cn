@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_virtualvolume.html 
+sidebar: sidebar 
+keywords: object,objects,virtualVolume 
+summary: virtualVolume 对象包含有关虚拟卷的配置信息以及有关虚拟卷快照的信息。它不包含运行时或使用情况信息。您可以使用 ListVirtualVolumes 方法检索集群的此信息。 
+---
+= 虚拟卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+virtualVolume 对象包含有关虚拟卷的配置信息以及有关虚拟卷快照的信息。它不包含运行时或使用情况信息。你可以使用 `ListVirtualVolumes`检索集群此信息的方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+绑定
+ a| 
+此虚拟卷的绑定 ID 列表。
+ a| 
+UUID 数组
+
+
+
+ a| 
+孩子们
+ a| 
+此虚拟卷的子虚拟卷 UUID 列表。
+ a| 
+UUID 数组
+
+
+
+ a| 
+后代
+ a| 
+当你将 recursive: true 传递给 ListVirtualVolumes 方法时，它将包含一个虚拟卷 UUID 列表，这些虚拟卷是此虚拟卷的后代。
+ a| 
+UUID 数组
+
+
+
+ a| 
+metadata
+ a| 
+虚拟卷元数据的键值对，例如虚拟卷类型、客户操作系统类型等。
+ a| 
+JSON 对象
+
+
+
+ a| 
+父虚拟卷 ID
+ a| 
+父虚拟卷的虚拟卷 ID。如果 ID 全部为零，则这是一个独立的虚拟卷，与父卷没有链接。
+ a| 
+UUID
+
+
+
+ a| 
+snapshotID
+ a| 
+底层卷快照的 ID。如果虚拟卷不代表快照，则此值为“0”。
+ a| 
+整数
+
+
+
+ a| 
+快照信息
+ a| 
+关联快照的快照对象（如果非 ixestent 则为 null）。
+ a| 
+xref:reference_element_api_snapshot.adoc[Snapshot]
+
+
+
+ a| 
+状态
+ a| 
+虚拟卷的当前状态。可能值：
+
+* 克隆：正在处理虚拟卷以响应克隆或快照操作。
+* 等待中：虚拟卷正在等待快照操作完成。
+* 就绪：虚拟卷已准备好供一般用途使用。
+
+ a| 
+string
+
+
+
+ a| 
+存储容器
+ a| 
+描述拥有此虚拟卷的存储容器的对象。
+ a| 
+xref:reference_element_api_storagecontainer.adoc[存储容器]
+
+
+
+ a| 
+虚拟卷 ID
+ a| 
+虚拟卷的唯一标识符。
+ a| 
+UUID
+
+
+
+ a| 
+虚拟卷类型
+ a| 
+虚拟卷的类型。
+ a| 
+string
+
+
+
+ a| 
+volumeID
+ a| 
+基础卷的ID。
+ a| 
+整数
+
+
+
+ a| 
+容量信息
+ a| 
+当您将 details: true 传递给 ListVirtualVolumes 方法时，此成员是一个描述卷的对象。
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listvirtualvolumes.adoc[列出虚拟卷]
+* xref:reference_element_api_snapshot.adoc[Snapshot]
+* xref:reference_element_api_storagecontainer.adoc[存储容器]
+* xref:reference_element_api_volume.adoc[volume]
+

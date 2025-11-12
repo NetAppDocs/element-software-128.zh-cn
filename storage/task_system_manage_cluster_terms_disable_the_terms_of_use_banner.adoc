@@ -1,0 +1,23 @@
+---
+permalink: storage/task_system_manage_cluster_terms_disable_the_terms_of_use_banner.html 
+sidebar: sidebar 
+keywords: terms of use banner, disable 
+summary: 您可以关闭“使用条款”横幅。禁用横幅后，用户在使用 Element UI 时不再需要接受使用条款。 
+---
+= 禁用“使用条款”横幅
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以关闭“使用条款”横幅。禁用横幅后，用户在使用 Element UI 时不再需要接受使用条款。
+
+* 您必须拥有集群管理员权限才能配置使用条款。
+* 请确保已启用“使用条款”。
++
+.. 点击“用户”>“使用条款”。
+.. 单击“*禁用*”。
+
+
+

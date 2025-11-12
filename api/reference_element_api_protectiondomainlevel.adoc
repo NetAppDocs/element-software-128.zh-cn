@@ -1,0 +1,56 @@
+---
+permalink: api/reference_element_api_protectiondomainlevel.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainLevel 
+summary: protectionDomainLevel 对象包含有关存储集群当前容忍度和恢复力级别的信息。容错级别表示集群在发生故障时继续读取和写入数据的能力，而恢复级别表示集群在其关联的保护域类型内自动从一个或多个故障中恢复自身的能力。 
+---
+= 保护域级别
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionDomainLevel 对象包含有关存储集群当前容忍度和恢复力级别的信息。容错级别表示集群在发生故障时继续读取和写入数据的能力，而恢复级别表示集群在其关联的保护域类型内自动从一个或多个故障中恢复自身的能力。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+保护域类型
+ a| 
+具有相应容忍度和恢复力的保护域类型。可能值：
+
+* 节点：任何单个节点。
+* 机箱：单个机箱中的任何单个节点或所有存储节点。
+* 自定义：单个客户定义的保护域中的所有存储节点。
+
+ a| 
+string
+
+
+
+ a| 
+弹性
+ a| 
+从这种保护领域类型的角度来看，该集群目前的韧性。
+ a| 
+xref:reference_element_api_protectiondomainresiliency.adoc[保护域弹性]
+
+
+
+ a| 
+宽容
+ a| 
+从这种保护域类型的角度来看，该集群目前的容忍度。
+ a| 
+xref:reference_element_api_protectiondomaintolerance.adoc[保护域容错]
+
+|===

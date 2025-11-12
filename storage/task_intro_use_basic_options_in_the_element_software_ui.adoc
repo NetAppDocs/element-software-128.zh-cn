@@ -1,0 +1,29 @@
+---
+permalink: storage/task_intro_use_basic_options_in_the_element_software_ui.html 
+sidebar: sidebar 
+keywords: user interface, UI, API commands, SolidFire system 
+summary: NetApp Element软件 Web 用户界面（Element UI）使您能够监控SolidFire系统并执行常见任务。 
+---
+= 使用 Element 软件用户界面中的基本选项。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element软件 Web 用户界面 (Element UI) 使您能够监控SolidFire系统并执行常见任务。
+
+基本功能包括查看由用户界面活动激活的 API 命令并提供反馈。
+
+* link:task_intro_view_api_activity_in_real_time.html["查看 API 活动"]
+* link:reference_intro_icon_reference.html["Element界面中的图标"]
+* link:task_intro_provide_feedback.html["提供反馈"]
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

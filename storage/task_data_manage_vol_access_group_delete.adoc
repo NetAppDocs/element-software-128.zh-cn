@@ -1,0 +1,21 @@
+---
+permalink: storage/task_data_manage_vol_access_group_delete.html 
+sidebar: sidebar 
+keywords: access group, delete 
+summary: 不再需要访问组时，您可以将其删除。在删除卷访问组之前，无需从该卷访问组中删除启动器 ID 和卷 ID。删除访问组后，该组对卷的访问权限将停止。 
+---
+= 删除访问组
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+不再需要访问组时，您可以将其删除。在删除卷访问组之前，无需从该卷访问组中删除启动器 ID 和卷 ID。删除访问组后，该组对卷的访问权限将停止。
+
+. 点击“管理”>“访问组”。
+. 点击要删除的访问组的“操作”图标。
+. 在出现的菜单中，单击“删除”。
+. 要同时删除与此访问组关联的发起程序，请选中“删除此访问组中的发起程序”复选框。
+. 确认此操作。
+

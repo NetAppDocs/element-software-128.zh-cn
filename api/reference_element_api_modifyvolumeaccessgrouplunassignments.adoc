@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_modifyvolumeaccessgrouplunassignments.html 
+sidebar: sidebar 
+keywords: volumes,volume,defining,define,modify,modifying,edit,editing,change,changing,modifyvolumeaccessgrouplunassignments,access,group,lun,assignment 
+summary: 您可以使用 ModifyVolumeAccessGroupLunAssignments 方法为特定卷定义自定义 LUN 分配。 
+---
+= 修改卷访问组 LUN 分配
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyVolumeAccessGroupLunAssignments`为特定卷定义自定义 LUN 分配的方法。
+
+此方法仅更改卷访问组中 lunAssignments 参数设置的 LUN 值。其他所有 LUN 分配保持不变。
+
+同一卷访问组中的卷的 LUN 分配值必须是唯一的。不能在卷访问组中定义重复的 LUN 值。但是，您可以在不同的卷访问组中再次使用相同的 LUN 值。
+
+
+NOTE: 有效的 LUN 值为 0 到 16383。如果传递的 LUN 值超出此范围，系统将生成异常。如果出现例外情况，则不会修改任何指定的 LUN 分配。
+
+小心：
+
+如果更改具有活动 I/O 的卷的 LUN 分配，则 I/O 可能会中断。在更改卷 LUN 分配之前，应先更改服务器配置。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+
+
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+卷访问组ID
+ a| 
+要修改 LUN 分配的唯一卷访问组 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+lunAssignments
+ a| 
+具有新分配的 LUN 值的卷 ID。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+卷访问组 LUN 分配
+ a| 
+包含已修改卷访问组 LUN 分配详细信息的对象。
+ a| 
+JSON 对象
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "ModifyVolumeAccessGroupLunAssignments",
+   "params": {
+       "volumeAccessGroupID" : 218,
+       "lunAssignments" : [
+           {"volumeID" : 832, "lun" : 0},
+           {"volumeID" : 834, "lun" : 1}
+        ]
+    },
+    "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroupLunAssignments": {
+      "deletedLunAssignments": [],
+      "lunAssignments": [
+        {
+          "lun": 0,
+          "volumeID": 832
+        },
+        {
+          "lun": 1,
+          "volumeID": 834
+        }
+      ],
+      "volumeAccessGroupID": 218
+    }
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

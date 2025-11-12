@@ -1,0 +1,32 @@
+---
+permalink: storage/task_snapmirror_perform_failover_from_element_cluster.html 
+sidebar: sidebar 
+keywords: element, ui, failover, cluster, perform a failover, snapmirror 
+summary: 您可以从 Element 集群执行故障转移，使目标卷可读写，并可供目标端的主机访问。在从 Element 集群执行故障转移之前，必须断开SnapMirror关系。 
+---
+= 从 Element 集群执行故障转移
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以从 Element 集群执行故障转移，使目标卷可读写，并可供目标端的主机访问。在从 Element 集群执行故障转移之前，必须断开SnapMirror关系。
+
+使用NetApp Element UI 执行故障转移。如果 Element UI 不可用，您也可以使用ONTAP系统管理器或ONTAP CLI 发出断开关系命令。
+
+.你需要什么
+* SnapMirror关系存在，并且目标卷上至少有一个有效的快照。
+* 由于主站点发生计划外中断或计划内事件，您需要故障转移到目标卷。
+
+
+.步骤
+. 在 Element UI 中，单击“数据保护”>“SnapMirror关系”。
+. 找到与要故障转移的源卷的关系。
+. 点击“操作”图标。
+. 点击*中断*。
+. 确认此操作。
++
+目标集群上的卷现在具有读写访问权限，可以挂载到应用程序主机以恢复生产工作负载。此操作将导致所有SnapMirror复制停止。这段关系表明它已经破裂。
+
+

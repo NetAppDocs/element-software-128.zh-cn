@@ -1,0 +1,60 @@
+---
+permalink: storage/task-element-replication-initialize-replication-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, initialize, replication, relationship 
+summary: 对于所有关系类型，初始化都会执行基线传输：它会创建源卷的快照副本，然后将该副本及其引用的所有数据块传输到目标卷。 
+---
+= 初始化复制关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+对于所有关系类型，初始化都会执行_基线传输_：它会创建源卷的快照副本，然后将该副本及其引用的所有数据块传输到目标卷。
+
+.开始之前
+* 包含要复制的卷的 Element 节点必须已对ONTAP开放。
+* Element 卷必须已启用SnapMirror复制功能。
+* 如果您使用的是“`mirror-vault`”策略类型，则必须配置SnapMirror标签才能复制 Element 快照副本。
++
+[NOTE]
+====
+你只能在以下情况下执行此任务：link:concept_snapmirror_labels.html["Element 软件 Web 用户界面"]或使用link:../api/concept_element_api_snapshots_overview.html["API 方法"]。
+
+====
+
+
+.关于此任务
+您必须在表单中指定元素源路径。 `<hostip:>/lun/<name>`其中“`lun`”是实际的字符串“`lun`”， `_name_`是元素卷的名称。
+
+初始化过程可能很耗时。您可能需要在非高峰时段运行基线传输。
+
+[NOTE]
+====
+如果由于任何原因导致从ONTAP源到 Element 目标的关系初始化失败，即使您已纠正了问题（例如，无效的 LUN 名称），它仍将继续失败。解决方法如下：
+
+. 删除这段关系。
+. 删除 Element 目标卷。
+. 创建新的 Element 目标卷。
+. 创建并初始化从ONTAP源到 Element 目标卷的新关系。
+
+
+====
+.步骤
+. 初始化复制关系：
++
+`snapmirror initialize -source-path <hostip:>/lun/<name> -destination-path <SVM:volume|cluster://SVM/volume>`
+
++
+有关完整的命令语法，请参见手册页。
+
++
+以下示例初始化源卷之间的关系 `0005`IP 地址为 10.0.0.11，目标卷为 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror initialize -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

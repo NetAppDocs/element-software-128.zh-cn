@@ -1,0 +1,25 @@
+---
+permalink: storage/task_replication_create_a_target_volume_with_read_write_access.html 
+sidebar: sidebar 
+keywords: target volume, create, read, write access 
+summary: 复制过程涉及两个端点：源卷和目标卷。创建目标卷时，该卷会自动设置为读/写模式，以便在复制期间接受数据。 
+---
+= 创建具有读取或写入权限的目标卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+复制过程涉及两个端点：源卷和目标卷。创建目标卷时，该卷会自动设置为读/写模式，以便在复制期间接受数据。
+
+. 选择“管理”>“卷”。
+. 点击“创建卷”。
+. 在“创建新卷”对话框中，输入卷名称。
+. 输入卷的总大小，选择卷的块大小，并选择应该有权访问该卷的帐户。
+. 点击“创建卷”。
+. 在“活动”窗口中，单击音量对应的“操作”图标。
+. 单击“*编辑*”。
+. 将帐户访问级别更改为“复制目标”。
+. 点击“保存更改”。
+

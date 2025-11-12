@@ -1,0 +1,33 @@
+= 查找更多信息
+:allow-uri-read: 
+
+
+您可以使用NetApp Element API 更改管理节点的默认 SSL 证书和私钥。
+
+配置管理节点时，它会创建一个唯一的自签名安全套接字层 (SSL) 证书和私钥，用于通过 Element UI、每个节点的 UI 或 API 进行的所有 HTTPS 通信。  Element 软件支持自签名证书以及由受信任的证书颁发机构 (CA) 颁发和验证的证书。
+
+您可以使用以下 API 方法获取有关默认 SSL 证书的更多信息并进行更改。
+
+* *获取节点SSL证书*
++
+你可以使用link:../api/reference_element_api_getnodesslcertificate.html["GetNodeSSLCertificate 方法"]检索有关当前已安装的 SSL 证书的信息，包括所有证书详细信息。
+
+* *设置节点SSL证书*
++
+你可以使用link:../api/reference_element_api_setnodesslcertificate.html["SetNodeSSLCertificate 方法"]将集群和每个节点的 SSL 证书设置为您提供的证书和私钥。系统会对证书和私钥进行验证，以防止应用无效证书。
+
+* *移除节点SSL证书*
++
+这link:../api/reference_element_api_removenodesslcertificate.html["RemoveNodeSSLCertificate 方法"]移除当前已安装的 SSL 证书和私钥。然后，集群会生成一个新的自签名证书和私钥。
+
+
+
+
+
+== 查找更多信息
+
+* link:../storage/reference_post_deploy_change_default_ssl_certificate.html["更改 Element 软件的默认 SSL 证书"]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_are_the_requirements_around_setting_custom_SSL_certificates_in_Element_Software%3F["在 Element Software 中设置自定义 SSL 证书有哪些要求？"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

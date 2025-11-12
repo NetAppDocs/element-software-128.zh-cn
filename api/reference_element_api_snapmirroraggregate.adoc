@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_snapmirroraggregate.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorAggregate 
+summary: snapMirrorAggregate 对象包含有关可用ONTAP聚合的信息，这些聚合是提供给卷作为存储的磁盘集合。您可以使用 ListSnapMirrorAggregates API 方法获取此信息。 
+---
+= snapMirrorAggregate
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorAggregate 对象包含有关可用ONTAP聚合的信息，这些聚合是提供给卷作为存储的磁盘集合。您可以使用 ListSnapMirrorAggregates API 方法获取此信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目标ONTAP系统的 ID。
+ a| 
+整数
+
+
+
+ a| 
+聚合名称
+ a| 
+该集合体的名称。
+ a| 
+string
+
+
+
+ a| 
+节点名称
+ a| 
+拥有此聚合的ONTAP节点的名称。
+ a| 
+string
+
+
+
+ a| 
+尺寸可用
+ a| 
+总计中剩余的可用字节数。
+ a| 
+整数
+
+
+
+ a| 
+总大小
+ a| 
+聚合体的总大小（以字节为单位）。
+ a| 
+整数
+
+
+
+ a| 
+已用容量百分比
+ a| 
+当前磁盘空间使用百分比。
+ a| 
+整数
+
+
+
+ a| 
+数量计数
+ a| 
+总卷数。
+ a| 
+整数
+
+|===

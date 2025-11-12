@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_troubleshoot_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, drives, ssd, swappable, solid-state drives 
+summary: '您可以将故障的固态硬盘 (SSD) 更换为新的硬盘。 SolidFire存储节点的 SSD 支持热插拔。如果您怀疑 SSD 出现故障，请联系NetApp支持部门以验证故障并指导您完成正确的故障排除步骤。  NetApp支持团队还会根据您的服务级别协议，协助您获得替换硬盘。' 
+---
+= 排除驱动器故障
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将故障的固态硬盘 (SSD) 更换为新的硬盘。 SolidFire存储节点的 SSD 支持热插拔。如果您怀疑 SSD 出现故障，请联系NetApp支持部门以验证故障并指导您完成正确的故障排除步骤。  NetApp支持团队还会根据您的服务级别协议，协助您获得替换硬盘。
+
+在这种情况下，“可更换”意味着您可以从活动节点中移除故障驱动器，并用NetApp的新 SSD 驱动器替换它。不建议在活动集群中移除未发生故障的驱动器。
+
+您应该按照NetApp支持部门的建议，在现场备有备用硬盘，以便在硬盘发生故障时立即进行更换。
+
+
+NOTE: 为了进行测试，如果您要通过从节点中拔出驱动器来模拟驱动器故障，则必须等待 30 秒后才能将驱动器插入驱动器插槽。
+
+如果某个硬盘发生故障，Double Helix 会将硬盘上的数据重新分配到集群中剩余的节点上。同一节点上的多个硬盘发生故障不是问题，因为 Element 软件可以防止同一节点上存在两份数据副本。硬盘故障会导致以下情况：
+
+* 数据已从硬盘迁移出去。
+* 集群总容量会因硬盘容量而减少。
+* 双螺旋数据保护确保数据有两个有效副本。
+
+
+
+IMPORTANT: 如果移除驱动器会导致存储空间不足以迁移数据， SolidFire存储系统不支持移除驱动器。
+
+
+
+== 了解更多信息
+
+* xref:task_troubleshoot_remove_failed_drives.adoc[从集群中移除故障驱动器。]
+* xref:concept_troubleshoot_basic_mdss_drive_troubleshooting.adoc[MDSS驱动器基本故障排除]
+* xref:task_troubleshoot_remove_mdss_drives.adoc[移除 MDSS 驱动器]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2844771["更换SolidFire存储节点的硬盘"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2846859["更换 H600S 系列存储节点的硬盘"]
+* link:../hardware/task_h410s_h610s_install.html["H410S 和 H610S 硬件信息"]
+* link:../hardware/task_sfseries_chassisrepl.html["SF系列硬件信息"]
+

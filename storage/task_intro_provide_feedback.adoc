@@ -1,0 +1,30 @@
+---
+permalink: storage/task_intro_provide_feedback.html 
+sidebar: sidebar 
+keywords: feedback, web user interface, UI issues, feedback form, relevant information, screenshots 
+summary: 您可以通过在用户界面中提供的反馈表单来帮助改进 Element 软件的 Web 用户界面并解决任何用户界面问题。 
+---
+= 提供反馈
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以通过在用户界面中提供的反馈表单来帮助改进 Element 软件的 Web 用户界面并解决任何用户界面问题。
+
+. 在 Element UI 的任何页面上，单击“反馈”按钮。
+. 请在“摘要”和“描述”字段中输入相关信息。
+. 请附上任何有用的屏幕截图。
+. 请输入姓名和电子邮件地址。
+. 选中此复选框以包含有关您当前环境的数据。
+. 单击“*提交*”。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

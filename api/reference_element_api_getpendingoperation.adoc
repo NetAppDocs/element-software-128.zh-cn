@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_getpendingoperation.html 
+sidebar: sidebar 
+keywords: get,getting,pending,operation,getpendingoperation 
+summary: 您可以使用 GetPendingOperation 方法来检测节点上当前正在进行的操作。该方法还可以用来报告操作何时完成。 
+---
+= 获取待处理操作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetPendingOperation`检测节点上当前正在进行的操作的方法。该方法还可以用来报告操作何时完成。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+pending
+ a| 
+可能值：
+
+* 确实：手术仍在进行中。
+* 错误的：
++
+手术已停止进行。
+
+
+ a| 
+布尔值
+
+
+
+ a| 
+operation
+ a| 
+正在进行或已完成的操作名称。
+ a| 
+string
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "GetPendingOperation",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "pendingOperation" : {
+         "pending" : "true",
+         "operation" : "TestDrivesInternal",
+      }
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

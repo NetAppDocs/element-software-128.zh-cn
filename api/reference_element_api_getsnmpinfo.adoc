@@ -1,0 +1,127 @@
+---
+permalink: api/reference_element_api_getsnmpinfo.html 
+sidebar: sidebar 
+keywords: snmp,information,info,get,getting 
+summary: '您可以使用 GetSnmpInfo 方法获取当前简单网络管理协议 (SNMP) 配置信息。' 
+---
+= 获取 SNMP 信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetSnmpInfo`获取当前简单网络管理协议（SNMP）配置信息的方法。
+
+
+
+== 参数
+
+
+NOTE: GetSnmpInfo 在 Element 版本 8.0 之后的版本中已弃用。这xref:reference_element_api_getsnmpstate.adoc[获取 SNMP 状态]和xref:reference_element_api_setsnmpacl.adoc[设置 SNMP 访问控制列表]方法取代了 GetSnmpInfo 方法。
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+网络
+ a| 
+已启用SNMP的网络和访问类型列表。  *注意：*仅当禁用 SNMP v3 时才会显示“网络”选项。
+ a| 
+xref:reference_element_api_network_snmp.adoc[network]
+
+
+
+ a| 
+启用
+ a| 
+指示集群中的节点是否配置了 SNMP。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+如果集群中的节点配置为 SNMP v3。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+usmUsers
+ a| 
+如果启用了 SNMP v3，则会从集群返回 SNMP 用户访问参数列表。返回此值，而不是 networks 参数。
+ a| 
+xref:reference_element_api_usmuser.adoc[usmUser]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "GetSnmpInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "enabled" : true,
+      "networks" : [
+         {
+            "access" : "rosys",
+            "cidr" : 0,
+            "community" : "public",
+            "network" : "localhost"
+         }
+      ]
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getsnmpstate.adoc[获取 SNMP 状态]
+* xref:reference_element_api_setsnmpacl.adoc[设置 SNMP 访问控制列表]
+

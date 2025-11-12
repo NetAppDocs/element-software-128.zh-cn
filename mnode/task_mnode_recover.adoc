@@ -1,0 +1,263 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_recover.html 
+summary: 您可以恢复并重新部署运行NetApp Element软件的集群的管理节点。根据您的配置，您可能需要重新配置管理节点的身份验证。 
+keywords: netapp, element, management node, mnode, disaster recovery, redeploy, VM 
+---
+= 恢复管理节点
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果之前的管理节点使用了持久卷，则可以手动恢复并重新部署运行NetApp Element软件的集群的管理节点。
+
+您可以部署一个新的 OVA 文件，并运行重新部署脚本，从先前安装的、运行 11.3 及更高版本的管理节点中提取配置数据。
+
+.你需要什么
+* 您之前的管理节点运行的是NetApp Element软件版本 11.3 或更高版本。link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["持续性卷"]功能已启用。
+* 您知道包含持久卷的集群的 MVIP 和 SVIP。
+* 您的集群版本正在运行NetApp Element软件 11.3 或更高版本。
+* 您的安装使用 IPv4。管理节点 11.3 不支持 IPv6。
+* 您有权从NetApp支持网站下载软件。
+* 您已确定适用于您平台的管理节点镜像类型：
++
+[cols="30,30"]
+|===
+| 平台 | 安装映像类型 
+
+
+| Microsoft Hyper-V | .iso 
+
+
+| KVM | .iso 
+
+
+| VMware vSphere | .iso、.ova 
+
+
+| Citrix XenServer | .iso 
+
+
+| OpenStack | .iso 
+|===
+
+
+.步骤
+. <<下载 ISO 或 OVA 文件并部署虚拟机>>
+. <<配置网络>>
+. <<配置时间同步>>
+. <<配置管理节点>>
+
+
+
+
+== 下载 ISO 或 OVA 文件并部署虚拟机
+
+. 从此处下载用于安装的 OVA 或 ISO 文件。 https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Element软件"^] NetApp支持网站上的页面。
++
+.. 选择“下载最新版本”并接受最终用户许可协议。
+.. 选择要下载的管理节点镜像。
+
+
+. 如果您下载了OVA文件，请按照以下步骤操作：
++
+.. 部署 OVA 文件。
+.. 如果您的存储集群与管理节点 (eth0) 位于不同的子网中，并且您想要使用持久卷，请向存储子网上的虚拟机添加第二个网络接口控制器 (NIC)（例如 eth1），或者确保管理网络可以路由到存储网络。
+
+
+. 如果您下载了 ISO 文件，请按照以下步骤操作：
++
+.. 使用以下配置，从虚拟机管理程序创建一个新的 64 位虚拟机：
++
+*** 六个虚拟CPU
+*** 24 GB 内存
+*** 400GB 虚拟磁盘，精简配置
+*** 一个具有互联网接入和存储 MVIP 访问权限的虚拟网络接口。
+*** （ SolidFire全闪存存储可选）一个虚拟网络接口，用于管理对存储集群的网络访问。如果您的存储集群与管理节点 (eth0) 位于不同的子网中，并且您想要使用持久卷，请向存储子网上的虚拟机添加第二个网络接口控制器 (NIC) (eth1)，或者确保管理网络可以路由到存储网络。
++
+
+IMPORTANT: 请勿在后续步骤指示启动虚拟机之前启动虚拟机。
+
+
+
+.. 将 ISO 文件附加到虚拟机，然后从 .iso 安装镜像启动。
++
+
+NOTE: 使用该镜像安装管理节点可能会导致启动画面出现前有 30 秒的延迟。
+
+
+
+. 安装完成后，启动管理节点的虚拟机。
+
+
+
+
+== 配置网络
+
+. 使用终端用户界面（TUI）创建管理节点管理员用户。
++
+
+TIP: 要浏览菜单选项，请按向上或向下箭头键。按 Tab 键可在按钮之间切换。要从按钮切换到字段，请按 Tab 键。要在不同字段之间切换，请按向上或向下箭头键。
+
+. 配置管理节点网络（eth0）。
++
+
+NOTE: 如果需要额外的网卡来隔离存储流量，请参阅有关配置另一个网卡的说明：link:task_mnode_install_add_storage_NIC.html["配置存储网络接口控制器（NIC）"] 。
+
+
+
+
+
+== 配置时间同步
+
+. 使用 NTP 验证管理节点和存储集群之间的时间是否同步：
+
+
+
+NOTE: 从元素 12.3.1 开始，子步骤 (a) 至 (e) 将自动执行。对于管理节点 12.3.1 或更高版本，请继续执行以下步骤<<substep_f_recover_config_time_sync,子步骤（f）>>完成时间同步配置。
+
+. 使用 SSH 或虚拟机管理程序提供的控制台登录到管理节点。
+. 停止 NTPD：
++
+[listing]
+----
+sudo service ntpd stop
+----
+. 编辑 NTP 配置文件 `/etc/ntp.conf`：
++
+.. 注释掉默认服务器(`server 0.gentoo.pool.ntp.org`通过添加一个 `#`在每个人面前。
+.. 为每个要添加的默认时间服务器添加新行。默认时间服务器必须与存储集群上使用的 NTP 服务器相同。 link:task_mnode_recover.html#configure-the-management-node["后续步骤"]。
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+.. 配置完成后保存文件。
+
+
+. 强制与新添加的服务器进行 NTP 同步。
++
+[listing]
+----
+sudo ntpd -gq
+----
+. 重启 NTPD。
++
+[listing]
+----
+sudo service ntpd start
+----
+. [[substep_f_recover_config_time_sync]]禁用通过虚拟机管理程序与主机进行时间同步（以下是 VMware 示例）：
++
+
+NOTE: 如果您在 VMware 以外的虚拟机管理程序环境中部署 mNode，例如在 Openstack 环境中从 .iso 镜像部署，请参阅虚拟机管理程序文档以获取等效命令。
+
++
+.. 禁用周期性时间同步：
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+.. 显示并确认服务的当前状态：
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+.. 在 vSphere 中，验证 `Synchronize guest time with host`VM选项中的复选框未选中。
++
+
+NOTE: 如果您将来对虚拟机进行更改，请勿启用此选项。
+
+
+
+
+
+
+NOTE: 完成时间同步配置后，请勿编辑 NTP 设置，因为这会影响您运行以下命令时的 NTP 设置。 <<step_6_recover_mnode_redeploy,重新部署命令>> 在管理节点上。
+
+
+
+== 配置管理节点
+
+. 为管理服务包内容创建临时目标目录：
++
+[listing]
+----
+mkdir -p /sf/etc/mnode/mnode-archive
+----
+. 下载之前安装在现有管理节点上的管理服务包（版本 2.15.28 或更高版本），并将其保存到以下位置： `/sf/etc/mnode/`目录。
+. 使用以下命令解压下载的软件包，将方括号 [ ] 中的值（包括方括号本身）替换为软件包文件名：
++
+[listing]
+----
+tar -C /sf/etc/mnode -xvf /sf/etc/mnode/[management services bundle file]
+----
+. 将生成的文件解压到指定位置。 `/sf/etc/mnode-archive`目录：
++
+[listing]
+----
+tar -C /sf/etc/mnode/mnode-archive -xvf /sf/etc/mnode/services_deploy_bundle.tar.gz
+----
+. 创建账户和卷的配置文件：
++
+[listing]
+----
+echo '{"trident": true, "mvip": "[mvip IP address]", "account_name": "[persistent volume account name]"}' | sudo tee /sf/etc/mnode/mnode-archive/management-services-metadata.json
+----
++
+.. 请将方括号 [ ] 内的值（包括方括号本身）替换为下列每个必需参数的值：
++
+*** *[mvip IP 地址]*：存储集群的管理虚拟 IP 地址。配置管理节点时，请使用与您在配置过程中使用的相同的存储集群。 link:task_mnode_recover.html#configure-time-sync["NTP 服务器配置"]。
+*** *[持久卷帐户名]*：与此存储集群中所有持久卷关联的帐户名称。
+
+
+
+
+
+
+[[step_6_recover_mnode_redeploy]]
+. 配置并运行管理节点重新部署命令，以连接到集群上托管的持久卷，并使用之前的管理节点配置数据启动服务：
++
+
+NOTE: 您将被提示在安全提示框中输入密码。如果您的集群位于代理服务器之后，则必须配置代理设置，以便可以访问公共网络。
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode --mnode_admin_user [username]
+----
++
+.. 将方括号 [ ] 中的值（包括方括号）替换为管理节点管理员帐户的用户名。这很可能是您用于登录管理节点的用户帐户的用户名。
++
+
+NOTE: 您可以添加用户名，也可以让脚本提示您输入信息。
+
+.. 运行 `redeploy-mnode`命令。脚本会在重新部署完成后显示成功消息。
+.. 如果您使用系统的完全限定域名 (FQDN) 访问 Element Web 界面（例如管理节点或NetApp Hybrid Cloud Control），link:../upgrade/task_hcc_upgrade_management_node.html#reconfigure-authentication-using-the-management-node-rest-api["重新配置管理节点的身份验证"] 。
+
+
+
+
+
+IMPORTANT: 提供 SSH 功能link:task_mnode_enable_remote_support_connections.html["NetApp支持远程支持隧道 (RST) 会话访问"]在运行管理服务 2.18 及更高版本的管理节点上，默认情况下已禁用此功能。如果您之前在管理节点上启用了 SSH 功能，则可能需要：link:task_mnode_ssh_management.html["再次禁用 SSH"]在已恢复的管理节点上。
+
+[discrete]
+== 了解更多信息
+
+* link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["持续性卷"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

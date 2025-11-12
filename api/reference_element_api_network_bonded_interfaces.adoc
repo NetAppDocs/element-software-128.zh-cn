@@ -1,0 +1,609 @@
+---
+permalink: api/reference_element_api_network_bonded_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 网络（绑定接口）对象包含存储节点上绑定网络接口的配置信息。您可以使用 GetConfig 和 GetNetworkConfig 方法来获取存储节点的此信息。 
+---
+= 网络（绑定接口）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+网络（绑定接口）对象包含存储节点上绑定网络接口的配置信息。你可以使用 `GetConfig`和 `GetNetworkConfig`获取存储节点此信息的方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+address
+ a| 
+分配给节点上此接口的 IPv4 地址。
+ a| 
+string
+
+
+
+ a| 
+addressV6
+ a| 
+分配给节点上 Bond1G 接口的 IPv6 管理地址。
+ a| 
+string
+
+
+
+ a| 
+债券发行延迟
+ a| 
+检测到链路故障后，禁用从设备前需要等待的时间（以毫秒为单位）。
+ a| 
+string
+
+
+
+ a| 
+bond-fail_over_mac
+ a| 
+网络接口的MAC地址配置。
+ a| 
+string
+
+
+
+ a| 
+邦德-米蒙
+ a| 
+以毫秒为单位，检查 MII 链路状态是否存在链路故障的频率。
+ a| 
+string
+
+
+
+ a| 
+键合模式
+ a| 
+键合模式。可能值：
+
+* 主动/被动（默认）
+* 艾尔布
+* LACP（推荐）
+
+ a| 
+string
+
+
+
+ a| 
+债券主选
+ a| 
+指定何时选择主绑定从设备作为活动从设备。可能值：
+
+* 总是
+* 更好的
+* 失败
+
+ a| 
+string
+
+
+
+ a| 
+奴隶
+ a| 
+绑定的从接口列表。
+ a| 
+string
+
+
+
+ a| 
+键合-lacp_rate
+ a| 
+当债券模式为 LACP 时，利率可能会变为以下几种之一：
+
+* LACP 快速（默认）
+* LACP慢速
+
+ a| 
+string
+
+
+
+ a| 
+债券发行延迟
+ a| 
+检测到链路后，在启用从设备之前等待的时间（以毫秒为单位）。
+ a| 
+string
+
+
+
+ a| 
+DNS 名称服务器
+ a| 
+用于域名服务的地址列表，以逗号或空格分隔。
+ a| 
+string
+
+
+
+ a| 
+DNS搜索
+ a| 
+以空格或逗号分隔的 DNS 搜索域列表。
+ a| 
+string
+
+
+
+ a| 
+family（系列）
+ a| 
+接口配置使用的地址族。目前支持 IPv4 的“inet”协议。
+ a| 
+string
+
+
+
+ a| 
+网关
+ a| 
+用于从本地网络发送流量的 IPv4 路由器网络地址。
+ a| 
+string
+
+
+
+ a| 
+gatewayV6
+ a| 
+用于从本地 Bond1G 网络发送流量的 IPv6 路由器网络地址。
+ a| 
+string
+
+
+
+ a| 
+ipV6PrefixLength
+ a| 
+Bond1G 网络上 IPv6 流量的“net”类型静态路由的子网前缀长度。
+ a| 
+string
+
+
+
+ a| 
+mac地址
+ a| 
+分配给接口并被网络观察到的实际 MAC 地址。
+ a| 
+string
+
+
+
+ a| 
+macAddressPermanent
+ a| 
+制造商分配给接口的不可更改的 MAC 地址。
+ a| 
+string
+
+
+
+ a| 
+方法
+ a| 
+用于配置接口的方法。可能值：
+
+* 环回接口：用于定义 IPv4 环回接口。
+* 手动：用于定义不会自动配置的接口。
+* dhcp：可用于通过 DHCP 获取 IP 地址。
+* 静态：用于定义具有静态分配的 IPv4 地址的以太网接口。
+
+ a| 
+string
+
+
+
+ a| 
+mtu
+ a| 
+接口可以传输的最大数据包大小（以字节为单位）。必须大于或等于 1500；最高支持 9000。
+ a| 
+string
+
+
+
+ a| 
+netmask
+ a| 
+指定接口子网的位掩码。
+ a| 
+string
+
+
+
+ a| 
+network
+ a| 
+指示基于子网掩码的 IP 地址范围的起始位置。
+ a| 
+string
+
+
+
+ a| 
+routes
+ a| 
+以逗号分隔的路由字符串数组，要将其应用到路由表中。
+ a| 
+字符串数组
+
+
+
+ a| 
+状态
+ a| 
+接口状态。可能值：
+
+* 向下：界面处于非活动状态。
+* 向上：接口已准备就绪，但没有链接。
+* 运行正常：接口已准备就绪，连接已建立。
+
+ a| 
+string
+
+
+
+ a| 
+对称路由规则
+ a| 
+节点上配置的对称路由规则。
+ a| 
+字符串数组
+
+
+
+ a| 
+upAndRunning
+ a| 
+指示接口是否已准备就绪并具有链接。
+ a| 
+布尔值
+
+
+
+ a| 
+虚拟网络标签
+ a| 
+接口的虚拟网络标识符（VLAN 标签）。
+ a| 
+string
+
+|===
+
+
+== 成员可修改性和节点状态
+
+此表表明在每个可能的节点状态下是否可以修改对象参数。
+
+|===
+
+
+| 成员姓名 | 可用状态 | 待定状态 | 活动状态 
+
+
+ a| 
+address
+ a| 
+是
+ a| 
+是
+ a| 
+否
+
+
+
+ a| 
+addressV6
+ a| 
+是
+ a| 
+是
+ a| 
+否
+
+
+
+ a| 
+债券发行延迟
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+bond-fail_over_mac
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+邦德-米蒙
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+键合模式
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+债券主选
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+奴隶
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+键合-lacp_rate
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+债券发行延迟
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+DNS 名称服务器
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+DNS搜索
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+family（系列）
+ a| 
+否
+ a| 
+否
+ a| 
+否
+
+
+
+ a| 
+网关
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+gatewayV6
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+ipV6PrefixLength
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+mac地址
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+macAddressPermanent
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+方法
+ a| 
+否
+ a| 
+否
+ a| 
+否
+
+
+
+ a| 
+mtu
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+netmask
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+network
+ a| 
+否
+ a| 
+否
+ a| 
+否
+
+
+
+ a| 
+routes
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+状态
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+
+
+ a| 
+对称路由规则
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+upAndRunning
+ a| 
+由系统配置
+ a| 
+不适用
+ a| 
+不适用
+
+
+
+ a| 
+虚拟网络标签
+ a| 
+是
+ a| 
+是
+ a| 
+是
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getconfig.adoc[GetConfig]
+* xref:reference_element_api_getnetworkconfig.adoc[获取网络配置]
+

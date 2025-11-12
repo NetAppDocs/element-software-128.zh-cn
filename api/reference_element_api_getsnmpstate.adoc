@@ -1,0 +1,101 @@
+---
+permalink: api/reference_element_api_getsnmpstate.html 
+sidebar: sidebar 
+keywords: snmp,state,get,getting,getsnmpstate 
+summary: 您可以使用 GetSnmpState 方法获取 SNMP 功能的当前状态。 
+---
+= 获取 SNMP 状态
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetSnmpState`获取SNMP功能当前状态的方法。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+启用
+ a| 
+可能值：
+
+* true
+* false
+
+
+默认值为 false。如果集群中的节点已配置为使用 SNMP，则返回 true。
+ a| 
+布尔值
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+可能值：
+
+* true
+* false
+
+
+默认值为 false。如果集群中的节点配置为 SNMP v3，则返回 true。
+ a| 
+布尔值
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "GetSnmpState",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+   "enabled": true,
+   "snmpV3Enabled": false
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_setsnmpacl.adoc[设置 SNMP 访问控制列表]

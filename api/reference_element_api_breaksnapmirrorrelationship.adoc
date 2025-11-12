@@ -1,0 +1,81 @@
+---
+permalink: api/reference_element_api_breaksnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,volume,volumes,break,breaking,relationship,ONTAP 
+summary: Element Web UI 使用 BreakSnapMirrorRelationship 方法来断开SnapMirror关系。当SnapMirror关系断开时，目标卷变为可读写且独立，然后可能与源卷有所不同。您可以使用 ResyncSnapMirrorRelationship API 方法重新建立关系。此方法需要ONTAP集群可用。 
+---
+= BreakSnapMirror关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element Web UI 使用 `BreakSnapMirrorRelationship`断开SnapMirror连接的方法。当SnapMirror关系断开时，目标卷变为可读写且独立，然后可能与源卷有所不同。你可以重新建立与……的关系 `ResyncSnapMirrorRelationship`API 方法。此方法需要ONTAP集群可用。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+与 Element 存储集群通信的远程ONTAP存储系统的端点 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+目的地卷
+ a| 
+SnapMirror关系中的目标卷。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirror关系
+ a| 
+包含有关已断开的SnapMirror关系的信息的对象。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror关系]
+
+|===
+
+
+== 自版本以来的新版本
+
+10.1
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_breaksnapmirrorvolume.adoc[BreakSnapMirrorVolume]

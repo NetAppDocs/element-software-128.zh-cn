@@ -1,0 +1,111 @@
+---
+permalink: api/reference_element_api_listactivevolumes.html 
+sidebar: sidebar 
+keywords: active,volume,volumes,list,listing,listactivevolumes,cluster 
+summary: 您可以使用 ListActiveVolumes 方法获取系统中当前活动卷的列表。卷列表按 VolumeID 顺序排序，可以分多部分（页）返回。 
+---
+= 列出活动卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListActiveVolumes`获取系统中当前活动卷列表的方法。卷列表按 VolumeID 顺序排序，可以分多部分（页）返回。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+包含虚拟卷
+ a| 
+默认情况下，响应中包含虚拟卷。要排除虚拟卷，请设置为 false。
+ a| 
+布尔值
+ a| 
+true
+ a| 
+否
+
+
+
+ a| 
+起始卷 ID
+ a| 
+开始返回 VolumeID。如果不存在具有此 VolumeID 的卷，则使用 VolumeID 顺序的下一个卷作为列表的开头。要翻页浏览列表，请传递上一个响应中最后一个卷的 VolumeID + 1。
+ a| 
+整数
+ a| 
+0
+ a| 
+否
+
+
+
+ a| 
+limit
+ a| 
+要返回的最大卷信息对象数。  0（零）返回所有卷（无限制）。
+ a| 
+整数
+ a| 
+（无限）
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+卷
+ a| 
+活动卷列表。
+ a| 
+xref:reference_element_api_volume.adoc[volume]大批
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "ListActiveVolumes",
+   "params": {
+      "startVolumeID"  : 0,
+      "limit" : 1000
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+由于此回复示例篇幅较长，因此已在补充主题中进行了记录。
+
+
+
+== 自版本以来的新版本
+
+9.6

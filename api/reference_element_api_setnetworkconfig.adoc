@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_setnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,set,setting,node,setnetworkconfig 
+summary: 您可以使用 SetNetworkConfig 方法来设置节点的网络配置。要显示节点的当前网络设置，请运行 GetNetworkConfig API 方法。 
+---
+= 设置网络配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetNetworkConfig`设置节点网络配置的方法。要显示节点的当前网络设置，请运行以下命令 `GetNetworkConfig`API 方法。
+
+
+
+== 参数
+
+小心：
+
+更改节点上的绑定模式可能会导致网络连接暂时中断。
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+network
+ a| 
+包含要修改的节点网络设置的对象。您只需将要更改的字段作为属性添加到此方法的参数中即可。
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[网络（所有接口）]
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+network
+ a| 
+节点的最新网络配置。
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[网络（所有接口）]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+	"method": "SetNetworkConfig",
+		"params": {
+			"network": {
+				"Bond10G": {
+					"bond-mode": "ALB"
+				},
+				"Bond1G": {
+					"netmask": "255.255.224.0"
+				},
+				"eth0": {
+					"method": "bond"
+				},
+				"lo": {
+					"method": "loopback"
+				}
+			}
+		}
+}
+----
+
+
+== 响应示例
+
+此方法的响应与 GetNetworkConfig 方法的响应相同。该方法显示每个对象的所有成员，并包含任何已更改成员的新值。
+
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getnetworkconfig.adoc[获取网络配置]
+* xref:reference_element_api_response_example_getnetworkconfig.adoc[获取网络配置]
+

@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_testconnectsvip.html 
+sidebar: sidebar 
+keywords: storage,connection,svip,test,testing,testconnectsvip 
+summary: 您可以使用 TestConnectSvip 方法测试与存储集群的存储连接。该测试使用 ICMP 数据包 ping SVIP，如果成功，则作为 iSCSI 发起程序进行连接。 
+---
+= TestConnectSvip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `TestConnectSvip`测试存储与存储集群连接的方法。该测试使用 ICMP 数据包 ping SVIP，如果成功，则作为 iSCSI 发起程序进行连接。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+svip
+ a| 
+您可以传递此值来测试不同 SVIP 的管理连接。测试与目标集群的连接时，不需要使用此值。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+细节
+ a| 
+测试操作信息（JSON 对象）：
+
+* `connected`：指示测试是否可以连接到 SVIP（布尔值）
+* `svip`：针对（字符串）测试的 SVIP
+* `pingBytes`：56 字节和 9000 字节（对象）的 ping 测试详情
++
+** `56`56 字节 ping 测试结果（JSON 对象）：
++
+*** `individualResponseTimes`：每个集成节点的响应时间列表（字符串数组）
+*** `individualStatus`：来自每个集群节点的 ping 状态列表（布尔数组）
+*** `responseTime`平均 ping 响应时间（字符串）
+*** `successful`：指示 ping 测试是否成功（布尔值）
+
+
+** `9000`9000 字节 ping 测试结果（JSON 对象）：
++
+*** `individualResponseTimes`：每个集成节点的响应时间列表（字符串数组）
+*** `individualStatus`：来自每个集群节点的 ping 状态列表（布尔数组）
+*** `responseTime`平均 ping 响应时间（字符串）
+*** `successful`：指示 ping 测试是否成功（布尔值）
+
+
+** `duration`：运行测试所需的时间（字符串）
+** `result`测试的整体结果（字符串）
+
+
+
+ a| 
+string
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "TestConnectSvip",
+   "params": {
+      "svip" : "172.27.62.50"
+      },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": {
+      "connected": true,
+      "pingBytes": {
+           "56": {
+               "individualResponseTimes": [
+                   "00:00:00.000152",
+                   "00:00:00.000132",
+                   "00:00:00.000119",
+                   "00:00:00.000114",
+                   "00:00:00.000112"
+              ],
+              "individualStatus": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+              ],
+              "responseTime": "00:00:00.000126",
+              "successful": true
+           },
+          "9000": {
+                "individualResponseTimes": [
+                    "00:00:00.000295",
+                    "00:00:00.000257",
+                    "00:00:00.000172",
+                    "00:00:00.000172",
+                    "00:00:00.000267"
+              ],
+              "individualStatus": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+             ],
+             "responseTime": "00:00:00.000233",
+             "successful": true
+           }
+        },
+        "svip": "172.27.62.50"
+      },
+      "duration": "00:00:00.421907",
+      "result": "Passed"
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

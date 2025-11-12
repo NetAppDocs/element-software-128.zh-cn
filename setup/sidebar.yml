@@ -1,0 +1,36 @@
+---
+section: setup
+title: 设置存储
+entries:
+- title: 了解如何设置存储
+  url: "/setup/concept_setup_overview.html"
+- title: 搭建包含存储节点的集群
+  entries:
+  - title: 配置存储节点
+    url: "/setup/concept_setup_configure_a_storage_node.html"
+  - title: 创建存储集群
+    url: "/setup/task_setup_create_a_storage_cluster.html"
+  - title: 登录 Element 软件用户界面
+    url: "/setup/task_post_deploy_access_the_element_software_user_interface.html"
+  - title: 将驱动器添加到集群
+    url: "/setup/task_setup_add_drives_to_a_cluster.html"
+- title: 使用光纤通道节点搭建集群
+  entries:
+  - title: 配置光纤通道节点
+    url: "/setup/concept_setup_fc_configure_a_fibre_channel_node.html"
+  - title: 创建包含光纤通道节点的新集群
+    url: "/setup/task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.html"
+  - title: 将光纤通道节点添加到集群
+    url: "/setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html"
+  - title: 为光纤通道节点设置区域
+    url: "/setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html"
+  - title: 为光纤通道客户端创建卷访问组
+    url: "/setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html"
+- title: 确定要安装哪些SolidFire组件
+  url: "/setup/task_setup_determine_which_solidfire_components_to_install.html"
+- title: 设置管理节点
+  url: "/setup/task_setup_gh_redirect_set_up_a_management_node.html"
+- title: 配置完全限定域名 (FQDN) Web UI 访问
+  url: "/setup/task_setup_configure_fqdn_web_ui_access.html"
+- title: 下一步是什么？
+  url: "/setup/concept_setup_whats_next.html"

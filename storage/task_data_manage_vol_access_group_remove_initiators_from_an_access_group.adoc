@@ -1,0 +1,25 @@
+---
+permalink: storage/task_data_manage_vol_access_group_remove_initiators_from_an_access_group.html 
+sidebar: sidebar 
+keywords: initiator, remove from volume access group, access groups, remove initiator 
+summary: 从访问组中移除启动器后，它将无法再访问该卷访问组中的卷。账户对该卷的正常访问未受影响。 
+---
+= 从访问组中移除发起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+从访问组中移除启动器后，它将无法再访问该卷访问组中的卷。账户对该卷的正常访问未受影响。
+
+修改帐户中的 CHAP 设置或从访问组中删除发起程序或卷可能会导致发起程序意外失去对卷的访问权限。为验证卷访问不会意外丢失，请务必注销受帐户或访问组更改影响的 iSCSI 会话，并在完成对启动器设置和集群设置的任何更改后，验证启动器是否可以重新连接到卷。
+
+.步骤
+. 点击“管理”>“访问组”。
+. 点击要移除的访问组的“操作”图标。
+. 在出现的菜单中，选择“编辑”。
+. 在“编辑卷访问组”对话框的“添加启动器”下，单击“启动器”列表上的箭头。
+. 选择要从访问组中移除的每个发起者的 x 图标。
+. 点击“保存更改”。
+

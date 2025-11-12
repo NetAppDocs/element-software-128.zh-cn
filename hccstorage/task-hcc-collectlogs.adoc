@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-collectlogs.html 
+summary: 您可以使用NetApp Hybrid Cloud Control 从 Element 安装中收集日志，以帮助进行故障排除。 
+keywords: netapp, element, logs, collection, troubleshooting, monitor 
+---
+= 收集日志以进行故障排除
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您在使用SolidFire全闪存存储安装时遇到问题，可以收集日志并将其发送给NetApp支持部门以帮助进行诊断。您可以使用NetApp Hybrid Cloud Control 或 REST API 来收集 Element 系统上的日志。
+
+.你需要什么
+* 请确保您的存储集群版本运行的是NetApp Element软件 11.3 或更高版本。
+* 请确保您已部署运行 11.3 或更高版本的管理节点。
+
+
+.日志收集选项
+从下列选项中选择一项：
+
+* <<使用NetApp Hybrid Cloud Control 收集日志>>
+* <<使用 REST API 收集日志>>
+
+
+
+
+== 使用NetApp Hybrid Cloud Control 收集日志
+
+您可以从NetApp混合云控制仪表板访问日志收集区域。
+
+.步骤
+. 在网页浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://[management node IP address]
+----
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，选择右上角的菜单。
+. 选择*收集日志*。
++
+如果您之前收集过日志，您可以下载现有的日志包，或者开始新的日志收集。
+
+. 在“日期范围”下拉菜单中选择日期范围，以指定日志应包含的日期。
++
+如果指定自定义开始日期，则可以选择日期范围的起始日期。日志将从该日期起收集至今日止。
+
+. 在“日志收集”部分，选择日志包应包含的日志文件类型。
++
+对于存储日志，您可以展开存储节点列表，并选择要从中收集日志的单个节点（或列表中的所有节点）。
+
+. 选择“收集日志”开始收集日志。
++
+日志收集在后台运行，页面会显示进度。
+
++
+
+NOTE: 根据您收集的日志，进度条可能会在某个百分比停留几分钟，或者在某些时候进展非常缓慢。
+
+. 选择“下载日志”以下载日志包。
++
+日志包采用压缩的 UNIX .tgz 文件格式。
+
+
+
+
+
+== 使用 REST API 收集日志
+
+您可以使用 REST API 收集 Element 日志。
+
+.步骤
+. 找到存储集群 ID：
++
+.. 在管理节点上打开管理节点 REST API 用户界面：
++
+[listing]
+----
+https://[management node IP]/logs/1/
+----
+.. 选择“授权”，然后完成以下步骤：
++
+... 请输入集群用户名和密码。
+... 请输入客户端 ID `mnode-client`如果该值尚未填充。
+... 选择“授权”以开始会话。
+
+
+
+
+. 从 Element 收集日志：
++
+.. 选择 *POST /bundle*。
+.. 选择*试用一下*。
+.. 根据您需要收集的日志类型和时间范围，更改“请求正文”字段中以下参数的值：
++
+|===
+| 参数 | 类型 | 描述 
+
+
+| `modifiedSince` | 日期字符串 | 仅包含此日期和时间之后修改的日志。例如，“2020-07-14T20:19:00.000Z”值定义了 2020 年 7 月 14 日 20:19 UTC 的开始日期。 
+
+
+| `mnodeLogs` | 布尔型 | 将此参数设置为 `true`包括管理节点日志。 
+
+
+| `storageCrashDumps` | 布尔型 | 将此参数设置为 `true`包含存储节点崩溃调试日志。 
+
+
+| `storageLogs` | 布尔型 | 将此参数设置为 `true`包括存储节点日志。 
+
+
+| `storageNodeIds` | UUID 数组 | 如果 `storageLogs`设置为 `true`，使用存储集群节点 ID 填充此参数，以将日志收集限制在这些特定的存储节点上。使用 `GET https://[management node IP]/logs/1/bundle/options`可通过该端点查看所有可用的节点 ID。 
+|===
+.. 选择“执行”以开始日志收集。响应应类似于以下内容：
++
+[listing]
+----
+{
+  "_links": {
+    "self": "https://10.1.1.5/logs/1/bundle"
+  },
+  "taskId": "4157881b-z889-45ce-adb4-92b1843c53ee",
+  "taskLink": "https://10.1.1.5/logs/1/bundle"
+}
+----
+
+
+. 检查日志收集任务的状态：
++
+.. 选择 *GET /bundle*。
+.. 选择*试用一下*。
+.. 选择“执行”以返回收集任务的状态。
+.. 滚动到回复正文底部。
++
+你应该看看 `percentComplete`属性，用于详细描述收藏进度。如果收藏品已齐全， `downloadLink`该属性包含完整的下载链接，包括日志包的文件名。
+
+.. 复制文件末尾的文件名 `downloadLink`属性。
+
+
+. 下载收集到的日志包：
++
+.. 选择 *GET /bundle/{filename}*。
+.. 选择*试用一下*。
+.. 将你之前复制的文件名粘贴到 `filename`参数文本字段。
+.. 选择*执行*。
++
+执行完成后，响应正文区域会出现一个下载链接。
+
+.. 选择“下载文件”，并将生成的文件保存到您的计算机。
++
+日志包采用压缩的 UNIX .tgz 文件格式。
+
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

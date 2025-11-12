@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_initiator.html 
+sidebar: sidebar 
+keywords: object,objects,initiator 
+summary: 发起程序对象包含有关 iSCSI 或光纤通道发起程序的信息。发起程序对象可以包含 IQN 或 WWPN 标识符。您可以使用 ListInitiators 方法获取系统上所有已知启动器的列表。您可以使用启动器对象通过卷访问组配置对一组卷的 SCSI 启动器访问。发起者一次只能加入一个卷访问组。您可以使用 CreateInitiators 和 ModifyInitiators 方法指定一个或多个 virtualNetworkID，从而将启动器访问权限限制到一个或多个 VLAN。如果您不指定任何虚拟网络，则发起程序可以访问所有网络。 
+---
+= 发起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+发起程序对象包含有关 iSCSI 或光纤通道发起程序的信息。发起程序对象可以包含 IQN 或 WWPN 标识符。你可以使用 `ListInitiators`获取系统上所有已知发起者列表的方法。您可以使用启动器对象通过卷访问组配置对一组卷的 SCSI 启动器访问。发起者一次只能加入一个卷访问组。您可以通过指定一个或多个虚拟网络 ID 来限制发起程序对一个或多个 VLAN 的访问。 `CreateInitiators`和 `ModifyInitiators`方法。如果您不指定任何虚拟网络，则发起程序可以访问所有网络。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+别名
+ a| 
+（如有）发起者的友好名称。
+ a| 
+string
+
+
+
+ a| 
+属性
+ a| 
+分配给此发起者的一组 JSON 属性。如果没有分配任何属性，则为空。
+ a| 
+JSON 对象
+
+
+
+ a| 
+chap用户名
+ a| 
+此发起者的唯一 CHAP 用户名。
+ a| 
+string
+
+
+
+ a| 
+发起者ID
+ a| 
+发起者的数字标识符。
+ a| 
+整数
+
+
+
+ a| 
+发起者名称
+ a| 
+发起人名称，采用 IQN 或 WWPN 格式。
+ a| 
+string
+
+
+
+ a| 
+发起者密钥
+ a| 
+用于验证发起方身份的 CHAP 密钥。
+ a| 
+string
+
+
+
+ a| 
+需要章节
+ a| 
+如果此发起程序需要 CHAP，则为真。
+ a| 
+布尔值
+
+
+
+ a| 
+目标密钥
+ a| 
+用于验证目标身份的 CHAP 密钥（在使用相互 CHAP 身份验证时）。
+ a| 
+string
+
+
+
+ a| 
+虚拟网络 ID
+ a| 
+与此发起程序关联的虚拟网络标识符列表。如果定义了一个或多个虚拟网络，则此发起程序将只能登录到指定的虚拟网络。如果没有定义虚拟网络，则此发起程序可以登录到所有网络。
+ a| 
+整数
+
+
+
+ a| 
+卷访问组
+ a| 
+此发起程序所属的卷访问组 ID 列表。
+ a| 
+整数数组
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listinitiators.adoc[列表发起者]

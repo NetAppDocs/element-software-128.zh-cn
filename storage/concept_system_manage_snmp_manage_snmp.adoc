@@ -1,0 +1,19 @@
+---
+permalink: storage/concept_system_manage_snmp_manage_snmp.html 
+sidebar: sidebar 
+keywords: snmp, manage, config, cluster, requestor, usm, traps, monitor 
+summary: 您可以在集群中配置简单网络管理协议（SNMP）。 
+---
+= 管理 SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在集群中配置简单网络管理协议 (SNMP)。
+
+您可以选择 SNMP 请求者、选择要使用的 SNMP 版本、识别 SNMP 基于用户的安全模型 (USM) 用户，并配置陷阱来监控SolidFire集群。您还可以查看和访问管理信息库文件。
+
+
+NOTE: 你可以同时使用 IPv4 地址和 IPv6 地址。

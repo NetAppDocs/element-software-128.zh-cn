@@ -1,0 +1,83 @@
+---
+permalink: api/reference_element_api_host.html 
+sidebar: sidebar 
+keywords: object,objects,host 
+summary: 主机对象包含有关虚拟卷主机的信息。您可以使用 ListVirtualVolumeHosts 方法获取所有虚拟卷主机的此信息。 
+---
+= 主机（虚拟卷）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+主机对象包含有关虚拟卷主机的信息。你可以使用 `ListVirtualVolumeHosts`获取所有虚拟卷主机的此信息的方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+绑定
+ a| 
+描述虚拟卷主机绑定对象列表。
+ a| 
+整数数组
+
+
+
+ a| 
+clusterID
+ a| 
+此主机所属集群的唯一 ID。
+ a| 
+UUID
+
+
+
+ a| 
+主机地址
+ a| 
+虚拟卷主机的 IP 地址或 DNS 名称。
+ a| 
+string
+
+
+
+ a| 
+发起者名称
+ a| 
+虚拟卷主机的启动器 IQN 列表。
+ a| 
+字符串数组
+
+
+
+ a| 
+虚拟卷主机ID
+ a| 
+此虚拟卷主机的唯一 ID。
+ a| 
+UUID
+
+
+
+ a| 
+可见协议端点 ID
+ a| 
+此主机上可见的协议端点 ID 列表。
+ a| 
+UUID 数组
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listvirtualvolumehosts.adoc[列出虚拟卷主机]

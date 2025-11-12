@@ -1,0 +1,27 @@
+---
+permalink: storage/concept_contact_netapp_support.html 
+sidebar: sidebar 
+keywords: contact,support 
+summary: 如果您在使用NetApp产品时需要帮助、有任何疑问或意见，请联系NetApp支持。 
+---
+= 联系 NetApp 支持
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您在使用NetApp产品时需要帮助、有任何疑问或意见，请联系NetApp支持。
+
+* 网址：
++
+http://mysupport.netapp.com["mysupport.netapp.com"]
+
+* 电话：
++
+** 888.4.NETAPP (888.463.8277)（美国和加拿大）
+** 00.800.44.638277（欧洲、中东和非洲地区）
+** +800.800.80.800（亚太地区）
+
+
+

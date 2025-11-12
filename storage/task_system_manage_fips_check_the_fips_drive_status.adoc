@@ -1,0 +1,37 @@
+---
+permalink: storage/task_system_manage_fips_check_the_fips_drive_status.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, drive, enable 
+summary: 您可以使用NetApp Element软件 GetFeatureStatus API 方法检查集群上是否启用了 FIPS 驱动器功能，该方法会显示 FIPS 驱动器启用状态是真还是假。 
+---
+= 检查 FIPS 驱动器状态
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用NetApp Element软件检查集群上是否启用了 FIPS 驱动器功能。 `GetFeatureStatus` API 方法，用于显示 FIPS 驱动器启用状态是真还是假。
+
+. 使用 Element API，通过输入以下命令检查集群上的 FIPS 驱动器功能：
++
+`GetFeatureStatus`
+
+. 回顾结果 `GetFeatureStatus`API调用。如果 FIPS 驱动器启用值为 True，则启用 FIPS 驱动器功能。
++
+[listing]
+----
+{"enabled": true,
+"feature": "FipsDrives"
+}
+----
+
+
+
+
+== 查找更多信息
+
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存储"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

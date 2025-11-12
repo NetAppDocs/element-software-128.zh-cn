@@ -1,0 +1,128 @@
+---
+permalink: hardware/task_sfseries_chassisrepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, chassis replacement, sf-series nodes 
+summary: '如果风扇、中央处理器 (CPU) 或双列直插式内存模块 (DIMM) 出现故障，或者需要修复过热问题或启动过程问题，则可能需要更换机箱。 NetApp Element软件用户界面 (UI) 中的集群故障以及机箱前面的琥珀色指示灯闪烁，表明可能需要更换机箱。在继续操作之前，您应该联系NetApp支持。' 
+---
+= 更换底盘
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果风扇、中央处理器 (CPU) 或双列直插式内存模块 (DIMM) 出现故障，或者需要修复过热问题或启动过程问题，则可能需要更换机箱。 NetApp Element软件用户界面 (UI) 中的集群故障以及机箱前面的琥珀色指示灯闪烁，表明可能需要更换机箱。在继续操作之前，您应该联系NetApp支持。
+
+.你需要什么
+* 您已联系NetApp支持团队。
++
+如果您要订购替换件，则必须先向NetApp支持部门提交案例。
+
+* 您已收到替换底盘。
+* 您佩戴了静电放电 (ESD) 腕带，或者采取了其他防静电防护措施。
+* 如果您需要执行恢复出厂设置 (RTFI) 过程，您已经获得了 USB 密钥。
++
+NetApp支持团队将帮助您确定是否需要 RTFI。看 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["这篇知识库文章（需要登录）"]。
+
+* 你拥有键盘和显示器。
+
+
+.关于此任务
+本文档中的说明适用于具有以下任一节点的单机架单元 (1U) 机箱：
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+根据您的 Element 软件版本，以下节点不受支持：
+
+* 从 Element 12.8、SF4805、SF9605、SF19210 和 SF38410 存储节点开始。
+* 从 Element 12.7、SF2405 和 SF9608 存储节点以及 FC0025 和 SF-FCN-01 FC 节点开始。
+* 从 Element 12.0、SF3010、SF6010 和 SF9010 存储节点开始。
+
+
+====
+.步骤
+. 找到故障机箱的服务标签，并验证其序列号是否与您在向NetApp支持部门订购替换机箱时提交的订单上的序列号相符。
++
+您可以在机箱正面找到服务标签。
+
++
+下图是服务标签的示例：
+
++
+image::../media/sf_series_chassis_service_tag.gif[此图显示的是SolidFire机箱中的服务标签。]
+
++
+
+NOTE: 上图仅为示例。服务标签的具体位置可能因硬件型号而异。
+
+. 将键盘和显示器连接到故障机箱的背面。
+. 请联系NetApp支持部门核实机箱信息。
+. 关闭机箱电源。
+. 在机箱前部给硬盘贴上标签，在机箱后部给线缆贴上标签。
++
+
+NOTE: 光纤通道节点前面没有驱动器。
+
+. 拆下电源装置和线缆。
+. 小心取出硬盘，并将其放在防静电的水平表面上。
++
+
+NOTE: 如果您使用的是光纤通道节点，则可以跳过此步骤。
+
+. 根据您的硬件型号，按下闩锁或拧下蝶形螺钉即可卸下机箱。
++
+您应该将故障机箱打包并退回给NetApp。
+
+. *可选*：拆下旧导轨，安装随替换机箱一起发货的新导轨。
++
+您可以选择重复使用现有的轨道。如果您要重用现有的 Rails，则可以跳过此步骤。
+
+. 将替换底盘滑到导轨上。
+. 对于存储节点，将故障机箱中的硬盘插入替换机箱。
++
+
+NOTE: 您应该将硬盘插入与故障机箱中相同的插槽中。
+
+. 安装电源装置。
+. 将电源线、1GbE 网线和 10GbE 网线插入原来的端口。
++
+可以将小型可插拔 (SFP) 收发器插入替换机箱的 10GbE 端口。在连接 10GbE 端口之前，应该先将它们移除。
+
+. 如果您已确定不需要在节点上执行 RTFI 过程，请启动节点，并等待终端用户界面 (TUI) 出现。继续执行步骤 16，并在使用 UI 添加节点时允许集群自动重新映像该节点。
+. *可选*：如果NetApp支持人员建议使用 USB 密钥重新映像节点，请执行以下子步骤：
++
+.. 机箱通电。它使用 RTFI 密钥映像启动。
+.. 在第一个提示符处，输入 *Y* 以对存储节点进行映像。
+.. 在第二个提示符处，输入 *N* 进行硬件健康检查。
++
+如果 RTFI 脚本检测到硬件组件出现问题，则会在控制台中显示错误。如果发现错误，请联系NetApp支持。  RTFI 过程完成后，节点关闭。
+
+.. 从USB接口中取出U盘。
+.. 启动新镜像的节点，等待 TUI 出现。
+
+
+. 通过 TUI 配置网络和集群信息。
++
+您可以联系NetApp支持团队寻求帮助。
+
+. 使用集群 TUI 将新节点添加到集群。
+. 打包并退回故障机箱。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

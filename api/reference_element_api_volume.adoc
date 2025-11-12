@@ -1,0 +1,303 @@
+---
+permalink: api/reference_element_api_volume.html 
+sidebar: sidebar 
+keywords: object,objects,volume 
+summary: 卷对象包含有关未配对或已配对卷的配置信息。它不包含运行时或使用情况信息，也不包含有关虚拟卷的信息。 
+---
+= volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+卷对象包含有关未配对或已配对卷的配置信息。它不包含运行时或使用情况信息，也不包含有关虚拟卷的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+access
+ a| 
+该访问类型允许访问该卷。可能值：
+
+* `readOnly`只允许读取操作。
+* `readWrite`允许读写操作。
+* `locked`不允许任何读取或写入操作。
+* `replicationTarget`：被指定为复制卷对中的目标卷。
+
+ a| 
+string
+
+
+
+ a| 
+accountID
+ a| 
+包含该卷的账户的账户ID。
+ a| 
+整数
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+
+
+
+ a| 
+块大小
+ a| 
+体积上块的大小。
+ a| 
+整数
+
+
+
+ a| 
+创建时间
+ a| 
+卷创建时间（UTC+0格式）。
+ a| 
+ISO 8601字符串
+
+
+
+ a| 
+当前保护方案
+ a| 
+本卷采用的保护方案。如果某笔交易从一种保护方案转换到另一种保护方案，则该成员反映该笔交易转换到的保护方案。
+ a| 
+string
+
+
+
+ a| 
+删除时间
+ a| 
+卷被删除的 UTC+0 格式时间。
+ a| 
+ISO 8601字符串
+
+
+
+ a| 
+enable512e
+ a| 
+如果设置为 true，则该卷提供 512 字节扇区模拟。
+ a| 
+布尔值
+
+
+
+ a| 
+启用 SnapMirror 复制
+ a| 
+该卷是否可用于与SnapMirror端点进行复制。
+ a| 
+布尔值
+
+
+
+| 先进先出大小 | 指定在使用先进先出 (FIFO) 快照保留模式时，要同时维护的卷快照的最大数量。 | 整数 
+
+
+ a| 
+iqn
+ a| 
+卷的 iSCSI 限定名称。
+ a| 
+string
+
+
+
+ a| 
+最后访问时间
+ a| 
+最后一次对该卷进行任何访问（包括 I/O）的时间（格式为 UTC+0）。如果不知道上次访问时间，则此值为空。
+ a| 
+ISO 8601字符串
+
+
+
+ a| 
+lastAccessTimeIO
+ a| 
+最后一次对该卷进行 I/O 操作的时间（格式为 UTC+0）。如果不知道上次访问时间，则此值为空。
+ a| 
+ISO 8601字符串
+
+
+
+| 最小FIFO大小 | 指定使用先进先出 (FIFO) 快照保留模式时，卷同时保留的最小先进先出 (FIFO) 快照槽数。 | 整数 
+
+
+ a| 
+name
+ a| 
+创建时提供的卷名。
+ a| 
+string
+
+
+
+ a| 
+先前的保护方案
+ a| 
+如果某笔交易从一种保护方案转换到另一种保护方案，则该成员反映该笔交易转换前的保护方案。该成员只有在转换开始时才会发生变化。如果卷从未转换过，则此成员为空。
+ a| 
+string
+
+
+
+ a| 
+清除时间
+ a| 
+卷从系统中清除的时间（UTC+0 格式）。
+ a| 
+ISO 8601字符串
+
+
+
+ a| 
+qos
+ a| 
+本卷的服务质量设置。
+ a| 
+xref:reference_element_api_qos.adoc[QoS]
+
+
+
+ a| 
+qosPolicyID
+ a| 
+与卷关联的QoS策略ID。如果卷未与策略关联，则该值为空。
+ a| 
+整数
+
+
+
+ a| 
+scsiEUI设备ID
+ a| 
+全局唯一的 SCSI 设备标识符，采用基于 EUI-64 的 16 字节格式，用于标识卷。
+ a| 
+string
+
+
+
+ a| 
+scsiNAA设备ID
+ a| 
+以 NAA IEEE 注册扩展格式表示的全球唯一 SCSI 设备标识符。
+ a| 
+string
+
+
+
+ a| 
+切片计数
+ a| 
+该体积上的切片数量。该值始终为“1”。
+ a| 
+整数
+
+
+
+ a| 
+状态
+ a| 
+该卷的当前状态。可能值：
+
+* init：正在初始化但尚未准备好接受连接的卷。
+* 活动卷：已准备好接受连接的活动卷。
+* 已删除：已标记为删除但尚未清除的卷。
+
+ a| 
+string
+
+
+
+ a| 
+总大小
+ a| 
+已配置容量的总字节数。
+ a| 
+整数
+
+
+
+ a| 
+虚拟卷 ID
+ a| 
+卷关联的唯一虚拟卷 ID（如有）。
+ a| 
+UUID
+
+
+
+ a| 
+卷访问组
+ a| 
+卷所属卷访问组的 ID 列表。如果卷不属于任何卷访问组，则此值为空列表。
+ a| 
+整数数组
+
+
+
+ a| 
+volumeConsistencyGroupUUID
+ a| 
+卷所属卷一致性组的通用唯一标识符。
+ a| 
+UUID
+
+
+
+ a| 
+volumeID
+ a| 
+卷的唯一卷 ID。
+ a| 
+整数
+
+
+
+ a| 
+销量对
+ a| 
+关于配对卷的信息。仅当与某个音量配对时才可见。如果卷未配对，则此值为空列表。
+ a| 
+xref:reference_element_api_volumepair.adoc[体积对]大批
+
+
+
+ a| 
+卷 UUID
+ a| 
+卷的通用唯一标识符。
+ a| 
+UUID
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listactivevolumes.adoc[列出活动卷]
+* xref:reference_element_api_listdeletedvolumes.adoc[列出已删除卷]
+* xref:reference_element_api_listvolumes.adoc[列表卷]
+* xref:reference_element_api_listvolumesforaccount.adoc[ListVolumesForAccount]
+* xref:reference_element_api_qos.adoc[QoS]
+

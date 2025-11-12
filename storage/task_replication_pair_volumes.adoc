@@ -1,0 +1,29 @@
+---
+permalink: storage/task_replication_pair_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, cluster, cluster pair 
+summary: 在集群对中建立集群之间的连接后，您可以将一个集群上的卷与该集群对中另一个集群上的卷配对。建立卷配对关系时，必须确定哪个卷是复制目标。 
+---
+= 对数
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在集群对中建立集群之间的连接后，您可以将一个集群上的卷与该集群对中另一个集群上的卷配对。建立卷配对关系时，必须确定哪个卷是复制目标。
+
+您可以将存储在连接集群对中不同存储集群上的两个卷配对进行实时复制。将两个集群配对后，您可以配置一个集群上的活动卷，使其持续复制到第二个集群，从而提供持续数据保护 (CDP)。您还可以将任一卷指定为复制的源或目标。
+
+销量配对始终是一对一的。卷与另一个集群上的卷配对后，就不能再与其他任何卷配对了。
+
+.你需要什么
+* 您已在集群对中的集群之间建立了连接。
+* 您拥有配对集群中的一个或两个集群的集群管理员权限。
+
+
+.步骤
+. xref:task_replication_create_a_target_volume_with_read_write_access.adoc[创建具有读取或写入权限的目标卷]
+. xref:task_replication_pair_volumes_using_volume_id_or_pairing_key.adoc[使用卷 ID 或配对密钥配对卷]
+. xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[为配对卷分配复制源和目标]
+

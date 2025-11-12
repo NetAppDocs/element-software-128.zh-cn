@@ -1,0 +1,348 @@
+---
+permalink: api/reference_element_api_modifyvolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,modifying,modify,change,changing,edit,editing,modifyvolumes 
+summary: 您可以使用 ModifyVolumes 方法一次性配置多达 500 个现有卷。变化立即发生。如果 ModifyVolumes 无法修改任何指定的卷，则所有指定的卷都不会更改。 
+---
+= 修改卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyVolumes`一次性配置多达 500 个现有卷的方法。变化立即发生。如果 `ModifyVolumes`未能修改任何指定的卷，所有指定的卷均未更改。
+
+如果在修改卷时未指定 QoS 值，则每个卷的 QoS 值保持不变。您可以通过运行以下命令来检索新创建卷的默认 QoS 值： `GetDefaultQoS`方法。
+
+当您需要增加正在复制的卷的大小时，请按以下顺序操作，以防止复制错误：
+
+. 使用 replicationTarget 访问权限增加卷的大小。
+. 增加具有读写访问权限的源或卷的大小。
+
+
+确保目标卷和源卷的大小相同。
+
+
+NOTE: 如果将访问状态更改为 locked 或 replicationTarget，则所有现有的 iSCSI 连接都将终止。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+access
+ a| 
+允许访问这些卷。可能值：
+
+* `readOnly`只允许读取操作。
+* `readWrite`允许读写操作。
+* `locked`不允许任何读取或写入操作。如果未指定，则访问值不会改变。
+* `replicationTarget`确定一组成对体积的目标体积。如果卷未配对，则访问状态将被锁定。如果未指定值，则访问值不会改变。
+
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+accountID
+ a| 
+卷被重新分配给的帐户 ID。如果没有指定，则使用之前的帐户名。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+与QoS策略关联
+ a| 
+将卷与指定的QoS策略关联起来。可能值：
+
+* `true`将卷与 QoSPolicyID 参数中指定的 QoS 策略关联起来。
+* `false`不要将卷与 QoSPolicyID 参数中指定的 QoS 策略关联。如果为 false，则会删除任何现有的策略关联，无论是否在 QoSPolicy 参数中指定 QoS 策略。
+
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+创建时间
+ a| 
+要设置为新卷创建日期的 ISO 8601 日期字符串。如果 setCreateTime 设置为 true，则此参数为必填项。
+ a| 
+ISO 8601字符串
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+不要移动 Iops 重新平衡
+ a| 
+使用实际 IOPS 进行负载均衡时，防止卷移动。此设置从 Element 12.8 版本开始可用，并且仅在以下情况下生效：link:reference_element_api_enablefeature.html["VolumeLoadBalanceOnActualIOPS"]已启用。可能值：
+
+* `true`卷不会根据实际 IOPS 进行负载均衡。
+* `false`卷会根据实际 IOPS 进行负载均衡。
+
+
+*注意*：高可用性（节点故障）的负载均衡优先于 `VolumeLoadBalanceOnActualIOPS`和 `dontMoveforIopsRebalance`。
+| 布尔值 | false | 否 
+
+
+ a| 
+启用 SnapMirror 复制
+ a| 
+确定该卷是否可用于与SnapMirror端点进行复制。可能值：
+
+* `true`
+* `false`
+
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+
+
+| 先进先出大小 | 指定卷支持的最大先进先出 (FIFO) 快照数。请注意，FIFO 快照和非 FIFO 快照都使用卷上相同的可用快照槽池。使用此选项可限制 FIFO 快照对可用快照槽位的消耗。请注意，您不能将此值修改为小于当前 FIFO 快照计数。 | 整数 | 无 | 否 
+
+
+| 最小FIFO大小 | 指定仅用于先进先出 (FIFO) 快照的快照槽数量。由于 FIFO 和非 FIFO 快照共享同一个池，因此 minFifoSize 参数会将可能的非 FIFO 快照的总数减少相同的数量。请注意，您不能修改此值，使其与当前的非 FIFO 快照计数冲突。 | 整数 | 无 | 否 
+
+
+ a| 
+模式
+ a| 
+卷复制模式。可能值：
+
+* `asynch`等待系统确认数据已存储在源端后再写入目标端。
+* `sync`：不等待源端的数据传输确认，即开始向目标端写入数据。
+
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+qos
+ a| 
+新的音量服务质量设置。如果未指定，则 QoS 设置不会更改。可能值：
+
+* `minIOPS`
+* `maxIOPS`
+* `burstIOPS`
+
+ a| 
+xref:reference_element_api_qos.adoc[QoS]
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+qosPolicyID
+ a| 
+要将 QoS 设置应用于指定卷的策略的 ID。此参数与 QoS 参数互斥。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+设置创建时间
+ a| 
+设置为 true 可更改卷创建记录日期。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+总大小
+ a| 
+卷的新大小（以字节为单位）。 1000000000 等于 1GB。文件大小向上取整到最接近的兆字节。此参数只能用于增加体积的大小。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+卷 ID
+ a| 
+要修改的卷的 volumeID 列表。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+volume
+ a| 
+包含每个新修改卷信息的数组对象。
+ a| 
+xref:reference_element_api_volume.adoc[volume]大批
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "ModifyVolumes",
+  "params": {
+    "volumeIDs": [319,22],
+    "access": "readWrite",
+    "dontMoveForIopsRebalance": false
+  },
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumes":
+      {
+        "access":  "readWrite,
+        "accountID": 22,
+        "attributes": {},
+        "blockSize": 4096,
+        "createTime": "2024-04-01T19:39:40Z",
+        "currentProtectionScheme": "doubleHelix",
+        "deleteTime": "",
+        "dontMoveForIopsRebalance": false,
+        "enable512e": false,
+        "enableSnapMirrorReplication": false,
+        "fifoSize": 24,
+        "iqn": "iqn.2010-01.com.solidfire:3eeu.suite40.319",
+        "lastAccessTime": "2024-04-02T12:41:34Z",
+        "lastAccessTimeIO": "2024-04-01T20:41:19Z",
+        "minFifoSize": 0,
+        "name": "suite40",
+        "previousProtectionScheme": null,
+        "purgeTime": "",
+        "qos": {
+          "burstIOPS": 27000,
+          "burstTime": 60,
+          "curve": {
+            "1048576": 15000,
+            "131072": 1950,
+            "16384": 270,
+            "262144": 3900,
+            "32768": 500,
+            "4096": 100,
+            "524288": 7600,
+            "65536": 1000,
+            "8192": 160
+          },
+          "maxIOPS": 27000,
+          "minIOPS": 500
+        },
+        "qosPolicyID": null,
+        "scsiEUIDeviceID": "336565750000013ff47acc0100000000",
+        "scsiNAADeviceID": "6f47acc100000000336565750000013f",
+        "sliceCount": 1,
+        "status": "active",
+        "totalSize": 1000000716800,
+        "virtualVolumeID": null,
+        "volumeAccessGroups": [
+        22
+        ],
+        "volumeConsistencyGroupUUID": "3003109e-6e75-444c-8cee-470d641a09c3",
+        "volumeID": 319,
+        "volumePairs": [],
+        "
+      }
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_getdefaultqos.adoc[获取默认服务质量]

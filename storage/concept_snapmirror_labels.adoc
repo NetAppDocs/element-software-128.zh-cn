@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_snapmirror_labels.html 
+sidebar: sidebar 
+keywords: labels, snapmirror, retention rules 
+summary: SnapMirror标签用作标记，用于根据关系的保留规则传输指定的快照。 
+---
+= SnapMirror 标签
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror标签用作标记，用于根据关系的保留规则传输指定的快照。
+
+给快照添加标签，即可将其标记为SnapMirror复制的目标。该关系的作用是通过选择匹配的标记快照，将其复制到目标卷，并确保保留正确数量的副本，从而在数据传输时强制执行规则。它指的是确定保留数量和保留期限的政策。该策略可以包含任意数量的规则，并且每条规则都有一个唯一的标签。此标签用作快照和保留规则之间的链接。
+
+SnapMirror标签指示对选定的快照、组快照或计划应用了哪条规则。

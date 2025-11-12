@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_setclusterconfig.html 
+sidebar: sidebar 
+keywords: cluster,configuration,set,setting,node,setclusterconfig 
+summary: 您可以使用 SetClusterConfig 方法设置节点与它所属的集群通信时使用的配置。要显示节点的当前集群接口设置，请运行 GetClusterConfig API 方法。 
+---
+= 设置集群配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetClusterConfig`用于设置节点与其所属集群通信所用配置的方法。要显示节点的当前集群接口设置，请运行以下命令 `GetClusterConfig`API 方法。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+集群
+ a| 
+此方法调用期间需要更改的配置属性。只需将您想要更改的字段作为成员添加到此方法的参数中即可。
+ a| 
+xref:reference_element_api_cluster.adoc[集群]
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群
+ a| 
+节点用于与集群通信的配置信息。
+ a| 
+xref:reference_element_api_cluster.adoc[集群]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "SetClusterConfig",
+   "params": {
+      "cluster": {
+         "name": "myhost",
+         "mipi": "Bond10G"
+      },
+    "id" : 1
+   }
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "cluster" : {
+         "cipi" : "Bond10G",
+         "cluster" : "QoS",
+         "ensemble" : [
+            "1:10.10.5.42",
+            "2:10.10.5.43",
+            "3:10.10.5.44",
+            "4:10.10.5.46",
+            "5:10.10.5.47"
+         ],
+          "hostname" : "myhost",
+          "mipi" : "Bond10G",
+          "nodeID" : 1,
+          "sipi" : "Bond10G",
+          "state" : "Active"
+      }
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

@@ -1,0 +1,33 @@
+---
+permalink: storage/task_snapmirror_enable_on_the_volume.html 
+sidebar: sidebar 
+keywords: element, snapmirror, enable, volume, ui, manually 
+summary: 您必须在 Element UI 中启用卷上的SnapMirror。这样就可以将数据复制到指定的ONTAP卷。这是运行NetApp Element软件的集群管理员授予SnapMirror控制卷的权限。 
+---
+= 在卷上启用SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必须在 Element UI 中启用卷上的SnapMirror。这样就可以将数据复制到指定的ONTAP卷。这是运行NetApp Element软件的集群管理员授予SnapMirror控制卷的权限。
+
+.你需要什么
+* 您已在集群的 Element UI 中启用SnapMirror 。
+* SnapMirror端点可用。
+* 体积必须为 512e 块大小。
+* 该卷未参与远程复制。
+* 卷访问类型不是复制目标。
+
+
+
+NOTE: 创建或克隆卷时也可以设置此属性。
+
+.步骤
+. 点击“管理”>“卷”。
+. 点击要启用SnapMirror的卷对应的 *操作* 图标。
+. 在出现的菜单中，选择“编辑”。
+. 在“编辑卷”对话框中，选中“启用SnapMirror”复选框。
+. 点击“保存更改”。
+

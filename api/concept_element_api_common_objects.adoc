@@ -1,0 +1,107 @@
+---
+permalink: api/concept_element_api_common_objects.html 
+sidebar: sidebar 
+keywords: common,objects 
+summary: Element软件API使用JSON对象来表示组织化的数据概念。这些 API 方法中有很多都利用这些对象进行数据输入和输出。本节介绍这些常用对象；仅在单个方法中使用的对象将与该方法一起进行文档说明，而不是在本节中说明。 
+---
+= 常见物品
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element软件API使用JSON对象来表示组织化的数据概念。这些 API 方法中有很多都利用这些对象进行数据输入和输出。本节介绍这些常用对象；仅在单个方法中使用的对象将与该方法一起进行文档说明，而不是在本节中说明。
+
+* xref:reference_element_api_account.adoc[帐户]
+* xref:reference_element_api_authsessioninfo.adoc[authSessionInfo]
+* xref:reference_element_api_bulkvolumejob.adoc[批量作业]
+* xref:reference_element_api_binding_vvols.adoc[装订（虚拟卷）]
+* xref:reference_element_api_certificatedetails.adoc[证书详情]
+* xref:reference_element_api_cluster.adoc[集群]
+* xref:reference_element_api_clusteradmin.adoc[集群管理员]
+* xref:reference_element_api_clustercapacity.adoc[集群容量]
+* xref:reference_element_api_clusterconfig.adoc[clusterConfig]
+* xref:reference_element_api_clusterinfo.adoc[集群信息]
+* xref:reference_element_api_clusterpair.adoc[clusterPair]
+* xref:reference_element_api_clusterstats.adoc[集群统计]
+* xref:reference_element_api_clusterstructure.adoc[簇结构]
+* xref:reference_element_api_drive.adoc[drive]
+* xref:reference_element_api_drivestats.adoc[驱动统计]
+* xref:reference_element_api_error.adoc[错误]
+* xref:reference_element_api_event.adoc[event]
+* xref:reference_element_api_fault.adoc[过错]
+* xref:reference_element_api_fibrechannelport.adoc[光纤通道端口]
+* xref:reference_element_api_fipserrornodereport.adoc[fips错误节点报告]
+* xref:reference_element_api_fipsnodereport.adoc[fips节点报告]
+* xref:reference_element_api_fipsreport.adoc[fips报告]
+* xref:reference_element_api_groupsnapshot.adoc[组快照]
+* xref:reference_element_api_hardwareinfo.adoc[硬件信息]
+* xref:reference_element_api_host.adoc[主机（虚拟卷）]
+* xref:reference_element_api_idpconfiginfo.adoc[idp配置信息]
+* xref:reference_element_api_initiator.adoc[发起者]
+* xref:reference_element_api_iscsiauthentication.adoc[ISCSI身份验证]
+* xref:reference_element_api_keyproviderkmip.adoc[keyProviderKmip]
+* xref:reference_element_api_keyserverkmip.adoc[keyServerKmip]
+* xref:reference_element_api_ldapconfiguration.adoc[ldap配置]
+* xref:reference_element_api_loggingserver.adoc[日志服务器]
+* xref:reference_element_api_network_bonded_interfaces.adoc[网络（绑定接口）]
+* xref:reference_element_api_network_all_interfaces.adoc[网络（所有接口）]
+* xref:reference_element_api_network_ethernet_interfaces.adoc[网络（以太网接口）]
+* xref:reference_element_api_network_local_interfaces.adoc[网络（本地接口）]
+* xref:reference_element_api_network_snmp.adoc[网络（SNMP）]
+* xref:reference_element_api_networkinterface.adoc[网络接口]
+* xref:reference_element_api_node.adoc[节点]
+* xref:reference_element_api_nodeprotectiondomains.adoc[节点保护域]
+* xref:reference_element_api_nodestats.adoc[节点统计]
+* xref:reference_element_api_ontapversioninfo.adoc[ontapVersionInfo]
+* xref:reference_element_api_pendingactivenode.adoc[待处理活动节点]
+* xref:reference_element_api_pendingnode.adoc[待处理节点]
+* xref:reference_element_api_protectiondomain.adoc[保护域]
+* xref:reference_element_api_protectiondomainlevel.adoc[保护域级别]
+* xref:reference_element_api_protectiondomainresiliency.adoc[保护域弹性]
+* xref:reference_element_api_protectiondomaintolerance.adoc[保护域容错]
+* xref:reference_element_api_protectionschemeresiliency.adoc[保护方案弹性]
+* xref:reference_element_api_protectionschemetolerance.adoc[保护方案容差]
+* xref:reference_element_api_protocolendpoint.adoc[协议端点]
+* xref:reference_element_api_qos.adoc[QoS]
+* xref:reference_element_api_qospolicy.adoc[QoS策略]
+* xref:reference_element_api_remoteclustersnapshotstatus.adoc[远程集群快照状态]
+* xref:reference_element_api_schedule.adoc[日程]
+* xref:reference_element_api_session_fibre_channel.adoc[会话（光纤通道）]
+* xref:reference_element_api_session_iscsi.adoc[会话（iSCSI）]
+* xref:reference_element_api_snapmirroraggregate.adoc[snapMirrorAggregate]
+* xref:reference_element_api_snapmirrorclusteridentity.adoc[snapMirrorClusterIdentity]
+* xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+* xref:reference_element_api_snapmirrorjobschedulecroninfo.adoc[snapMirrorJobScheduleCronInfo]
+* xref:reference_element_api_snapmirrorluninfo.adoc[snapMirrorLunInfo]
+* xref:reference_element_api_snapmirrornetworkinterface.adoc[snapMirror网络接口]
+* xref:reference_element_api_snapmirrornode.adoc[snapMirrorNode]
+* xref:reference_element_api_snapmirrorpolicy.adoc[snapMirrorPolicy]
+* xref:reference_element_api_snapmirrorpolicyrule.adoc[snapMirrorPolicyRule]
+* xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror关系]
+* xref:reference_element_api_snapmirrorvolume.adoc[snapMirrorVolume]
+* xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+* xref:reference_element_api_snapmirrorvserver.adoc[snapMirrorVserver]
+* xref:reference_element_api_snapmirrorvserveraggregateinfo.adoc[snapMirrorVserver聚合信息]
+* xref:reference_element_api_snapshot.adoc[Snapshot]
+* xref:reference_element_api_snmptraprecipient.adoc[snmpTrapRecipient]
+* xref:reference_element_api_storagecontainer.adoc[存储容器]
+* xref:reference_element_api_syncjob.adoc[同步作业]
+* xref:reference_element_api_task_virtual_volumes.adoc[任务（虚拟卷）]
+* xref:reference_element_api_usmuser.adoc[usmUser]
+* xref:reference_element_api_virtualnetwork.adoc[虚拟网络]
+* xref:reference_element_api_virtualvolume.adoc[虚拟卷]
+* xref:reference_element_api_volume.adoc[volume]
+* xref:reference_element_api_volumeaccessgroup.adoc[卷访问组]
+* xref:reference_element_api_volumepair.adoc[体积对]
+* xref:reference_element_api_volumestats.adoc[销量统计]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_troubleshoot_nodes.html 
+sidebar: sidebar 
+keywords: troubleshoot, nodes removing 
+summary: 您可以从集群中移除节点以进行维护或更换。在将节点脱机之前，应使用NetApp Element UI 或 API 删除节点。 
+---
+= 排查节点故障
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以从集群中移除节点以进行维护或更换。在将节点脱机之前，应使用NetApp Element UI 或 API 删除节点。
+
+移除存储节点的步骤概述如下：
+
+* 确保集群中有足够的容量来创建节点上的数据副本。
+* 使用 UI 或 RemoveDrives API 方法从集群中移除驱动器。
++
+这样一来，系统就会将数据从节点的驱动器迁移到集群中的其他驱动器。这个过程所需的时间取决于需要迁移的数据量。
+
+* 从集群中删除节点。
+
+
+在关闭或启动节点之前，请注意以下事项：
+
+* 如果操作不当，关闭节点和集群会带来风险。
++
+关闭节点电源的操作应在NetApp支持人员的指导下进行。
+
+* 如果节点在任何类型的关机情况下停机超过 5.5 分钟，Double Helix 数据保护就会开始将单个复制块写入另一个节点以复制数据。在这种情况下，请联系NetApp支持部门，以获取有关分析故障节点的帮助。
+* 要安全地重启或关闭节点，可以使用 Shutdown API 命令。
+* 如果节点处于宕机或关闭状态，您必须先联系NetApp支持，然后才能将其重新联机。
+* 节点恢复上线后，必须根据其停止服务的时间长短，将驱动器重新添加到集群中。
+
+
+
+
+== 了解更多信息
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2844772["更换故障的SolidFire机箱"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2846861["更换故障的 H600S 系列节点"]

@@ -1,0 +1,63 @@
+---
+permalink: storage/task_replication_pair_volumes_using_a_volume_id.html 
+sidebar: sidebar 
+keywords: volume pairings, volume id, replication 
+summary: 如果您拥有远程集群的集群管理员凭据，则可以将一个卷与远程集群上的另一个卷配对。 
+---
+= 使用卷 ID 配对卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您拥有对要配对的卷所在的两个集群的集群管理员访问权限，则可以将一个卷与远程集群上的另一个卷配对。此方法使用远程集群上卷的卷 ID 来发起连接。
+
+.你需要什么
+* 确保包含这些卷的集群已配对。
+* 在远程集群上创建一个新卷。
++
+
+NOTE: 配对过程完成后，您可以指定复制源和目标。复制源或目标可以是卷对中的任何一个卷。您应该创建一个不包含任何数据的目标卷，该目标卷具有与源卷完全相同的特征，例如大小、卷的块大小设置（512e 或 4k）和 QoS 配置。如果将现有卷指定为复制目标，则该卷上的数据将被覆盖。目标体积可以大于或等于源体积，但不能小于源体积。
+
+* 知道目标卷的ID。
+
+
+.步骤
+. 选择“管理”>“卷”。
+. 点击要配对的音量对应的“操作”图标。
+. 点击“配对”。
+. 在“配对音量”对话框中，选择“开始配对”。
+. 选择“我愿意”表示您有权访问远程集群。
+. 从列表中选择一种*复制模式*：
++
+** *实时（异步）*：写入操作在源集群上提交后，会向客户端发出确认。
+** *实时（同步）*：写入操作在源集群和目标集群上都提交后，会向客户端发出确认。
+** *仅限快照*：仅在源集群上创建的快照才会被复制。来自源卷的活动写入不会被复制。
+
+
+. 从列表中选择一个远程集群。
+. 选择远程卷 ID。
+. 点击“开始配对”。
++
+系统打开一个网页浏览器标签页，连接到远程集群的 Element UI。您可能需要使用集群管理员凭据登录到远程集群。
+
+. 在远程集群的 Element UI 中，选择“完成配对”。
+. 请在“确认音量配对”中确认详细信息。
+. 点击“完成配对”。
++
+确认配对后，两个集群开始连接卷进行配对的过程。在配对过程中，您可以在“卷对”窗口的“卷状态”列中看到消息。音量对显示 `PausedMisconfigured`直到分配了源和目标卷对。
+
++
+配对成功后，建议您刷新卷表，从已配对卷的“操作”列表中删除“配对”选项。如果您不刷新表格，则“*配对*”选项仍然可供选择。如果您再次选择“配对”选项，则会打开一个新标签页，由于该音量已配对，系统会报告： `StartVolumePairing Failed: xVolumeAlreadyPaired` Element UI 页面的“交易对数量”窗口中出现错误信息。
+
+
+
+
+
+== 查找更多信息
+
+* xref:reference_replication_volume_pairing_messages.adoc[音量配对消息]
+* xref:reference_replication_volume_pairing_warnings.adoc[音量配对警告]
+* xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[为配对卷分配复制源和目标]
+

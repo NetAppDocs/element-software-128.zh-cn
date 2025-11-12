@@ -1,0 +1,30 @@
+---
+permalink: storage/task_data_manage_volumes_apply_a_qos_policy.html 
+sidebar: sidebar 
+keywords: qos policy, apply to volumes 
+summary: 您可以将现有的 QoS 策略批量应用于一个或多个卷。 
+---
+= 对卷应用QoS策略
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将现有的 QoS 策略批量应用于一个或多个卷。
+
+您要批量应用的QoS策略必须存在。
+
+. 选择“管理”>“卷”。
+. 在卷列表中，选中要应用 QoS 策略的任何卷旁边的复选框。
+. 点击“批量操作”。
+. 在出现的菜单中，单击“应用 QoS 策略”。
+. 从下拉列表中选择 QoS 策略。
+. 单击“*应用*”。
+
+
+
+
+== 查找更多信息
+
+xref:concept_data_manage_volumes_quality_of_service_policies.adoc[服务质量政策]

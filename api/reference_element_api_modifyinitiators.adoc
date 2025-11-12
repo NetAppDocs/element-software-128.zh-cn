@@ -1,0 +1,147 @@
+---
+permalink: api/reference_element_api_modifyinitiators.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,initiators,initiator,attribute,attributes,modifyinitiators 
+summary: 您可以使用 ModifyInitiators 方法来更改一个或多个现有启动器的属性。 
+---
+= 修改启动器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyInitiators`更改一个或多个现有启动器属性的方法。
+
+您无法更改现有发起者的名称。如果需要更改发起者的名称，请先使用以下命令将其删除：xref:reference_element_api_deleteinitiators.adoc[删除发起者]并使用该方法创建一个新的xref:reference_element_api_createinitiators.adoc[创建启动器]方法。
+
+如果 ModifyInitiators 无法更改参数中提供的启动器之一，则该方法返回错误，并且不会修改任何启动器（不可能部分完成）。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+
+
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+发起者
+ a| 
+包含每个启动器特征的对象列表，用于修改。可能的对象：
+
+* `alias`（可选）要分配给发起者的新友好名称。  （细绳）
+* `attributes`（可选）要分配给发起者的一组新的 JSON 属性。  （JSON 对象）
+* `chapUsername`（可选）此发起者的新的唯一 CHAP 用户名。  （细绳）
+* `forceDuringUpgrade`在升级过程中完成启动器修改。
+* `initiatorID`（必填）要修改的发起者的 ID。  （整数）
+* `initiatorSecret`（可选）用于验证发起者身份的新 CHAP 密钥。  （细绳）
+* `requireChap`（可选）如果此发起程序需要 CHAP，则为 True。  （布尔值）
+* `targetSecret`（可选）用于验证目标身份的新 CHAP 密钥（在使用相互 CHAP 身份验证时）。  （细绳）
+* `virtualNetworkIDs`（可选）与此启动器关联的虚拟网络标识符列表。如果您定义了一个或多个虚拟网络，则此发起程序只能登录到这些虚拟网络。如果没有定义任何虚拟网络，则此发起程序可以登录到所有网络。
+* `volumeAccessGroupID`（可选）要将发起程序添加到的卷访问组的 ID。如果发起程序之前位于不同的卷访问组中，则会将其从旧的卷访问组中移除。如果此密钥存在但为空，则启动器将从其当前卷访问组中移除，但不会放入任何新的卷访问组中。  （整数）
+
+ a| 
+JSON 对象数组
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+发起者
+ a| 
+描述新修改的启动器的对象列表。
+ a| 
+xref:reference_element_api_initiator.adoc[发起者]大批
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "id": 6683,
+  "method": "ModifyInitiators",
+  "params": {
+    "initiators": [
+      {
+        "initiatorID": 2,
+        "alias": "alias1",
+        "volumeAccessGroupID": null
+      },
+      {
+        "initiatorID": 3,
+        "alias": "alias2",
+        "volumeAccessGroupID": 1
+      }
+    ]
+  }
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 6683,
+  "result": {
+    "initiators": [
+      {
+        "alias": "alias1",
+        "attributes": {},
+        "initiatorID": 2,
+        "initiatorName": "iqn.1993-08.org.debian:01:395543635",
+        "volumeAccessGroups": []
+      },
+      {
+        "alias": "alias2",
+        "attributes": {},
+        "initiatorID": 3,
+        "initiatorName": "iqn.1993-08.org.debian:01:935573135",
+        "volumeAccessGroups": [
+          1
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_createinitiators.adoc[创建启动器]
+* xref:reference_element_api_deleteinitiators.adoc[删除发起者]
+

@@ -1,0 +1,195 @@
+---
+permalink: api/reference_element_api_listvirtualvolumes.html 
+sidebar: sidebar 
+keywords: virtual,volume,volumes,vvol,list,listing,listvirtualvolumes 
+summary: 您可以使用 ListVirtualVolumes 方法列出系统中当前存在的虚拟卷。您可以使用此方法列出所有虚拟卷，或者仅列出其中的一部分。 
+---
+= 列出虚拟卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListVirtualVolumes`列出系统中当前虚拟卷的方法。您可以使用此方法列出所有虚拟卷，或者仅列出其中的一部分。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+细节
+ a| 
+回复的详细程度。可能值：
+
+* 正确：请在回复中包含有关每个 VVol 的更多详细信息。
+* 错误：在回复中包含有关每个 VVol 的标准详细信息级别。
+
+ a| 
+布尔值
+ a| 
+False
+ a| 
+否
+
+
+
+ a| 
+limit
+ a| 
+要列出的虚拟卷的最大数量。
+ a| 
+整数
+ a| 
+10000
+ a| 
+否
+
+
+
+ a| 
+递归
+ a| 
+指定是否在响应中包含有关每个 VVol 子节点的信息。可能值：
+
+* 正确：请在回复中包含有关每个 VVol 的子女的信息。
+* 错误：请勿在响应中包含有关每个 VVol 的子项的信息。
+
+ a| 
+布尔值
+ a| 
+False
+ a| 
+否
+
+
+
+ a| 
+启动虚拟卷 ID
+ a| 
+响应中列表的起始虚拟卷 ID。
+ a| 
+UUID类型
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+虚拟卷 ID
+ a| 
+要检索信息的虚拟卷 ID 列表。如果省略此参数，该方法将仅返回有关这些虚拟卷的信息。
+ a| 
+虚拟卷 ID UUID 数组
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+下一个虚拟卷 ID
+ a| 
+列表中下一个虚拟卷的 ID。
+ a| 
+UUID
+
+
+
+ a| 
+虚拟卷
+ a| 
+描述系统中当前虚拟卷的对象列表。
+ a| 
+xref:reference_element_api_virtualvolume.adoc[虚拟卷]大批
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "ListVirtualVolumes",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "nextVirtualVolumeID": "00000000-0000-0000-0000-000000000000",
+    "virtualVolumes": [
+      {
+        "bindings": [
+          177
+        ],
+        "children": [],
+        "metadata": {
+          "SFProfileId": "f4e5bade-15a2-4805-bf8e-52318c4ce443",
+          "SFgenerationId": "0",
+          "VMW_ContainerId": "abaab415-bedc-44cd-98b8-f37495884db0",
+          "VMW_VVolName": "asdf",
+          "VMW_VVolType": "Config",
+          "VMW_VmID": "502e0676-e510-ccdd-394c-667f6867fcdf",
+          "VMW_VvolProfile": "f4e5bade-15a2-4805-bf8e-52318c4ce443:0"
+        },
+        "parentVirtualVolumeID": "00000000-0000-0000-0000-000000000000",
+        "snapshotID": 0,
+        "snapshotInfo": null,
+        "status": "done",
+        "storageContainer": {
+          "accountID": 1,
+          "initiatorSecret": "B5)D1y10K)8IDN58",
+          "name": "test",
+          "protocolEndpointType": "SCSI",
+          "status": "active",
+          "storageContainerID": "abaab415-bedc-44cd-98b8-f37495884db0",
+          "targetSecret": "qgae@{o{~8\"2U)U^"
+        },
+        "virtualVolumeID": "269d3378-1ca6-4175-a18f-6d4839e5c746",
+        "virtualVolumeType": "config",
+        "volumeID": 166,
+        "volumeInfo": null
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

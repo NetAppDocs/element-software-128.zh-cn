@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: element-earlierversions.html 
+keywords: earlier versions, element versions 
+summary: 如果您使用的不是最新版本，可以查看以前版本的文档。 
+---
+= SolidFire和NetApp Element软件文档的早期版本
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp支持网站上提供了先前版本的文档。
+
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63945&language=en-US["元素 12.2.1 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63593&language=en-US["元素 12.2 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63946&language=en-US["Element 12.0.1 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63368&language=en-US["Element 12.0 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=64187&language=en-US["元素 11.8.2 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63944&language=en-US["元素 11.8.1 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63293&language=en-US["元素 11.8 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63138&language=en-US["元素 11.7 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63207&language=en-US["元素 11.5.1 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63058&language=en-US["元素 11.5 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63027&language=en-US["元素 11.3P1 文档"^]
+* https://mysupport.netapp.com/documentation/docweb/index.html?productID=63206&language=en-US["元素 11.3.2 文档"^]
+* https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62654["Element 11.1 文档及更早版本"^]
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

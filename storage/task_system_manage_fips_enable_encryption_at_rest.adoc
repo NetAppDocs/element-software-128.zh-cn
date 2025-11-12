@@ -1,0 +1,27 @@
+---
+permalink: storage/task_system_manage_fips_enable_encryption_at_rest.html 
+sidebar: sidebar 
+keywords: fips, security, encryption at rest, enable, disable, drives 
+summary: 您可以启用和禁用集群范围内的静态数据加密。默认情况下不会启用此功能。要支持 FIPS 驱动器，必须启用静态加密。 
+---
+= 启用静态数据加密
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以启用和禁用集群范围内的静态数据加密。默认情况下不会启用此功能。要支持 FIPS 驱动器，必须启用静态加密。
+
+. 在NetApp Element软件用户界面中，单击“集群”>“设置”。
+. 点击“启用静态数据加密”。
+
+
+
+
+== 查找更多信息
+
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[启用和禁用集群加密]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

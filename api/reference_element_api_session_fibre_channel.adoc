@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_session_fibre_channel.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: 会话对象包含集群中可见的每个光纤通道会话的信息，以及该会话在哪些目标端口上可见。您可以使用 ListFibreChannelSessions API 方法检索此信息。 
+---
+= 会话（光纤通道）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+会话对象包含集群中可见的每个光纤通道会话的信息，以及该会话可见的目标端口。您可以使用以下方式检索此信息： `ListFibreChannelSessions` API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+发起人WWPN
+ a| 
+已登录到目标端口的发起程序的全球端口名称 (WWPN)。
+ a| 
+string
+
+
+
+ a| 
+nodeID
+ a| 
+拥有光纤通道会话的节点。
+ a| 
+整数
+
+
+
+ a| 
+发起者
+ a| 
+关于此光纤通道会话的服务器发起程序的信息。成员:
+
+* 别名：分配给发起者的友好名称。
+* 属性：此发起者的属性。
+* initiatorID：此发起者的 ID。
+* initiatorName：此发起者的名称。
+* volumeAccessGroups：与此启动器关联的卷访问组列表。
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+服务ID
+ a| 
+本次会话涉及的目标端口的服务 ID。
+ a| 
+整数
+
+
+
+ a| 
+targetWWPN
+ a| 
+本次会话涉及的目标端口的 WWPN。
+ a| 
+string
+
+
+
+ a| 
+卷访问组ID
+ a| 
+发起方WWPN所属的卷访问组的ID。如果未在卷访问组中，则此值为空。
+ a| 
+整数
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listfibrechannelsessions.adoc[列出光纤通道会话]

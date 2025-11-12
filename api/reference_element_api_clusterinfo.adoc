@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_clusterinfo.html 
+sidebar: sidebar 
+keywords: element, api, object, objects, clusterInfo 
+summary: clusterInfo 对象包含节点用于与集群通信的信息。您可以使用 GetClusterInfo API 方法获取此信息。 
+---
+= 集群信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterInfo 对象包含节点用于与集群通信的信息。您可以使用 GetClusterInfo API 方法获取此信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+
+
+
+ a| 
+默认保护方案
+ a| 
+除非另行指定保护方案，否则新卷默认使用以下保护方案：xref:reference_element_api_createvolume.adoc[创建卷]方法调用。该保护方案必须始终包含在已启用的保护方案集合中。
+ a| 
+string
+
+
+
+ a| 
+启用保护方案
+ a| 
+此存储集群上已启用的所有保护方案列表。
+ a| 
+字符串数组
+
+
+
+ a| 
+静态加密状态
+ a| 
+静态数据加密功能的状态。可能值：
+
+* 正在启用：静态数据加密已启用。
+* 已启用：已启用静态数据加密。
+* 已禁用：静态数据加密已禁用。
+* 已禁用：静态数据加密已禁用。
+
+ a| 
+string
+
+
+
+ a| 
+合奏
+ a| 
+参与集群的节点。
+ a| 
+字符串数组
+
+
+
+ a| 
+贵宾
+ a| 
+集群在管理网络上的浮动（虚拟）IP 地址。
+ a| 
+string
+
+
+
+ a| 
+mvip接口
+ a| 
+与MVIP地址关联的物理接口。
+ a| 
+string
+
+
+
+ a| 
+mvipNodeID
+ a| 
+持有主 MVIP 地址的节点。
+ a| 
+整数
+
+
+
+ a| 
+mvipVlan标签
+ a| 
+MVIP 地址的 VLAN 标识符。
+ a| 
+string
+
+
+
+ a| 
+name
+ a| 
+唯一的集群名称。
+ a| 
+string
+
+
+
+ a| 
+重复次数
+ a| 
+集群中要存储的每条数据的副本数。有效值为“2”。
+ a| 
+整数
+
+
+
+ a| 
+软件静态加密状态
+ a| 
+基于软件的静态状态加密。
+ a| 
+string
+
+
+
+ a| 
+支持的保护方案
+ a| 
+此存储集群支持的所有保护方案列表。
+ a| 
+字符串数组
+
+
+
+ a| 
+svip
+ a| 
+存储（iSCSI）网络上集群的浮动（虚拟）IP 地址。
+ a| 
+string
+
+
+
+ a| 
+svip接口
+ a| 
+与主 SVIP 地址关联的物理接口。
+ a| 
+string
+
+
+
+ a| 
+svipNodeID
+ a| 
+持有主 SVIP 地址的节点。
+ a| 
+整数
+
+
+
+ a| 
+svipVlanTag
+ a| 
+主 SVIP 地址的 VLAN 标识符。
+ a| 
+string
+
+
+
+ a| 
+唯一标识符
+ a| 
+集群的唯一标识符。
+ a| 
+string
+
+
+
+ a| 
+UUID
+ a| 
+集群的唯一标识符。
+ a| 
+UUID
+
+
+
+ a| 
+volumeLoadBalanceOnActualIOPSState
+ a| 
+基于实际 IOPS 而非最小 IOPS 功能的切片平衡状态。从 Element 12.8 版本开始可用。
+ a| 
+string
+
+|===
+[discrete]
+== 查找更多信息
+
+* link:reference_element_api_getclusterinfo.html["获取集群信息"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"^]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

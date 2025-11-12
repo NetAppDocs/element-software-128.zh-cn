@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_manage_vol_access_group_add_volumes.html 
+sidebar: sidebar 
+keywords: access group, add volumes to 
+summary: 您可以将卷添加到卷访问组。每个卷可以属于多个卷访问组；您可以在“活动卷”页面上查看每个卷所属的组。 
+---
+= 将卷添加到访问组
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将卷添加到卷访问组。每个卷可以属于多个卷访问组；您可以在“活动卷”页面上查看每个卷所属的组。
+
+您还可以使用此过程将卷添加到光纤通道卷访问组。
+
+. 点击“管理”>“访问组”。
+. 单击要添加卷的访问组的“操作”图标。
+. 点击“编辑”按钮。
+. 在“添加卷”下，从“卷”列表中选择一个卷。
++
+重复此步骤即可增加音量。
+
+. 点击“保存更改”。
+

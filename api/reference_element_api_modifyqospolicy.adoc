@@ -1,0 +1,149 @@
+---
+permalink: api/reference_element_api_modifyqospolicy.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,qos,policy,policies,modifyqospolicy 
+summary: 您可以使用 ModifyQoSPolicy 方法修改系统上现有的 QoS 策略。 
+---
+= 修改QoS策略
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyQoSPolicy`修改系统上现有QoS策略的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+
+
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+qosPolicyID
+ a| 
+要修改的策略的 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+name
+ a| 
+如果提供，则 QoS 策略的名称（例如金牌、铂金、银牌）将更改为该值。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+qos
+ a| 
+如果提供了这些设置，则此策略的 QoS 设置将更改为这些设置。您可以提供部分 QoS 值，并且只更改部分 QoS 设置。
+ a| 
+QoS对象
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+服务质量策略
+ a| 
+新修改的QoS策略详情。
+ a| 
+xref:reference_element_api_qospolicy.adoc[QoS策略]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "id": 1950,
+  "method": "ModifyQoSPolicy",
+  "params": {
+    "qosPolicyID": 2,
+    "qos": {
+      "minIOPS": 51,
+      "maxIOPS": 15002,
+      "burstIOPS": 15002
+    }
+  }
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1950,
+  "result": {
+    "qosPolicy": {
+      "name": "bronze",
+      "qos": {
+        "burstIOPS": 15002,
+        "burstTime": 60,
+        "curve": {
+          "4096": 100,
+          "8192": 160,
+          "16384": 270,
+          "32768": 500,
+          "65536": 1000,
+          "131072": 1950,
+          "262144": 3900,
+          "524288": 7600,
+          "1048576": 15000
+        },
+        "maxIOPS": 15002,
+        "minIOPS": 51
+      },
+      "qosPolicyID": 2,
+      "volumeIDs": [
+        2
+      ]
+    }
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+10.0

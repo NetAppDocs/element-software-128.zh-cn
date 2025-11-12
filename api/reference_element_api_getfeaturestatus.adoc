@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getfeaturestatus.html 
+sidebar: sidebar 
+keywords: feature,status,cluster,get,getting,getfeaturestatus 
+summary: 您可以使用 GetFeatureStatus 方法检索集群要素的状态。 
+---
+= 获取功能状态
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetFeatureStatus`获取聚类特征状态的方法。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+功能
+ a| 
+集群特征的状态。如果没有提供值，系统将返回所有功能的状态。可能值：
+
+* `Vvols`：检索 VVols 集群功能的状态。
+* `SnapMirror`：检索SnapMirror复制集群功能的状态。
+* `Fips`：检索 HTTPS 通信功能的 FIPS 140-2 加密状态。
+* `FipsDrives`：检索 FIPS 140-2 驱动器加密功能的状态。
+* `VolumeLoadBalanceOnActualIOPS`：根据实际 IOPS 而不是最小 IOPS 功能检索切片均衡状态。从 Element 12.8 版本开始可用。
+
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+features
+ a| 
+一个要素对象数组，表示要素名称及其状态。对象成员：
+
+* feature: (字符串) 功能的名称。
+* 已启用：（布尔值）该功能是否已启用。
+
+ a| 
+JSON 对象数组
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "GetFeatureStatus",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "features": [
+            {
+                "enabled": true,
+                "feature": "Vvols"
+            },
+            {
+                "enabled": true,
+                "feature": "SnapMirror"
+            },
+            {
+                "enabled": true,
+                "feature": "Fips"
+            },
+            {
+                "enabled": true,
+                "feature": "FipsDrives"
+            },
+            {
+                "enabled": true,
+                "feature": "VolumeLoadBalanceOnActualIOPS"
+            }
+        ]
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

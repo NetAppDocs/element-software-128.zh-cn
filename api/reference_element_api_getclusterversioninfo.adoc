@@ -1,0 +1,185 @@
+---
+permalink: api/reference_element_api_getclusterversioninfo.html 
+sidebar: sidebar 
+keywords: cluster,version,info,get,getting,getclusterversioninfo 
+summary: 您可以使用 GetClusterVersionInfo 方法检索有关集群中每个节点上运行的 Element 软件版本的信息。该方法还会返回有关当前正在升级软件的节点的信息。 
+---
+= 获取集群版本信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterVersionInfo`检索集群中每个节点上运行的 Element 软件版本信息的方法。该方法还会返回有关当前正在升级软件的节点的信息。
+
+
+
+== 集群版本信息对象成员
+
+该方法具有以下对象成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+nodeID
+ a| 
+节点的 ID。
+ a| 
+整数
+
+
+
+ a| 
+节点内部修订
+ a| 
+节点的内部软件版本。
+ a| 
+string
+
+
+
+ a| 
+节点版本
+ a| 
+节点的软件版本。
+ a| 
+string
+
+|===
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群 API 版本
+ a| 
+集群上当前的 API 版本。
+ a| 
+string
+
+
+
+ a| 
+集群版本
+ a| 
+集群上当前运行的 Element 软件版本。
+ a| 
+string
+
+
+
+ a| 
+集群版本信息
+ a| 
+集群中节点的列表，以及每个节点的版本信息。
+ a| 
+JSON 对象数组
+
+
+
+ a| 
+待定集群版本
+ a| 
+如果存在，则表示集群软件当前正在升级或回滚到的版本。
+ a| 
+string
+
+
+
+ a| 
+软件版本信息
+ a| 
+升级状态。对象成员：
+
+* 当前版本：
++
+节点上当前的软件版本。
+
+* nodeID：要从 currentVersion 升级到 pendingVersion 的节点的 ID。如果没有正在进行的升级，则此字段为 0（零）。
+* packageName：要安装的软件包的名称。
+* pendingVersion：正在安装的软件版本。
+* startTime：安装开始的日期和时间，采用 UTC+0 格式。
+
+ a| 
+JSON 对象
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "GetClusterVersionInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {
+   "clusterAPIVersion": "6.0",
+   "clusterVersion": "6.1382",
+   "clusterVersionInfo": [
+   {
+      "nodeID": 1,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 2,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 3,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 4,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   }
+ ],
+   "softwareVersionInfo": {
+      "currentVersion": "6.1382",
+      "nodeID": 0,
+      "packageName": "",
+      "pendingVersion": "6.1382",
+      "startTime": ""
+    }
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

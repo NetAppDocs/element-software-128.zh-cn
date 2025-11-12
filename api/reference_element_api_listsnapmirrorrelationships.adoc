@@ -1,0 +1,114 @@
+---
+permalink: api/reference_element_api_listsnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: snapmirror,endpoints,endpoint,list,listing,listsnapmirrorrelationships 
+summary: Element 软件 Web UI 使用 ListSnapMirrorRelationships 方法列出 Element 存储集群上的一个或所有SnapMirror关系。 
+---
+= ListSnapMirror关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element软件的Web用户界面使用 `ListSnapMirrorRelationships`列出 Element 存储集群上一个或多个SnapMirror关系的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+仅列出与指定端点 ID 关联的关系。如果没有提供端点 ID，系统将列出所有已知SnapMirror端点的关系。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+目的地卷
+ a| 
+列出与指定目标卷关联的关系。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+源卷
+ a| 
+列出与指定源卷关联的关系。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+vserver
+ a| 
+列出指定虚拟服务器上的关系。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+关系ID
+ a| 
+列出与指定关系 ID 关联的关系。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirror关系
+ a| 
+包含有关SnapMirror关系信息的对象列表。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror关系]大批
+
+|===
+
+
+== 自版本以来的新版本
+
+10.1

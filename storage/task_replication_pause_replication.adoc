@@ -1,0 +1,25 @@
+---
+permalink: storage/task_replication_pause_replication.html 
+sidebar: sidebar 
+keywords: replication, pause, volume pairs 
+summary: 如果需要暂时停止 I/O 处理，可以手动暂停复制。如果 I/O 处理量激增，而您希望降低处理负载，则可以暂停复制。 
+---
+= 暂停复制
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果需要暂时停止 I/O 处理，可以手动暂停复制。如果 I/O 处理量激增，而您希望降低处理负载，则可以暂停复制。
+
+. 选择“数据保护”>“卷对”。
+. 点击音量对对应的操作图标。
+. 单击“*编辑*”。
+. 在“编辑卷对”窗格中，手动暂停复制过程。
++
+
+IMPORTANT: 手动暂停或恢复卷复制会导致数据传输停止或恢复。请务必协调好两个站点上的这些变更。
+
+. 点击“保存更改”。
+

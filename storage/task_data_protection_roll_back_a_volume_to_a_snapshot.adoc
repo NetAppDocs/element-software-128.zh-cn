@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_roll_back_a_volume_to_a_snapshot.html 
+sidebar: sidebar 
+keywords: volume to snapshot roll back, snapshot roll back, revert changes 
+summary: 您可以随时将卷回滚到之前的快照。这将撤销自创建快照以来对卷所做的任何更改。 
+---
+= 将卷回滚到快照
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以随时将卷回滚到之前的快照。这将撤销自创建快照以来对卷所做的任何更改。
+
+.步骤
+. 点击“数据保护”>“快照”。
+. 单击要用于卷回滚的快照的“操作”图标。
+. 在出现的菜单中，选择“将卷回快照”。
+. *可选：* 在回滚到快照之前保存卷的当前状态：
++
+.. 在“回滚到快照”对话框中，选择“将卷的当前状态保存为快照”。
+.. 请输入新快照的名称。
+
+
+. 点击“回滚快照”。
+

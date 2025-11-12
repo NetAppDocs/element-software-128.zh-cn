@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_keyproviderkmip.html 
+sidebar: sidebar 
+keywords: key provider,KMIP,keys 
+summary: 'keyProviderKmip 对象描述了密钥管理互操作协议 (KMIP) 密钥提供程序。密钥提供程序既是一种机制，也是一个位置，用于检索身份验证密钥，以便与集群功能（例如静态加密）一起使用。' 
+---
+= keyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+keyProviderKmip 对象描述了密钥管理互操作协议 (KMIP) 密钥提供程序。密钥提供程序既是一种机制，也是一个位置，用于检索身份验证密钥，以便与集群功能（例如静态加密）一起使用。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+密钥提供程序ID
+ a| 
+KMIP密钥提供程序的ID。这是集群在创建密钥提供程序时分配的唯一值，无法更改。
+ a| 
+整数
+
+
+
+ a| 
+keyProviderIsActive
+ a| 
+如果 KMIP 密钥提供程序处于活动状态，则为真。如果存在已创建但尚未删除的未决密钥，则假定该密钥仍在被使用，则该提供商被视为活跃提供商。
+ a| 
+布尔值
+
+
+
+ a| 
+密钥提供程序名称
+ a| 
+KMIP密钥提供商的名称。
+ a| 
+string
+
+
+
+ a| 
+密钥服务器 ID
+ a| 
+与此提供商关联的关键服务器 ID。必须先添加服务器，该提供商才能激活。只要该服务提供商处于活动状态，服务器就无法被移除。每个提供商仅支持一个服务器 ID。
+ a| 
+整数数组
+
+
+
+ a| 
+kmip能力
+ a| 
+该 KMIP 密钥提供程序的功能，包括底层库、FIPS 合规性、SSL 提供程序等详细信息。
+ a| 
+string
+
+|===

@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_listclusteradmins.html 
+sidebar: sidebar 
+keywords: admin,admins,cluster,list,listing,listclusteradmins 
+summary: 您可以使用 ListClusterAdmins 方法返回集群的所有集群管理员列表。 
+---
+= 列出集群管理员
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListClusterAdmins`返回集群所有集群管理员列表的方法。
+
+可以有多个集群管理员帐户，每个帐户具有不同的权限级别。系统中只能有一个主集群管理员。主集群管理员是创建集群时创建的管理员。在集群上设置 LDAP 系统时，也可以创建 LDAP 管理员。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+显示隐藏
+ a| 
+显示隐藏的集群管理员用户，例如 SNMP 管理员。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群管理员
+ a| 
+集群中所有集群管理员和 LDAP 管理员的信息。
+ a| 
+xref:reference_element_api_clusteradmin.adoc[集群管理员]大批
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "ListClusterAdmins",
+   "params": {},
+    "showHidden": true
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+"id":1,
+"result":{
+  "clusterAdmins":[
+     {
+       "access":[
+           "administrator"
+       ],
+       "attributes":null,
+       "authMethod":"Cluster",
+       "clusterAdminID":1,
+       "username":"admin"
+   },
+   {
+       "access":[
+           "read",
+           "administrator"
+       ],
+       "attributes":{
+       },
+       "authMethod":"Ldap",
+       "clusterAdminID":7,
+       "username":"john.smith"
+   },
+   {
+       "access":[
+           "read",
+           "administrator"
+       ],
+       "attributes":{},
+       "authMethod":"Ldap",
+       "clusterAdminID":6,
+       "username":"cn=admin1 jones,ou=ptusers,c=prodtest,dc=solidfire,dc=net"
+       }
+     ]
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

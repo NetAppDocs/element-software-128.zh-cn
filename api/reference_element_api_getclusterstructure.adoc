@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getclusterstructure.html 
+sidebar: sidebar 
+keywords: storage,cluster,structure,config,configuration,info,get,getting,getclusterstructure 
+summary: 您可以使用 GetClusterStructure 方法来备份当前存储集群配置信息。如果在执行此方法期间更改存储集群配置，则配置备份的内容将无法预测。您可以将此数据保存到文本文件中，并在发生灾难时将其恢复到其他集群或同一集群。 
+---
+= 获取聚类结构
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterStructure`备份当前存储集群配置信息的方法。如果在执行此方法期间更改存储集群配置，则配置备份的内容将无法预测。您可以将此数据保存到文本文件中，并在发生灾难时将其恢复到其他集群或同一集群。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+结果
+ a| 
+包含当前存储集群配置信息的 JSON 对象。
+ a| 
+xref:reference_element_api_clusterstructure.adoc[簇结构]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "GetClusterStructure",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : <clusterStructure object containing configuration information>
+	}
+----
+
+
+== 自版本以来的新版本
+
+10.3

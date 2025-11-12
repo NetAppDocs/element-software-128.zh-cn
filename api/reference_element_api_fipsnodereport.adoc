@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_fipsnodereport.html 
+sidebar: sidebar 
+keywords: objects,object,fipsNodeReport 
+summary: fipsNodeReport 对象包含有关存储集群中单个节点的 FIPS 140-2 支持的信息。您可以使用 GetFipsReport 方法检索此信息。 
+---
+= fips节点报告
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fipsNodeReport 对象包含有关存储集群中单个节点的 FIPS 140-2 支持的信息。您可以使用以下方法检索此信息： `GetFipsReport`方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+nodeID
+ a| 
+报告信息的节点的 ID。
+ a| 
+整数
+
+
+
+ a| 
+fipsDrives
+ a| 
+此节点是否启用了 FIPS 140-2 驱动器加密。可能值：
+
+* 无：此节点不支持 FIPS 驱动器加密。
+* 部分：节点能够进行 FIPS 驱动器加密，但并非所有驱动器都是支持 FIPS 的驱动器。
+* 就绪：节点能够进行 FIPS 驱动器加密，并且所有驱动器都是支持 FIPS 的驱动器，或者没有驱动器。
+
+ a| 
+FipsDrivesStatusType
+
+
+
+ a| 
+https已启用
+ a| 
+此节点是否启用了 FIPS 140-2 HTTPS 加密。可能值：
+
+* true：已启用
+* false：已禁用
+
+ a| 
+布尔值
+
+|===

@@ -1,0 +1,65 @@
+---
+permalink: api/reference_element_api_qospolicy.html 
+sidebar: sidebar 
+keywords: object,objects,QoSPolicy,QoS,policy,policies 
+summary: QoSPolicy 对象包含有关运行 Element 软件的存储集群上的 QoS 策略的信息。 
+---
+= QoS策略
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+QoSPolicy 对象包含有关运行 Element 软件的存储集群上的 QoS 策略的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+qosPolicyID
+ a| 
+存储集群自动分配的 QoSPolicy 的唯一整数标识符。
+ a| 
+整数
+
+
+
+ a| 
+name
+ a| 
+QoS策略的名称。例如：黄金、铂金或白银。
+ a| 
+string
+
+
+
+ a| 
+qos
+ a| 
+此策略所代表的QoS设置。
+ a| 
+xref:reference_element_api_qos.adoc[QoS]
+
+
+
+ a| 
+卷 ID
+ a| 
+与此政策相关的卷册列表。
+ a| 
+整数数组
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_getqospolicy.adoc[获取QoS策略]

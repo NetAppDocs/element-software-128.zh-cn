@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_manage_vol_access_group_remove_volumes.html 
+sidebar: sidebar 
+keywords: access group, remove volumes from, initiators, chap 
+summary: 从访问组中移除卷后，该组将不再拥有对该卷的访问权限。 
+---
+= 从访问组中移除卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+从访问组中移除卷后，该组将不再拥有对该卷的访问权限。
+
+修改帐户中的 CHAP 设置或从访问组中删除发起程序或卷可能会导致发起程序意外失去对卷的访问权限。为验证卷访问不会意外丢失，请务必注销受帐户或访问组更改影响的 iSCSI 会话，并在完成对启动器设置和集群设置的任何更改后，验证启动器是否可以重新连接到卷。
+
+. 点击“管理”>“访问组”。
+. 单击要从中删除卷的访问组的“操作”图标。
+. 单击“*编辑*”。
+. 在“编辑卷访问组”对话框的“添加卷”下，单击“已附加卷”列表上的箭头。
+. 从列表中选择要删除的卷，然后单击 *x* 图标将其从列表中删除。
++
+重复此步骤可以移除更多卷。
+
+. 点击“保存更改”。
+

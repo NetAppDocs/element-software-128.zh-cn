@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_removeaccount.html 
+sidebar: sidebar 
+keywords: account,accounts,remove,removing,deleting,delete,purge,volume,volumes,removeaccount 
+summary: 您可以使用 RemoveAccount 方法删除现有帐户。在删除帐户之前，必须使用 DeleteVolume 删除并清除与该帐户关联的所有卷。如果帐户上的卷仍处于待删除状态，则无法使用 RemoveAccount 删除帐户。 
+---
+= 删除帐户
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RemoveAccount`删除现有帐户的方法。您必须使用以下命令删除并清除与该帐户关联的所有卷 `DeleteVolume`在你删除账户之前。如果帐户上的卷仍有待删除，则您无法使用 `RemoveAccount`删除账户。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+accountID
+ a| 
+要删除的帐户 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例。
+
+[listing]
+----
+{
+   "method": "RemoveAccount",
+   "params": {
+     "accountID"  : 25
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+
+{
+ "id" : 1,
+ "result" : { }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_deletevolume.adoc[删除卷]

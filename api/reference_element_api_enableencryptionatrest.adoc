@@ -1,0 +1,129 @@
+---
+permalink: api/reference_element_api_enableencryptionatrest.html 
+sidebar: sidebar 
+keywords: encryption,enable,enabling,EnableEncryptionAtRest 
+summary: '您可以使用 EnableEncryptionAtRest 方法在集群上启用高级加密标准 (AES) 256 位静态加密，以便集群可以管理每个节点上驱动器使用的加密密钥。默认情况下不会启用此功能。' 
+---
+= 启用静态加密
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableEncryptionAtRest`启用集群上静态高级加密标准 (AES) 256 位加密的方法，以便集群可以管理每个节点上驱动器使用的加密密钥。默认情况下不会启用此功能。
+
+
+TIP: 要查看集群上静态加密和/或静态软件加密的当前状态，请使用以下方法：link:../api/reference_element_api_getclusterinfo["获取集群信息方法"^] 。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["获取集群用于加密静态数据的信息的方法"^]。
+
+
+NOTE: 此方法无法实现静态软件加密。这只能通过使用以下方式完成：link:../api/reference_element_api_createcluster.html["创建集群方法"^]和 `enableSoftwareEncryptionAtRest`设置为 `true`。
+
+启用静态加密后，集群会自动在内部管理集群中每个节点上驱动器的加密密钥。
+
+如果指定了 keyProviderID，则会根据密钥提供程序的类型生成和检索密码。对于 KMIP 密钥提供程序，这通常是通过密钥管理互操作协议 (KMIP) 密钥服务器来实现的。此操作完成后，指定的提供程序将被视为处于活动状态，并且只有在使用以下命令禁用静态加密后才能删除。 `DisableEncryptionAtRest`方法。
+
+
+NOTE: 如果您有一个型号以“-NE”结尾的节点类型， `EnableEncryptionAtRest`方法调用将失败，并返回“不允许加密”的响应。集群检测到不可加密节点”。
+
+
+NOTE: 只有当集群正在运行且处于健康状态时，才应启用或禁用加密。您可以根据需要随时启用或禁用加密。
+
+
+NOTE: 此过程是异步的，会在启用加密之前返回响应。你可以使用 `GetClusterInfo`用于轮询系统以查看进程何时完成的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+密钥提供程序ID
+ a| 
+要使用的KMIP密钥提供程序的ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "EnableEncryptionAtRest",
+   "params": {},
+   "id": 1
+}
+----
+
+
+== 回答示例
+
+此方法返回的响应类似于 EnableEncryptionAtRest 方法中的以下示例。没有结果需要报告。
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {}
+}
+----
+当集群上启用静态加密时，GetClusterInfo 返回的结果会将静态加密的状态（“encryptionAtRestState”）描述为“正在启用”。静态数据加密完全启用后，返回的状态将变为“已启用”。
+
+[listing]
+----
+{
+   "id": 1,
+      "result": {
+         "clusterInfo": {
+            "attributes": { },
+               "encryptionAtRestState": "enabling",
+            "ensemble": [
+               "10.10.5.94",
+               "10.10.5.107",
+               "10.10.5.108"
+            ],
+            "mvip": "192.168.138.209",
+            "mvipNodeID": 1,
+            "name": "Marshall",
+            "repCount": 2,
+            "svip": "10.10.7.209",
+            "svipNodeID": 1,
+            "uniqueID": "91dt"
+      }
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+[discrete]
+== 查找更多信息
+
+* link:reference_element_api_secureerasedrives.html["SecureEraseDrives"]
+* link:reference_element_api_getclusterinfo.html["获取集群信息"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_setloginsessioninfo.html 
+sidebar: sidebar 
+keywords: authentication,login,session,info,timeout,setloginsessioninfo 
+summary: 您可以使用 SetLoginSessionInfo 方法设置会话登录身份验证的有效时间。登录期限过后，如果系统上没有任何活动，则身份验证过期。登录期限过后，要继续访问集群，需要新的登录凭据。 
+---
+= 设置登录会话信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetLoginSessionInfo`设置会话登录身份验证有效期限的方法。登录期限过后，如果系统上没有任何活动，则身份验证过期。登录期限过后，要继续访问集群，需要新的登录凭据。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+timeout
+ a| 
+集群认证到期期限。格式为 HH:mm:ss。例如：01:30:00、00:90:00 和 00:00:5400 都可以用来表示 90 分钟的超时时间。最小超时值为 1 分钟。如果未提供值或设置为零，则登录会话没有超时值。
+ a| 
+string
+ a| 
+30 分钟
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "SetLoginSessionInfo",
+  "params": {
+    "timeout" : "01:30:00"
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

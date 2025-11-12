@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-initiators.html 
+summary: 了解如何添加、创建和管理启动器，以实现外部客户端与 Element 存储卷之间的通信。 
+keywords: netapp, initiator, storage, element, access group 
+---
+= 创建和管理发起者
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用link:../concepts/concept_solidfire_concepts_initiators.html["发起者"]用于基于 CHAP 而不是基于帐户的卷访问。您可以创建和删除启动器，并为它们指定友好的别名，以简化管理和批量访问。将启动器添加到卷访问组时，该启动器将启用对组中所有卷的访问。
+
+.你需要什么
+* 您拥有集群管理员凭据。
+* 您的管理服务已升级到至少 2.17 版本。  NetApp Hybrid Cloud Control 启动器管理在早期服务包版本中不可用。
+
+
+.选项
+* <<创建发起者>>
+* <<将发起程序添加到卷访问组>>
+* <<更改发起程序别名>>
+* <<删除发起者>>
+
+
+
+
+== 创建发起者
+
+您可以创建 iSCSI 或光纤通道发起程序，并可选择为其分配别名。
+
+.关于此任务
+发起方 IQN 的可接受格式为： `iqn.yyyy-mm`其中 y 和 m 是数字，后面紧跟一段文本，该文本只能包含数字、小写字母和句点。(`.` ）， 冒号(`:`) 或破折号(`-`）。格式示例如下：
+
+[listing]
+----
+iqn.2010-01.com.solidfire:c2r9.fc0.2100000e1e09bb8b
+----
+光纤通道发起方 WWPN 的可接受格式为： `:Aa:bB:CC:dd:11:22:33:44`或者 `AabBCCdd11223344`。格式示例如下：
+
+[listing]
+----
+5f:47:ac:c0:5c:74:d4:02
+----
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，展开左侧导航菜单中的存储集群名称。
+. 选择*卷*。
+. 选择“发起者”选项卡。
+. 选择“创建发起者”按钮。
++
+|===
+| 选项 | 步骤 
+
+
+| 创建一个或多个发起者  a| 
+.. 在 *IQN/WWPN* 字段中输入发起人的 IQN 或 WWPN。
+.. 在“别名”字段中输入发起者的友好名称。
+.. （可选）选择“添加发起人”以打开新的发起人字段，或者改用批量创建选项。
+.. 选择“创建发起者”。
+
+
+
+
+| 批量创建启动器  a| 
+.. 选择*批量添加IQN/WWPN*。
+.. 在文本框中输入 IQN 或 WWPN 列表。每个 IQN 或 WWPN 必须用逗号或空格分隔，或者单独占一行。
+.. 选择*添加IQN/WWPN*。
+.. （可选）为每个发起者添加唯一别名。
+.. 从列表中删除安装中可能已存在的任何启动器。
+.. 选择“创建发起者”。
+
+
+|===
+
+
+
+
+== 将发起程序添加到卷访问组
+
+您可以将发起程序添加到卷访问组。将启动器添加到卷访问组时，该启动器将启用对该卷访问组中所有卷的访问。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，展开左侧导航菜单中的存储集群名称。
+. 选择*卷*。
+. 选择“发起者”选项卡。
+. 选择要添加的一个或多个发起者。
+. 选择“操作”>“添加到访问组”。
+. 选择访问组。
+. 请选择“添加发起人”以确认您的更改。
+
+
+
+
+== 更改发起程序别名
+
+您可以更改现有发起程序的别名，或者在别名尚不存在时添加别名。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，展开左侧导航菜单中的存储集群名称。
+. 选择*卷*。
+. 选择“发起者”选项卡。
+. 在“操作”列中，展开发起者的选项菜单。
+. 选择*编辑*。
+. 对别名进行必要的更改或添加新别名。
+. 选择*保存*。
+
+
+
+
+== 删除发起者
+
+您可以删除一个或多个发起者。删除启动器时，系统会将其从所有关联的卷访问组中移除。使用该发起程序建立的任何连接都将保持有效，直到连接被重置为止。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，展开左侧导航菜单中的存储集群名称。
+. 选择*卷*。
+. 选择“发起者”选项卡。
+. 删除一个或多个发起者：
++
+.. 选择要删除的一个或多个发起者。
+.. 选择“操作”>“删除”。
+.. 确认删除操作，并选择“是”。
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* link:../concepts/concept_solidfire_concepts_initiators.html["了解发起者"]
+* link:../concepts/concept_solidfire_concepts_volume_access_groups.html["了解卷访问组"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

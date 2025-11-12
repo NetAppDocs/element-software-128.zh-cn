@@ -1,0 +1,134 @@
+---
+permalink: api/reference_element_api_createsnapmirrorvolume.html 
+sidebar: sidebar 
+keywords: SnapMirror,endpoints,create,creating,volume,volumes,CreateSnapMirrorVolume 
+summary: Element Web UI 使用 CreateSnapMirrorVolume 方法在远程ONTAP系统上创建卷。 
+---
+= 创建快照镜像卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element Web UI 使用 `CreateSnapMirrorVolume`在远程ONTAP系统上创建卷的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+与 Element 存储集群通信的远程ONTAP存储系统的端点 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+vserver
+ a| 
+虚拟服务器的名称。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+name
+ a| 
+目标ONTAP卷名称。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+type
+ a| 
+卷类型。可能值：
+
+* rw：读写卷
+* ls：负载均衡卷
+* dp：数据保护卷
+
+
+如果没有指定类型，则默认类型为 dp。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+聚合
+ a| 
+包含ONTAP聚合体，用于创建卷。您可以使用 ListSnapMirrorAggregates 获取有关可用ONTAP聚合的信息。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+大小
+ a| 
+卷的大小（以字节为单位）。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorVolume
+ a| 
+关于SnapMirror卷的信息。
+ a| 
+xref:reference_element_api_snapmirrorvolume.adoc[snapMirrorVolume]
+
+|===
+
+
+== 自版本以来的新版本
+
+10.1

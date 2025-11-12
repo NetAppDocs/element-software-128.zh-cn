@@ -1,0 +1,129 @@
+---
+permalink: api/reference_element_api_testldapauthentication.html 
+sidebar: sidebar 
+keywords: ldap,auth,authentication,test,testing,testldapauthentication 
+summary: 您可以使用 TestLdapAuthentication 方法来验证当前启用的 LDAP 身份验证设置。如果配置正确，API 调用将返回被测用户的组成员身份。 
+---
+= 测试Ldap身份验证
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `TestLdapAuthentication`验证当前启用的 LDAP 身份验证设置的方法。如果配置正确，API 调用将返回被测用户的组成员身份。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+用户名
+ a| 
+要测试的用户名。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+password
+ a| 
+待测试用户名对应的密码。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+ldap配置
+ a| 
+待测试的 ldapConfiguration 对象。如果提供此参数，即使 LDAP 身份验证当前已禁用，系统也会测试提供的配置。
+ a| 
+xref:reference_element_api_ldapconfiguration.adoc[ldap配置]
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+团体
+ a| 
+列出包含被测用户的 LDAP 组。
+ a| 
+大批
+
+
+
+ a| 
+用户DN
+ a| 
+被测用户的完整 LDAP 专有名称。
+ a| 
+string
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+"method": "TestLdapAuthentication",
+"params": {"username":"admin1",
+           "password":"admin1PASS"
+      },
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {
+    "groups": [
+        "CN=StorageMgmt,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+      ],
+        "userDN": "CN=Admin1 Jones,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

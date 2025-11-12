@@ -1,0 +1,101 @@
+---
+permalink: api/reference_element_api_resyncsnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,resync,resyncing,ResyncSnapMirrorRelationship 
+summary: Element 软件 Web UI 使用 ResyncSnapMirrorRelationship 方法建立或重新建立源端点和目标端点之间的镜像关系。重新同步关系时，系统会删除目标卷上比公共快照副本更新的快照，然后将目标卷挂载为数据保护卷，并将公共快照副本作为导出的快照副本。 
+---
+= 重新同步快照镜像关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element软件的Web用户界面使用 `ResyncSnapMirrorRelationship`建立或重新建立源端点和目标端点之间镜像关系的方法。重新同步关系时，系统会删除目标卷上比公共快照副本更新的快照，然后将目标卷挂载为数据保护卷，并将公共快照副本作为导出的快照副本。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+与 Element 存储集群通信的远程ONTAP存储系统的端点 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+目的地卷
+ a| 
+SnapMirror关系中的目标卷。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+最大转账率
+ a| 
+指定卷之间的最大数据传输速率，单位为千字节每秒。默认值 0 表示无限制，允许SnapMirror关系充分利用可用的网络带宽。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+源卷
+ a| 
+SnapMirror关系中的源卷。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirror关系
+ a| 
+包含有关重新同步的SnapMirror关系的信息的对象。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror关系]
+
+|===
+
+
+== 自版本以来的新版本
+
+10.1

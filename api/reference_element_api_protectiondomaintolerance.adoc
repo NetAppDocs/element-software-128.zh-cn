@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_protectiondomaintolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainTolerance 
+summary: protectionDomainTolerance 对象包含有关存储集群在与其关联的保护域类型相关的单个保护域内发生一个或多个故障时继续读取和写入数据的能力的信息。 
+---
+= 保护域容错
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionDomainTolerance 对象包含有关存储集群在与其关联的保护域类型相关的单个保护域内发生一个或多个故障时继续读取和写入数据的能力的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+保护方案容差
+ a| 
+包含关联保护域类型的故障容错信息的对象列表（每个保护方案一个对象）。
+ a| 
+xref:reference_element_api_protectionschemetolerance.adoc[保护方案容差]大批
+
+
+
+ a| 
+可持续的失败合奏
+ a| 
+在不失去集合法定人数的情况下，相关保护域内可同时发生的故障数量。
+ a| 
+整数
+
+|===

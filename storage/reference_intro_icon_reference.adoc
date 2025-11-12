@@ -1,0 +1,106 @@
+---
+permalink: storage/reference_intro_icon_reference.html 
+sidebar: sidebar 
+keywords: icons, element interface, actions, system resources, quick reference 
+summary: NetApp Element软件界面会显示图标来表示您可以对系统资源执行的操作。 
+---
+= Element界面中的图标
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element软件界面会显示图标来表示您可以对系统资源执行的操作。
+
+下表提供了一个快速参考：
+
+|===
+
+
+| 图标 | 描述 
+
+
+ a| 
+image:../media/element_icon_action.gif["Element OS Web UI 中的“操作”图标"]
+ a| 
+操作
+
+
+
+ a| 
+image:../media/element_icon_backupto.gif["Element OS Web UI 中的“备份”图标"]
+ a| 
+备份
+
+
+
+ a| 
+image:../media/element_icon_clone.gif["Element OS Web UI 中的克隆图标"]
+ a| 
+克隆或复制
+
+
+
+ a| 
+image:../media/element_icon_delete.gif["Element OS Web UI 中的删除图标"]
+ a| 
+删除或清除
+
+
+
+ a| 
+image:../media/element_icon_edit.gif["Element OS Web UI 中的编辑图标"]
+ a| 
+编辑
+
+
+
+ a| 
+image:../media/element_icon_filter.gif["Element OS Web UI 中的筛选图标"]
+ a| 
+筛选器
+
+
+
+ a| 
+image:../media/element_icon_pair.gif["Element OS Web UI 中的配对图标"]
+ a| 
+配对
+
+
+
+ a| 
+image:../media/element_icon_refresh.gif["Element OS Web UI 中的刷新图标"]
+ a| 
+刷新
+
+
+
+ a| 
+image:../media/element_icon_restore.gif["在Element OS Web UI 中恢复图标"]
+ a| 
+还原
+
+
+
+ a| 
+image:../media/element_icon_restorefrom.gif["从Element OS Web UI 中的图标恢复"]
+ a| 
+还原自
+
+
+
+ a| 
+image:../media/element_icon_rollback.gif["Element OS Web UI 中的回滚图标"]
+ a| 
+回滚
+
+
+
+ a| 
+image:../media/element_icon_snapshot.gif["Element OS Web UI 中的快照图标"]
+ a| 
+Snapshot
+
+|===

@@ -1,0 +1,103 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorendpoint.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,endpoint,modifysnapmirrorendpoint 
+summary: Element 软件 Web UI 使用 ModifySnapMirrorEndpoint 方法来更改SnapMirror端点的名称和管理属性。 
+---
+= 修改快照镜像端点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element软件的Web用户界面使用 `ModifySnapMirrorEndpoint`更改SnapMirror端点的名称和管理属性的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+
+
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+SnapMirrorEndpointID
+ a| 
+要修改的SnapMirror端点。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+管理IP
+ a| 
+ONTAP系统的新管理IP地址。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+用户名
+ a| 
+ONTAP系统的新管理用户名。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+password
+ a| 
+ONTAP系统的新管理密码。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpoint
+ a| 
+关于已修改的SnapMirror端点的信息。
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+
+|===
+
+
+== 自版本以来的新版本
+
+10.0

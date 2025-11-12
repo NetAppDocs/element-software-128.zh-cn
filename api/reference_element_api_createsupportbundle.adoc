@@ -1,0 +1,158 @@
+---
+permalink: api/reference_element_api_createsupportbundle.html 
+sidebar: sidebar 
+keywords: create,creating,support,bundle,CreateSupportBundle 
+summary: 您可以使用 CreateSupportBundle 在节点目录下创建支持包文件。创建完成后，该软件包将以 tar.gz 文件的形式存储在节点上。 
+---
+= 创建支持包
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `CreateSupportBundle`在节点目录下创建支持包文件。创建完成后，该软件包将以 tar 文件的形式存储在节点上（可通过 extraArgs 参数选择 gz 压缩选项）。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+捆绑包名称
+ a| 
+支持包的唯一名称。如果没有提供名称，则使用“supportbundle”和节点名称作为文件名。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+额外参数
+ a| 
+使用“--compress gz”将支持包创建为 tar.gz 文件。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+超时时间秒
+ a| 
+支持包脚本运行的秒数。
+ a| 
+整数
+ a| 
+1500
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+细节
+ a| 
+支持方案的详细信息。可能值：
+
+* bundleName：在 CreateSupportBundleAPI 方法中指定的名称。如果没有指定名称，则使用“supportbundle”。
+* extraArgs：此方法传递的参数。
+* 文件：系统创建的支持包文件列表。
+* 输出：创建支持包的脚本的命令行输出。
+* timeoutSec：支持包脚本在停止前运行的秒数。
+* url：指向已创建的支持包的 URL。
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+期间
+ a| 
+用于创建支持包的时间，格式为：HH:MM:SS.ssssss。
+ a| 
+string
+
+
+
+ a| 
+结果
+ a| 
+支持包操作的成功或失败。
+ a| 
+string
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+ "method": "CreateSupportBundle",
+"params": {
+  "extraArgs": "--compress gz"
+ },
+"id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+"id": 1,
+"result": {
+  "details": {
+    "bundleName": "supportbundle",
+    "extraArgs": "--compress gz",
+    "files": [
+         "supportbundle.nodehostname.tar.gz"
+     ],
+     "output": "timeout -s KILL 1500s /sf/scripts/sfsupportbundle --quiet --compress gz /tmp/solidfire-dtemp.1L6bdX/supportbundle<br><br>Moved '/tmp/solidfire-dtemp.1L6bdX/supportbundle.nodehostname.tar.gz' to /tmp/supportbundles",
+      "timeoutSec": 1500,
+      "url": [
+          "https://nodeIP:442/config/supportbundles/supportbundle.nodehostname.tar.gz"
+      ]
+    },
+    "duration": "00:00:43.101627",
+    "result": "Passed"
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

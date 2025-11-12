@@ -1,0 +1,143 @@
+---
+permalink: api/reference_element_api_testaddressavailability.html 
+sidebar: sidebar 
+keywords: ip,address,availability,test,testing,ensemble,cluster,testaddressavailability 
+summary: 您可以使用 TestAddressAvailability 方法检查存储集群中的接口是否正在使用某个 IP 地址。 
+---
+= 测试地址可用性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `TestAddressAvailability`检查存储集群中某个接口上是否正在使用某个 IP 地址的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+界面
+ a| 
+目标网络接口（例如 eth0、Bond10G 等）。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+address
+ a| 
+要扫描的目标接口上的 IP 地址。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+虚拟网络标签
+ a| 
+目标VLAN ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+timeout
+ a| 
+测试目标地址的超时时间（秒）。
+ a| 
+整数
+ a| 
+5
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+address
+ a| 
+测试的IP地址。
+ a| 
+string
+
+
+
+ a| 
+可用
+ a| 
+如果请求的 IP 地址正在使用，则返回 true；否则返回 false。
+ a| 
+布尔值
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+	"method": "TestAddressAvailability",
+	"params": {
+		"interface": "Bond10G",
+		"address": "10.0.0.1",
+		"virtualNetworkTag": 1234
+	}
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"address":"10.0.0.1",
+		"available": true
+	}
+}
+----
+
+
+== 自版本以来的新版本
+
+11.0

@@ -1,0 +1,188 @@
+---
+permalink: api/reference_element_api_modifyaccount.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,accounts,settings,modifyaccount 
+summary: 您可以使用 ModifyAccount 方法修改现有帐户。 
+---
+= 修改帐户
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyAccount`修改现有账户的方法。
+
+锁定帐户后，该帐户的所有现有连接将立即终止。当您更改帐户的 CHAP 设置时，任何现有连接仍保持活动状态，新的 CHAP 设置将用于后续连接或重新连接。要清除帐户的属性，请为 attributes 参数指定 {}。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+accountID
+ a| 
+要修改的帐户 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+启用章节
+ a| 
+指定发起方是否可以使用 CHAP 帐户凭据访问卷。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+发起者密钥
+ a| 
+发起者使用的 CHAP 密钥。这个秘密必须包含 12-16 个字符，并且应该绝对无法破解。发起方 CHAP 密钥必须是唯一的，并且不能与目标 CHAP 密钥相同。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+状态
+ a| 
+账户状态。可能值：
+
+* 已激活：帐户已激活，允许连接。
+* 已锁定：帐户已被锁定，连接被拒绝。
+
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+目标密钥
+ a| 
+用于目标的 CHAP 密钥（相互 CHAP 认证）。这个秘密必须包含 12-16 个字符，并且应该绝对无法破解。目标 CHAP 密钥必须是唯一的，不能与发起方 CHAP 密钥相同。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+用户名
+ a| 
+用于更改与帐户关联的用户名。  （长度必须为 1 到 64 个字符）。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+帐户
+ a| 
+包含有关已修改帐户信息的对象。
+ a| 
+xref:reference_element_api_account.adoc[帐户]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例。在这个例子中，通过指定 {} 来清除属性值：
+
+[listing]
+----
+{
+   "method": "ModifyAccount",
+   "params": {
+     "accountID"  : 25,
+     "status"   : "locked",
+     "attributes" : {}
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "account": {
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "username": "user1",
+        "accountID": 1,
+        "volumes": [
+        ],
+        "enableChap": true,
+        "initiatorSecret": "txz123456q890",
+        "attributes": {
+        },
+        "status": active",
+        "targetSecret": "rxe123b567890"
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

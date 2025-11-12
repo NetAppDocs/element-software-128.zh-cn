@@ -1,0 +1,114 @@
+---
+permalink: api/reference_element_api_getqospolicy.html 
+sidebar: sidebar 
+keywords: qos,policy,policies,get,getting,getqospolicy 
+summary: 您可以使用 GetQoSPolicy 方法从系统中获取有关特定 QoS 策略的详细信息。 
+---
+= 获取QoS策略
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetQoSPolicy`从系统中获取特定 QoS 策略详细信息的方法。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+qosPolicyID
+ a| 
+要检索的保单 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+服务质量策略
+ a| 
+所请求的服务质量策略详情。
+ a| 
+xref:reference_element_api_qospolicy.adoc[QoS策略]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+	"method": "GetQoSPolicy",
+    "params": {
+    	"qosPolicyID": 2
+    },
+    "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "qosPolicy": {
+      "name": "bronze",
+      "qos": {
+        "burstIOPS": 15002,
+        "burstTime": 60,
+        "curve": {
+          "4096": 100,
+          "8192": 160,
+          "16384": 270,
+          "32768": 500,
+          "65536": 1000,
+          "131072": 1950,
+          "262144": 3900,
+          "524288": 7600,
+          "1048576": 15000
+        },
+        "maxIOPS": 15002,
+        "minIOPS": 51
+      },
+      "qosPolicyID": 2,
+      "volumeIDs": [
+          2
+      ]
+    }
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+10.0

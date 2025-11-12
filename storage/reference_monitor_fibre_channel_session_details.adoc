@@ -1,0 +1,50 @@
+---
+permalink: storage/reference_monitor_fibre_channel_session_details.html 
+sidebar: sidebar 
+keywords: fibre channel sessions, fc, FC, sessions 
+summary: '您可以找到有关连接到集群的活动光纤通道 (FC) 会话的信息。' 
+---
+= 光纤通道会话详情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以找到有关连接到集群的活动光纤通道 (FC) 会话的信息。
+
+以下列表描述了您可以找到的有关连接到集群的 FC 会话的信息：
+
+* *节点 ID*
++
+承载连接会话的节点。
+
+* *节点名称*
++
+系统生成的节点名称。
+
+* *发起方 ID*
++
+系统生成的发起者 ID。
+
+* *发起人 WWPN*
++
+起始全球港口名称。
+
+* *发起者别名*
++
+发起者的一个可选名称，以便在长列表中更容易找到发起者。
+
+* *目标 WWPN*
++
+目标全球端口名称。
+
+* 卷访问组
++
+会话所属的卷访问组的名称。
+
+* 卷访问组 ID
++
+系统生成的访问组 ID。
+
+

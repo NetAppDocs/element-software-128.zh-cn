@@ -1,0 +1,172 @@
+---
+permalink: api/reference_element_api_signsshkeys.html 
+sidebar: sidebar 
+keywords: ssh, sign key 
+summary: 在节点或集群上启用 SSH 后，您可以使用 SignSshKeys 方法以 sfadmin 或 sfreadonly 用户身份访问节点上的 shell。sfreadonly 是 Element 12.5 版本新增的用户帐户，允许对节点进行初始故障排除，但缺乏执行高级命令的权限。 
+---
+= SignSshKeys
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在集群上启用 SSH 后，使用以下方法：link:../api/reference_element_api_enablessh.html["启用SSH方法"]你可以使用 `SignSshKeys`获取节点上 shell 的方法。
+
+从第 12.5 节开始， `sfreadonly`新的系统帐户允许对节点进行基本故障排除。此 API 允许使用 SSH 进行访问 `sfreadonly`集群中所有节点上的系统帐户。
+
+
+WARNING: 除非NetApp支持部门另行通知，否则对系统进行的任何更改均不受支持，这将使您的支持合同失效，并可能导致数据不稳定或无法访问。
+
+使用此方法后，必须从响应中复制密钥链，将其保存到将发起 SSH 连接的系统，然后运行以下命令：
+
+[listing]
+----
+ssh -i <identity_file> sfreadonly@<node_ip>
+----
+ `identity_file`这是一个用于读取公钥认证的身份信息（私钥）的文件； `node_ip`是节点的 IP 地址。欲了解更多信息 `identity_file`请参阅 SSH 手册页。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+期间
+ a| 
+1 到 24 之间的整数，表示签名密钥的有效小时数。如果未指定持续时间，则使用默认值。
+ a| 
+整数
+ a| 
+1
+ a| 
+否
+
+
+
+ a| 
+公钥
+ a| 
+如果提供此参数，则只会返回签名的公钥，而不会为用户创建完整的密钥链。
+
+
+NOTE: 使用浏览器地址栏提交的公钥 `+`被解读为间隔和断续的手语。
+ a| 
+string
+ a| 
+无效的
+ a| 
+否
+
+
+
+ a| 
+sfadmin
+ a| 
+允许在使用 supportAdmin 集群访问权限进行 API 调用时，或者当节点不在集群中时，访问 sfadmin shell 帐户。
+ a| 
+布尔值
+ a| 
+False
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+密钥生成器状态
+ a| 
+包含已签名密钥中的身份信息、允许的主体以及密钥的有效开始日期和结束日期。
+ a| 
+string
+
+
+
+ a| 
+私钥
+ a| 
+只有当 API 为最终用户生成完整的密钥链时，才会返回私有 SSH 密钥值。
+
+
+NOTE: 该值采用 Base64 编码；写入文件时必须对其进行解码，以确保其能被读取为有效的私钥。
+ a| 
+string
+
+
+
+ a| 
+公钥
+ a| 
+只有当 API 为最终用户生成完整的密钥链时，才会返回公共 SSH 密钥值。
+
+
+NOTE: 当您将 public_key 参数传递给 API 方法时，只有 `signed_public_key`响应中会返回该值。
+ a| 
+string
+
+
+
+ a| 
+已签名公钥
+ a| 
+通过对公钥进行签名而生成的 SSH 公钥，无论该公钥是用户提供的还是 API 生成的。
+ a| 
+string
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+    "method": "SignSshKeys",
+    "params": {
+        "duration": 2,
+        "publicKey":<string>
+    },
+    "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "signedKeys": {
+      "keygen_status": <keygen_status>,
+      "signed_public_key": <signed_public_key>
+    }
+  }
+}
+----
+在这个例子中，会签名并返回一个在指定时间（1-24 小时）内有效的公钥。
+
+
+
+== 自版本以来的新版本
+
+12.5

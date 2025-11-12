@@ -1,0 +1,232 @@
+---
+permalink: api/reference_element_api_node.html 
+sidebar: sidebar 
+keywords: object,objects,node 
+summary: 节点对象包含集群中每个节点的信息。您可以使用 ListActiveNodes 和 ListAllNodes 方法检索此信息。 
+---
+= 节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+节点对象包含集群中每个节点的信息。您可以使用以下方法检索此信息： `ListActiveNodes`和 `ListAllNodes`方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+关联的FServiceID
+ a| 
+节点的光纤通道服务 ID。如果节点不是光纤通道节点，则返回“0”。
+ a| 
+整数
+
+
+
+ a| 
+关联的主服务ID
+ a| 
+节点的主服务 ID。
+ a| 
+整数
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+
+
+
+ a| 
+底盘名称
+ a| 
+用于唯一标识机箱；同一机箱内的所有节点均相同。
+ a| 
+string
+
+
+
+ a| 
+cip
+ a| 
+分配给该节点的集群 IP 地址。
+ a| 
+string
+
+
+
+ a| 
+cipi
+ a| 
+用于集群通信的网络接口。
+ a| 
+string
+
+
+
+ a| 
+自定义保护域
+ a| 
+用于唯一标识自定义保护域。在给定的自定义保护域中，所有机箱内的所有存储节点都具有相同的名称。
+ a| 
+string
+
+
+
+ a| 
+光纤通道目标端口组
+ a| 
+与此节点关联的目标群体。如果节点不是光纤通道节点，则返回“null”。
+ a| 
+整数
+
+
+
+ a| 
+维护模式
+ a| 
+指示节点处于哪种维护模式。
+ a| 
+不适用
+
+
+
+ a| 
+mip
+ a| 
+用于节点管理的IP地址。
+ a| 
+string
+
+
+
+ a| 
+mipi
+ a| 
+用于节点管理的网络接口。
+ a| 
+string
+
+
+
+ a| 
+name
+ a| 
+节点的主机名。
+ a| 
+string
+
+
+
+ a| 
+nodeID
+ a| 
+此节点的节点ID。
+ a| 
+整数
+
+
+
+ a| 
+节点槽
+ a| 
+对于 HCI 平台，此节点所在的机箱插槽对应的字母（“A”、“B”、“C”或“D”）。对于存储平台，此值为空。
+ a| 
+string
+
+
+
+ a| 
+platformInfo
+ a| 
+节点的硬件信息。成员:
+
+* chassisType：节点的硬件平台。
+* cpuModel：硬件平台的 CPU 型号。
+* nodeMemoryGB：物理平台上安装的内存量（以 GB 为单位）。
+* nodeType：节点模型名称。
+* platformConfigVersion：为此节点硬件配置的软件版本。
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+角色
+ a| 
+节点在集群中的角色。可能值：
+
+* 管理
+* 存储
+* 计算
+* 证人
+
+ a| 
+
+
+
+ a| 
+啜饮
+ a| 
+分配给节点的存储IP地址。
+ a| 
+string
+
+
+
+ a| 
+sipi
+ a| 
+用于存储流量的网络接口。
+ a| 
+string
+
+
+
+ a| 
+软件版本
+ a| 
+返回节点上运行的 Element 软件的当前版本。
+ a| 
+string
+
+
+
+ a| 
+UUID
+ a| 
+与此节点关联的通用唯一标识符。
+ a| 
+string
+
+
+
+ a| 
+虚拟网络
+ a| 
+包含虚拟网络 IP 地址和 ID 的对象。
+ a| 
+xref:reference_element_api_virtualnetwork.adoc[虚拟网络]大批
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listactivenodes.adoc[ListActiveNodes]
+* xref:reference_element_api_listallnodes.adoc[列出所有节点]
+

@@ -1,0 +1,80 @@
+---
+permalink: api/reference_element_api_restartnetworking.html 
+sidebar: sidebar 
+keywords: node,restarting,restart,networking,network,service,services,restartnetworking 
+summary: 您可以使用 RestartNetworking 方法重启节点上的网络服务。 
+---
+= 重启网络
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RestartNetworking`重启节点上的网络服务的方法。
+
+小心：
+
+此方法会重启节点上的所有网络服务，导致网络连接暂时中断。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+力量
+ a| 
+设置为 true 可重启节点上的网络服务。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "RestartNetworking",
+   "params": {
+              "force" : true
+             },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{ "id" : 1,
+  "result" : {}
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

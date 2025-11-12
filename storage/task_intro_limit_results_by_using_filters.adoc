@@ -1,0 +1,27 @@
+---
+permalink: storage/task_intro_limit_results_by_using_filters.html 
+sidebar: sidebar 
+keywords: filter, filtering, sorting information, viewing lists, unfiltered list 
+summary: 您可以在元素用户界面中筛选页面上的列表信息。查看列表（例如卷和快照）时，您可以添加一个或多个筛选器来聚焦信息，使其更容易适应页面。 
+---
+= 使用筛选器限制结果
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在元素用户界面中筛选页面上的列表信息。在查看列表（例如卷和快照）时，您可以添加一个或多个筛选器来聚焦信息，使其更容易适应页面。
+
+. 查看列表信息时，点击“筛选”。
+. 展开“筛选依据”字段。
+. 从字段最左侧的元素中选择要筛选的列。
+. 为该列选择一个约束条件。
+. 请输入筛选条件。
+. 单击“*添加*”。
++
+系统对列表中的信息运行新的筛选器，并将新的筛选器临时存储在“筛选依据”字段中。
+
+. 要添加另一个筛选条件，请点击“添加”，然后再次选择筛选条件。
+. 点击“全部清除”以移除筛选器列表并显示未筛选的列表信息。
+

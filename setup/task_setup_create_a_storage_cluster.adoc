@@ -1,0 +1,75 @@
+---
+permalink: setup/task_setup_create_a_storage_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: 配置完所有节点后，即可创建存储集群。创建集群时，系统会自动为您创建一个集群管理员用户帐户。集群管理员有权管理所有集群属性，并且可以创建其他集群管理员帐户。 
+---
+= 创建存储集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+配置完所有节点后，即可创建存储集群。创建集群时，系统会自动为您创建一个集群管理员用户帐户。集群管理员有权管理所有集群属性，并且可以创建其他集群管理员帐户。
+
+.你需要什么
+* 您已安装管理节点。
+* 您已配置好所有节点。
+
+
+.关于此任务
+在新节点配置期间，会为每个节点分配 1G 或 10G 管理 IP (MIP) 地址。您必须使用配置过程中创建的节点 IP 地址之一来打开“创建新集群”页面。您使用的 IP 地址取决于您为集群管理选择的网络。
+
+[IMPORTANT]
+====
+如果您想启用集群范围功能，link:../concepts/concept_solidfire_concepts_security.html#encryption-at-rest-software["静态软件加密"]对于SolidFire全闪存存储集群，必须在创建集群期间执行此操作。从 Element 12.5 开始，您必须在创建集群期间在“创建集群”用户界面中启用静态软件加密。对于 Element 12.3.x 及更早版本，您必须使用以下方式创建集群：link:../api/reference_element_api_createcluster.html["CreateCluster"] API 方法并将 enableSoftwareEncryptionAtRest 参数更改为 `true`。在集群上启用静态软件加密后，无法禁用。你可以link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["启用和禁用"]集群创建后对静态数据进行基于硬件的加密。
+
+====
+[NOTE]
+====
+创建新集群时，请考虑以下事项：
+
+* 如果您使用的是位于共享机箱中的存储节点，则可能需要考虑使用保护域功能来设计机箱级故障保护。
+* 如果共享机箱未使用，您可以定义自定义保护域布局。
+
+
+====
+.步骤
+. 在浏览器窗口中，输入 `\https://MIP:443`其中 MIP 为管理节点 IP 地址。
+. 在“创建新集群”中，输入以下信息：
++
+** 管理 VIP：1GbE 或 10GbE 网络上的可路由虚拟 IP，用于网络管理任务。
++
+
+NOTE: 您可以使用 IPv4 或 IPv6 地址创建新集群。
+
+** iSCSI（存储）VIP：10GbE 网络上的虚拟 IP，用于存储和 iSCSI 发现。
++
+
+NOTE: 创建集群后，您无法更改 MVIP、SVIP 或集群名称。
+
+** 用户名：用于对集群进行身份验证访问的主集群管理员用户名。您必须保存用户名以备将来参考。
++
+
+NOTE: 用户名和密码可以使用大写字母、小写字母、特殊字符和数字。
+
+** 密码：用于对集群进行身份验证访问的密码。您必须保存密码以备将来使用。双向数据保护默认启用。您无法更改此设置。
+
+
+. 请阅读最终用户许可协议，然后选择“我同意”。
+. *可选*：在节点列表中，确保不应包含在集群中的节点的复选框未被选中。
+. 选择“创建集群”。
++
+根据集群中节点的数量，系统可能需要几分钟时间来创建集群。在配置正确的网络上，一个由五个节点组成的小集群应该在一分钟内完成。集群创建完成后，“创建新集群”窗口将重定向到集群的 MVIP URL 地址并显示 Element UI。
+
+
+
+
+
+== 了解更多信息
+
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存储"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

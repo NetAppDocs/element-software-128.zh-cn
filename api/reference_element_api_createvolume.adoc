@@ -1,0 +1,247 @@
+---
+permalink: api/reference_element_api_createvolume.html 
+sidebar: sidebar 
+keywords: create,volume,volumes,creating,CreateVolume 
+summary: 您可以使用 CreateVolume 方法在集群上创建一个新的空卷。卷创建完成后，即可通过 iSCSI 连接该卷。 
+---
+= 创建卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreateVolume`在集群上创建新的空卷的方法。卷创建完成后，即可通过 iSCSI 连接该卷。
+
+未指定 QoS 值的卷将使用默认值。您可以使用以下方法查看卷的默认值： `GetDefaultQoS`方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+| `access` | 卷的访问模式。如果包含此参数，则唯一支持的值是 `snapMirrorTarget`。 | string | 无 | 否 
+
+
+| `accountID` | 拥有此卷的账户 ID。 | 整数 | 无 | 是 
+
+
+| `associateWithQoSPolicy`  a| 
+将卷与指定的QoS策略关联起来。可能值：
+
+* `true`将卷与 QoSPolicyID 参数中指定的 QoS 策略关联起来。
+* `false`不要将卷与 QoSPolicyID 参数中指定的 QoS 策略关联。如果为 false，则会删除任何现有的策略关联，无论是否在 QoSPolicy 参数中指定 QoS 策略。
+
+| 布尔值 | true | 否 
+
+
+| `attributes` | JSON 对象格式的名称-值对列表。属性总大小必须小于 1000B，即 1KB，包括 JSON 格式字符。 | JSON 对象 | 无 | 否 
+
+
+| `dontMoveforIopsRebalance`  a| 
+使用实际 IOPS 进行负载均衡时，防止卷移动。此设置从 Element 12.8 版本开始可用，并且仅在以下情况下生效：link:reference_element_api_enablefeature.html["VolumeLoadBalanceOnActualIOPS"]已启用。可能值：
+
+* `true`卷不会根据实际 IOPS 进行负载均衡。
+* `false`卷会根据实际 IOPS 进行负载均衡。
+
+
+*注意*：高可用性（节点故障）的负载均衡优先于 `VolumeLoadBalanceOnActualIOPS`和 `dontMoveforIopsRebalance`。
+| 布尔值 | false | 否 
+
+
+| `enable512e`  a| 
+启用 512 字节扇区模拟。可能值：
+
+* `true`该卷提供 512 字节扇区模拟。
+* `false`512e 仿真未启用。
+
+| 布尔值 | 无 | 是 
+
+
+| `enableSnapMirrorReplication`  a| 
+确定该卷是否可用于与SnapMirror端点进行复制。可能值：
+
+* `true`
+* `false`
+
+| 布尔值 | false | 否 
+
+
+| `fifoSize` | 指定卷支持的最大先进先出 (FIFO) 快照数。请注意，FIFO 快照和非 FIFO 快照都使用卷上相同的可用快照槽池。使用此选项可限制 FIFO 快照对可用快照槽位的消耗。如果省略，则默认值为 24。 | 整数 | 24 | 否 
+
+
+| `minFifoSize` | 指定卷保留的先进先出 (FIFO) 快照槽的最小数量。这样可以保证，如果您在卷上同时使用 FIFO 快照和非 FIFO 快照，则非 FIFO 快照不会意外占用过多的 FIFO 插槽。它还能确保始终至少有这么多 FIFO 快照可用。由于 FIFO 快照和非 FIFO 快照共享同一个池，因此 `minFifoSize`将非 FIFO 快照的总数减少相同的数量。如果省略，则默认值为 0。 | 整数 | 0 | 否 
+
+
+| `name` | 卷访问组的名称（可由用户指定）。不一定要独一无二，但建议如此。长度必须为 1 到 64 个字符。 | string | 无 | 是 
+
+
+| `qos`  a| 
+本卷的初始服务质量设置。如果没有指定任何值，则使用默认值。可能值：
+
+* `minIOPS`
+* `maxIOPS`
+* `burstIOPS`
+
+| QoS对象 | 无 | 否 
+
+
+| `qosPolicyID` | 要将 QoS 设置应用于指定卷的策略的 ID。此参数与以下参数互斥： `qos`范围。 | 整数 | 无 | 否 
+
+
+| `totalSize` | 卷的总大小（以字节为单位）。文件大小向上取整到最接近的兆字节。 | 整数 | 无 | 是 
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+volume
+ a| 
+包含有关新创建卷的信息的对象。
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+
+
+ a| 
+volumeID
+ a| 
+新创建卷的 volumeID。
+ a| 
+整数
+
+
+
+ a| 
+曲线
+ a| 
+曲线是一组键值对。关键信息是 I/O 大小（以字节为单位）。这些数值代表在特定 I/O 尺寸下进行 IOP 的成本。该曲线是相对于 4096 字节操作，IOPS 设置为 100 的计算结果。
+ a| 
+JSON 对象
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "CreateVolume",
+   "params": {
+      "name": "testit",
+      "accountID": 22,
+      "dontMoveForIopsRebalance": true,
+      "totalSize": 100000000000,
+      "enable512e": false,
+      "attributes": {},
+      "qos": {
+         "minIOPS": 500,
+         "maxIOPS": 27000,
+         "burstIOPS": 27000,
+         "burstTime": 60
+      }
+   },
+   "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "curve": {
+            "1048576": 15000,
+            "131072": 1950,
+            "16384": 270,
+            "262144": 3900,
+            "32768": 500,
+            "4096": 100,
+            "524288": 7600,
+            "65536": 1000,
+            "8192": 160
+        },
+        "volume": {
+            "access": "readWrite",
+            "accountID": 22,
+            "attributes": {},
+            "blockSize": 4096,
+            "createTime": "2024-04-02T13:03:02Z",
+            "currentProtectionScheme": "doubleHelix",
+            "deleteTime": "",
+            "dontMoveForIopsRebalance": true,
+            "enable512e": false,
+            "enableSnapMirrorReplication": false,
+            "fifoSize": 24,
+            "iqn": "iqn.2010-01.com.solidfire:mysqldata.677",
+            "lastAccessTime": null,
+            "lastAccessTimeIO": null,
+            "minFifoSize": 0,
+            "name": "testit",
+            "previousProtectionScheme": null,
+            "purgeTime": "",
+            "qos": {
+                "burstIOPS": 27000,
+                "burstTime": 60,
+                "curve": {
+                    "1048576": 15000,
+                    "131072": 1950,
+                    "16384": 270,
+                    "262144": 3900,
+                    "32768": 500,
+                    "4096": 100,
+                    "524288": 7600,
+                    "65536": 1000,
+                    "8192": 160
+                },
+                "maxIOPS": 27000,
+                "minIOPS": 500
+            },
+            "qosPolicyID": null,
+            "scsiEUIDeviceID": "3365657500000140f47acc0100000000",
+            "scsiNAADeviceID": "6f47acc1000000003365657500000140",
+            "sliceCount": 0,
+            "status": "active",
+            "totalSize": 1000000716800,
+            "virtualVolumeID": null,
+            "volumeAccessGroups": [],
+            "volumeConsistencyGroupUUID": "8ed68e57-13ee-47df-8381-29b125142718",
+            "volumeID": 320,
+            "volumePairs": [],
+            "volumeUUID": "e0e2c938-4ecd-4de9-a1be-f6b17c93ce5d"
+        },
+        "volumeID": 320
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_getdefaultqos.adoc[获取默认服务质量]

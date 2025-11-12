@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_breaksnapmirrorvolume.html 
+sidebar: sidebar 
+keywords: SnapMirror,volume,volumes,break,breaking,relationship,ONTAP,source,snapshot 
+summary: Element Web UI 使用 BreakSnapMirrorVolume 方法来断开ONTAP源容器和 Element 目标卷之间的SnapMirror关系。如果在将数据复制到 Element 卷时ONTAP系统不可用，则断开 Element SnapMirror卷非常有用。此功能使存储管理员能够控制 Element SnapMirror卷，断开其与远程ONTAP系统的关系，并将卷恢复到以前的快照。 
+---
+= BreakSnapMirrorVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element Web UI 使用 `BreakSnapMirrorVolume`断开ONTAP源容器和 Element 目标卷之间的SnapMirror关系的方法。如果在将数据复制到 Element 卷时ONTAP系统不可用，则断开 Element SnapMirror卷非常有用。此功能使存储管理员能够控制 Element SnapMirror卷，断开其与远程ONTAP系统的关系，并将卷恢复到以前的快照。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+volumeID
+ a| 
+要进行中断操作的卷。卷访问模式必须为 snapMirrorTarget。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+snapshotID
+ a| 
+将卷回滚到此 ID 标识的快照。默认行为是回滚到最近的快照。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+保存
+ a| 
+保留比 snapshotID 标识的快照更新的任何快照。可能值：
+
+* true：保留比 snapshotID 更新的快照。
+* false：不保留比 snapshotID 更新的快照。
+
+
+如果为 false，则删除所有比 snapshotID 新的快照。
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+
+
+ a| 
+access
+ a| 
+生成的卷访问模式。可能值：
+
+* 读写
+* 只读
+* 已锁定
+
+ a| 
+string
+ a| 
+读写
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 自版本以来的新版本
+
+10.0
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_breaksnapmirrorrelationship.adoc[BreakSnapMirror关系]

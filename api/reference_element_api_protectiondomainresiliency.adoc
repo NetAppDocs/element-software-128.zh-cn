@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectiondomainresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainResiliency 
+summary: protectionDomainResiliency 对象包含此存储集群的弹性状态。弹性是指存储集群能够在与其关联的保护域类型相同的单个保护域内，自动从一个或多个故障中恢复自身的能力。当存储集群能够通过任何单个存储节点的故障继续读取和写入数据时，该存储集群就被认为是已恢复的（这种状态称为节点容错性）。 
+---
+= 保护域弹性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionDomainResiliency 对象包含此存储集群的弹性状态。弹性是指存储集群能够在与其关联的保护域类型相同的单个保护域内，自动从一个或多个故障中恢复自身的能力。当存储集群能够通过任何单个存储节点的故障继续读取和写入数据时，该存储集群就被认为是已恢复的（这种状态称为节点容错）。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+保护方案弹性
+ a| 
+对象列表（每个保护方案一个对象），其中包含与关联类型的保护域的故障恢复信息。
+ a| 
+xref:reference_element_api_protectionschemeresiliency.adoc[保护方案弹性]大批
+
+
+
+ a| 
+singleFailureThresholdBytesForBlockData
+ a| 
+在失去自动恢复到节点容错状态的能力之前，存储集群可以存储的最大字节数。
+ a| 
+整数
+
+
+
+ a| 
+可持续的失败合奏
+ a| 
+预测在不丧失自动恢复能力的情况下，可以同时发生的故障数量，以达到集合仲裁的节点容忍状态。
+ a| 
+整数
+
+|===

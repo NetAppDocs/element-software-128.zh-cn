@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_getclusterhardwareinfo.html 
+sidebar: sidebar 
+keywords: get,getting,cluster,hardware,getclusterhardwareinfo 
+summary: 您可以使用 GetClusterHardwareInfo 方法检索集群中所有光纤通道节点、iSCSI 节点和驱动器的硬件状态和信息。这通常包括制造商、供应商、版本和其他相关的硬件识别信息。 
+---
+= 获取集群硬件信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterHardwareInfo`获取集群中所有光纤通道节点、iSCSI 节点和驱动器的硬件状态和信息的方法。这通常包括制造商、供应商、版本和其他相关的硬件识别信息。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+type
+ a| 
+回复中只能包含以下一种硬件信息。可能值：
+
+* 驱动方式：
++
+列表仅用于传递响应中的信息。
+
+* nodes：仅列出响应中的节点信息。
+* 全部：响应中包含驱动器和节点信息。
+
+
+如果省略此参数，则假定类型为 all。
+ a| 
+string
+ a| 
+所有
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群硬件信息
+ a| 
+集群中所有节点和驱动器的硬件信息。输出中的每个对象都标有给定节点的节点 ID。
+ a| 
+xref:reference_element_api_hardwareinfo.adoc[硬件信息]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "GetClusterHardwareInfo",
+    "params": {
+        "type": "all"
+    },
+    "id": 1
+}
+----
+
+
+== 响应示例
+
+由于此回复示例篇幅较长，因此已在补充主题中进行了记录。
+
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_response_example_getclusterhardwareinfo.adoc[获取集群硬件信息]

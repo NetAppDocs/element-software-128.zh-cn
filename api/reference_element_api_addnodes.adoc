@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_addnodes.html 
+sidebar: sidebar 
+keywords: addnodes,node,add,adding,nodes,cluster 
+summary: 您可以使用 AddNodes 方法向集群添加一个或多个新节点。 
+---
+= AddNodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `AddNodes`向集群添加一个或多个新节点的方法。
+
+当一个未配置的节点首次启动时，系统会提示您配置该节点。节点配置完成后，它将作为“待定节点”注册到集群中。运行 Element 软件的存储集群会自动将节点映像为集群上的版本。添加待处理节点时，方法响应包含一个 asyncHandle 值，您可以将其与以下操作一起使用： `GetAsyncResult`查询自动成像过程状态的方法。
+
+添加光纤通道节点的过程与向集群添加 Element iSCSI 存储节点的过程相同。光纤通道节点在系统中注册时会分配一个节点ID。当它们可以访问时，它们将被置于“待处理节点”状态。这 `ListAllNodes`该方法将返回 iSCSI 节点的 pendingNodeID 以及可添加到集群的任何光纤通道节点的 pendingNodeID。
+
+当您向已配置为虚拟网络的集群添加节点时，系统需要足够数量的虚拟存储 IP 地址才能为新节点分配虚拟 IP。如果新节点没有可用的虚拟 IP 地址，则 `AddNode`操作失败。使用 `ModifyVirtualNetwork`向虚拟网络添加更多存储 IP 地址的方法。
+
+添加节点后，该节点上的所有驱动器都将可用，您可以使用以下方式添加它们： `AddDrives`提高集群存储容量的方法。
+
+
+NOTE: 添加新节点后，可能需要几秒钟时间才能启动并将其驱动器注册为可用状态。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+自动安装
+ a| 
+如果属实，则在添加节点时将对节点执行恢复出厂设置 (RTFI) 操作。默认行为是执行 RTFI。如果 `cEnableAutoInstall`如果集群常量为假，则它优先于此参数。如果正在进行升级，则无论此参数的值如何，都不会执行 RTFI 过程。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+待处理节点
+ a| 
+待添加节点的待定节点 ID。您可以使用 ListPendingNodes 方法列出所有待处理的节点。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+自动安装
+ a| 
+添加的节点是否返回到工厂映像中。
+ a| 
+布尔值
+
+
+
+ a| 
+节点
+ a| 
+一个对象数组，将之前的“pendingNodeID”映射到“nodeID”。当您添加一个正在运行不兼容软件版本的待处理节点时，此数组包含一个 asyncHandle 值，您可以使用 GetAsyncResult 方法查询自动映像过程的状态。
+ a| 
+JSON 对象数组
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "AddNodes",
+   "params": {
+     "autoInstall" : true,
+     "pendingNodes" : [1]
+   },
+   "id":1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  id: null,
+  result: {
+    autoInstall: true,
+    nodes: [
+      {
+        activeNodeKey: "giAm2ep1hA",
+        assignedNodeID: 6,
+        asyncHandle: 3,
+        cip: "10.10.5.106",
+        mip: "192.168.133.106",
+        pendingNodeID: 2,
+        platformInfo: {
+          chassisType: "R620",
+          cpuModel: "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+          nodeMemoryGB: 72,
+          nodeType: "SF3010"
+        },
+        sip: "10.10.5.106",
+        softwareVersion: "9.0.0.1077"
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_adddrives.adoc[AddDrives]
+* xref:reference_element_api_getasyncresult.adoc[获取异步结果]
+* xref:reference_element_api_listallnodes.adoc[列出所有节点]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[修改虚拟网络]
+

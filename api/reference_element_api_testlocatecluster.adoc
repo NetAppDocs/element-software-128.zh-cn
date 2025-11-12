@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_testlocatecluster.html 
+sidebar: sidebar 
+keywords: test,testing,cluster,locate,configuration,TestLocateCluster 
+summary: 您可以使用 TestLocateCluster 方法来验证节点是否可以找到集群配置中指定的集群。输出结果验证集群已创建，并列出集群集合中的节点。 
+---
+= 测试定位集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `TestLocateCluster`验证节点是否能够找到集群配置中指定的集群的方法。输出结果验证集群已创建，并列出集群集合中的节点。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+细节
+ a| 
+有关测试操作成功或失败的信息。
+ a| 
+JSON 对象
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "TestLocateCluster",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+      "details": {
+         "complete": true,
+         "ensemble": {
+            "nodes": [
+               {
+                 "IP": "10.10.5.94",
+                 "nodeID": 1
+               },
+               {
+                 "IP": "10.10.5.107",
+                 "nodeID": 2
+               },
+               {
+                 "IP": "10.10.5.108",
+                 "nodeID": 3
+               }
+            ]
+         },
+         "version": "5.749"
+      },
+      "duration": "0.0384478sec",
+      "result": "Passed"
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

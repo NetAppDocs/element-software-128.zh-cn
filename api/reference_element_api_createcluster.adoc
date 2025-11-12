@@ -1,0 +1,222 @@
+---
+permalink: api/reference_element_api_createcluster.html 
+sidebar: sidebar 
+keywords: CreateCluster,cluster,create,creating,initialize,initializing 
+summary: '您可以使用 CreateCluster 方法初始化集群中拥有“mvip”和“svip”地址的节点。每个新集群都使用集群中第一个节点的管理 IP (MIP) 进行初始化。该方法还会自动将所有正在配置的节点添加到集群中。每次初始化新集群时，只需使用此方法一次即可。' 
+---
+= CreateCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreateCluster`用于初始化集群中拥有“mvip”和“svip”地址的节点的方法。每个新集群都使用集群中第一个节点的管理 IP（MIP）进行初始化。该方法还会自动将所有正在配置的节点添加到集群中。每次初始化新集群时，只需使用此方法一次即可。
+
+
+NOTE: 登录到集群的主节点并运行以下命令后：xref:reference_element_api_getbootstrapconfig.adoc[获取引导配置]要获取要包含在集群中的其余节点的 IP 地址，可以对集群的主节点运行 CreateCluster 方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+接受最终用户许可协议
+ a| 
+创建此集群时，请表明您接受最终用户许可协议。要接受最终用户许可协议，请将此参数设置为 true。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+启用静态软件加密
+ a| 
+启用此参数可对静态数据使用软件加密。在所有集群上默认值为 false。启用静态软件加密后，无法在集群上禁用该功能。
+ a| 
+布尔值
+ a| 
+true
+ a| 
+否
+
+
+
+ a| 
+贵宾
+ a| 
+集群在管理网络上的浮动（虚拟）IP 地址。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+节点
+ a| 
+构成集群的初始节点集的 CIP/SIP 地址。该节点的 IP 地址必须在列表中。
+ a| 
+字符串数组
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+订单号
+ a| 
+字母数字式销售订单号。软件平台必需。
+ a| 
+string
+ a| 
+无
+ a| 
+否（基于硬件的平台）
+
+是的（基于软件的平台）
+
+
+
+ a| 
+password
+ a| 
+集群管理员帐户的初始密码。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+序列号
+ a| 
+九位字母数字序列号。在某些软件平台上可能需要。
+ a| 
+string
+ a| 
+无
+ a| 
+否（基于硬件的平台）
+
+是的（基于软件的平台）
+
+
+
+ a| 
+svip
+ a| 
+存储（iSCSI）网络上集群的浮动（虚拟）IP 地址。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+用户名
+ a| 
+集群管理员的用户名。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "CreateCluster",
+  "params": {
+    "acceptEula": true,
+    "mvip": "10.0.3.1",
+    "svip": "10.0.4.1",
+    "username": "Admin1",
+    "password": "9R7ka4rEPa2uREtE",
+    "attributes": {
+      "clusteraccountnumber": "axdf323456"
+    },
+    "nodes": [
+      "10.0.2.1",
+      "10.0.2.2",
+      "10.0.2.3",
+      "10.0.2.4"
+    ]
+  },
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+"id" : 1,
+"result" : {}
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+[discrete]
+== 查找更多信息
+
+* link:reference_element_api_getbootstrapconfig.html["获取引导配置"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

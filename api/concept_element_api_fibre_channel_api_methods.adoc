@@ -1,0 +1,29 @@
+---
+permalink: api/concept_element_api_fibre_channel_api_methods.html 
+sidebar: sidebar 
+keywords: fibre,channel,method,API,fibre channel 
+summary: 您可以使用光纤通道 API 方法添加、修改或删除存储集群的光纤通道节点成员。 
+---
+= 光纤通道 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用光纤通道 API 方法添加、修改或删除存储集群的光纤通道节点成员。
+
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[获取卷访问组 LUN 分配]
+* xref:reference_element_api_listfibrechannelportinfo.adoc[列出光纤通道端口信息]
+* xref:reference_element_api_listfibrechannelsessions.adoc[列出光纤通道会话]
+* xref:reference_element_api_listnodefibrechannelportinfo.adoc[列出节点光纤通道端口信息]
+* xref:reference_element_api_modifyvolumeaccessgrouplunassignments.adoc[修改卷访问组 LUN 分配]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

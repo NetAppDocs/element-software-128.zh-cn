@@ -1,0 +1,24 @@
+---
+permalink: storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, cluster, create 
+summary: 在许多客户环境中，安全性对于解决方案的部署变得越来越重要。联邦信息处理标准（FIPS）是计算机安全和互操作性标准。符合 FIPS 140-2 标准的静态数据加密是整体安全解决方案的一个组成部分。 
+---
+= 为 FIPS 驱动器功能准备元素集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在许多客户环境中，安全性对于解决方案的部署变得越来越重要。联邦信息处理标准（FIPS）是计算机安全和互操作性标准。符合 FIPS 140-2 标准的静态数据加密是整体安全解决方案的一个组成部分。
+
+为了启用 FIPS 驱动器功能，您应该避免将一些节点支持 FIPS 驱动器功能而另一些节点不支持。
+
+集群被视为符合 FIPS 标准的驱动器，需满足以下条件：
+
+* 所有硬盘均通过了FIPS认证。
+* 所有节点均为FIPS驱动节点。
+* 已启用静态数据加密 (EAR)。
+* FIPS驱动功能已启用。所有驱动器和节点都必须具备 FIPS 功能，并且必须启用静态加密才能启用 FIPS 驱动器功能。
+

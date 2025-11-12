@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_quiescesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: snapmirror,relationship,relationships,quiesce,quiescing,quiescescnapmirrorrelationship 
+summary: Element 软件 Web UI 使用 QuiesceSnapMirrorRelationship 方法来禁用SnapMirror关系的后续数据传输。如果转账正在进行中，则关系状态变为“静止”，直到转账完成。如果当前传输被中止，则不会重新开始。您可以使用 ResumeSnapMirrorRelationship API 方法重新启用关系的数据传输。 
+---
+= QuiesceSnapMirror关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element软件的Web用户界面使用 `QuiesceSnapMirrorRelationship`禁用SnapMirror关系中未来数据传输的方法。如果转账正在进行中，则关系状态变为“静止”，直到转账完成。如果当前传输被中止，则不会重新开始。您可以使用以下方法重新启用该关系的数据传输： `ResumeSnapMirrorRelationship` API 方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+与 Element 存储集群通信的远程ONTAP存储系统的端点 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+目的地卷
+ a| 
+SnapMirror关系中的目标卷。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirror关系
+ a| 
+包含有关已停止的SnapMirror关系的信息的对象。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror关系]
+
+|===
+
+
+== 自版本以来的新版本
+
+10.1

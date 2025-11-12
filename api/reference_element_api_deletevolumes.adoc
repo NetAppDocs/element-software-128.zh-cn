@@ -1,0 +1,165 @@
+---
+permalink: api/reference_element_api_deletevolumes.html 
+sidebar: sidebar 
+keywords: volumes,volume,delete,deleting,multiple,DeleteVolumes 
+summary: 您可以使用 DeleteVolumes 方法将多个（最多 500 个）活动卷标记为要删除。标记后，在清理间隔结束后，该卷将被清除（永久删除）。 
+---
+= 删除卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `DeleteVolumes`标记多个（最多 500 个）活动卷以进行删除的方法。标记后，在清理间隔结束后，该卷将被清除（永久删除）。
+
+发出删除卷的请求后，与该卷的任何活动的 iSCSI 连接都会立即终止，并且在该卷处于此状态期间不允许建立任何进一步的连接。已标记的卷不会在目标发现请求中返回。
+
+任何已标记为删除的卷的快照均不受影响。快照会一直保留到该卷从系统中清除为止。如果卷被标记为要删除，并且正在进行批量卷读取或批量卷写入操作，则停止批量卷读取或写入操作。
+
+如果要删除的卷与某个卷配对，则配对卷之间的复制将暂停，并且在删除状态下不会向这些卷传输任何数据或从这些卷传输任何数据。与已删除卷配对的远程卷进入 PausedMisconfigured 状态，数据不再发送到这些远程卷，也不再从已删除卷发送数据。在清除已删除的卷之前，您可以还原这些卷，并继续传输数据。如果从系统中清除已删除的卷，则与其配对的卷将进入“已停止但配置错误的”状态，并且卷配对状态将被移除。已清除的卷将永久不可用。
+
+
+
+== 参数
+
+该方法有以下输入参数。
+
+
+NOTE: 以下参数中至少需要选择一个，并且只能使用其中一个参数（它们彼此互斥）。
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+卷 ID
+ a| 
+要从系统中删除的卷的 ID 列表。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+参见注释。
+
+
+
+ a| 
+卷访问组 ID
+ a| 
+卷访问组 ID 列表。您在此列表中指定的所有卷访问组中的所有卷都将从系统中删除。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+参见注释。
+
+
+
+ a| 
+账户ID
+ a| 
+账户ID列表。这些账户中的所有卷都已从系统中删除。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+参见注释。
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+卷
+ a| 
+关于新删除卷的信息。
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+
+
+ a| 
+曲线
+ a| 
+曲线是一组键值对。关键信息是 I/O 大小（以字节为单位）。这些数值代表在特定 I/O 尺寸下进行 IOP 的成本。该曲线是相对于 4096 字节操作，IOPS 设置为 100 的计算结果。
+ a| 
+JSON 对象
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "DeleteVolumes",
+   "params": {
+      "accountIDs" : [1, 2, 3]
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+
+{
+  "id" : 1,
+  "result": {
+    "volumes" : [ {
+      "access": "readWrite",
+      "accountID": 1,
+      "attributes": {},
+      "blockSize": 4096,
+      "createTime": "2015-03-06T18:50:56Z",
+      "deleteTime": "",
+      "enable512e": False,
+      "iqn": "iqn.2010-01.com.solidfire:pzsr.vclient-030-v00001.1",
+      "name": "vclient-030-v00001",
+      "qos": {
+        "burstIOPS": 15000,
+        "burstTime": 60,
+        "curve": {},
+        "maxIOPS": 15000,
+        "minIOPS": 100
+      },
+      "purgeTime": "",
+      "sliceCount": 1,
+      "scsiEUIDeviceID": "707a737200000001f47acc0100000000",
+      "scsiNAADeviceID": "6f47acc100000000707a737200000001",
+      "status": "active",
+      "totalSize": 10000003072,
+      "virtualVolumeID": 5,
+      "volumeAccessGroups": [],
+      "volumePairs": [],
+      "volumeID": 1
+    } ]
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

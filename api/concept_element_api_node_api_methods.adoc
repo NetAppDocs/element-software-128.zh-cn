@@ -1,0 +1,75 @@
+---
+permalink: api/concept_element_api_node_api_methods.html 
+sidebar: sidebar 
+keywords: node,api,methods 
+summary: 您可以使用节点 API 方法来配置各个节点。这些方法适用于需要配置的单个节点、已配置但尚未加入集群的节点，或者正在积极加入集群的节点。节点 API 方法允许您查看和修改单个节点以及用于与节点通信的集群网络的设置。必须针对单个节点运行这些方法；不能针对集群的地址运行每个节点的 API 方法。 
+---
+= Node API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用节点 API 方法来配置各个节点。这些方法适用于需要配置的单个节点、已配置但尚未加入集群的节点，或者正在积极加入集群的节点。节点 API 方法允许您查看和修改单个节点以及用于与节点通信的集群网络的设置。必须针对单个节点运行这些方法；不能针对集群的地址运行每个节点的 API 方法。
+
+* xref:reference_element_api_checkpingonvlan.adoc[检查 VLAN 的 Ping]
+* xref:reference_element_api_checkproposednodeadditions.adoc[检查拟议节点添加]
+* xref:reference_element_api_createclustersupportbundle.adoc[创建集群支持包]
+* xref:reference_element_api_createsupportbundle.adoc[创建支持包]
+* xref:reference_element_api_deleteallsupportbundles.adoc[删除所有支持包]
+* xref:reference_element_api_disablemaintenancemode.adoc[禁用维护模式]
+* xref:reference_element_api_disablessh.adoc[禁用SSH]
+* xref:reference_element_api_enablemaintenancemode.adoc[启用维护模式]
+* xref:reference_element_api_enablessh.adoc[启用SSH]
+* xref:reference_element_api_getclusterconfig.adoc[获取集群配置]
+* xref:reference_element_api_getclusterstate.adoc[获取集群状态]
+* xref:reference_element_api_getconfig.adoc[GetConfig]
+* xref:reference_element_api_getdriveconfig.adoc[获取驱动配置]
+* xref:reference_element_api_gethardwareconfig.adoc[获取硬件配置]
+* xref:reference_element_api_gethardwareinfo.adoc[获取硬件信息]
+* xref:reference_element_api_getipmiconfig.adoc[获取 IPMI 配置]
+* xref:reference_element_api_getipmiinfo.adoc[获取 IPMI 信息]
+* xref:reference_element_api_getnetworkconfig.adoc[获取网络配置]
+* xref:reference_element_api_getnetworkinterface.adoc[获取网络接口]
+* xref:reference_element_api_getnodeactivetlsciphers.adoc[获取节点活动TLS密码]
+* xref:reference_element_api_node_getnodefipsdrivesreport.adoc[获取节点Fips驱动器报告]
+* xref:reference_element_api_getnodesslcertificate.adoc[获取节点SSL证书]
+* xref:reference_element_api_getnodesupportedtlsciphers.adoc[获取节点支持的TLS密码]
+* xref:reference_element_api_getpendingoperation.adoc[获取待处理操作]
+* xref:reference_element_api_getsshinfo.adoc[获取SSH信息]
+* xref:reference_element_api_listdrivehardware.adoc[列表驱动器硬件]
+* xref:reference_element_api_listnetworkinterfaces.adoc[列出网络接口]
+* xref:reference_element_api_listtests.adoc[列表测试]
+* xref:reference_element_api_listutilities.adoc[列表实用程序]
+* xref:reference_element_api_removenodesslcertificate.adoc[移除节点SSL证书]
+* xref:reference_element_api_resetdrives.adoc[重置驱动器]
+* xref:reference_element_api_resetnode.adoc[重置节点]
+* xref:reference_element_api_resetnodesupplementaltlsciphers.adoc[重置节点补充TLS密码]
+* xref:reference_element_api_restartnetworking.adoc[重启网络]
+* xref:reference_element_api_restartservices.adoc[重启服务]
+* xref:reference_element_api_setclusterconfig.adoc[设置集群配置]
+* xref:reference_element_api_setconfig.adoc[设置配置]
+* xref:reference_element_api_setnetworkconfig.adoc[设置网络配置]
+* xref:reference_element_api_setnodesslcertificate.adoc[设置节点SSL证书]
+* xref:reference_element_api_setnodesupplementaltlsciphers.adoc[设置节点补充TLS密码]
+* xref:reference_element_api_node_shutdown.adoc[关闭]
+* xref:reference_element_api_testconnectensemble.adoc[TestConnectEnsemble]
+* xref:reference_element_api_testconnectmvip.adoc[TestConnectMvip]
+* xref:reference_element_api_testconnectsvip.adoc[TestConnectSvip]
+* xref:reference_element_api_testdrives.adoc[试驾]
+* xref:reference_element_api_testhardwareconfig.adoc[测试硬件配置]
+* xref:reference_element_api_testlocatecluster.adoc[测试定位集群]
+* xref:reference_element_api_testlocalconnectivity.adoc[测试本地连接]
+* xref:reference_element_api_testnetworkconfig.adoc[测试网络配置]
+* xref:reference_element_api_testping.adoc[测试Ping]
+* xref:reference_element_api_testremoteconnectivity.adoc[测试远程连接]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

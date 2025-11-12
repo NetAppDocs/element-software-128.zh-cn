@@ -1,0 +1,66 @@
+---
+permalink: storage/reference_monitor_iscsi_session_details.html 
+sidebar: sidebar 
+keywords: iscsi sessions, monitor 
+summary: 您可以查看有关连接到集群的 iSCSI 会话的信息。 
+---
+= iSCSI 会话详情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看有关连接到集群的 iSCSI 会话的信息。
+
+以下列表描述了您可以找到的有关 iSCSI 会话的信息：
+
+* *节点*
++
+托管该卷主元数据分区的节点。
+
+* *帐户*
++
+拥有该卷的账户名称。如果值为空，则显示短横线（-）。
+
+* *体积*
++
+节点上标识的卷名称。
+
+* 卷号
++
+与目标 IQN 关联的卷的 ID。
+
+* *发起方 ID*
++
+系统生成的发起者 ID。
+
+* *发起者别名*
++
+发起者的一个可选名称，以便在长列表中更容易找到发起者。
+
+* *发起方IP*
++
+发起会话的端点的 IP 地址。
+
+* *发起人 IQN*
++
+发起会话的端点的 IQN。
+
+* *目标IP地址*
++
+卷所在的节点的 IP 地址。
+
+* *目标IQN*
++
+该体积的IQN。
+
+* *CHAP*
++
+iSCSI 会话的 CHAP 算法。如果未使用 CHAP 算法，则会显示短横线 (-)。从 Element 12.8 版本开始可用。
+
+* 创建于*
++
+会议成立日期。
+
+

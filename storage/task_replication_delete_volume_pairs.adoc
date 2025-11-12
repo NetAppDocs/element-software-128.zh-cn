@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_pairs.html 
+sidebar: sidebar 
+keywords: volume pairs, delete 
+summary: 如果要移除两个卷之间的关联关系，可以删除卷对。 
+---
+= 删除卷对
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果要移除两个卷之间的关联关系，可以删除卷对。
+
+. 选择“数据保护”>“卷对”。
+. 点击要删除的卷对旁边的“操作”图标。
+. 单击“*删除*”。
+. 确认消息。
+

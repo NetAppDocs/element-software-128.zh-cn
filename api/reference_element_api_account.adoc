@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_account.html 
+sidebar: sidebar 
+keywords: account,object,accounts 
+summary: 账户对象包含有关账户的信息。此对象仅包含有关帐户的“已配置”信息，不包含任何运行时或使用信息。 
+---
+= 帐户
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+这 `account`对象包含有关帐户的信息。此对象仅包含有关帐户的“已配置”信息，不包含任何运行时或使用信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+`accountID`
+ a| 
+账户的唯一账户ID。
+ a| 
+整数
+
+
+
+ a| 
+`attributes`
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+
+
+
+ a| 
+`enableChap`
+ a| 
+指定发起方是否可以使用 CHAP 帐户凭据访问卷。
+ a| 
+布尔值
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+发起者 CHAP 秘密。
+ a| 
+string
+
+
+
+ a| 
+`status`
+ a| 
+账户的当前状态。可能值：
+
+* 活跃账户：一个活跃的账户。
+* 已锁定：一个已锁定的帐户。
+* 已删除：已被删除并清除的帐户。
+
+ a| 
+string
+
+
+
+ a| 
+`storageContainerID`
+ a| 
+与此帐户关联的虚拟卷存储容器的唯一 ID。
+ a| 
+UUID
+
+
+
+ a| 
+`targetSecret`
+ a| 
+目标 CHAP 密钥。
+ a| 
+string
+
+
+
+ a| 
+`username`
+ a| 
+账户的用户名。
+ a| 
+string
+
+
+
+ a| 
+`volumes`
+ a| 
+此帐户拥有的卷的卷 ID 列表。
+ a| 
+整数数组
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_addaccount.adoc[添加帐户]
+* xref:reference_element_api_getaccountbyid.adoc[GetAccountByID]
+* xref:reference_element_api_getaccountbyname.adoc[按名称获取帐户]
+* xref:reference_element_api_listaccounts.adoc[列出帐户]
+

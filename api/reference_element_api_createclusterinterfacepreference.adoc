@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_createclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,create,creating,CreateClusterInterfacePreference 
+summary: CreateClusterInterfacePreference 方法使与运行 Element 软件的存储集群集成的系统能够在存储集群上创建和存储任意信息。此方法仅供内部使用。 
+---
+= 创建集群接口首选项
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+这 `CreateClusterInterfacePreference`该方法使与运行 Element 软件的存储集群集成的系统能够在存储集群上创建和存储任意信息。此方法仅供内部使用。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+name
+ a| 
+集群接口首选项的名称。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+value
+ a| 
+集群接口首选项的值。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+		"method": "CreateClusterInterfacePreference",
+		"params": {
+			"name": "prefname",
+			"value": "testvalue"
+		},
+	"id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {}
+}
+----
+
+
+== 自版本以来的新版本
+
+11.0

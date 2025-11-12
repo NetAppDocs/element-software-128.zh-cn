@@ -1,0 +1,37 @@
+---
+permalink: storage/task-element-replication-resynchronize-data-protection-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, update, replication, relationship, manually 
+summary: 如果由于网络错误导致更新失败，您可能需要手动更新复制关系。 
+---
+= 重新同步复制关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在将目标卷设置为可写之后、由于源卷和目标卷上不存在公共快照副本而导致更新失败之后，或者如果要更改关系的复制策略，则需要重新同步复制关系。
+
+.关于此任务
+虽然重新同步不需要基线传输，但可能会很耗时。您可能需要在非高峰时段运行重新同步操作。
+
+您必须在表单中指定元素源路径。 `<hostip:>/lun/<name>`其中“`lun`”是实际的字符串“`lun`”， `name`是元素卷的名称。
+
+.步骤
+. 重新同步源卷和目标卷：
++
+`snapmirror resync -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -policy <policy>`
+
++
+有关完整的命令语法，请参见手册页。
+
++
+以下示例重新同步源卷之间的关系 `0005`IP地址为10.0.0.11，目标卷为 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path 10.0.0.11:/lun/0005 -policy MirrorLatest -destination-path svm_backup:volA_dst
+----
+

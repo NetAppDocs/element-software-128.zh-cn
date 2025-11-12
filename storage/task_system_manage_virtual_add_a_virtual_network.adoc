@@ -1,0 +1,67 @@
+---
+permalink: storage/task_system_manage_virtual_add_a_virtual_network.html 
+sidebar: sidebar 
+keywords: virtual network, add, cluster configuration, cluster nodes, svip, vlans, vrf, view, network details, 
+summary: 您可以向集群配置中添加新的虚拟网络，以启用多租户环境连接到运行 Element 软件的集群。 
+---
+= 添加虚拟网络
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以向集群配置中添加新的虚拟网络，以启用多租户环境连接到运行 Element 软件的集群。
+
+.你需要什么
+* 确定将分配给集群节点上虚拟网络的 IP 地址块。
+* 确定一个存储网络 IP (SVIP) 地址，该地址将用作所有NetApp Element存储流量的端点。
+
+
+
+IMPORTANT: 对于此配置，您必须考虑以下标准：
+
+* 未启用 VRF 的 VLAN 要求发起方与 SVIP 位于同一子网中。
+* 启用 VRF 的 VLAN 不需要发起方与 SVIP 位于同一子网中，并且支持路由。
+* 默认的 SVIP 不要求发起方与 SVIP 位于同一子网中，并且支持路由。
+
+
+添加虚拟网络时，会为每个节点创建一个接口，每个接口都需要一个虚拟网络 IP 地址。创建新虚拟网络时指定的 IP 地址数量必须等于或大于集群中的节点数量。虚拟网络地址会自动由各个节点批量配置并分配给这些节点。您无需手动为集群中的节点分配虚拟网络地址。
+
+.步骤
+. 点击“集群”>“网络”。
+. 点击“创建VLAN”。
+. 在“创建新 VLAN”对话框中，在以下字段中输入值：
++
+** *VLAN名称*
+** *VLAN标签*
+** *SVIP*
+** *Netmask*
+** （可选）*描述*
+
+
+. 输入 *IP 地址块* 中 IP 地址范围的 *起始 IP* 地址。
+. 输入 IP 地址范围的*大小*，即要包含在地址块中的 IP 地址数量。
+. 点击“添加块”为该 VLAN 添加一个非连续的 IP 地址块。
+. 点击“创建VLAN”。
+
+
+
+
+== 查看虚拟网络详情
+
+.步骤
+. 点击“集群”>“网络”。
+. 查看详细信息。
++
+** *ID*：VLAN 网络的唯一 ID，由系统分配。
+** *名称*：VLAN 网络的唯一用户指定名称。
+** *VLAN 标签*：创建虚拟网络时分配的 VLAN 标签。
+** *SVIP*：分配给虚拟网络的存储虚拟 IP 地址。
+** *子网掩码*：此虚拟网络的子网掩码。
+** *网关*：虚拟网络网关的唯一IP地址。必须启用 VRF。
+** *VRF 已启用*：指示虚拟路由和转发是否已启用。
+** *使用的IP地址*：用于虚拟网络的虚拟网络IP地址范围。
+
+
+

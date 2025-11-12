@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_snapmirrorvserver.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVserver 
+summary: snapMirrorVserver 对象包含有关目标ONTAP集群中的存储虚拟机（或 Vserver）的信息。 
+---
+= snapMirrorVserver
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVserver 对象包含有关目标ONTAP集群中的存储虚拟机（或 Vserver）的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目标ONTAP系统的 ID。
+ a| 
+整数
+
+
+
+ a| 
+虚拟服务器名称
+ a| 
+虚拟服务器的名称。
+ a| 
+string
+
+
+
+ a| 
+vserverType
+ a| 
+虚拟服务器的类型。可能值：
+
+* 数据
+* admin
+* system
+* 节点
+
+ a| 
+string
+
+
+
+ a| 
+vserverSubtype
+ a| 
+Vserver 的子类型。可能值：
+
+* 默认
+* dp_destination
+* 数据
+* 同步源
+* 同步目标
+
+ a| 
+string
+
+
+
+ a| 
+根卷
+ a| 
+Vserver 的根卷。
+ a| 
+string
+
+
+
+ a| 
+根卷聚合
+ a| 
+根体积将基于该聚合体创建。
+ a| 
+string
+
+
+
+ a| 
+vserverAggregateInfo
+ a| 
+snapMirrorVserverAggregateInfo 对象数组。
+ a| 
+JSON 对象
+
+
+
+ a| 
+管理员状态
+ a| 
+Vserver 的详细管理状态。可能值：
+
+* 跑步
+* 停止
+* 启动
+* 停止
+* 初始化
+* 删除
+
+ a| 
+string
+
+
+
+ a| 
+运行状态
+ a| 
+Vserver 的基本运行状态。可能值：
+
+* 跑步
+* 停止
+
+ a| 
+string
+
+|===

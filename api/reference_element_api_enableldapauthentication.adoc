@@ -1,0 +1,215 @@
+---
+permalink: api/reference_element_api_enableldapauthentication.html 
+sidebar: sidebar 
+keywords: LDAP,auth,authentication,enable,enabling,EnableLdapAuthentication 
+summary: 您可以使用 EnableLdapAuthentication 方法配置 LDAP 目录连接，以便对集群进行 LDAP 身份验证。  LDAP 目录中的成员用户可以使用其 LDAP 凭据登录到存储系统。 
+---
+= 启用 LDAP 身份验证
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableLdapAuthentication`用于配置 LDAP 目录连接以进行集群 LDAP 身份验证的方法。  LDAP 目录中的成员用户可以使用其 LDAP 凭据登录到存储系统。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+认证类型
+ a| 
+确定要使用的用户身份验证方法。可能值：
+
+* `DirectBind`
+* `SearchAndBind`
+
+ a| 
+string
+ a| 
+搜索和绑定
+ a| 
+否
+
+
+
+ a| 
+groupSearchBaseDN
+ a| 
+要开始进行组子树搜索的树的基本 DN。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+组搜索类型
+ a| 
+控制使用的默认群组搜索筛选器。可能值：
+
+* NoGroups：不支持群组。
+* Active Directory：用户所有 Active Directory 组的嵌套成员关系。
+* MemberDN：MemberDN 风格的组（单级）。
+
+ a| 
+string
+ a| 
+活动目录
+ a| 
+否
+
+
+
+ a| 
+服务器URI
+ a| 
+以逗号分隔的 LDAP 或 LDAPS 服务器 URI 列表。您可以通过在 LDAP 或 LDAPS URI 末尾添加冒号和端口号，来添加自定义端口。例如，URI“ldap://1.2.3.4”使用默认端口，而URI“ldaps://1.2.3.4:123”使用自定义端口123。
+ a| 
+字符串数组
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+用户搜索基于DN
+ a| 
+要开始子树搜索的树的基本 DN。当使用 SearchAndBind 类型的身份验证类型时，此参数是必需的。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+搜索绑定DN
+ a| 
+用于登录以执行 LDAP 用户搜索的完整 DN。 DN 需要对 LDAP 目录具有读取权限。当使用 SearchAndBind 类型的身份验证类型时，此参数是必需的。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+搜索绑定密码
+ a| 
+用于搜索的 searchBindDN 帐户的密码。当使用 SearchAndBind 类型的身份验证类型时，此参数是必需的。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+用户搜索筛选器
+ a| 
+查询 LDAP 服务器时要使用的 LDAP 搜索过滤器。字符串中应包含占位符文本“%USERNAME%”，该文本将被替换为进行身份验证的用户的用户名。例如，(&(objectClass=person)(sAMAccountName=%USERNAME%)) 将使用 Active Directory 中的 sAMAccountName 字段来匹配集群登录时输入的用户名。当使用 SearchAndBind 类型的身份验证类型时，此参数是必需的。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+用户DNTemplate
+ a| 
+用于定义构造完整用户可分辨名称 (DN) 的模式的字符串模板。字符串中应包含占位符文本“%USERNAME%”，该文本将被替换为进行身份验证的用户的用户名。当使用 DirectBind 类型的身份验证类型时，此参数是必需的。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+组搜索自定义筛选器
+ a| 
+用于 CustomFilter 搜索类型，LDAP 过滤器，用于返回用户组的 DN。字符串中可以包含占位符文本 %USERNAME% 和 %USERDN%，根据需要替换为用户的用户名和完整的用户 DN。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "EnableLdapAuthentication",
+  "params": {
+     "authType": "SearchAndBind",
+     "groupSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+     "groupSearchType": "ActiveDirectory",
+     "searchBindDN": "SFReadOnly@prodtest.solidfire.net",
+     "searchBindPassword": "zsw@#edcASD12",
+     "sslCert": "",
+     "userSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+     "userSearchFilter": "(&(objectClass=person)(sAMAccountName=%USERNAME%))",
+     "serverURIs":[
+           "ldaps://111.22.333.444",
+           "ldap://555.66.777.888"
+           ]
+       },
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+"id": 1,
+"result": {
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

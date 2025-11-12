@@ -1,0 +1,136 @@
+---
+permalink: try/task_use_demonode.html 
+sidebar: sidebar 
+keywords: element demo node, virtual machine, element software, element api, vmware deployment 
+summary: Element Demo Node 是 Element 软件的 VMware 虚拟机版本，它提供了一种简单的方法来演示NetApp HCI和SolidFire产品的许多关键存储功能。 
+---
+= 使用 Element Demo Node 尝试存储功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["元素演示节点"^]Element 软件是 VMware 虚拟机 (VM) 版本，它提供了一种简单的方法来演示NetApp HCI和SolidFire产品的许多关键存储功能。演示节点使开发人员能够在无需物理硬件的情况下针对 Element API 进行编码。它被打包成 OVA 文件，以便于在 VMware 中部署。
+
+
+
+== 支持的功能：
+
+Element Demo Node 仅供用作演示和开发工具。使用演示节点前，请注意以下功能限制：
+
+* Element Demo Node 不支持集群。它仅作为单节点集群运行。
+* 它不支持Element升级。要演示 Element 的新版本，您应该安装一个新的演示节点虚拟机。
+* 它并非旨在展示存储性能。在演示节点上观察到的性能绝不代表物理集群上的性能。
+* 您无法将演示节点添加到NetApp HCI或SolidFire集群。
+* 不支持 VRF VLAN（支持标准标记 VLAN）。
+* 不支持多驱动器切片服务 (MDSS)。
+* Element Demo Node 仅支持 VMFS 数据存储。不支持虚拟卷 (VVol)。
+* 基于硬件的配置和监控功能在演示节点上无法工作。
+* 每个卷最多支持 10 个快照。
+* 每个节点/集群最多支持 20 个账户。
+* 每个账户最多支持 100 卷。
+* 每个账户最多支持 200 个vVols 。
+* 它支持的最大卷大小为 100 GiB。
+* 它支持持续集群 3000 IOPS 的限制。
+
+
+
+NOTE: Element软件的其他所有限制均适用。详情请参阅最新 Element 软件发行说明。
+
+
+
+== 联邦选举委员会 (VM) 要求
+
+* 总容量 240-GB（虚拟机的虚拟磁盘大小和数量无法更改）。客户操作系统会忽略通过虚拟机管理程序提供的任何额外存储。）
+* 60 GB 根磁盘
+* 厚置备/立即清零（一个 30GB 元数据驱动器或三个 50GB 块驱动器）或精简置备/立即清零（*推荐*）（一个 30GB 元数据驱动器或三个 50GB 块驱动器）
+* 两个虚拟CPU（完全保留）
+* 16GB 内存（全部保留）
+* 所有磁盘均使用单个 HBA，LSI Logic 并行
+* 两个虚拟网卡，均为 vmxnet3（一个用于管理，一个用于存储）
+
+
+
+
+== 主机要求
+
+* Element Demo Node 11.7 虚拟机需要 ESXi 6.0 或 6.5 版本
+* ESXi 6.5 for Element Demo Node 12.0 和 12.2 VMs
+* 适用于 Element Demo Node 12.3 和 12.5 虚拟机的 ESXi 6.7 和 7.0
+* 多核 64 位英特尔® 架构
+
+
+
+
+== 下载元素演示节点
+
+Element Demo Node 软件是一组 VMware 文件，这些文件被打包在一个 .ova 文件中。
+
+
+
+== 在 VMware ESXi 上安装 Element Demo 节点
+
+在 VMware ESXi 上安装 Element Demo Node 涉及以下任务：
+
+* <<配置网络接口>>
+* <<在 ESXi 服务器上注册演示节点>>
+* <<在 ESXi 服务器上启动演示节点>>
+
+
+
+
+=== 配置网络接口
+
+Element Demo Node 需要两个独立的虚拟机网络。一个用于存储流量，另一个用于管理流量。您应该配置存储网络以支持巨型帧。
+
+
+
+=== 在 ESXi 服务器上注册演示节点
+
+要在 ESXi 服务器上注册 Element Demo Node，您应该使用 vSphere Client 部署 demo node .ova 文件。
+
+.步骤
+. 登录 vSphere Client，然后从清单面板中选择 ESXi 主机。
+. 选择“文件”>“部署 OVF 模板”。
++
+启动“部署 OVF 模板向导”。
+
+. 在“选择模板”页面上，浏览到您下载的 OVA 文件，然后选择“打开”。
+. 选择“下一步”。
+. 在“名称和位置”页面上，指定已部署模板的名称和位置，然后选择“下一步”。
+. 在“选择资源”页面上，浏览到要运行模板的位置，然后选择“下一步”。
+. 核对详细信息，然后选择“下一步”。
+. 在“选择存储”页面上，选择要存储虚拟机文件的位置，然后选择“下一步”。
+. 在“选择网络”页面上，将 OVA 文件中使用的网络映射到清单中的两个单独的虚拟机网络，然后选择“下一步”。
+. 在“准备完成”页面上，验证要创建的虚拟机的详细信息，然后选择“完成”。
+
+
+
+NOTE: 演示节点部署可能需要几分钟才能完成。
+
+
+
+=== 在 ESXi 服务器上启动演示节点
+
+您应该启动演示节点虚拟机，以便通过 VMware ESXi 控制台访问 Element。
+
+.步骤
+. 在 vSphere Client 中，选择您创建的演示节点虚拟机。
+. 选择“摘要”选项卡以查看有关此虚拟机的详细信息。
+. 选择“启动虚拟机”以启动虚拟机。
+. 选择*启动 Web 控制台*。
+. 使用 TUI 配置演示节点。有关详细信息，请参阅 link:../setup/concept_setup_configure_a_storage_node.html["配置存储节点"^]。
+
+
+
+
+== 如何获得支持
+
+Element Demo Node 是以志愿者尽力而为的方式提供的。如需帮助，请将您的问题发布到 https://community.netapp.com/t5/Simulator-Discussions/bd-p/simulator-discussions["元素演示节点论坛"^]。
+
+
+
+== 查找更多信息
+
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["元素演示节点下载页面（需要登录）"^]

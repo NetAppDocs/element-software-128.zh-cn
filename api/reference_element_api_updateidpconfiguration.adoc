@@ -1,0 +1,159 @@
+---
+permalink: api/reference_element_api_updateidpconfiguration.html 
+sidebar: sidebar 
+keywords: IdP,idp,configuration,update 
+summary: '您可以使用 UpdateIdpConfiguration 方法更新集群的第三方身份提供商 (IdP) 的现有配置。' 
+---
+= 更新Idp配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `UpdateIdpConfiguration`使用第三方身份提供商 (IdP) 更新集群现有配置的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+生成新证书
+ a| 
+如果指定为 true，则会生成新的 SAML 密钥和证书，并替换现有的密钥和证书对。注意：替换现有证书将破坏集群与身份提供商 (IdP) 之间已建立的信任关系，直到集群的服务提供商元数据在身份提供商处重新加载为止。如果未提供或设置为 false，则 SAML 证书和密钥保持不变。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+idp配置ID
+ a| 
+第三方身份提供商配置的 UUID。
+ a| 
+UUID
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+idpMetadata
+ a| 
+用于 SAML 2.0 单点登录的配置和集成详细信息的 IdP 元数据。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+idpName
+ a| 
+用于识别和检索 SAML 2.0 单点登录的身份提供商的名称。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+新身份提供商名称
+ a| 
+如果指定，此名称将替换旧的身份提供商名称。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+idp配置信息
+ a| 
+有关第三方身份提供商配置的信息。
+ a| 
+link:reference_element_api_idpconfiginfo.html["idp配置信息"]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+"method": "UpdateIdpConfiguration",
+"params": {
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "generateNewCertificate": true
+    }
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "result": {
+        "idpConfigInfo": {
+        "enabled": true,
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
+        <EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"\r\n
+        xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"\r\n
+        xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"\r\n
+        xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"\r\n
+        ...</Organization>\r\n
+        </EntityDescriptor>",
+        "idpName": "https://privider.name.url.com",
+        "serviceProviderCertificate": "-----BEGIN CERTIFICATE-----\n
+        MI...BHi\n
+        -----END CERTIFICATE-----\n",
+        "spMetadataUrl": "https://10.193.100.100/auth/ui/saml2"
+        }
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+12.0

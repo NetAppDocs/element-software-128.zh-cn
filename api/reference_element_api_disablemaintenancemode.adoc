@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_disablemaintenancemode.html 
+sidebar: sidebar 
+keywords: disable,maintenance,mode 
+summary: 您可以使用 DisableMaintenanceMode 方法将存储节点从维护模式中移除。只有在维护完成后且节点上线后，才应禁用维护模式。 
+---
+= 禁用维护模式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `DisableMaintenanceMode`将存储节点从维护模式中移除的方法。只有在维护完成后且节点上线后，才应禁用维护模式。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+节点
+ a| 
+要退出维护模式的存储节点 ID 列表。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+异步句柄
+ a| 
+您可以使用 GetAsyncResult 方法来检索此 asyncHandle，并确定维护模式转换何时完成。
+ a| 
+整数
+
+
+
+ a| 
+当前模式
+ a| 
+节点的当前维护模式状态。可能值：
+
+* 已禁用：未收到维护请求。
+* 恢复失败：节点未能从维护模式恢复。
+* 意外情况：发现该节点已离线，但处于禁用模式。
+* 正在从维护模式中恢复：节点正在从维护模式中恢复。
+* 维护准备：正在采取措施准备对节点进行维护。
+* 准备维护：该节点已准备好执行维护。
+
+ a| 
+维护模式（字符串）
+
+
+
+ a| 
+请求模式
+ a| 
+请求节点的维护模式状态。可能值：
+
+* 已禁用：未收到维护请求。
+* 恢复失败：节点未能从维护模式恢复。
+* 意外情况：发现该节点已离线，但处于禁用模式。
+* 正在从维护模式中恢复：节点正在从维护模式中恢复。
+* 维护准备：正在采取措施准备对节点进行维护。
+* 准备维护：该节点已准备好执行维护。
+
+ a| 
+维护模式（字符串）
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "DisableMaintenanceMode",
+  "params": {
+    "nodes": [6]
+  },
+"id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "Disabled",
+        "asyncHandle": 1,
+        "currentMode": "Enabled"
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+12.2
+
+
+
+== 查找更多信息
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["NetApp HCI存储维护模式概念"^]

@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-vol-access-groups.html 
+summary: 了解如何添加新的卷访问组以与SolidFire全闪存存储卷一起使用，如何从系统中删除卷访问组，如何编辑现有卷访问组，以及如何查看卷访问组的详细信息。 
+keywords: netapp, element, cluster, volume, access 
+---
+= 创建和管理卷访问组
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用NetApp Hybrid Cloud Control 创建新的卷访问组、更改访问组的名称、关联的发起程序或关联的卷，或者删除现有的卷访问组。
+
+.你需要什么
+* 您拥有此SolidFire全闪存存储系统的管理员凭据。
+* 您的管理服务已升级到至少 2.15.28 版本。  NetApp Hybrid Cloud Control 存储管理功能在早期服务包版本中不可用。
+* 确保卷访问组采用逻辑命名方案。
+
+
+
+
+== 添加卷访问组
+
+您可以使用NetApp Hybrid Cloud Control 将卷访问组添加到存储集群。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，展开左侧导航菜单中的存储集群名称。
+. 选择*卷*。
+. 选择“访问组”选项卡。
+. 选择“创建访问组”按钮。
+. 在弹出的对话框中，输入新卷访问组的名称。
+. （可选）在“启动器”部分，选择一个或多个启动器与新的卷访问组关联。
++
+如果将启动器与卷访问组关联，则该启动器无需身份验证即可访问组中的每个卷。
+
+. （可选）在“卷”部分，选择一个或多个卷以包含在此卷访问组中。
+. 选择“创建访问组”。
+
+
+
+
+== 编辑卷访问组
+
+您可以使用NetApp Hybrid Cloud Control 编辑现有卷访问组的属性。您可以更改访问组的名称、关联的发起程序或关联的卷。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，展开左侧导航菜单中的存储集群名称。
+. 选择*卷*。
+. 选择“访问组”选项卡。
+. 在访问组表格的“操作”列中，展开需要编辑的访问组的选项菜单。
+. 在选项菜单中，选择“编辑”。
+. 对名称、相关发起者或相关卷进行任何必要的更改。
+. 请点击“保存”以确认更改。
+. 在“访问组”表中，验证访问组是否反映了您的更改。
+
+
+
+
+== 删除卷访问组
+
+您可以使用NetApp Hybrid Cloud Control 删除卷访问组，同时从系统中删除与此访问组关联的启动器。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，展开左侧导航菜单中的存储集群名称。
+. 选择*卷*。
+. 选择“访问组”选项卡。
+. 在访问组表格的“操作”列中，展开要删除的访问组的选项菜单。
+. 在选项菜单中，选择“删除”。
+. 如果您不想删除与访问组关联的发起程序，请取消选中“删除此访问组中的发起程序”复选框。
+. 选择“是”确认删除操作。
+
+
+[discrete]
+== 查找更多信息
+
+* link:../concepts/concept_solidfire_concepts_volume_access_groups.html["了解卷访问组"]
+* link:task-hcc-manage-initiators.html#add-initiators-to-a-volume-access-group["将发起程序添加到卷访问组"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

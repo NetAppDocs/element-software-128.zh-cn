@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_listkeyserverskmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,key,server,listing,list,listkeyserverskmip 
+summary: '您可以使用 ListKeyServersKmip 方法列出所有已创建的密钥管理互操作协议 (KMIP) 密钥服务器。您可以通过指定其他参数来筛选结果。' 
+---
+= ListKeyServersKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListKeyServersKmip`列出所有已创建的密钥管理互操作协议 (KMIP) 密钥服务器的方法。您可以通过指定其他参数来筛选结果。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+密钥提供程序ID
+ a| 
+如果指定了该方法，则该方法仅返回分配给指定 KMIP 密钥提供程序的 KMIP 密钥服务器。如果省略，则返回的 KMIP 密钥服务器将不会根据它们是否分配给指定的 KMIP 密钥提供程序进行筛选。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+kmipAssignedProviderIsActive
+ a| 
+过滤器根据 KMIP 密钥服务器对象是否处于活动状态返回这些对象。可能值：
+
+* true：仅返回处于活动状态的 KMIP 密钥服务器（提供当前正在使用的密钥）。
+* false：仅返回不活跃的 KMIP 密钥服务器（不提供任何密钥且可以删除）。
+
+
+如果省略，则返回的 KMIP 密钥服务器不会根据其是否处于活动状态进行筛选。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+kmipHasProviderAssigned
+ a| 
+根据是否已分配 KMIP 密钥提供程序，筛选出 KMIP 密钥服务器。可能值：
+
+* true：仅返回已分配 KMIP 密钥提供程序的 KMIP 密钥服务器。
+* false：仅返回未分配 KMIP 密钥提供程序的 KMIP 密钥服务器。
+
+
+如果省略，则返回的 KMIP 密钥服务器不会根据其是否已分配 KMIP 密钥提供程序进行筛选。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+kmip密钥服务器
+ a| 
+已创建的 KMIP 密钥服务器完整列表。
+ a| 
+link:reference_element_api_keyserverkmip.html["密钥服务器Kmip"]大批
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "ListKeyServersKmip",
+  "params": {},
+"id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "kmipKeyServers": [
+        {
+            "kmipKeyServerName": "keyserverName",
+            "kmipClientCertificate": "dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+            "keyServerID": 15,
+            "kmipAssignedProviderIsActive": true,
+            "kmipKeyServerPort": 5696,
+            "kmipCaCertificate": "MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+            "kmipKeyServerHostnames": [
+                "server1.hostname.com", "server2.hostname.com"
+            ],
+            "keyProviderID": 1
+        }
+    ]
+}
+----
+
+
+== 自版本以来的新版本
+
+11.7

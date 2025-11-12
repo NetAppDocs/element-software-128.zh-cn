@@ -1,0 +1,178 @@
+---
+permalink: api/reference_element_api_createvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,groups,group,create,creating,CreateVolumeAccessGroup 
+summary: 您可以使用 CreateVolumeAccessGroup 创建新的卷访问组。创建卷访问组时，需要给它命名，还可以选择输入启动器和卷。 
+---
+= 创建卷访问组
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `CreateVolumeAccessGroup`创建新的卷访问组。创建卷访问组时，需要给它命名，还可以选择输入启动器和卷。
+
+添加到卷访问组的任何发起方 IQN 都无需 CHAP 身份验证即可访问组中的任何卷。
+
+
+NOTE: 克隆卷不会继承源卷的卷访问组成员身份。
+
+创建卷访问组时，请考虑以下事项：
+
+* 卷访问组最多可以包含 64 个发起方 IQN。
+* 一个发起者只能属于一个卷访问组。
+* 一个卷访问组最多可以包含 2000 个卷。
+* 每个卷访问组最多可以属于四个卷访问组。
+
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+发起者
+ a| 
+要包含在卷访问组中的发起程序 ID 或名称（IQN 和 WWPN）列表。如果传递一个启动器名称列表，则当启动器尚不存在时，将创建这些启动器。如果传递一个发起者 ID 列表，则如果其中任何发起者尚不存在，该方法将返回错误。传递发起者名称已被弃用；应尽可能使用发起者 ID。
+ a| 
+整数数组或字符串数组（已弃用）
+ a| 
+ a| 
+否
+
+
+
+ a| 
+name
+ a| 
+卷访问组的名称。不一定要独一无二，但建议如此。长度必须为 1 到 64 个字符。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+卷
+ a| 
+要包含在卷访问组中的卷 ID 列表。
+ a| 
+整数数组
+ a| 
+ a| 
+否
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+ a| 
+{}
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+卷访问组
+ a| 
+包含有关新创建的卷访问组信息的对象。
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[卷访问组]
+
+
+
+ a| 
+卷访问组ID
+ a| 
+新建卷访问组的 ID。
+ a| 
+整数
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "CreateVolumeAccessGroup",
+   "params": {
+      "name": "myaccessgroup",
+      "initiators": ["iqn.1993-08.org.debian: 01: a31b1d799d5c"],
+      "volumes": [327],
+      "attributes": {}
+   }
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [],
+      "initiatorIDs": [
+        95
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian: 01: a31b1d799d5c"
+      ],
+      "name": "myaccessgroup",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        327
+      ]
+    },
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[获取异步结果]
+* xref:reference_element_api_listsyncjobs.adoc[列表同步作业]
+* xref:reference_element_api_modifyvolume.adoc[修改音量]
+

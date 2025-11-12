@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_system_configuration_getnodefipsdrivesreport.html 
+sidebar: sidebar 
+keywords: individual,fips,feature,support,info,report,get,getting,getnodefipsdrivesreport,drive 
+summary: 您可以使用 GetNodeFipsDrivesReport 方法检查存储集群中单个节点的 FIPS 140-2 驱动器加密功能状态。必须针对单个存储节点运行此方法。 
+---
+= 获取节点Fips驱动器报告
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetNodeFipsDrivesReport`检查存储集群中单个节点的 FIPS 140-2 驱动器加密功能状态的方法。必须针对单个存储节点运行此方法。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+fipsDrives
+ a| 
+包含此节点对 FIPS 140-2 功能支持状态的 JSON 对象。可能值：
+
+* 无：节点不具备 FIPS 功能。
+* 部分：节点具备 FIPS 功能，但节点中的并非所有驱动器都是 FIPS 驱动器。
+* 就绪：节点具备 FIPS 功能，并且节点中的所有驱动器都是 FIPS 驱动器（或者没有驱动器）。
+
+ a| 
+string
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "GetNodeFipsDrivesReport",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "fipsDrives": "None"
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+11.5

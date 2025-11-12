@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-nodes.html 
+summary: 您可以使用混合云控制节点页面查看系统中的存储资产。 
+keywords: netapp, element, cluster, inventory, nodes, storage 
+---
+= 在节点页面上查看您的库存
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看系统中的存储资产，并确定其 IP 地址、名称和软件版本。
+
+您可以查看多节点系统的存储信息。如果link:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["自定义保护域"]可以看到哪些保护域已分配给特定节点。
+
+.步骤
+. 在网页浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://[management node IP address]
+----
+. 使用SolidFire全闪存存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在左侧导航栏中，选择“节点”。
++
+image::hcc_nodes_storage_2nodes.png[混合云控制节点页面图像]
+
++
+
+NOTE: 首次启动新的NetApp Hybrid Cloud Control 会话时，如果管理节点正在管理多个集群，则NetApp Hybrid Cloud Control 节点页面的加载可能会出现延迟。加载时间取决于管理节点正在积极管理的集群数量。后续启动时，您将体验到更快的加载速度。
+
+. 在“节点”页面的“存储”选项卡上，查看以下信息：
++
+.. 双节点集群：存储选项卡上会显示“双节点”标签，并列出关联的见证节点。
+.. 三节点集群：列出存储节点和相关的见证节点。三节点集群部署了一个备用见证节点，以在节点发生故障时保持高可用性。
+.. 包含四个或更多节点的集群：显示包含四个或更多节点的集群的信息。见证节点不适用。如果您最初只有两到三个存储节点，然后添加了更多节点，见证节点仍然会出现。否则，见证节点表将不会显示。
+.. 固件包版本：从管理服务版本 2.14 开始，如果您有运行 Element 12.0 或更高版本的集群，您可以查看这些集群的固件包版本。如果集群中的节点具有不同的固件版本，则可以在“固件包版本”列中看到“多个”。
+.. 自定义保护域：如果集群中使用了自定义保护域，则可以看到集群中每个节点的自定义保护域分配。如果未启用自定义保护域，则不会显示此列。
+
+
+. 您可以通过多种方式处理这些页面上的信息：
++
+.. 要筛选结果列表中的项目，请选择“筛选”图标，然后选择筛选条件。您也可以输入文本作为筛选条件。
+.. 要显示或隐藏列，请选择“显示/隐藏列”图标。
+.. 要下载表格，请选择“下载”图标。
+
+
+
+
+
+TIP: 要查看存储数量，请查看NetApp混合云控制 (HCC) 控制面板。看link:task-hcc-dashboard.html["使用 HCC 控制面板监控存储资源"]。
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

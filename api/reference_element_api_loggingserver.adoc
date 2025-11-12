@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_loggingserver.html 
+sidebar: sidebar 
+keywords: object,objects,loggingServer 
+summary: loggingServer 对象包含有关为存储集群配置的任何日志主机的信息。您可以使用 GetRemoteLoggingHosts 来确定当前日志主机是什么，然后使用 SetRemoteLoggingHosts 设置当前和新日志主机的所需列表。 
+---
+= 日志服务器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+loggingServer 对象包含有关为存储集群配置的任何日志主机的信息。您可以使用 `GetRemoteLoggingHosts`确定当前日志主机是什么，然后使用 `SetRemoteLoggingHosts`设置当前和新增日志主机的所需列表。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+host
+ a| 
+日志服务器的IP地址。
+ a| 
+string
+
+
+
+ a| 
+港口
+ a| 
+用于与日志服务器通信的端口号。
+ a| 
+整数
+
+|===

@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_deleteinitiators.html 
+sidebar: sidebar 
+keywords: delete,deleting,initiator,initiators,DeleteInitiators 
+summary: 您可以使用 DeleteInitiators 从系统（以及任何关联的卷或卷访问组）中删除一个或多个启动器。 
+---
+= 删除发起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `DeleteInitiators`从系统（以及任何关联的卷或卷访问组）中删除一个或多个启动器。
+
+如果 `DeleteInitiators`如果删除参数中提供的某个启动器失败，系统将返回错误，并且不会删除任何启动器（不可能部分完成）。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+发起者
+ a| 
+要删除的发起者 ID 数组。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 错误
+
+此方法可能会返回以下错误：
+
+|===
+
+
+| 名称 | 描述 
+
+
+ a| 
+xInitiator不存在
+ a| 
+如果选择的发起程序名称不存在，则返回该值。
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "id": 5101,
+  "method": "DeleteInitiators",
+  "params": {
+    "initiators": [
+      145,
+      147
+    ]
+  }
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 5101,
+  "result": {}
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

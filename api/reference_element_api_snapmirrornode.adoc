@@ -1,0 +1,95 @@
+---
+permalink: api/reference_element_api_snapmirrornode.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorNode 
+summary: snapMirrorNode 对象包含有关SnapMirror关系中目标ONTAP集群节点的信息。 
+---
+= snapMirrorNode
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorNode 对象包含有关SnapMirror关系中目标ONTAP集群节点的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目标ONTAP系统的 ID。
+ a| 
+整数
+
+
+
+ a| 
+name
+ a| 
+ONTAP节点的名称。
+ a| 
+string
+
+
+
+ a| 
+型号
+ a| 
+ONTAP节点的模型。
+ a| 
+string
+
+
+
+ a| 
+序列号
+ a| 
+ONTAP节点的序列号。
+ a| 
+string
+
+
+
+ a| 
+产品版本
+ a| 
+ONTAP产品版本。
+ a| 
+string
+
+
+
+ a| 
+节点健康状况
+ a| 
+ONTAP集群中节点的健康状况。可能值：
+
+* true
+* false
+
+ a| 
+string
+
+
+
+ a| 
+isNodeEligible
+ a| 
+节点是否符合参与ONTAP集群的条件。可能值：
+
+* true
+* false
+
+ a| 
+string
+
+|===

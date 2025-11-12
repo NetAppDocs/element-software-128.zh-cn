@@ -1,0 +1,28 @@
+---
+permalink: api/concept_element_api_initiator_api_methods.html 
+sidebar: sidebar 
+keywords: initiator,method,methods,API,managing,manage 
+summary: 启动器方法允许您添加、删除、查看和修改 iSCSI 启动器对象，这些对象处理存储系统和外部存储客户端之间的通信。 
+---
+= 发起方 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+启动器方法允许您添加、删除、查看和修改 iSCSI 启动器对象，这些对象处理存储系统和外部存储客户端之间的通信。
+
+* xref:reference_element_api_createinitiators.adoc[创建启动器]
+* xref:reference_element_api_deleteinitiators.adoc[删除发起者]
+* xref:reference_element_api_listinitiators.adoc[列表发起者]
+* xref:reference_element_api_modifyinitiators.adoc[修改启动器]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

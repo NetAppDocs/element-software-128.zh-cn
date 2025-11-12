@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_snapmirrorvserveraggregateinfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVserverAggregateInfo 
+summary: snapMirrorVserverAggregateInfo 对象包含有关目标ONTAP集群中可用数据存储虚拟机（也称为 Vserver）的信息。 
+---
+= snapMirrorVserver聚合信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVserverAggregateInfo 对象包含有关目标ONTAP集群中可用数据存储虚拟机（也称为 Vserver）的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+聚合名称
+ a| 
+分配给虚拟服务器的聚合名称。
+ a| 
+string
+
+
+
+ a| 
+aggrAvailSize
+ a| 
+所分配骨料的可用尺寸。
+ a| 
+整数
+
+|===

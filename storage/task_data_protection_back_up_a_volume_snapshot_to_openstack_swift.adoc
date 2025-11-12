@@ -1,0 +1,32 @@
+---
+permalink: storage/task_data_protection_back_up_a_volume_snapshot_to_openstack_swift.html 
+sidebar: sidebar 
+keywords: volume snapshot, backup, openstack swift S3 object store 
+summary: 您可以将SolidFire快照备份到与 OpenStack Swift 兼容的辅助对象存储中。 
+---
+= 将卷快照备份到 OpenStack Swift 对象存储
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将SolidFire快照备份到与 OpenStack Swift 兼容的辅助对象存储中。
+
+. 点击“数据保护”>“快照”。
+. 点击要备份的快照旁边的“操作”图标。
+. 在出现的菜单中，单击“备份到”。
+. 在“集成备份”对话框的“备份到”下，选择“Swift”。
+. 在“数据格式”下选择一个选项：
++
+** *原生格式*：一种仅能被SolidFire存储系统读取的压缩格式。
+** *未压缩*：一种与其他系统兼容的未压缩格式。
+
+
+. 输入要用于访问对象存储的*URL*。
+. 请输入账户的*用户名*。
+. 请输入账户的*身份验证密钥*。
+. 请输入用于存储备份的*容器*。
+. *可选*：输入*姓名标签*。
+. 点击“开始阅读”。
+

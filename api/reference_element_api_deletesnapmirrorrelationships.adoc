@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_deletesnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,relationships,delete,deleting,DeleteSnapMirrorRelationships 
+summary: Element Web UI 使用 DeleteSnapMirrorRelationships 方法来删​​除源端点和目标端点之间的一个或多个SnapMirror关系。 
+---
+= 删除快照镜像关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element Web UI 使用 `DeleteSnapMirrorRelationships`删除源端点和目标端点之间的一个或多个SnapMirror关系的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+与 Element 存储集群通信的远程ONTAP存储系统的端点 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+目的地流量
+ a| 
+SnapMirror关系中的目标卷或多个卷。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]大批
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+结果
+ a| 
+如果删除操作成功，则此对象包含成功消息。如果操作失败，则会显示错误信息。
+ a| 
+JSON 对象
+
+|===
+
+
+== 自版本以来的新版本
+
+10.1

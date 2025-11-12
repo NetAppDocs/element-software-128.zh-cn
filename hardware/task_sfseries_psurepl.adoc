@@ -1,0 +1,71 @@
+---
+permalink: hardware/task_sfseries_psurepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, power supply replacement, sf-series nodes 
+summary: 每个SolidFire机箱都包含两个电源单元，以实现电源冗余。如果电源单元发生故障，应尽快更换，以确保机箱有冗余电源。 
+---
+= 更换电源单元
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每个SolidFire机箱都包含两个电源单元，以实现电源冗余。如果电源单元发生故障，应尽快更换，以确保机箱有冗余电源。
+
+.你需要什么
+* 您已确定需要更换电源单元。
+* 您已收到替换电源。
+* 您已确认第二个电源装置正在运行。
+* 您佩戴了静电放电 (ESD) 腕带，或者采取了其他防静电措施。
+
+
+.关于此任务
+如果您使用的是带有以下任一节点的 1U 机架式机箱，则适用以下说明：
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+根据您的 Element 软件版本，以下节点不受支持：
+
+* 从 Element 12.8、SF4805、SF9605、SF19210 和 SF38410 存储节点开始。
+* 从 Element 12.7、SF2405 和 SF9608 存储节点以及 FC0025 和 SF-FCN-01 FC 节点开始。
+* 从 Element 12.0、SF3010、SF6010 和 SF9010 存储节点开始。
+
+
+====
+.步骤
+. 将电源线从要更换的电源装置上拔下来。
+. 按下释放按钮，将电源单元从机箱中滑出。
++
+
+IMPORTANT: 请务必双手托住电源适配器的重量。
+
+. 双手握住替换电源单元的边缘，将其与机箱开口对齐，然后轻轻地将电源单元推入机箱。
++
+
+IMPORTANT: 将电源单元滑入机箱时，请勿用力过猛，以免损坏硬件。
+
+. 插入电源线。
+. 请按照包装盒内的说明，将故障设备退回给NetApp 。
++
+您可以联系NetApp支持部门寻求更换流程方面的帮助。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

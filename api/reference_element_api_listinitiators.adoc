@@ -1,0 +1,145 @@
+---
+permalink: api/reference_element_api_listinitiators.html 
+sidebar: sidebar 
+keywords: initiators,initiator,list,listing,listinitiators,iqn,wwpn,iqns,wwpns 
+summary: '您可以使用 ListInitiators 方法获取发起方 IQN 或全球端口名称 (WWPN) 的列表。' 
+---
+= 列表发起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListInitiators`获取发起方 IQN 或全球端口名称 (WWPN) 列表的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+发起者
+ a| 
+要检索的发起方 ID 列表。您可以提供此参数或 startInitiatorID 参数，但不能同时提供两者。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+启动器ID
+ a| 
+列表开始的发起者 ID。您可以提供此参数或启动器参数，但不能同时提供两者。
+ a| 
+整数
+ a| 
+0
+ a| 
+否
+
+
+
+ a| 
+limit
+ a| 
+要返回的启动器对象的最大数量。
+ a| 
+整数
+ a| 
+（无限）
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+发起者
+ a| 
+发起人信息列表。
+ a| 
+xref:reference_element_api_initiator.adoc[发起者]大批
+
+|===
+
+
+== 异常
+
+此方法可能存在以下例外情况：
+
+|===
+
+
+| 名称 | 描述 
+
+
+ a| 
+xInvalidParameter
+ a| 
+如果在同一个方法调用中同时包含 startInitiatorID 和 initiators 参数，则会抛出异常。
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "ListInitiators",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "initiators": [
+      {
+        "alias": "",
+        "attributes": {},
+        "initiatorID": 2,
+        "initiatorName": "iqn.1993-08.org.debian:01:c84ffd71216",
+        "volumeAccessGroups": [
+          1
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

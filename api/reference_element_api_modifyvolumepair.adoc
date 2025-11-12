@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_modifyvolumepair.html 
+sidebar: sidebar 
+keywords: volume,pair,pairs,modify,modifying,edit,editing,changing,change,modifyvolumepair,paired 
+summary: 您可以使用 ModifyVolumePair 方法暂停或重新开始一对卷之间的复制。此方法设置在源卷（具有读/写访问权限的卷）上。 
+---
+= 修改卷对
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyVolumePair`暂停或重启一对卷之间复制的方法。此方法设置在源卷（具有读/写访问权限的卷）上。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+
+
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+volumeID
+ a| 
+待修改卷的识别编号。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+暂停手动
+ a| 
+可以在源（读/写）卷上暂停或重新启动远程复制。可能值：
+
+* 真：暂停卷复制。
+* 错误：重新启动卷复制。
+
+
+如果没有指定值，则不会执行任何复制更改。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+模式
+ a| 
+卷复制模式。可能值：
+
+* 异步：写入操作在本地完成时才会得到确认。集群不会等待写入复制到目标集群。
+* 同步：当数据存储在本地和远程集群上时，源会确认写入操作。
+* 仅快照：仅复制源集群上创建的快照。来自源卷的活动写入不会被复制。
+
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "ModifyVolumePair",
+  "params": {
+    "pausedManual": false,
+    "volumeID": 5,
+    "mode": "sync"
+   },
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {}
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

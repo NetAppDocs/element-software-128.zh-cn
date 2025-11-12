@@ -1,0 +1,30 @@
+---
+permalink: storage/task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html 
+sidebar: sidebar 
+keywords: remove qos policy, disassociate from a volume, modify 
+summary: 您可以通过选择自定义 QoS 设置，从卷中删除 QoS 策略关联。 
+---
+= 移除卷的 QoS 策略关联
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以通过选择自定义 QoS 设置，从卷中删除 QoS 策略关联。
+
+您要修改的卷应该与 QoS 策略关联。
+
+. 选择“管理”>“卷”。
+. 单击包含要修改的 QoS 策略的卷的“操作”图标。
+. 单击“*编辑*”。
+. 在出现的“服务质量”菜单下，点击“自定义设置”。
+. 修改 *最小 IOPS*、*最大 IOPS* 和 *突发 IOPS*，或保持默认设置。
+. 点击“保存更改”。
+
+
+
+
+== 查找更多信息
+
+xref:task_data_manage_volumes_deleting_a_qos_policy.adoc[删除 QoS 策略]

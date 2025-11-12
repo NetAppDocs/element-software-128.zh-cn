@@ -1,0 +1,48 @@
+---
+permalink: api/reference_element_api_remoteclustersnapshotstatus.html 
+sidebar: sidebar 
+keywords: object,objects,remoteClusterSnapshotStatus 
+summary: remoteClusterSnapshotStatus 对象包含存储在远程存储集群上的快照的 UUID 和状态。您可以使用 ListSnapshots 或 ListGroupSnapshots API 方法获取此信息。 
+---
+= 远程集群快照状态
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+这 `remoteClusterSnapshotStatus`对象包含存储在远程存储集群上的快照的 UUID 和状态。您可以通过以下方式获取此信息： `ListSnapshots`或者 `ListGroupSnapshots`API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+远程状态
+ a| 
+从源集群看到的远程快照在目标集群上的复制状态。可能值：
+
+* 当前：快照存在于远程集群上。
+* NotPresent：远程集群上不存在该快照。
+* 同步中：这是一个目标集群，它目前正在复制快照。
+* 已删除：这是一个目标集群。快照已被删除，但仍存在于源文件中。
+
+ a| 
+string
+
+
+
+ a| 
+volumePairUUID
+ a| 
+卷对的通用标识符。
+ a| 
+UUID
+
+|===

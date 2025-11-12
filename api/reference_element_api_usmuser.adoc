@@ -1,0 +1,83 @@
+---
+permalink: api/reference_element_api_usmuser.html 
+sidebar: sidebar 
+keywords: object,objects,usmUser 
+summary: 您可以使用 SNMP usmUser 对象和 SetSnmpInfo API 方法在存储集群上配置 SNMP。 
+---
+= usmUser
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将 SNMP usmUser 对象与以下对象一起使用： `SetSnmpInfo`用于在存储集群上配置 SNMP 的 API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+access
+ a| 
+该用户的SNMP访问类型。可能值：
+
+* 唤醒器：只读访问权限。
+* rwuser：读写访问权限。  Element软件的所有MIB对象都是只读的。
+
+ a| 
+string
+
+
+
+ a| 
+name
+ a| 
+用户名。
+ a| 
+string
+
+
+
+ a| 
+password
+ a| 
+用户的密码。
+ a| 
+string
+
+
+
+ a| 
+密码短语
+ a| 
+用户的密码短语。
+ a| 
+string
+
+
+
+ a| 
+秒级
+ a| 
+此用户所需的凭证类型。可能值：
+
+* noauth：无需密码或口令。
+* 身份验证：用户访问需要密码。
+* priv：用户访问需要密码和口令。
+
+ a| 
+string
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_setsnmpinfo.adoc[设置 SNMP 信息]

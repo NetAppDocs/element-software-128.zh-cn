@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_support_access.html 
+sidebar: sidebar 
+keywords: support access, enable, disable 
+summary: 您可以启用支持访问权限，以便临时允许NetApp支持人员通过 SSH 访问存储节点进行故障排除。 
+---
+= 启用和禁用支持访问
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以启用支持访问权限，以便临时允许NetApp支持人员通过 SSH 访问存储节点进行故障排除。
+
+您必须拥有集群管理员权限才能更改支持访问权限。
+
+. 点击“集群”>“设置”。
+. 在“启用/禁用支持访问权限”部分，输入您希望允许支持人员访问的持续时间（以小时为单位）。
+. 点击“启用支持访问权限”。
+. *可选：*要禁用支持访问权限，请单击“禁用支持访问权限”。
+

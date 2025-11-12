@@ -1,0 +1,22 @@
+---
+permalink: storage/concept_system_manage_nodes_manage_nodes.html 
+sidebar: sidebar 
+keywords: nodes, manage, cluster, capacity rule, pairs, stranded nodes 
+summary: 您可以从集群选项卡的“节点”页面管理SolidFire存储和光纤通道节点。 
+---
+= 管理节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以从集群选项卡的“节点”页面管理SolidFire存储和光纤通道节点。
+
+如果新添加的节点占集群总容量的 50% 以上，则该节点的部分容量将被禁用（“闲置”），以使其符合容量规则。在增加更多存储空间之前，这种情况将一直持续下去。如果添加一个非常大的节点，并且该节点也违反容量规则，则先前被困的节点将不再被困，而新添加的节点将变为被困。为避免这种情况发生，容量应该始终成对添加。当节点发生孤立状态时，会抛出相应的集群故障。
+
+
+
+== 查找更多信息
+
+xref:task_system_manage_nodes_adding_a_node_to_a_cluster.adoc[向集群添加节点]

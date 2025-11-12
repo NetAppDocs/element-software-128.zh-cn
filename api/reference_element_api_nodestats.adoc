@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: nodeStats 对象包含节点的高级活动测量值。您可以使用 GetNodeStats 和 ListNodeStats API 方法获取部分或全部 nodeStats 对象。 
+---
+= 节点统计
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+nodeStats 对象包含节点的高级活动测量值。你可以使用 `GetNodeStats`和 `ListNodeStats`获取部分或全部 nodeStats 对象的 API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+数数
+ a| 
+nodeStats 对象中的样本总数。
+ a| 
+整数
+
+
+
+ a| 
+中央处理器
+ a| 
+CPU 使用率（%）
+ a| 
+整数
+
+
+
+ a| 
+CPU总计
+ a| 
+CPU利用率单调递增。
+ a| 
+整数
+
+
+
+ a| 
+cBytesIn
+ a| 
+集群接口上的字节数。
+ a| 
+整数
+
+
+
+ a| 
+cBytesOut
+ a| 
+集群接口输出字节。
+ a| 
+整数
+
+
+
+ a| 
+sBytesIn
+ a| 
+存储接口上的字节数。
+ a| 
+整数
+
+
+
+ a| 
+sBytesOut
+ a| 
+存储接口输出字节。
+ a| 
+整数
+
+
+
+ a| 
+毫字节
+ a| 
+管理界面上的字节已输入。
+ a| 
+整数
+
+
+
+ a| 
+mBytesOut
+ a| 
+管理界面输出字节。
+ a| 
+整数
+
+
+
+ a| 
+网络利用集群
+ a| 
+集群网络接口的网络接口利用率（%）。
+ a| 
+整数
+
+
+
+ a| 
+网络利用率存储
+ a| 
+存储网络接口的网络接口利用率（%）。
+ a| 
+整数
+
+
+
+ a| 
+节点热
+ a| 
+节点利用率信息。从 Element 12.8 版本开始可用。成员:
+
+* primaryTotalHeat：节点主节点总 IOPS / 节点配置 IOPS 的 24 小时平均值
+* recentPrimaryTotalHeat：节点主节点总 IOPS / 节点配置 IOPS 一小时平均值
+* recentTotalHeat：节点总 IOPS / 节点配置 IOPS 一小时平均值
+* totalHeat：节点总 IOPS / 节点配置 IOPS 的 24 小时平均值
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+读取延迟（单位：秒）总计
+ a| 
+对节点执行读取操作所花费的总时间单调递增。
+ a| 
+整数
+
+
+
+ a| 
+readOps
+ a| 
+对节点进行的总读取操作值单调递增。
+ a| 
+整数
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+直方图数据展示了切片服务负载随时间的变化。
+ a| 
+JSON 对象
+
+
+
+ a| 
+时间戳
+ a| 
+当前时间，格式为UTC+0。
+ a| 
+ISO 8601 日期字符串
+
+
+
+ a| 
+已用内存
+ a| 
+总内存使用量（字节）。
+ a| 
+整数
+
+
+
+ a| 
+写入延迟（单位：秒）总计
+ a| 
+对节点执行写入操作所花费的总时间单调递增。
+ a| 
+整数
+
+
+
+ a| 
+writeOps
+ a| 
+对节点进行的总写入操作值单调递增。
+ a| 
+整数
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getnodestats.adoc[获取节点统计信息]
+* xref:reference_element_api_listnodestats.adoc[列出节点统计信息]
+

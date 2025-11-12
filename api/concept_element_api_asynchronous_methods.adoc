@@ -1,0 +1,39 @@
+---
+permalink: api/concept_element_api_asynchronous_methods.html 
+sidebar: sidebar 
+keywords: async,asynchronous,methods,API 
+summary: 有些 API 方法是异步的，这意味着当方法返回时，它们执行的操作可能尚未完成。异步方法返回一个句柄，您可以查询该句柄以查看操作状态；某些操作的状态信息可能包括完成百分比。 
+---
+= 异步方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+有些 API 方法是异步的，这意味着当方法返回时，它们执行的操作可能尚未完成。异步方法返回一个句柄，您可以查询该句柄以查看操作状态；某些操作的状态信息可能包括完成百分比。
+
+查询异步操作时，其结果可以是以下几种类型之一：
+
+* `DriveAdd`系统正在向集群添加驱动器。
+* `BulkVolume`系统正在卷之间执行复制操作，例如备份或还原。
+* `Clone`系统正在克隆一个卷。
+* `DriveRemoval`系统正在从驱动器复制数据，准备将其从集群中删除。
+* `RtfiPendingNode`系统在将节点添加到集群之前，会在节点上安装兼容的软件。
+
+
+使用异步方法或获取正在运行的异步操作的状态时，请注意以下几点：
+
+* 异步方法会在各个方法的文档中注明。
+* 异步方法返回一个“`asyncHandle`”，这是一个由发出 API 方法所知的句柄。你可以使用该句柄轮询异步操作的状态或结果。
+* 您可以使用 GetAsyncResult 方法获取各个异步方法的结果。当您使用 GetAsyncResult 查询已完成的操作时，系统会返回结果并自动从系统中清除该结果。当您使用 GetAsyncResult 查询未完成的操作时，系统会返回结果，但不会将其清除。
+* 您可以使用 ListAsyncResults 方法获取所有正在运行或已完成的异步方法的状态和结果。在这种情况下，系统不会清除已完成操作的结果。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

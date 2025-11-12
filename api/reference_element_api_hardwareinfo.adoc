@@ -1,0 +1,200 @@
+---
+permalink: api/reference_element_api_hardwareinfo.html 
+sidebar: sidebar 
+keywords: object,objects,hardwareInfo 
+summary: hardwareInfo 对象包含集群中每个节点的硬件和状态的详细信息。您可以使用 GetHardwareInfo API 方法检索此信息。 
+---
+= 硬件信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+hardwareInfo 对象包含集群中每个节点的硬件和状态的详细信息。您可以使用以下方式检索此信息： `GetHardwareInfo` API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+板串口
+ a| 
+DMI板序列号。
+ a| 
+string
+
+
+
+ a| 
+公共汽车
+ a| 
+主板媒体总线信息。
+ a| 
+JSON 对象
+
+
+
+ a| 
+底盘序列号
+ a| 
+机箱序列号。
+ a| 
+string
+
+
+
+ a| 
+驱动硬件
+ a| 
+节点中每个驱动器的信息列表。
+ a| 
+JSON 对象数组
+
+
+
+ a| 
+光纤通道端口
+ a| 
+节点上的光纤通道端口列表。
+ a| 
+整数数组
+
+
+
+ a| 
+硬件配置
+ a| 
+主板外设配置信息。
+ a| 
+JSON 对象
+
+
+
+ a| 
+内核崩溃转储状态
+ a| 
+操作系统内核的崩溃转储配置。
+ a| 
+string
+
+
+
+ a| 
+memory
+ a| 
+固件和系统内存硬件信息。
+ a| 
+JSON 对象
+
+
+
+ a| 
+network
+ a| 
+对各节点网络接口的硬件进行描述。
+ a| 
+JSON 对象
+
+
+
+ a| 
+网络接口
+ a| 
+节点网络接口的状态。
+ a| 
+JSON 对象
+
+
+
+ a| 
+节点槽
+ a| 
+对于 HCI 平台，此节点所在的机箱插槽对应的字母（“A”、“B”、“C”或“D”）。对于存储平台，此值为空。
+ a| 
+string
+
+
+
+ a| 
+nvram
+ a| 
+节点的NVRAM统计信息。
+ a| 
+JSON 对象
+
+
+
+ a| 
+origin
+ a| 
+主板供应商。
+ a| 
+string
+
+
+
+ a| 
+platform
+ a| 
+底盘平台描述。
+ a| 
+JSON 对象
+
+
+
+ a| 
+序列号
+ a| 
+产品的序列号。
+ a| 
+string
+
+
+
+ a| 
+存储
+ a| 
+存储控制器信息。
+ a| 
+JSON 对象
+
+
+
+ a| 
+系统内存
+ a| 
+操作系统内存使用情况和性能信息。
+ a| 
+JSON 对象
+
+
+
+ a| 
+system
+ a| 
+节点机箱类型。
+ a| 
+JSON 对象
+
+
+
+ a| 
+UUID
+ a| 
+节点的唯一标识符。
+ a| 
+UUID
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_gethardwareinfo.adoc[获取硬件信息]

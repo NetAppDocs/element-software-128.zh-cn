@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_fibrechannelport.html 
+sidebar: sidebar 
+keywords: object,objects,fibreChannelPort 
+summary: fiberChannelPort 对象包含有关节点上的各个端口或集群中整个节点的信息。您可以使用 ListNodeFibreChannelPortInfo 方法检索此信息。 
+---
+= 光纤通道端口
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fiberChannelPort 对象包含有关节点上的各个端口或集群中整个节点的信息。您可以使用以下方法检索此信息： `ListNodeFibreChannelPortInfo`方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+固件
+ a| 
+光纤通道端口上安装的固件版本。
+ a| 
+整数
+
+
+
+ a| 
+hbaPort
+ a| 
+单个主机总线适配器（HBA）端口的 ID。
+ a| 
+整数
+
+
+
+ a| 
+型号
+ a| 
+端口上的HBA型号。
+ a| 
+string
+
+
+
+ a| 
+nPortID
+ a| 
+唯一的端口节点ID。
+ a| 
+string
+
+
+
+ a| 
+PCI插槽
+ a| 
+光纤通道节点机箱中容纳 PCI 卡的插槽。
+ a| 
+整数
+
+
+
+ a| 
+序列号
+ a| 
+光纤通道端口上的序列号。
+ a| 
+string
+
+
+
+ a| 
+速度
+ a| 
+端口上HBA的速度。
+ a| 
+string
+
+
+
+ a| 
+状态
+ a| 
+可能值：
+
+* 未知
+* 未出现
+* 联机
+* 脱机
+* 已屏蔽
+* 绕过
+* 诊断
+* 链接
+* 错误
+* 环回
+* 已删除
+
+ a| 
+string
+
+
+
+ a| 
+切换窗口
+ a| 
+光纤通道交换机端口的全球通用名称。
+ a| 
+string
+
+
+
+ a| 
+WWNN
+ a| 
+HBA节点的全球节点名称。
+ a| 
+string
+
+
+
+ a| 
+wwpn
+ a| 
+分配给 HBA 物理端口的全球端口名称。
+ a| 
+string
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listnodefibrechannelportinfo.adoc[列出节点光纤通道端口信息]

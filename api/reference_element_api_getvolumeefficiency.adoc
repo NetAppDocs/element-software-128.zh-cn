@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,stats,measurements,efficiency,GetVolumeEfficiency 
+summary: 您可以使用 GetVolumeEfficiency 方法获取有关卷的信息。此 API 方法中仅使用您提供的体积参数来计算容量。 
+---
+= 获取容量效率
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetVolumeEfficiency`获取体积信息的方法。此 API 方法中仅使用您提供的体积参数来计算容量。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+volumeID
+ a| 
+指定计算容量的体积。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+数据压缩
+ a| 
+通过压缩单个卷上的数据所节省的空间量。以比率表示，其中 1 表示数据存储时未进行压缩。
+ a| 
+浮点型
+
+
+
+ a| 
+重复数据删除
+ a| 
+通过避免数据重复，在单个卷上节省的空间量。以比率形式表示。
+ a| 
+浮点型
+
+
+
+ a| 
+缺失卷
+ a| 
+无法查询效率数据的卷。卷丢失可能是由于垃圾回收 (GC) 时间不足一小时、网络暂时中断或 GC 周期后服务重新启动所致。
+ a| 
+整数数组
+
+
+
+ a| 
+精简配置
+ a| 
+已用空间与分配给数据存储的空间之比。以比率形式表示。
+ a| 
+浮点型
+
+
+
+ a| 
+时间戳
+ a| 
+最后一次时间效率数据是在 GC 之后收集的。
+ a| 
+ISO 8601 数据字符串
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "GetVolumeEfficiency",
+   "params": {
+      "volumeID": 606
+   },
+   "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.001591240821456,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T16:06:33Z"
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

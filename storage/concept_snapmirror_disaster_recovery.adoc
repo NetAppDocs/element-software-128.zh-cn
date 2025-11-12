@@ -1,0 +1,17 @@
+---
+permalink: storage/concept_snapmirror_disaster_recovery.html 
+sidebar: sidebar 
+keywords: dr, disaster recovery, snapmirror 
+summary: 如果运行NetApp Element软件的卷或集群出现问题，请使用SnapMirror功能断开连接并故障转移到目标卷。 
+---
+= 使用SnapMirror进行灾难恢复
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果运行NetApp Element软件的卷或集群出现问题，请使用SnapMirror功能断开连接并故障转移到目标卷。
+
+
+NOTE: 如果原始集群完全失效或不存在，请联系NetApp支持部门以获取进一步帮助。

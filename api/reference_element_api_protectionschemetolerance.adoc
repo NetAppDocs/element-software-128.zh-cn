@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemetolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeTolerance 
+summary: protectionSchemeTolerance 对象包含有关存储集群在特定保护方案下发生故障后是否可以继续读取和写入数据的信息。 
+---
+= 保护方案容差
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionSchemeTolerance 对象包含有关存储集群在特定保护方案下发生故障后是否可以继续读取和写入数据的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+保护计划
+ a| 
+该存储集群的当前保护方案。唯一可能的值是 doubleHelix。
+ a| 
+string
+
+
+
+ a| 
+sustainableFailuresForBlockData
+ a| 
+目前在不丢失相关保护方案的数据块可用性的情况下，可以同时发生的故障数量。
+ a| 
+整数
+
+
+
+ a| 
+可持续的元数据失败
+ a| 
+目前在不丢失相关保护方案的元数据可用性的情况下，可以同时发生的故障数量。
+ a| 
+整数
+
+|===

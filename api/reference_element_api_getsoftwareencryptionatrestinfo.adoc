@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_getsoftwareencryptionatrestinfo.html 
+sidebar: sidebar 
+keywords: system, api, security, get, getting, software encryption at rest 
+summary: 您可以使用 GetSoftwareEncryptionAtRestInfo 方法获取集群用于加密静态数据的信息。 
+---
+= 获取静态软件加密信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetSoftwareEncryptionAtRestInfo`获取集群用于加密静态数据的软件静态加密信息的方法。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+[cols="4*"]
+|===
+| 参数 | 描述 | 类型 | 可选 
+
+
+| 主密钥信息 | 有关当前软件静态加密主密钥的信息。 | 加密密钥信息 | True 
+
+
+| 重新密钥主密钥异步结果ID | 当前或最近一次重新密钥操作的异步结果 ID（如果有），如果尚未删除。 `GetAsyncResult`输出将包含 `newKey`包含有关新主密钥的信息的字段以及 `keyToDecommission`包含旧密钥信息的字段。 | 整数 | True 
+
+
+| 状态 | 当前软件静态加密状态。可能的值有 `disabled`或者 `enabled`。 | string | False 
+
+
+| version | 每次启用静态软件加密时，版本号都会递增。 | 整数 | False 
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+ "method": "getsoftwareencryptionatrestinfo"
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "masterKeyInfo": {
+            "keyCreatedTime": "2021-09-20T23:15:56Z",
+            "keyID": "4d80a629-a11b-40ab-8b30-d66dd5647cfd",
+            "keyManagementType": "internal"
+        },
+        "state": "enabled",
+        "version": 1
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+12.3
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

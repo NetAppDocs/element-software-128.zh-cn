@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_access_ui.html 
+summary: 您可以访问管理用户界面或 REST API 用户界面。 
+keywords: netapp, mnode, management node, api, Element 
+---
+= 访问管理节点
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+从NetApp Element软件版本 11.3 开始，管理节点包含两个 UI：一个用于管理基于 REST 的服务的 UI，以及一个用于管理网络和集群设置以及操作系统测试和实用程序的节点 UI。
+
+对于运行 Element 软件版本 11.3 或更高版本的集群，您可以使用以下两个接口之一：
+
+* 通过使用管理节点用户界面(`https:// [mNode IP}:442`您可以更改网络和集群设置、运行系统测试或使用系统实用程序。
+* 通过使用内置的 REST API 用户界面(`https://[mNode IP}/mnode`），您可以运行或了解与管理节点服务相关的 API，包括代理服务器配置、服务级别更新或资产管理。
+
+
+
+
+== 访问每个节点的管理节点用户界面
+
+通过每个节点的用户界面，您可以访问网络和集群设置，并使用系统测试和实用程序。
+
+.步骤
+. 输入管理节点 IP 地址，后跟 :442，即可访问管理节点的单节点用户界面。
++
+[listing]
+----
+https://[IP address]:442
+----
++
+image::mnode_per_node_442_ui.png[每个节点的管理节点用户界面]
+
+. 出现提示时，请输入管理节点用户名和密码。
+
+
+
+
+== 访问管理节点 REST API 用户界面
+
+通过 REST API UI，您可以访问与服务相关的 API 菜单，这些 API 控制管理节点上的管理服务。
+
+.步骤
+. 要访问管理服务的 REST API 用户界面，请输入管理节点 IP 地址，后跟 `/mnode`：
++
+[listing]
+----
+https://[IP address]/mnode
+----
++
+image::mnode_swagger_ui.png[管理节点 REST API UI]
+
+. 选择“授权”或任何锁形图标，然后输入集群管理员凭据以获取使用 API 的权限。
+
+
+[discrete]
+== 了解更多信息
+
+* link:task_mnode_enable_activeIQ.html["启用Active IQ和NetApp监控"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

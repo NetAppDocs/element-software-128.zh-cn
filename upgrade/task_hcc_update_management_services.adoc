@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_update_management_services.html 
+summary: 作为NetApp SolidFire存储系统升级的一部分，您应该更新管理服务。 
+keywords: netapp, solidfire, cluster, management services, hcc, update management services 
+---
+= 更新管理服务
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+安装管理节点 11.3 或更高版本后，您可以将管理服务更新到最新的捆绑包版本。
+
+从 Element 11.3 管理节点版本开始，管理节点的设计基于新的模块化架构进行了更改，该架构提供单独的服务。这些模块化服务为SolidFire全闪存存储系统提供集中式和扩展式管理功能。管理服务包括系统遥测、日志记录和更新服务、Element Plug-in for vCenter Server 的 QoSSIOC 服务、 NetApp Hybrid Cloud Control 等。
+
+.关于此任务
+管理服务 2.27 捆绑包包含适用于 vCenter Server 5.5 的 Element Plug-in，该插件仅与管理节点 12.8 兼容。当您更新到管理服务 2.27 时，您必须更改升级顺序并在升级到 Element 12.8 之后更新管理服务包，以使管理节点和管理服务之间兼容。
+
+如果您要更新到管理服务 2.21.61 到 2.26.40，则必须在升级到 Element 12.8 之前更新管理服务包。
+
+[NOTE]
+====
+* 管理服务 2.22.7 包含适用于 vCenter Server 5.0 的 Element 插件，其中包含远程插件。如果您使用 Element 插件，则应升级到管理服务 2.22.7 或更高版本，以符合 VMware 移除对本地插件支持的指令。 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-sdks-tools/8-0/developing-local-plug-ins-client-sdk/about-this-book-local/deprecation-of-local-plug-in-architecture.html["了解更多"^]。
+* 有关最新管理服务版本说明（其中描述了主要服务、新功能、错误修复以及每个服务包的解决方法），请参阅 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务版本说明"^]
+
+
+====
+.你需要什么
+从管理服务 2.20.69 版本开始，您必须先接受并保存最终用户许可协议 (EULA)，然后才能使用NetApp Hybrid Cloud Control UI 或 API 升级管理服务：
+
+. 在网页浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 使用存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在界面右上角附近选择“升级”。
+. 最终用户许可协议弹出。向下滚动，选择“我接受当前及所有未来的更新”，然后选择“保存”。
+
+
+.更新选项
+您可以使用NetApp Hybrid Cloud Control UI 或管理节点 REST API 更新管理服务：
+
+* <<使用混合云控制的更新管理服务>>（推荐方法）
+* <<使用管理节点 API 更新管理服务>>
+
+
+
+
+== 使用混合云控制的更新管理服务
+
+您可以使用NetApp Hybrid Cloud Control 更新NetApp管理服务。
+
+管理服务包可在主要版本之外提供增强功能和修复程序，以改进您的安装。
+
+.开始之前
+* 您正在运行管理节点 11.3 或更高版本。
+* 如果您要将管理服务更新到 2.16 或更高版本，并且您运行的是管理节点 11.3 到 11.8 版本，则需要在更新管理服务之前增加管理节点虚拟机的 RAM：
++
+.. 关闭管理节点虚拟机的电源。
+.. 将管理节点虚拟机的内存从 12GB 更改为 24GB。
+.. 启动管理节点虚拟机。
+
+
+* 您的集群版本正在运行NetApp Element软件 11.3 或更高版本。
+* 您的管理服务已升级到至少 2.1.326 版本。  NetApp Hybrid Cloud Control 升级在早期服务包中不可用。
+
+
+
+NOTE: 有关每个服务包版本可用服务的列表，请参阅 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务版本说明"^]。
+
+.步骤
+. 在网页浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 使用存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在界面右上角附近选择“升级”。
+. 在“升级”页面上，选择“管理服务”选项卡。
+. 请按照页面上的说明，将管理服务升级包下载并保存到您的计算机。
+. 选择“浏览”找到您保存的软件包并上传。
++
+上传软件包后，升级将自动开始。
+
++
+升级开始后，您可以在此页面查看升级状态。升级过程中，您可能会与NetApp Hybrid Cloud Control 失去连接，需要重新登录才能查看升级结果。
+
+
+
+
+
+== 使用管理节点 API 更新管理服务
+
+用户最好通过NetApp Hybrid Cloud Control 执行管理服务更新。但是，您可以使用 REST API 手动上传、提取和部署管理服务的服务包更新到管理节点。您可以通过管理节点的 REST API UI 运行每个命令。
+
+.开始之前
+* 您已部署NetApp Element软件管理节点 11.3 或更高版本。
+* 如果您要将管理服务更新到 2.16 或更高版本，并且您运行的是管理节点 11.3 到 11.8 版本，则需要在更新管理服务之前增加管理节点虚拟机的 RAM：
++
+.. 关闭管理节点虚拟机的电源。
+.. 将管理节点虚拟机的内存从 12GB 更改为 24GB。
+.. 启动管理节点虚拟机。
+
+
+* 您的集群版本正在运行NetApp Element软件 11.3 或更高版本。
+* 您的管理服务已升级到至少 2.1.326 版本。  NetApp Hybrid Cloud Control 升级在早期服务包中不可用。
++
+
+NOTE: 有关每个服务包版本可用服务的列表，请参阅 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务版本说明"^]。
+
+
+
+.步骤
+. 在管理节点上打开 REST API 用户界面： `https://<ManagementNodeIP>/mnode`
+. 选择“授权”，然后完成以下步骤：
++
+.. 请输入集群用户名和密码。
+.. 请输入客户端 ID `mnode-client`如果该值尚未填充。
+.. 选择“授权”以开始会话。
+.. 关闭窗口。
+
+
+. 使用以下命令在管理节点上上传并解压服务包： `PUT /services/upload`
+. 在管理节点上部署管理服务： `PUT /services/deploy`
+. 监控更新状态： `GET /services/update/status`
++
+更新成功后，会返回类似于以下示例的结果：
+
++
+[listing]
+----
+{
+"current_version": "2.10.29",
+"details": "Updated to version 2.17.52",
+"status": "success"
+}
+----
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

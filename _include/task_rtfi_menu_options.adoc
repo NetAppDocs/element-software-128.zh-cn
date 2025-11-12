@@ -1,0 +1,98 @@
+= 上传日志
+:allow-uri-read: 
+
+
+如果 RTFI 过程不成功，或者您在初始 RTFI 过程提示时选择不继续，则会显示以下选项菜单。
+
+image::../media/rtfi_menu_options.PNG[SolidFire RTFI 菜单选项]
+
+
+NOTE: 使用以下任何命令选项之前，请先联系NetApp支持。
+
+[cols="25,75"]
+|===
+| 选项 | 描述 
+
+
+| 重新启动 | 退出 RTFI 进程并以当前状态重新启动节点。不进行任何清理工作。 
+
+
+| 关闭电源 | 以优雅的方式关闭节点当前状态的电源。不进行任何清理工作。 
+
+
+| 退出 | 退出 RTFI 进程并打开命令提示符。 
+
+
+| 上传日志 | 收集系统上的所有日志，并将单个合并的日志存档上传到指定的 URL。 
+|===
+
+
+== 上传日志
+
+按照以下步骤收集系统上的所有日志，并将其上传到指定的URL。
+
+.步骤
+. 在 RTFI 选项菜单提示符下，输入 *UploadLogs*。
+. 请输入远程目录信息：
++
+.. 输入包含协议的网址。例如： `\ftp://,scp://,http://,orhttps://` 。
+.. （可选）添加嵌入式用户名和密码。例如： `scp://user:password@URLaddress.com` 。
++
+
+NOTE: 有关所有语法选项，请参阅 https://curl.se/docs/manpage.html["卷曲"^]用户手册。
+
++
+日志文件已上传并保存到指定目录。 `.tbz2`档案。
+
+
+
+
+
+
+
+== 使用支撑隧道
+
+如果您需要NetApp HCI系统或SolidFire全闪存存储系统的技术支持， NetApp支持团队可以远程连接到您的系统。要启动会话并获得远程访问权限， NetApp支持人员可以打开到您环境的反向安全外壳 (SSH) 连接。
+
+您可以联系NetApp支持部门，为 SSH 反向隧道连接打开 TCP 端口。此连接允许NetApp支持人员登录到您的管理节点。
+
+.开始之前
+* 对于管理服务 2.18 及更高版本，管理节点上的远程访问功能默认处于禁用状态。要启用远程访问功能，请参阅 https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["管理管理节点上的 SSH 功能"]。
+* 如果您的管理节点位于代理服务器之后，则需要在 sshd.config 文件中配置以下 TCP 端口：
++
+[cols="15,25,60"]
+|===
+| TCP 端口 | 描述 | 连接方向 
+
+
+| 443 | 通过开放支持隧道进行反向端口转发的 API 调用/HTTPS 连接到 Web UI | 管理节点到存储节点 
+
+
+| 22 | SSH登录访问 | 管理节点到存储节点或从存储节点到管理节点 
+|===
+
+
+.步骤
+* 登录到管理节点并打开终端会话。
+* 根据提示，输入以下内容：
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* 要关闭远程支持通道，请输入以下命令：
++
+`rst --killall`
+
+* （可选）禁用 https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["远程访问功能"]再次。
++
+
+NOTE: 如果您不禁用 SSH，管理节点上的 SSH 将保持启用状态。启用 SSH 的配置会在管理节点上持续存在，即使经过更新和升级，直到手动禁用为止。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

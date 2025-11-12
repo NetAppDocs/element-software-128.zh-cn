@@ -1,0 +1,184 @@
+---
+permalink: api/reference_element_api_updatebulkvolumestatus.html 
+sidebar: sidebar 
+keywords: updatebulkvolumestatus,update,updating,bulk,volume,status,job 
+summary: 您可以使用 UpdateBulkVolumeStatus 方法更新使用 StartBulkVolumeRead 或 StartBulkVolumeWrite 方法启动的批量卷作业的状态。 
+---
+= 更新批量卷状态
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `UpdateBulkVolumeStatus`用于更新您使用以下方式启动的批量作业的状态的方法： `StartBulkVolumeRead`或者 `StartBulkVolumeWrite`方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+密钥
+ a| 
+初始化期间分配的密钥xref:reference_element_api_startbulkvolumeread.adoc[启动批量读取]或者xref:reference_element_api_startbulkvolumewrite.adoc[启动批量卷写入]会议。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+状态
+ a| 
+系统设置给定批量作业的状态。可能值：
+
+* 正在运行：仍在运行的作业。
+* 完成：已完成的工作。
+* 失败：已失败的作业。
+
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+完成百分比
+ a| 
+大宗工程已完成进度百分比。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+message
+ a| 
+返回批量作业完成后该作业的状态。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+属性
+ a| 
+JSON 属性；更新批量作业中的内容。
+ a| 
+JSON 对象
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+状态
+ a| 
+请求的会话状态。已返回状态：
+
+* 准备
+* 积极的
+* 完毕
+* 失败
+
+ a| 
+string
+
+
+
+ a| 
+属性
+ a| 
+返回方法调用中指定的属性。无论值是否发生变化，都会返回这些值。
+ a| 
+string
+
+
+
+ a| 
+网址
+ a| 
+访问节点 Web 服务器的 URL；仅当会话仍处于活动状态时才提供。
+ a| 
+string
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "UpdateBulkVolumeStatus",
+   "params": {
+          "key": "0b2f532123225febda2625f55dcb0448",
+	      "status": "running"
+      },
+   "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {
+	  "status" : "running",
+	  "url" : "https://10.10.23.47:8443/"
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_startbulkvolumeread.adoc[启动批量读取]
+* xref:reference_element_api_startbulkvolumewrite.adoc[启动批量卷写入]
+

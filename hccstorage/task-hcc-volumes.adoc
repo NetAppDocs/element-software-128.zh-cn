@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-volumes.html 
+summary: 您可以使用混合云控制卷页面来监控系统中的卷。 
+keywords: netapp, element, volumes, storage, access groups, initiators, capacity, data protection, QoS 
+---
+= 监控存储集群上的卷
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire系统使用卷来配置存储。卷是可通过网络由 iSCSI 或光纤通道客户端访问的块设备。您可以监控有关访问组、帐户、发起程序、已用容量、快照数据保护状态、iSCSI 会话数以及与卷关联的服务质量 (QoS) 策略的详细信息。
+
+您还可以查看有关活动卷和已删除卷的详细信息。
+
+在这种视图下，您可能首先需要监控“已用容量”列。
+
+只有拥有NetApp Hybrid Cloud Control 管理权限的用户才能访问此信息。
+
+.步骤
+. 在网页浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://[management node IP address]
+----
+. 使用SolidFire全闪存存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在左侧导航蓝色框中，选择SolidFire全闪存存储安装。
+. 在左侧导航栏中，选择集群，然后选择“存储”>“卷”。
++
+image::hcc_volumes_overview_active.png[HCC 卷册页面 > 概览选项卡图片]
+
+. 在“卷”页面上，使用以下选项：
++
+image::hcc_volumes_icons.png[HCC 卷页面图标]
+
++
+.. 选择“筛选”图标，筛选结果。
+.. 选择“隐藏/显示”图标，即可隐藏或显示列。
+.. 点击“刷新”图标刷新数据。
+.. 点击“下载”图标，下载 CSV 文件。
+
+
+. 监控“已用容量”列。如果达到警告、错误或严重阈值，颜色表示已用容量状态：
++
+.. 警告 - 黄色
+.. 错误 - 橙色
+.. 危急 - 红色
+
+
+. 在“卷”视图中，选择选项卡以查看有关卷的更多详细信息：
++
+.. *访问组*：您可以查看从发起程序映射到一组卷以实现安全访问的卷访问组。
++
+查看相关信息 link:../concepts/concept_solidfire_concepts_volume_access_groups.html["卷访问组"]。
+
+.. *帐户*：您可以查看用户帐户，这些帐户允许客户端连接到节点上的卷。创建卷时，会将其分配给特定的用户帐户。
++
+查看相关信息 link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#user-accounts["SolidFire全闪存存储系统用户帐户"]。
+
+.. *发起程序*：您可以查看卷的 iSCSI 发起程序 IQN 或光纤通道 WWPN。添加到访问组的每个 IQN 都可以访问组中的每个卷，而无需 CHAP 身份验证。添加到访问组的每个 WWPN 都允许通过光纤通道网络访问访问组中的卷。
+.. *QoS策略*：您可以查看应用于卷的QoS策略。  QoS 策略将最小 IOPS、最大 IOPS 和突发 IOPS 的标准化设置应用于多个卷。
++
+查看相关信息 link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-performance["性能和QoS策略"]。
+
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 文档"^]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

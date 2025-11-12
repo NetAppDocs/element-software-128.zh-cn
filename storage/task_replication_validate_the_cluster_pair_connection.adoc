@@ -1,0 +1,19 @@
+---
+permalink: storage/task_replication_validate_the_cluster_pair_connection.html 
+sidebar: sidebar 
+keywords: cluster pair connection, validate 
+summary: 集群配对完成后，您可能需要验证集群对连接，以确保复制成功。 
+---
+= 验证集群对连接
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+集群配对完成后，您可能需要验证集群对连接，以确保复制成功。
+
+. 在本地集群上，选择“数据保护”>“集群对”。
+. 在“簇对”窗口中，验证簇对是否已连接。
+. *可选：*返回本地集群和*集群对*窗口，并验证集群对是否已连接。
+

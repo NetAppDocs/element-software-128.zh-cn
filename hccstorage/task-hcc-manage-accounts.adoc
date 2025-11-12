@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-accounts.html 
+summary: 了解如何创建用户帐户并将其与卷关联。 
+keywords: netapp, element, cluster, element, account, user, volume, hybrid cloud control, hcc 
+---
+= 使用NetApp Hybrid Cloud Control 创建和管理用户帐户
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在基于元素的存储系统中，可以创建权威集群用户，以便根据您要授予“管理员”或“只读”用户的权限，启用对NetApp Hybrid Cloud Control 的登录访问权限。除了集群用户之外，还有卷帐户，它允许客户端连接到存储节点上的卷。 
+
+管理以下类型的账户：
+
+* <<管理权威集群帐户>>
+* <<管理批量账户>>
+
+
+
+
+== 启用 LDAP
+
+要将 LDAP 用于任何用户帐户，必须先启用 LDAP。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，选择右上角的“选项”图标，然后选择“用户管理”。
+. 在“用户”页面中，选择“配置 LDAP”。
+. 配置 LDAP 数据库。
+. 选择身份验证类型，即“搜索和绑定”或“直接绑定”。
+. 在保存更改之前，请在页面顶部选择“测试 LDAP 登录”，输入您知道存在的用户的用户名和密码，然后选择“测试”。
+. 选择*保存*。
+
+
+
+
+== 管理权威集群帐户
+
+link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#authoritative-cluster-user-accounts["权威用户帐户"]可通过NetApp Hybrid Cloud Control 的右上角菜单“用户管理”选项进行管理。这些类型的帐户使您能够对与NetApp Hybrid Cloud Control 实例的节点和集群关联的任何存储资产进行身份验证。通过此帐户，您可以管理所有集群中的卷、帐户、访问组等。
+
+
+
+=== 创建权威集群帐户
+
+您可以使用NetApp Hybrid Cloud Control 创建帐户。
+
+该帐户可用于登录NetApp Element软件中的混合云控制、集群的每个节点 UI 和存储集群。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，选择右上角的“选项”图标，然后选择“用户管理”。
+. 选择“创建用户”。
+. 选择认证类型，可以是集群认证或 LDAP 认证。
+. 完成以下其中一项：
++
+** 如果您选择的是 LDAP，请输入 DN。
++
+
+TIP: 要使用 LDAP，必须先启用 LDAP 或 LDAPS。看<<启用 LDAP>>。
+
+** 如果您选择“集群”作为身份验证类型，请输入新帐户的名称和密码。
+
+
+. 选择管理员权限或只读权限。
++
+
+TIP: 要查看NetApp Element软件的权限，请选择“显示旧版权限”。如果选择这些权限的子集，则该帐户将被分配只读权限。如果选择所有旧版权限，则该帐户将被分配管理员权限。
+
++
+
+TIP: 为确保组的所有子组继承权限，请在 LDAP 服务器中创建 DN 组织管理员组。该组的所有子账户都将继承这些权限。
+
+. 勾选表示“我已阅读并接受NetApp最终用户许可协议”的复选框。
+. 选择“创建用户”。
+
+
+
+
+=== 编辑权威集群帐户
+
+您可以使用NetApp Hybrid Cloud Control 更改用户帐户的权限或密码。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，选择右上角的图标，然后选择“用户管理”。
+. 您可以选择 *Cluster*、*LDAP* 或 *Idp* 来筛选用户帐户列表。
++
+如果您在存储集群上配置了 LDAP 用户，则这些帐户的用户类型将显示为“LDAP”。如果您在存储集群上为用户配置了 Idp，则这些帐户的用户类型将显示为“Idp”。
+
+. 在表格的“操作”列中，展开帐户菜单并选择“编辑”。
+. 根据需要进行修改。
+. 选择*保存*。
+. 退出NetApp混合云控制。
++
+
+NOTE: NetApp Hybrid Cloud Control UI 可能需要最多 2 分钟才能刷新库存。要手动刷新库存，请访问 REST API UI 库存服务。 `https://[management node IP]/inventory/1/`然后跑 `GET /installations​/{id}`针对集群。
+
+. 登录NetApp混合云控制中心。
+
+
+
+
+=== 删除权威用户帐户
+
+不再需要时，您可以删除一个或多个帐户。您可以删除 LDAP 用户帐户。
+
+您无法删除权威集群的主管理员用户帐户。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在控制面板中，选择右上角的图标，然后选择“用户管理”。
+. 在“用户”表的“操作”列中，展开帐户菜单并选择“删除”。
+. 选择“是”确认删除。
+
+
+
+
+== 管理批量账户
+
+link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#volume-accounts["批量账户"]在NetApp混合云控制卷表中进行管理。这些账户仅适用于创建它们的存储集群。这些类型的帐户允许您设置网络中卷的权限，但对这些卷之外的内容没有影响。
+
+卷帐户包含访问分配给它的卷所需的 CHAP 身份验证。
+
+
+
+=== 创建批量帐户
+
+为本卷创建一个专属账户。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 从控制面板中选择“存储”>“卷”。
+. 选择“账户”选项卡。
+. 选择“创建账户”按钮。
+. 请输入新帐户的名称。
+. 在 CHAP 设置部分，输入以下信息：
++
+** CHAP节点会话认证的发起方密钥
+** CHAP节点会话认证的目标密钥
++
+
+NOTE: 要自动生成密码，请将凭据字段留空。
+
+
+
+. 选择“创建账户”。
+
+
+
+
+=== 编辑批量帐户
+
+您可以更改 CHAP 信息，并更改帐户是处于激活状态还是锁定状态。
+
+
+IMPORTANT: 删除或锁定与管理节点关联的帐户会导致管理节点无法访问。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 从控制面板中选择“存储”>“卷”。
+. 选择“账户”选项卡。
+. 在表格的“操作”列中，展开帐户菜单并选择“编辑”。
+. 根据需要进行修改。
+. 选择“是”以确认更改。
+
+
+
+
+=== 删除卷帐户
+
+删除不再需要的帐户。
+
+在删除卷帐户之前，请先删除并清除与该帐户关联的所有卷。
+
+
+IMPORTANT: 删除或锁定与管理节点关联的帐户会导致管理节点无法访问。
+
+
+NOTE: 与管理服务关联的持久卷在安装或升级期间分配给新帐户。如果您使用的是持久卷，请勿修改或删除卷或其关联的帐户。如果您删除这些帐户，可能会导致您的管理节点无法使用。
+
+.步骤
+. 使用 Element 存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 从控制面板中选择“存储”>“卷”。
+. 选择“账户”选项卡。
+. 在表格的“操作”列中，展开帐户菜单，然后选择“删除”。
+. 选择“是”确认删除。
+
+
+[discrete]
+== 查找更多信息
+
+* link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html["了解账户"]
+* link:../storage/task_data_manage_accounts_work_with_accounts_task.html["使用 CHAP 处理账户"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

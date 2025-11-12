@@ -1,0 +1,14 @@
+---
+permalink: concepts/concept_solidfire_concepts_initiators.html 
+sidebar: sidebar 
+keywords: netapp, element, initiator, storage volume, element volume, access group 
+summary: 了解发起程序以及如何使用它们来允许对卷访问组中的存储进行访问。 
+---
+= 启动程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+发起程序允许外部客户端访问集群中的卷，作为客户端与卷之间通信的入口点。您可以使用发起程序来实现基于 CHAP 而不是基于帐户的存储卷访问。将单个发起程序添加到卷访问组后，卷访问组成员无需身份验证即可访问添加到该组的所有存储卷。发起者只能属于一个访问组。

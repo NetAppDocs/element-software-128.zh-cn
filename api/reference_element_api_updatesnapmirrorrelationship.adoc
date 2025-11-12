@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_updatesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,relationships,update,updating,destination,volume,updatesnapmirrorrelationship 
+summary: Element 软件 Web UI 使用 UpdateSnapMirrorRelationship 方法使SnapMirror关系中的目标卷成为源卷的最新镜像。 
+---
+= 更新SnapMirror关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element软件的Web用户界面使用 `UpdateSnapMirrorRelationship`使SnapMirror关系中的目标卷成为源卷的最新镜像的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+与 Element 存储集群通信的远程ONTAP存储系统的端点 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+目的地卷
+ a| 
+SnapMirror关系中的目标卷。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+最大转账率
+ a| 
+指定卷之间的最大数据传输速率，单位为千字节每秒。默认值 0 表示无限制，允许SnapMirror关系充分利用可用的网络带宽。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirror关系
+ a| 
+包含有关更新后的SnapMirror关系信息的对象。
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[snapMirror关系]
+
+|===
+
+
+== 自版本以来的新版本
+
+10.1

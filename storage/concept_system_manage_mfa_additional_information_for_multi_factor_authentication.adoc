@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_mfa_additional_information_for_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: mfa, idp, certificates, api method 
+summary: 关于多因素身份验证，您应该注意以下注意事项。 
+---
+= 多因素身份验证的补充信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+关于多因素身份验证，您应该注意以下注意事项。
+
+* 要刷新不再有效的身份提供商 (IdP) 证书，您需要使用非身份提供商管理员用户调用以下 API 方法： `UpdateIdpConfiguration`
+* MFA 与长度小于 2048 位的证书不兼容。默认情况下，集群上会创建一个 2048 位 SSL 证书。调用 API 方法时，应避免设置较小的证书： `SetSSLCertificate`
++
+
+NOTE: 如果集群在升级前使用的证书小于 2048 位，则升级到 Element 12.0 或更高版本后，必须将集群证书更新为 2048 位或更高版本的证书。
+
+* IdP 管理员用户不能直接用于进行 API 调用（例如，通过 SDK 或 Postman），也不能用于其他集成（例如，OpenStack Cinder 或 vCenter 插件）。如果需要创建具有这些权限的用户，请添加 LDAP 集群管理员用户或本地集群管理员用户。
+
+
+
+
+== 查找更多信息
+
+* link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存储"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

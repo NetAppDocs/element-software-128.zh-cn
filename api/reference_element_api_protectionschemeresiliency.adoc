@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemeresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeResiliency 
+summary: protectionSchemeResiliency 对象包含有关存储集群（针对特定保护方案）是否可以自动从其关联的 protectionDomainType 中的一个或多个故障中恢复自身的信息。当存储集群能够通过任何单个存储节点的故障继续读取和写入数据时，该存储集群就被认为是已恢复的（这种状态称为节点容错性）。 
+---
+= 保护方案弹性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionSchemeResiliency 对象包含有关存储集群（针对特定保护方案）是否可以自动从其关联的 protectionDomainType 中的一个或多个故障中恢复自身的信息。当存储集群能够通过任何单个存储节点的故障继续读取和写入数据时，该存储集群就被认为是已恢复的（这种状态称为节点容错）。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+保护计划
+ a| 
+该存储集群的当前保护方案。唯一可能的值是 doubleHelix。
+ a| 
+string
+
+
+
+ a| 
+sustainableFailuresForBlockData
+ a| 
+预测在不丧失自动恢复到节点数据容错状态的能力的情况下，可以同时发生的故障数量。
+ a| 
+整数
+
+
+
+ a| 
+可持续的元数据失败
+ a| 
+预测在不丧失自动恢复到元数据节点容错状态的能力的情况下，可以同时发生的故障数量。
+ a| 
+整数
+
+|===

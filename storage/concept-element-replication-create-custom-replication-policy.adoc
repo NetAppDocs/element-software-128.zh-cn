@@ -1,0 +1,73 @@
+---
+permalink: storage/concept-element-replication-create-custom-replication-policy.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, custom, replication, policy, relationship, 
+summary: 如果关系的默认策略不合适，您可以创建自定义复制策略。 
+---
+= 创建自定义复制策略
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+创建复制关系时，可以使用默认策略或自定义策略。对于自定义统一复制策略，您必须定义一个或多个_规则_，以确定在初始化和更新期间传输哪些快照副本。
+
+如果关系的默认策略不合适，您可以创建自定义复制策略。例如，您可能希望在网络传输中压缩数据，或者修改SnapMirror尝试传输快照副本的次数。
+
+.关于此任务
+复制策略的_策略类型_决定了它支持的关系类型。下表列出了可用的保单类型。
+
+[cols="2*"]
+|===
+
+
+| 策略类型 | 关系类型 
+
+
+ a| 
+async-mirror
+ a| 
+SnapMirror DR
+
+
+
+ a| 
+mirror-vault
+ a| 
+统一复制
+
+|===
+.步骤
+. 创建自定义复制策略：
++
+`snapmirror policy create -vserver _SVM_ -policy policy -type async-mirror|mirror-vault -comment _comment_ -tries _transfer_tries_ -transfer-priority low|normal -is-network-compression-enabled true|false`
+
++
+有关完整的命令语法，请参见手册页。
+
++
+从ONTAP 9.5 开始，您可以使用以下方式指定为SnapMirror同步关系创建通用快照复制计划的计划： `-common-snapshot-schedule`范围。默认情况下， SnapMirror同步关系的常用快照复制计划为一小时。您可以为SnapMirror同步关系的快照复制计划指定 30 分钟到 2 小时之间的值。
+
++
+以下示例为SnapMirror DR 创建自定义复制策略，该策略启用数据传输的网络压缩：
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy create -vserver svm1 -policy DR_compressed -type async-mirror -comment “DR with network compression enabled” -is-network-compression-enabled true
+----
++
+以下示例创建统一复制的自定义复制策略：
+
++
+[listing]
+----
+cluster_dst::> snapmirror policy create -vserver svm1 -policy my_unified -type mirror-vault
+----
+
+
+.完成后
+对于“`mirror-vault`”策略类型，您必须定义规则来确定在初始化和更新期间传输哪些快照副本。
+
+使用 `snapmirror policy show`命令用于验证SnapMirror策略是否已创建。有关完整的命令语法，请参见手册页。

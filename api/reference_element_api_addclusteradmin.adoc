@@ -1,0 +1,157 @@
+---
+permalink: api/reference_element_api_addclusteradmin.html 
+sidebar: sidebar 
+keywords: addclusteradmin,cluster,admin,administrator,adding,add 
+summary: 您可以使用 AddClusterAdmin 方法添加新的集群管理员帐户。集群管理员可以通过 API 和管理工具来管理集群。集群管理员与标准租户帐户完全独立且无关。 
+---
+= 添加集群管理员
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `AddClusterAdmin`添加新集群管理员帐户的方法。集群管理员可以通过 API 和管理工具来管理集群。集群管理员与标准租户帐户完全独立且无关。
+
+每个集群管理员都可以被限制使用 API 的子集。您应该为不同的用户和应用程序使用多个集群管理员帐户。最佳实践是，给予每个集群管理员必要的最低权限；这样可以降低凭证泄露可能造成的影响。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+access
+ a| 
+控制集群管理员可以使用的方法。
+ a| 
+字符串数组
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+接受最终用户许可协议
+ a| 
+接受最终用户许可协议。设置为 true 可向系统中添加集群管理员帐户。如果省略或设置为 false，则方法调用失败。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称/值对列表。
+ a| 
+JSON 对象
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+password
+ a| 
+用于验证此集群管理员身份的密码。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+用户名
+ a| 
+此集群管理员的唯一用户名。长度必须介于 1 到 1024 个字符之间。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群管理员ID
+ a| 
+新创建的集群管理员的 ClusterAdminID。
+ a| 
+整数
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "AddClusterAdmin",
+  "params": {
+    "username": "joeadmin",
+    "password": "68!5Aru268)$",
+    "attributes": {},
+    "acceptEula": true,
+    "access": ["volumes", "reporting", "read"]
+  },
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id":1,
+  "result" : {
+    "clusterAdminID": 2
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_app_b_access_control.adoc[访问控制]

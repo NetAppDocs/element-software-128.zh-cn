@@ -1,0 +1,14 @@
+---
+permalink: setup/task_setup_set_up_an_element_storage_system.html 
+sidebar: sidebar 
+keywords:  
+summary: 设置NetApp Element软件存储系统包括配置存储节点、创建存储集群以及向集群添加驱动器。如果使用光纤通道网络，则可以配置光纤通道节点。 
+---
+= 建立元素存储系统
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+设置NetApp Element软件存储系统包括配置存储节点、创建存储集群以及向集群添加驱动器。如果使用光纤通道网络，则可以配置光纤通道节点。

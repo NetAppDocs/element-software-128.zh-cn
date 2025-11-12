@@ -1,0 +1,88 @@
+---
+permalink: storage/task_monitor_information_about_system_events.html 
+sidebar: sidebar 
+keywords: system events, monitor, view event log 
+summary: 您可以查看系统中检测到的各种事件的相关信息。系统每 30 秒刷新一次事件消息。事件日志显示集群的关键事件。 
+---
+= 查看系统事件信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看系统中检测到的各种事件的相关信息。系统每 30 秒刷新一次事件消息。事件日志显示集群的关键事件。
+
+. 在 Element UI 中，选择“报告”>“事件日志”。
++
+对于每个事件，您都会看到以下信息：
+
++
+|===
+
+
+| 物品 | 描述 
+
+
+ a| 
+ID
+ a| 
+每个事件都关联一个唯一的ID。
+
+
+
+ a| 
+事件类型
+ a| 
+记录的事件类型，例如 API 事件或克隆事件。
+
+
+
+ a| 
+消息
+ a| 
+与该事件相关的消息。
+
+
+
+ a| 
+详细信息
+ a| 
+有助于确定事件发生原因的信息。
+
+
+
+ a| 
+Service ID
+ a| 
+报告该事件的服务（如适用）。
+
+
+
+ a| 
+节点
+ a| 
+报告事件的节点（如果适用）。
+
+
+
+ a| 
+驱动器 ID
+ a| 
+报告该事件的驱动器（如果适用）。
+
+
+
+ a| 
+Event Time
+ a| 
+事件发生的时间。
+
+|===
+
+
+
+
+== 查找更多信息
+
+xref:reference_monitor_event_types.adoc[事件类型]

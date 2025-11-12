@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_listvolumestatsbyaccount.html 
+sidebar: sidebar 
+keywords: volumes,volume,stats,list,listing,account,listvolumestatsbyaccount,activity 
+summary: 您可以使用 ListVolumeStatsByAccount 方法列出每个帐户的高级交易量活动指标。数值是账户所拥有的所有交易量的总和。 
+---
+= 按账户列出交易量统计信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListVolumeStatsByAccount`列出每个账户的高级交易量指标的方法。数值是账户所拥有的所有交易量的总和。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+包含虚拟卷
+ a| 
+默认情况下，响应中包含虚拟卷。要排除虚拟卷，请设置为 false。
+ a| 
+布尔值
+ a| 
+true
+ a| 
+否
+
+
+
+ a| 
+账户
+ a| 
+要返回交易量统计信息的账户 ID 列表。如果省略，则返回所有帐户的统计信息。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+销量统计
+ a| 
+每个账户的卷活动信息列表。*注意：*每个条目的 volumeID 成员均为 0，因为这些值表示账户拥有的所有卷的总和。
+ a| 
+xref:reference_element_api_volumestats.adoc[销量统计]大批
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+"method": "ListVolumeStatsByAccount",
+  "params": {"accounts": [3]},
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeStats": [
+      {
+        "accountID": 3,
+        "nonZeroBlocks": 155040175,
+        "readBytes": 3156273328128,
+        "readBytesLastSample": 0,
+        "readOps": 770574543,
+        "readOpsLastSample": 0,
+        "samplePeriodMSec": 500,
+        "timestamp": "2016-10-17T20:42:26.231661Z",
+        "unalignedReads": 0,
+        "unalignedWrites": 0,
+        "volumeAccessGroups": [],
+        "volumeID": 0,
+        "volumeSize": 1127428915200,
+        "writeBytes": 1051988406272,
+        "writeBytesLastSample": 0,
+        "writeOps": 256833107,
+        "writeOpsLastSample": 0,
+        "zeroBlocks": 120211025
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

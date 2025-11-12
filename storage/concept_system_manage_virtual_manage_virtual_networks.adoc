@@ -1,0 +1,25 @@
+---
+permalink: storage/concept_system_manage_virtual_manage_virtual_networks.html 
+sidebar: sidebar 
+keywords: virtual networks, manage, traffic, clients, vlan tagging 
+summary: SolidFire存储中的虚拟网络允许将位于不同逻辑网络上的多个客户端之间的流量连接到一个集群。使用 VLAN 标记可以在网络堆栈中隔离与集群的连接。 
+---
+= 管理虚拟网络
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire存储中的虚拟网络允许将位于不同逻辑网络上的多个客户端之间的流量连接到一个集群。使用 VLAN 标记可以在网络堆栈中隔离与集群的连接。
+
+
+
+== 查找更多信息
+
+* xref:task_system_manage_virtual_add_a_virtual_network.adoc[添加虚拟网络]
+* xref:task_system_manage_virtual_enable_virtual_routing_and_forwarding.adoc[启用虚拟路由和转发]
+* xref:task_system_manage_virtual_edit_a_virtual_network.adoc[编辑虚拟网络]
+* xref:task_system_manage_virtual_edit_vrf_vlans.adoc[编辑 VRF VLAN]
+* xref:task_system_manage_virtual_delete_a_virtual_network.adoc[删除虚拟网络]
+

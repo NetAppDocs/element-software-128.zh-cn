@@ -1,0 +1,34 @@
+---
+permalink: storage/task_replication_pair_volumes_using_volume_id_or_pairing_key.html 
+sidebar: sidebar 
+keywords: volume pairings, pairing key, volume id, replication 
+summary: 配对过程涉及使用卷 ID 或配对密钥将两个卷配对。 
+---
+= 使用卷 ID 或配对密钥配对卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+配对过程涉及使用卷 ID 或配对密钥将两个卷配对。
+
+. 选择以下方法之一来计算交易对数量：
++
+** 使用卷 ID：如果您拥有对要配对卷的两个集群的集群管理员访问权限，请使用此方法。此方法使用远程集群上卷的卷 ID 来发起连接。
+** 使用配对密钥：如果您只有源集群的集群管理员权限，请使用此方法。此方法会生成一个配对密钥，该密钥可用于远程集群以完成卷对。
++
+
+NOTE: 卷配对密钥包含卷信息的加密版本，可能包含敏感信息。请仅以安全的方式共享此密钥。
+
+
+
+
+
+
+
+== 查找更多信息
+
+* xref:task_replication_pair_volumes_using_a_volume_id.adoc[使用卷 ID 配对卷]
+* xref:task_replication_pair_volumes_using_a_pairing_key.adoc[使用配对密钥配对卷]
+

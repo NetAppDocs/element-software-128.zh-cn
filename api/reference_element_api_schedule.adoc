@@ -1,0 +1,233 @@
+---
+permalink: api/reference_element_api_schedule.html 
+sidebar: sidebar 
+keywords: object,objects,schedule 
+summary: 计划对象包含有关为自动创建卷快照而创建的计划的信息。您可以使用 ListSchedules API 方法检索所有日程安排信息。 
+---
+= 日程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+计划对象包含有关为自动创建卷快照而创建的计划的信息。您可以使用以下方式检索所有班次的班次信息： `ListSchedules` API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+属性
+ a| 
+表示日程安排发生的频率。可能值：
+
+* 星期
+* 月份中的某一天
+* Time Interval
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+hasError
+ a| 
+指示日程表是否存在错误。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+小时
+ a| 
+显示距离创建下一个快照还有多少小时。可能的值是 0 到 24。
+ a| 
+整数
+
+
+
+ a| 
+上次运行状态
+ a| 
+指示上次计划快照的状态。可能值：
+
+* 成功
+* 失败
+
+ a| 
+string
+
+
+
+ a| 
+lastRunTimeStart
+ a| 
+表示上次日程开始的时间。
+ a| 
+ISO 8601 日期字符串
+
+
+
+ a| 
+分钟
+ a| 
+显示距离创建下一个快照还剩多少分钟。可能的值范围为 0 到 59。
+ a| 
+整数
+
+
+
+ a| 
+月天
+ a| 
+指示每月将进行快照的日期。
+ a| 
+大批
+
+
+
+ a| 
+暂停
+ a| 
+指示日程是否暂停。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+再次发生的
+ a| 
+指示该日程安排是否为周期性安排。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+下一个间隔
+ a| 
+指示调度程序下次运行时是否会运行该计划。如果为真，则计划将在调度程序下次激活时运行，然后该值将设置回假。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+计划ID
+ a| 
+日程表的唯一标识符。
+ a| 
+整数
+
+
+
+ a| 
+日程信息
+ a| 
+包括为计划赋予的唯一名称、创建的快照的保留期限以及创建快照的卷的卷 ID。有效值：
+
+* `enableRemoteReplication`：指示是否应将快照包含在远程复制中。  （布尔值）
+* `ensureSerialCreation`：指定如果先前的快照复制正在进行中，是否应允许创建新的快照。  （布尔值）
+* `name`要使用的快照名称。  （细绳）
+* `retention`快照保留的时间。根据时间不同，它会以以下格式之一显示：
++
+** `fifo`快照按先进先出 (FIFO) 原则保留。如果快照为空，则永久保留。  （细绳）
+** 时:分:秒
+
+
+* `volumeID`：要包含在快照中的卷的 ID。  （整数）
+* `volumes`：要包含在组快照中的卷 ID 列表。  （整数数组）
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+计划名称
+ a| 
+分配给该日程表的唯一名称。
+ a| 
+string
+
+
+
+ a| 
+计划类型
+ a| 
+目前仅支持计划快照类型。
+ a| 
+string
+
+
+
+ a| 
+snapMirrorLabel
+ a| 
+要应用于 scheduleInfo 中包含的已创建的快照或组快照的 snapMirrorLabel。如果未设置，则此值为空。
+ a| 
+string
+
+
+
+ a| 
+起始日期
+ a| 
+表示日程安排首次开始或即将开始的日期；格式为 UTC 时间。
+ a| 
+ISO 8601 日期字符串
+
+
+
+ a| 
+待删除
+ a| 
+指示该日程是否被标记为删除。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+工作日
+ a| 
+指示将在星期几进行快照。
+ a| 
+大批
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listschedules.adoc[列出日程表]

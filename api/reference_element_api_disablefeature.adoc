@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_disablefeature.html 
+sidebar: sidebar 
+keywords: SNMP,disable,disabling,DisableFeature,vvols,virtual volumes 
+summary: 您可以使用 DisableFeature 方法来禁用 VolumeLoadBalanceOnActualIOPS。 
+---
+= 禁用功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `DisableFeature`禁用方法 `VolumeLoadBalanceOnActualIOPS`特征。 `VolumeLoadBalanceOnActualIOPS`默认情况下已禁用。
+
+[NOTE]
+====
+如果尝试禁用其他功能（例如 VVols），则会出现以下错误消息：
+
+[listing]
+----
+{"error":{"code":500,"message":"VolumeLoadBalanceOnActualIOPS is the only feature that can be disabled","name":"xAPINotPermitted"},"id":null}
+----
+====
+
+
+== 参数
+
+该方法有以下输入参数。
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+功能
+ a| 
+禁用集群功能。可能的值：
+
+* `VolumeLoadBalanceOnActualIOPS`：禁用基于实际 IOPS 而非最小 IOPS 的切片均衡。
+
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "DisableFeature",
+    "params": {
+        "feature" : "VolumeLoadBalanceOnActualIOPS"
+    },
+    "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== 自版本以来的新版本
+
+12.8

@@ -1,0 +1,29 @@
+---
+permalink: storage/task_system_manage_cluster_set_the_cluster_full_threshold.html 
+sidebar: sidebar 
+keywords: cluster fullness, setting threshold, metadata, warning 
+summary: 您可以使用以下步骤更改系统生成块簇已满警告的级别。此外，您可以使用 ModifyClusterFullThreshold API 方法来更改系统生成块或元数据警告的级别。 
+---
+= 设置集群满阈值
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用以下步骤更改系统生成块簇已满警告的级别。此外，您可以使用 ModifyClusterFullThreshold API 方法来更改系统生成块或元数据警告的级别。
+
+.你需要什么
+您必须拥有集群管理员权限。
+
+.步骤
+. 点击“集群”>“设置”。
+. 在集群完全设置部分，输入一个百分比，表示在 Helix 无法从节点故障中恢复之前剩余容量为 _% 时发出警告警报。
+. 点击“保存更改”。
+
+
+
+
+== 查找更多信息
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["元素的块空间阈值是如何计算的"^]

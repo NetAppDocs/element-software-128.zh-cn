@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_back_up_and_restore_volumes.html 
+sidebar: sidebar 
+keywords: volumes, backup and restore 
+summary: 您可以将卷备份和恢复到其他SolidFire存储，以及与 Amazon S3 或 OpenStack Swift 兼容的辅助对象存储。 
+---
+= 备份和恢复卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将卷备份和恢复到其他SolidFire存储，以及与 Amazon S3 或 OpenStack Swift 兼容的辅助对象存储。
+
+从 OpenStack Swift 或 Amazon S3 恢复卷时，需要原始备份过程中的清单信息。如果您要恢复备份在SolidFire存储系统上的卷，则不需要清单信息。
+
+
+
+== 查找更多信息
+
+* xref:task_data_protection_back_up_volume_to_amazon_s3.adoc[将卷备份到 Amazon S3 对象存储]
+* xref:task_data_protection_back_up_volume_to_openstack_swift.adoc[将卷备份到 OpenStack Swift 对象存储]
+* xref:task_data_protection_back_up_volume_to_solidfire.adoc[将卷备份到SolidFire存储集群]
+* xref:task_data_protection_restore_volume_from_backup_on_amazon_s3.adoc[从 Amazon S3 对象存储的备份恢复卷]
+* xref:task_data_protection_restore_volume_from_backup_on_openstack_swift.adoc[从备份恢复 OpenStack Swift 对象存储中的卷]
+* xref:task_data_protection_restore_volume_from_backup_on_solidfire.adoc[从SolidFire存储集群上的备份恢复卷]
+

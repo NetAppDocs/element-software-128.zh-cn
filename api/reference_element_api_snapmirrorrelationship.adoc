@@ -1,0 +1,243 @@
+---
+permalink: api/reference_element_api_snapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorRelationship 
+summary: snapMirrorRelationship 对象包含有关 Element 卷和ONTAP卷之间SnapMirror关系的信息。 
+---
+= snapMirror关系
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorRelationship 对象包含有关 Element 卷和ONTAP卷之间SnapMirror关系的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目标ONTAP系统的 ID。
+ a| 
+整数
+
+
+
+ a| 
+snapMirror关系ID
+ a| 
+ListSnapMirrorRelationships 返回的数组中每个 snapMirrorRelationship 对象的唯一标识符。此 UUID 由ONTAP系统创建并返回。
+ a| 
+string
+
+
+
+ a| 
+源卷
+ a| 
+描述源体积的对象。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+
+
+
+ a| 
+目的地卷
+ a| 
+描述目标卷的对象。
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+
+
+
+ a| 
+当前最大传输速率
+ a| 
+源卷和目标卷之间的当前最大传输速率，单位为千字节每秒。
+ a| 
+整数
+
+
+
+ a| 
+isHealthy
+ a| 
+这段关系是否健康。可能值：
+
+* 没错：这段关系很健康。
+* 错误：这段关系并不健康。这可能是由于手动或计划更新失败或中止，或者由于上次计划更新延迟造成的。
+
+ a| 
+布尔值
+
+
+
+ a| 
+延迟时间
+ a| 
+目标卷上的数据比源卷上的数据滞后的时间（以秒为单位）。
+ a| 
+整数
+
+
+
+ a| 
+上次转账持续时间
+ a| 
+最后一次转账完成所用的时间（以秒为单位）。
+ a| 
+整数
+
+
+
+ a| 
+最后传输错误
+ a| 
+描述上次传输失败原因的消息。
+ a| 
+string
+
+
+
+ a| 
+上次传输大小
+ a| 
+上次传输过程中传输的总字节数。
+ a| 
+整数
+
+
+
+ a| 
+lastTransferEndTimestamp
+ a| 
+最后一次转账结束的时间戳。
+ a| 
+ISO 8601 日期字符串
+
+
+
+ a| 
+最后转移类型
+ a| 
+该关系中先前转账的类型。
+ a| 
+string
+
+
+
+ a| 
+最大转账率
+ a| 
+指定卷之间的最大数据传输速率，单位为千字节每秒。默认值 0 表示无限制，允许SnapMirror关系充分利用可用的网络带宽。
+ a| 
+整数
+
+
+
+ a| 
+镜像州
+ a| 
+SnapMirror关系的镜像状态。可能值：
+
+* 未初始化：目标卷尚未初始化。
+* snapmirrored：目标卷已初始化，可以接收SnapMirror更新。
+* 断开连接：目标卷是读写的，并且存在快照。
+
+ a| 
+string
+
+
+
+ a| 
+最新快照
+ a| 
+目标卷上最新快照副本的名称。
+ a| 
+string
+
+
+
+ a| 
+策略名称
+ a| 
+指定关系的ONTAP SnapMirror策略的名称。可以使用 ListSnapMirrorPolicies 获取可用策略列表。例如，值为“`MirrorLatest`”和“`MirrorAndVault`”。
+ a| 
+string
+
+
+
+ a| 
+策略类型
+ a| 
+ONTAP SnapMirror关系策略的类型。请参阅 ListSnapMirrorPolicies。例如：“`async_mirror`”或“`mirror_vault`”。
+ a| 
+string
+
+
+
+ a| 
+关系进展
+ a| 
+关系状态返回的当前关系活动迄今为止已处理的总字节数。只有当“relationshipStatus”成员指示活动正在进行时，才会设置此属性。
+ a| 
+整数
+
+
+
+ a| 
+关系状态
+ a| 
+SnapMirror合作关系现状。可能值：
+
+* 闲置
+* 转移
+* 检查
+* 静止
+* 平静下来
+* queued
+* 准备
+* 最终确定
+* 中止
+* 打破
+
+ a| 
+string
+
+
+
+ a| 
+关系类型
+ a| 
+SnapMirror关系的类型。在运行 Element 软件的存储集群上，此值始终为“`extended_data_protection`”。
+ a| 
+string
+
+
+
+ a| 
+计划名称
+ a| 
+ONTAP系统上预先存在的 cron 计划的名称，用于更新SnapMirror关系。可以使用 ListSnapMirrorSchedules 获取可用日程列表。
+ a| 
+string
+
+
+
+ a| 
+不健康的原因
+ a| 
+这段关系不健康的原因。
+ a| 
+string
+
+|===

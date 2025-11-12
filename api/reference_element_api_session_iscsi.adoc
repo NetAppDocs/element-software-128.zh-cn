@@ -1,0 +1,234 @@
+---
+permalink: api/reference_element_api_session_iscsi.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: '会话 (iSCSI) 对象包含有关每个卷的 iSCSI 会话的详细信息。您可以使用 ListISCSISessions API 方法检索 iSCSI 会话信息。' 
+---
+= 会话（iSCSI）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+会话（iSCSI）对象包含有关每个卷的 iSCSI 会话的详细信息。您可以使用以下命令检索 iSCSI 会话信息： `ListISCSISessions` API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+accountID
+ a| 
+用于 CHAP 身份验证的帐户的帐户 ID（如有）。
+ a| 
+整数
+
+
+
+ a| 
+帐户名称
+ a| 
+用于 CHAP 身份验证的帐户名称（如有）。
+ a| 
+string
+
+
+
+ a| 
+身份验证
+ a| 
+此 iSCSI 会话的身份验证信息。
+ a| 
+xref:reference_element_api_iscsiauthentication.adoc[ISCSI身份验证]
+
+
+
+ a| 
+创建时间
+ a| 
+iSCSI 会话的创建时间，采用 UTC+0 格式。
+ a| 
+ISO 8601 日期字符串
+
+
+
+ a| 
+驱动器ID
+ a| 
+与承载会话的传输服务关联的驱动器 ID。
+ a| 
+整数
+
+
+
+ a| 
+驱动器 ID
+ a| 
+列出报告故障的驱动器的驱动器 ID。如果无适用，则列表为空。
+ a| 
+整数数组
+
+
+
+ a| 
+发起者
+ a| 
+有关此 iSCSI 会话服务器发起程序的信息。成员:
+
+* 别名：分配给发起者的友好名称。
+* 属性：此发起者的属性。
+* initiatorID：此发起者的 ID。
+* initiatorName：此发起者的名称。
+* volumeAccessGroups：与此启动器关联的卷访问组列表。
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+发起者IP
+ a| 
+iSCSI 服务器发起程序的 IP 地址和端口号。
+ a| 
+string
+
+
+
+ a| 
+发起者名称
+ a| 
+iSCSI 服务器发起程序的 iSCSI 限定名称 (IQN)。
+ a| 
+string
+
+
+
+ a| 
+发起方端口名称
+ a| 
+发起者名称与发起者会话 ID 结合使用，可识别发起者端口。
+ a| 
+string
+
+
+
+ a| 
+发起者会话 ID
+ a| 
+由发起方提供的 48 位 ID，用于标识 iSCSI 会话属于该发起方。
+ a| 
+整数
+
+
+
+ a| 
+msSinceLastIscsiPDU
+ a| 
+自本次会话收到最后一个 iSCSI PDU 以来所经过的时间（以毫秒为单位）。
+ a| 
+整数
+
+
+
+ a| 
+msSinceLastScsiCommand
+ a| 
+自本次会话收到最后一个 SCSI 命令以来所经过的时间（以毫秒为单位）。
+ a| 
+整数
+
+
+
+ a| 
+nodeID
+ a| 
+与承载会话的传输服务关联的节点 ID。
+ a| 
+整数
+
+
+
+ a| 
+服务ID
+ a| 
+承载该会话的传输服务的 serviceID。
+ a| 
+整数
+
+
+
+ a| 
+sessionID
+ a| 
+iSCSI 会话 ID。
+ a| 
+整数
+
+
+
+ a| 
+目标IP
+ a| 
+iSCSI 存储目标的 IP 地址和端口号。
+ a| 
+string
+
+
+
+ a| 
+目标名称
+ a| 
+iSCSI 目标的 IQN。
+ a| 
+string
+
+
+
+ a| 
+目标端口名称
+ a| 
+targetName 与目标门户组标签结合使用，可识别目标端口。
+ a| 
+string
+
+
+
+ a| 
+虚拟网络 ID
+ a| 
+与会话关联的虚拟网络 ID。
+ a| 
+整数
+
+
+
+ a| 
+volumeID
+ a| 
+会话关联的卷的 volumeID（如果有）。
+ a| 
+整数
+
+
+
+ a| 
+卷实例
+ a| 
+标识与 iSCSI 会话关联的卷对象（如果有）。
+ a| 
+整数
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listiscsisessions.adoc[列出 ISCSI 会话]

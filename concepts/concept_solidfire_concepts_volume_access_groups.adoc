@@ -1,0 +1,25 @@
+---
+permalink: concepts/concept_solidfire_concepts_volume_access_groups.html 
+sidebar: sidebar 
+keywords: volume access groups, volumes, access volumes 
+summary: NetApp SolidFire存储中的卷访问组允许 iSCSI 发起程序 IQN 或光纤通道 WWPN 访问一组卷。添加到访问组的每个 IQN 都可以在不使用 CHAP 身份验证的情况下访问组中的每个卷。将每个 WWPN 添加到访问组即可启用对访问组中卷的光纤通道网络访问。 
+---
+= 卷访问组
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过创建和使用卷访问组，您可以控制对一组卷的访问。当您将一组卷和一组启动器与卷访问组关联时，该访问组将授予这些启动器对该组卷的访问权限。
+
+NetApp SolidFire存储中的卷访问组允许 iSCSI 发起程序 IQN 或光纤通道 WWPN 访问一组卷。添加到访问组的每个 IQN 都可以在不使用 CHAP 身份验证的情况下访问组中的每个卷。将每个 WWPN 添加到访问组即可启用对访问组中卷的光纤通道网络访问。
+
+卷访问组具有以下限制：
+
+* 每个卷访问组最多可有 128 个发起者。
+* 每个卷最多可有 64 个访问组。
+* 一个访问组最多可以包含 2000 卷。
+* 一个 IQN 或 WWPN 只能属于一个卷访问组。
+* 对于光纤通道集群，单个卷最多可以属于四个访问组。
+

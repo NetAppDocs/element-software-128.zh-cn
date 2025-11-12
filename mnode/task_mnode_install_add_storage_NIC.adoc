@@ -1,0 +1,125 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_install_add_storage_NIC.html 
+summary: 如果您使用额外的网卡进行存储，则应设置未标记或已标记的网络接口。 
+keywords: netapp, element, management node, mnode, network, nic, storage nic 
+---
+= 配置存储网络接口控制器（NIC）
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您使用额外的网卡进行存储，则可以通过 SSH 连接到管理节点，或者使用 vCenter 控制台并运行 curl 命令来设置标记或未标记的网络接口。
+
+.开始之前
+* 您知道您的 eth0 IP 地址。
+* 您的集群版本正在运行NetApp Element软件 11.3 或更高版本。
+* 您已部署管理节点 11.3 或更高版本。
+
+
+.配置选项
+请选择与您的环境相关的选项：
+
+* <<为未标记的网络接口配置存储网络接口控制器 (NIC)>>
+* <<为带标签的网络接口配置存储网络接口控制器 (NIC)>>
+
+
+
+
+== 为未标记的网络接口配置存储网络接口控制器 (NIC)
+
+.步骤
+. 打开 SSH 或 vCenter 控制台。
+. 请将以下命令模板中的值替换为相应的值，然后运行该命令：
++
+
+NOTE: 值用以下方式表示 `$`针对新存储网络接口的每个必需参数。这 `cluster`以下模板中的对象是必需的，可用于管理节点主机名重命名。 `--insecure`或者 `-k`生产环境中不应使用选项。
+
++
+[listing]
+----
+curl -u $mnode_user_name:$mnode_password --insecure -X POST \
+https://$mnode_IP:442/json-rpc/10.0 \
+-H 'Content-Type: application/json' \
+-H 'cache-control: no-cache' \
+-d ' {
+     "params": {
+               "network": {
+                          "$eth1": {
+                                   "#default" : false,
+                                   "address" : "$storage_IP",
+                                   "auto" : true,
+                                   "family" : "inet",
+                                   "method" : "static",
+                                   "mtu" : "9000",
+                                   "netmask" : "$subnet_mask",
+                                   "status" : "Up"
+                                   }
+                          },
+               "cluster": {
+                         "name": "$mnode_host_name"
+                         }
+             },
+    "method": "SetConfig"
+}
+'
+----
+
+
+
+
+== 为带标签的网络接口配置存储网络接口控制器 (NIC)
+
+.步骤
+. 打开 SSH 或 vCenter 控制台。
+. 请将以下命令模板中的值替换为相应的值，然后运行该命令：
++
+
+NOTE: 值用以下方式表示 `$`针对新存储网络接口的每个必需参数。这 `cluster`以下模板中的对象是必需的，可用于管理节点主机名重命名。 `--insecure`或者 `-k`生产环境中不应使用选项。
+
++
+[listing]
+----
+curl -u $mnode_user_name:$mnode_password --insecure -X POST \
+https://$mnode_IP:442/json-rpc/10.0 \
+-H 'Content-Type: application/json' \
+-H 'cache-control: no-cache' \
+-d ' {
+     "params": {
+               "network": {
+                          "$eth1": {
+                                   "#default" : false,
+                                   "address" : "$storage_IP",
+                                   "auto" : true,
+                                   "family" : "inet",
+                                   "method" : "static",
+                                   "mtu" : "9000",
+                                   "netmask" : "$subnet_mask",
+                                   "status" : "Up",
+                                   "virtualNetworkTag" : "$vlan_id"
+                                   }
+                          },
+               "cluster": {
+                         "name": "$mnode_host_name",
+                         "cipi": "$eth1.$vlan_id",
+                         "sipi": "$eth1.$vlan_id"
+                         }
+             },
+    "method": "SetConfig"
+}
+'
+----
+
+
+[discrete]
+== 了解更多信息
+
+* link:task_mnode_add_assets.html["将控制器资产添加到管理节点"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

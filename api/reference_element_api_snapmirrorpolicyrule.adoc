@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicyrule.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicyRule 
+summary: snapMirrorPolicyRule 对象包含有关SnapMirror策略中规则的信息。 
+---
+= snapMirrorPolicyRule
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorPolicyRule 对象包含有关SnapMirror策略中规则的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorLabel
+ a| 
+快照副本标签，用于在扩展数据保护关系中选择快照副本。
+ a| 
+string
+
+
+
+ a| 
+保持计数
+ a| 
+指定规则在SnapMirror目标卷上保留的最大快照副本数。
+ a| 
+整数
+
+|===

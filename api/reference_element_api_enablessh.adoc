@@ -1,0 +1,67 @@
+---
+permalink: api/reference_element_api_enablessh.html 
+sidebar: sidebar 
+keywords: SSH,enable,enabling,single,node,EnableSSH 
+summary: 您可以使用 EnableSsh 方法为单个节点启用 SSH 服务。此方法不会影响集群范围内的 SSH 超时持续时间，也不会使节点免受全局 SSH 超时导致的 SSH 禁用。 
+---
+= 启用SSH
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableSsh`为单个节点启用安全外壳（SSH）服务的方法。此方法不会影响集群范围内的 SSH 超时持续时间，也不会使节点免受全局 SSH 超时导致的 SSH 禁用。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+启用
+ a| 
+此节点的 SSH 服务状态。
+ a| 
+布尔值
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "EnableSsh",
+  "params": {
+     },
+  "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {"enabled": true}
+}
+----

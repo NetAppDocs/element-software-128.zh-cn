@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_listnetworkinterfacestats.html 
+sidebar: sidebar 
+keywords: network,interface,stats,statistics,interfaces,list,listing,listnetworkinterfacestats 
+summary: 您可以使用 ListNetworkInterfaceStats 方法列出节点上每个网络接口的统计信息。此 API 方法旨在用于单个节点；访问单个节点需要用户 ID 和密码身份验证。但是，如果在方法调用中将参数 force 的值设为 true，则可以在集群上使用此方法。在集群上使用该参数时，将列出所有接口。 
+---
+= 列出网络接口统计信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListNetworkInterfaceStats`用于列出节点上每个网络接口的丢包数和各种错误类型的统计信息的方法。此 API 方法旨在用于单个节点；访问单个节点需要用户 ID 和密码身份验证。但是，如果在方法调用中将参数 force 的值设为 true，则可以在集群上使用此方法。在集群上使用该参数时，将列出所有接口的网络统计信息。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+| 网络接口统计信息 | 存储节点的每个网络接口的网络统计信息列表，例如丢包数和各种类型的网络错误。 | xref:reference_element_api_networkinterfacestats.adoc[网络接口统计信息]大批 
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+"method": "ListNetworkInterfaceStats",
+"params": {},
+"id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "networkInterfaceStats": [
+        {
+            "rxErrors": 1,
+            "rxPackets": 1,
+            "txErrors": 1,
+            "rxDropped": 1,
+            "txCarrierErrors": 1,
+            "rxOverErrors": 1,
+            "rxMissedErrors": 1,
+            "txPackets": 1,
+            "name": "if_name",
+            "rxLengthErrors": 1,
+            "collisions": 1,
+            "rxFifoErrors": 1,
+            "txBytes": 1,
+            "rxBytes": 1,
+            "rxFrameErrors": 1,
+            "rxCrcErrors": 1,
+            "txFifoErrors": 1
+        }
+    ]
+}
+----
+
+
+== 自版本以来的新版本
+
+12.3

@@ -1,0 +1,502 @@
+---
+section: storage
+title: 使用 Element 软件管理存储
+entries:
+- title: 了解如何管理存储
+  url: "/storage/index.html"
+- title: 访问 Element 软件用户界面
+  url: "/storage/task_post_deploy_access_the_element_software_user_interface.html"
+- title: 部署后配置SolidFire系统选项
+  entries:
+  - title: 了解部署后的配置选项
+    url: "/storage/task_post_deploy_configure_system_options.html"
+  - title: 更改NetApp HCI和NetApp SolidFire中的凭据
+    url: "/storage/task_post_deploy_credentials.html"
+  - title: 更改 Element 软件的默认 SSL 证书
+    url: "/storage/reference_post_deploy_change_default_ssl_certificate.html"
+  - title: 更改节点的 IPMI 密码
+    url: "/storage/task_post_deploy_credential_change_ipmi_password.html"
+- title: 使用 Element 软件用户界面中的基本选项。
+  entries:
+  - title: 了解如何使用基本选项
+    url: "/storage/task_intro_use_basic_options_in_the_element_software_ui.html"
+  - title: API活动
+    entries:
+    - title: 查看 API 活动
+      url: "/storage/task_intro_view_api_activity_in_real_time.html"
+    - title: 集群负载会影响接口刷新率。
+      url: "/storage/concept_basic_interface_refresh_rate_impacted_by_cluster_load.html"
+  - title: Element界面中的图标
+    url: "/storage/reference_intro_icon_reference.html"
+  - title: 提供反馈
+    url: "/storage/task_intro_provide_feedback.html"
+- title: 管理账户
+  entries:
+  - title: 了解如何管理账户
+    url: "/storage/concept_system_manage_accounts_overview.html"
+  - title: 使用 CHAP 处理账户
+    url: "/storage/task_data_manage_accounts_work_with_accounts_task.html"
+  - title: 管理集群管理员用户帐户
+    url: "/storage/concept_system_manage_manage_cluster_administrator_users.html"
+  - title: 管理 LDAP
+    url: "/storage/concept_system_manage_manage_ldap.html"
+- title: 管理您的系统
+  entries:
+  - title: 了解如何管理您的系统
+    url: "/storage/concept_system_manage_system_management.html"
+  - title: 启用多重身份验证
+    entries:
+    - title: 设置多重身份验证
+      url: "/storage/task_system_manage_mfa_set_up_multi_factor_authentication.html"
+    - title: 多因素身份验证的补充信息
+      url: "/storage/concept_system_manage_mfa_additional_information_for_multi_factor_authentication.html"
+  - title: 配置集群设置
+    entries:
+    - title: 启用和禁用集群加密
+      url: "/storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html"
+    - title: 设置集群满阈值
+      url: "/storage/task_system_manage_cluster_set_the_cluster_full_threshold.html"
+    - title: 启用和禁用卷负载均衡
+      url: "/storage/task_system_manage_cluster_volume_load_balancing.html"
+    - title: 启用和禁用支持访问
+      url: "/storage/task_system_manage_cluster_enable_and_disable_support_access.html"
+    - title: 管理使用条款横幅
+      url: "/storage/concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.html"
+    - title: 设置网络时间协议
+      entries:
+      - title: 配置集群要查询的网络时间协议服务器
+        url: "/storage/task_system_manage_cluster_ntp_configure.html"
+      - title: 配置集群监听 NTP 广播。
+        url: "/storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html"
+    - title: 管理 SNMP
+      entries:
+      - title: 了解 SNMP
+        url: "/storage/reference_system_manage_snmp_snmp_details.html"
+      - title: 配置 SNMP 请求器
+        url: "/storage/task_system_manage_snmp_configure_an_snmp_requestor.html"
+      - title: 配置 SNMP USM 用户
+        url: "/storage/task_system_manage_snmp_configure_an_snmp_usm_user.html"
+      - title: 配置SNMP陷阱
+        url: "/storage/task_system_manage_snmp_configure_snmp_traps.html"
+      - title: 使用管理信息库文件查看托管对象数据
+        url: "/storage/task_system_manage_snmp_view_managed_object_data.html"
+    - title: 管理驱动器
+      url: "/storage/concept_system_manage_drives_managing_drives.html"
+    - title: 管理节点
+      entries:
+      - title: 了解如何管理节点
+        url: "/storage/concept_system_manage_nodes_manage_nodes.html"
+      - title: 向集群添加节点
+        url: "/storage/task_system_manage_nodes_adding_a_node_to_a_cluster.html"
+      - title: Node 版本控制和兼容性
+        url: "/storage/concept_system_manage_nodes_node_versioning_and_compatibility.html"
+      - title: 混合节点环境下的集群容量
+        url: "/storage/concept_system_manage_nodes_cluster_capacity_in_a_mixed_node_environment.html"
+      - title: 查看单个节点详情
+        url: "/storage/task_system_manage_nodes_view_individual_node_details.html"
+    - title: 查看光纤通道端口详情
+      url: "/storage/task_system_manage_fc_view_fibre_channel_ports_details.html"
+    - title: 管理虚拟网络
+      entries:
+      - title: 了解如何管理虚拟网络
+        url: "/storage/concept_system_manage_virtual_manage_virtual_networks.html"
+      - title: 添加虚拟网络
+        url: "/storage/task_system_manage_virtual_add_a_virtual_network.html"
+      - title: 启用虚拟路由和转发
+        url: "/storage/task_system_manage_virtual_enable_virtual_routing_and_forwarding.html"
+      - title: 编辑虚拟网络
+        url: "/storage/task_system_manage_virtual_edit_a_virtual_network.html"
+      - title: 编辑 VRF VLAN
+        url: "/storage/task_system_manage_virtual_edit_vrf_vlans.html"
+      - title: 删除虚拟网络
+        url: "/storage/task_system_manage_virtual_delete_a_virtual_network.html"
+  - title: 创建支持 FIPS 驱动器的集群
+    entries:
+    - title: 准备集群
+      url: "/storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html"
+    - title: 启用静态数据加密
+      url: "/storage/task_system_manage_fips_enable_encryption_at_rest.html"
+    - title: 确定节点是否已准备好使用 FIPS 驱动器功能
+      url: "/storage/task_system_manage_fips_identify_nodes_ready_for_fips_drives.html"
+    - title: 启用 FIPS 驱动器功能
+      url: "/storage/task_system_manage_fips_enable_the_fips_drives_feature.html"
+    - title: 检查 FIPS 驱动器状态
+      url: "/storage/task_system_manage_fips_check_the_fips_drive_status.html"
+    - title: 排查 FIPS 驱动器功能故障
+      url: "/storage/task_system_manage_fips_troubleshoot_the_fips_drive_feature.html"
+  - title: 建立安全通信
+    entries:
+    - title: 在您的集群上启用 HTTPS 的 FIPS 140-2 标准
+      url: "/storage/task_system_manage_fips_enable_fips_140_2_for_https.html"
+    - title: SSL密码
+      url: "/storage/reference_system_manage_fips_ssl_cipher_changes.html"
+  - title: 开始使用外部密钥管理
+    entries:
+    - title: 了解外部密钥管理
+      url: "/storage/concept_system_manage_key_get_started_with_external_key_management.html"
+    - title: 设置外部密钥管理
+      url: "/storage/task_system_manage_key_set_up_external_key_management.html"
+    - title: 重新密钥软件加密静态主密钥
+      url: "/storage/task_system_manage_rekey_software_ear_master_key.html"
+    - title: 恢复无法访问或无效的身份验证密钥
+      url: "/storage/concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys.html"
+    - title: 外部密钥管理 API 命令
+      url: "/storage/concept_system_manage_key_external_key_management_api_commands.html"
+- title: 管理卷和虚拟卷
+  entries:
+  - title: 了解如何管理卷和虚拟卷
+    url: "/storage/concept_data_manage_data_management.html"
+  - title: 使用卷
+    entries:
+    - title: 管理服务质量政策
+      url: "/storage/concept_data_manage_volumes_quality_of_service_policies.html"
+    - title: 管理卷
+      url: "/storage/task_data_manage_volumes.html"
+    - title: 将 LUN 分配给光纤通道卷
+      url: "/storage/task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html"
+    - title: 对卷应用QoS策略
+      url: "/storage/task_data_manage_volumes_apply_a_qos_policy.html"
+    - title: 移除卷的 QoS 策略关联
+      url: "/storage/task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html"
+  - title: 使用虚拟卷
+    entries:
+    - title: 启用虚拟卷
+      url: "/storage/task_data_manage_vvol_enable_virtual_volumes.html"
+    - title: 查看虚拟卷详情
+      url: "/storage/task_data_manage_vvol_view_virtual_volume_details.html"
+    - title: 删除虚拟卷
+      url: "/storage/task_data_manage_vvol_delete_a_virtual_volume.html"
+    - title: 管理存储容器
+      url: "/storage/concept_data_manage_vvol_manage_storage_containers.html"
+    - title: 协议端点
+      entries:
+      - title: 了解协议端点
+        url: "/storage/concept_data_manage_vvol_protocol_endpoints.html"
+      - title: 协议端点详情
+        url: "/storage/reference_data_manage_vvol_protocol_endpoints_details.html"
+    - title: 绑定
+      entries:
+      - title: 了解装订
+        url: "/storage/concept_data_manage_vvol_bindings.html"
+      - title: 装订细节
+        url: "/storage/reference_data_manage_vvol_bindings_details.html"
+    - title: 房东详情
+      url: "/storage/reference_data_manage_vvol_host_details.html"
+  - title: 与批量访问组和发起者合作
+    entries:
+    - title: 创建卷访问组
+      url: "/storage/task_data_manage_vol_access_group_create_a_volume_access_group.html"
+    - title: 查看个人访问组详情
+      url: "/storage/task_data_manage_vol_access_group_view_individual_access_group_details.html"
+    - title: 将卷添加到访问组
+      url: "/storage/task_data_manage_vol_access_group_add_volumes.html"
+    - title: 从访问组中移除卷
+      url: "/storage/task_data_manage_vol_access_group_remove_volumes.html"
+    - title: 创建发起者
+      url: "/storage/task_data_manage_vol_access_group_create_an_initiator.html"
+    - title: 编辑发起者
+      url: "/storage/task_data_manage_vol_access_group_edit_an_initiator.html"
+    - title: 将单个启动器添加到卷访问组
+      url: "/storage/task_data_manage_vol_access_group_add_a_single_initiator.html"
+    - title: 向卷访问组添加多个启动器
+      url: "/storage/task_data_manage_vol_access_group_add_multiple_initiators.html"
+    - title: 从访问组中移除发起者
+      url: "/storage/task_data_manage_vol_access_group_remove_initiators_from_an_access_group.html"
+    - title: 删除访问组
+      url: "/storage/task_data_manage_vol_access_group_delete.html"
+    - title: 删除发起者
+      url: "/storage/task_data_manage_vol_access_group_delete_an_initiator.html"
+- title: 保护您的数据
+  entries:
+  - title: 了解如何保护您的数据
+    url: "/storage/concept_data_protection.html"
+  - title: 使用卷快照进行数据保护
+    entries:
+    - title: 了解如何使用卷快照
+      url: "/storage/task_data_protection_using_volume_snapshots.html"
+    - title: 使用单个卷快照进行数据保护
+      entries:
+      - title: 了解如何使用单个卷快照
+        url: "/storage/task_data_protection_use_individual_volume_snapshots.html"
+      - title: 创建卷快照
+        url: "/storage/task_data_protection_create_a_volume_snapshot.html"
+      - title: 编辑快照保留
+        url: "/storage/task_data_protection_edit_snapshot_retention.html"
+      - title: 删除快照
+        url: "/storage/task_data_protection_delete_a_snapshot.html"
+      - title: 从快照克隆卷
+        url: "/storage/task_data_protection_clone_a_volume_from_a_snapshot.html"
+      - title: 将卷回滚到快照
+        url: "/storage/task_data_protection_roll_back_a_volume_to_a_snapshot.html"
+      - title: 备份卷快照
+        entries:
+        - title: 了解如何备份卷快照
+          url: "/storage/concept_data_protection_volume_snapshot_backup_operations.html"
+        - title: 将卷快照备份到 Amazon S3 对象存储
+          url: "/storage/task_data_protection_back_up_a_volume_snapshot_to_an_amazon_s3_object_store.html"
+        - title: 将卷快照备份到 OpenStack Swift 对象存储
+          url: "/storage/task_data_protection_back_up_a_volume_snapshot_to_openstack_swift.html"
+        - title: 将卷快照备份到SolidFire集群
+          url: "/storage/task_data_protection_back_up_volume_snapshot_to_solidfire.html"
+    - title: 使用组快照进行数据保护
+      entries:
+      - title: 了解如何使用群组快照
+        url: "/storage/task_data_protection_use_group_snapshots_for_data_protection.html"
+      - title: 群组快照详情
+        url: "/storage/reference_data_protection_group_snapshot_details.html"
+      - title: 创建群组快照
+        url: "/storage/task_data_protection_create_a_group_snapshot.html"
+      - title: 编辑群组快照
+        url: "/storage/task_data_protection_edit_group_snapshots.html"
+      - title: 删除群组快照
+        url: "/storage/task_data_protection_delete_a_group_snapshot.html"
+      - title: 将卷回滚到组快照
+        url: "/storage/task_data_protection_roll_back_volumes_to_a_group_snapshot.html"
+      - title: 编辑群组快照成员
+        url: "/storage/task_data_protection_edit_members_of_group_snapshot.html"
+      - title: 克隆多个卷
+        url: "/storage/task_data_protection_clone_multiple_volumes.html"
+      - title: 从组快照克隆多个卷
+        url: "/storage/task_data_protection_clone_multiple_volumes_from_a_group_snapshot.html"
+    - title: 安排快照
+      entries:
+      - title: 了解如何安排快照
+        url: "/storage/task_data_protection_schedule_a_snapshot_task.html"
+      - title: 快照日程详情
+        url: "/storage/reference_data_protection_snapshot_schedule_details.html"
+      - title: 创建快照计划
+        url: "/storage/task_data_protection_create_a_snapshot_schedule.html"
+      - title: 编辑快照日程
+        url: "/storage/task_data_protection_edit_a_snapshot_schedule.html"
+      - title: 复制快照日程
+        url: "/storage/task_data_protection_copy_a_snapshot_schedule.html"
+      - title: 删除快照计划
+        url: "/storage/task_data_protection_delete_a_snapshot_schedule.html"
+  - title: 在运行NetApp Element软件的集群之间执行远程复制
+    entries:
+    - title: 了解如何执行远程复制
+      url: "/storage/task_replication_perform_remote_replication_between_element_clusters.html"
+    - title: 规划集群和卷配对以实现实时复制
+      url: "/storage/task_replication_plan_cluster_and_volume_pairing.html"
+    - title: 复制的成对集群
+      entries:
+      - title: 了解配对簇
+        url: "/storage/task_replication_pair_clusters.html"
+      - title: 使用MVIP进行配对聚类
+        url: "/storage/task_replication_pair_cluster_using_mvip.html"
+      - title: 使用配对密钥配对簇
+        url: "/storage/task_replication_pair_cluster_using_pairing_key.html"
+      - title: 验证集群对连接
+        url: "/storage/task_replication_validate_the_cluster_pair_connection.html"
+    - title: 对数
+      entries:
+      - title: 了解配对量
+        url: "/storage/task_replication_pair_volumes.html"
+      - title: 创建具有读取或写入权限的目标卷
+        url: "/storage/task_replication_create_a_target_volume_with_read_write_access.html"
+      - title: 使用卷 ID 或配对密钥配对卷
+        entries:
+        - title: 使用卷 ID 配对卷
+          url: "/storage/task_replication_pair_volumes_using_a_volume_id.html"
+        - title: 使用配对密钥配对卷
+          url: "/storage/task_replication_pair_volumes_using_a_pairing_key.html"
+      - title: 为配对卷分配复制源和目标
+        url: "/storage/task_replication_assign_replication_source_and_target_to_paired_volumes.html"
+    - title: 验证卷复制
+      url: "/storage/task_replication_validate_volume_replication.html"
+    - title: 复制完成后删除卷关系
+      url: "/storage/task_replication_delete_volume_relationship_after_replication.html"
+    - title: 管理交易量关系
+      entries:
+      - title: 暂停复制
+        url: "/storage/task_replication_pause_replication.html"
+      - title: 更改复制模式
+        url: "/storage/task_replication_change_the_mode.html"
+      - title: 删除卷对
+        url: "/storage/task_replication_delete_volume_pairs.html"
+      - title: 删除一个簇对
+        url: "/storage/task_replication_delete_cluster_pair.html"
+      - title: 簇对详情
+        url: "/storage/reference_replication_cluster_pair_details.html"
+      - title: 体积对
+        entries:
+        - title: 成交量对详情
+          url: "/storage/reference_replication_volume_pair_details.html"
+        - title: 音量配对消息
+          url: "/storage/reference_replication_volume_pairing_messages.html"
+        - title: 音量配对警告
+          url: "/storage/reference_replication_volume_pairing_warnings.html"
+  - title: 在 Element 和ONTAP集群之间使用SnapMirror复制（Element UI）
+    entries:
+    - title: 了解如何使用SnapMirror复制
+      url: "/storage/task_snapmirror_use_replication_between_element_and_ontap_clusters.html"
+    - title: SnapMirror概述
+      url: "/storage/concept_snapmirror_overview.html"
+    - title: 在集群上启用SnapMirror。
+      url: "/storage/task_snapmirror_enable_on_the_cluster.html"
+    - title: 在卷上启用SnapMirror
+      url: "/storage/task_snapmirror_enable_on_the_volume.html"
+    - title: 创建 SnapMirror 端点
+      url: "/storage/task_snapmirror_create_an_endpoint.html"
+    - title: 创建 SnapMirror 关系
+      url: "/storage/task_snapmirror_create_snapmirror_relationship.html"
+    - title: SnapMirror关系操作
+      url: "/storage/reference_snapmirror_relationship_actions.html"
+    - title: SnapMirror 标签
+      entries:
+      - title: 了解SnapMirror标签
+        url: "/storage/concept_snapmirror_labels.html"
+      - title: 给快照添加SnapMirror标签
+        url: "/storage/task_snapmirror_add_labels_to_snapshots.html"
+      - title: 向快照计划添加SnapMirror标签
+        url: "/storage/task_snapmirror_add_labels_to_snapshot_schedules.html"
+    - title: 使用SnapMirror进行灾难恢复
+      entries:
+      - title: 了解灾难恢复
+        url: "/storage/concept_snapmirror_disaster_recovery.html"
+      - title: 从 Element 集群执行故障转移
+        url: "/storage/task_snapmirror_perform_failover_from_element_cluster.html"
+      - title: 执行回退到 Element 的操作
+        entries:
+        - title: 了解如何执行故障恢复
+          url: "/storage/task_snapmirror_perform_failback_to_element.html"
+        - title: 如果源卷仍然存在，则执行故障恢复。
+          url: "/storage/task_snapmirror_perform_failback_when_source_volume_exists.html"
+        - title: 当源卷不存在时，执行故障恢复。
+          url: "/storage/task_snapmirror_performing_failback_when_source_volume_no_longer_exists.html"
+      - title: 从ONTAP到 Element 执行传输或一次性迁移
+        url: "/storage/task_snapmirror_transfer_or_one_time_migration_from_ontap_to_element.html"
+  - title: NetApp Element软件与ONTAP (ONTAP CLI) 之间的复制
+    entries:
+    - title: 了解如何使用ONTAP CLI 进行复制
+      url: "/storage/element-replication-index.html"
+    - title: 工作流
+      url: "/storage/concept-element-replication-workflow.html"
+    - title: 在 Element 软件中启用SnapMirror
+      entries:
+      - title: 在 Element 集群上启用SnapMirror
+        url: "/storage/task-element-replication-enable-snapmirror-cluster.html"
+      - title: 在 Element 源卷上启用SnapMirror
+        url: "/storage/task-element-replication-enable-snapmirror-source-volume.html"
+      - title: 创建 SnapMirror 端点
+        url: "/storage/task-element-replication-create-snapmirror-endpoint.html"
+    - title: 配置复制关系
+      entries:
+      - title: 创建复制作业计划
+        url: "/storage/task-element-replication-create-replication-job-schedule.html"
+      - title: 自定义复制策略
+        entries:
+        - title: 创建自定义复制策略
+          url: "/storage/concept-element-replication-create-custom-replication-policy.html"
+        - title: 为策略定义规则
+          url: "/storage/task-element-replication-define-rule-policy.html"
+      - title: 创建复制关系
+        entries:
+        - title: 创建从元素源到ONTAP目标的关联
+          url: "/storage/task-element-replication-create-replication-relationship.html"
+        - title: 创建从ONTAP源到 Element 目标的关联
+          url: "/storage/task-element-replication-create-relationship-element-destination.html"
+      - title: 初始化复制关系
+        url: "/storage/task-element-replication-initialize-replication-relationship.html"
+    - title: 从SnapMirror DR 目标卷提供数据
+      entries:
+      - title: 使目标卷可写。
+        url: "/storage/task-element-replication-make-destination-volume-writeable.html"
+      - title: 配置数据访问的目标卷
+        url: "/storage/concept-element-replication-configure-destination-volume-data-access.html"
+      - title: 重新激活原始源音量
+        url: "/storage/task-element-replication-reactivate-original-source-volume.html"
+    - title: 手动更新复制关系
+      url: "/storage/task-element-replication-update-replication-relationship-manually.html"
+    - title: 重新同步复制关系
+      url: "/storage/task-element-replication-resynchronize-data-protection-relationship.html"
+  - title: 备份和恢复卷
+    entries:
+    - title: 了解如何备份和恢复卷
+      url: "/storage/task_data_protection_back_up_and_restore_volumes.html"
+    - title: 将卷备份到 Amazon S3 对象存储
+      url: "/storage/task_data_protection_back_up_volume_to_amazon_s3.html"
+    - title: 将卷备份到 OpenStack Swift 对象存储
+      url: "/storage/task_data_protection_back_up_volume_to_openstack_swift.html"
+    - title: 将卷备份到SolidFire存储集群
+      url: "/storage/task_data_protection_back_up_volume_to_solidfire.html"
+    - title: 从 Amazon S3 对象存储的备份恢复卷
+      url: "/storage/task_data_protection_restore_volume_from_backup_on_amazon_s3.html"
+    - title: 从备份恢复 OpenStack Swift 对象存储中的卷
+      url: "/storage/task_data_protection_restore_volume_from_backup_on_openstack_swift.html"
+    - title: 从SolidFire存储集群上的备份恢复卷
+      url: "/storage/task_data_protection_restore_volume_from_backup_on_solidfire.html"
+  - title: 配置自定义保护域
+    url: "/storage/task_data_protection_configure_custom_protection_domains.html"
+- title: 排查系统故障
+  entries:
+  - title: 系统事件
+    entries:
+    - title: 查看系统事件信息
+      url: "/storage/task_monitor_information_about_system_events.html"
+    - title: 事件类型
+      url: "/storage/reference_monitor_event_types.html"
+  - title: 查看正在运行的任务的状态
+    url: "/storage/reference_monitor_status_of_running_tasks.html"
+  - title: 系统警报
+    entries:
+    - title: 查看系统警报
+      url: "/storage/task_monitor_system_alerts.html"
+    - title: 集群故障代码
+      url: "/storage/reference_monitor_cluster_fault_codes.html"
+  - title: 查看节点性能活动
+    url: "/storage/task_monitor_node_performance_activity.html"
+  - title: 销量表现
+    entries:
+    - title: 查看音量表现
+      url: "/storage/task_monitor_volume_performance.html"
+    - title: 销量表现详情
+      url: "/storage/reference_monitor_volume_performance_details.html"
+  - title: iSCSI 会话
+    entries:
+    - title: 查看 iSCSI 会话
+      url: "/storage/task_monitor_iscsi_sessions.html"
+    - title: iSCSI 会话详情
+      url: "/storage/reference_monitor_iscsi_session_details.html"
+  - title: 光纤通道会议
+    entries:
+    - title: 查看光纤通道会话
+      url: "/storage/task_monitor_fibre_channel_sessions.html"
+    - title: 光纤通道会话详情
+      url: "/storage/reference_monitor_fibre_channel_session_details.html"
+  - title: 排除驱动器故障
+    entries:
+    - title: 了解如何排除驱动器故障
+      url: "/storage/concept_troubleshoot_drives.html"
+    - title: 从集群中移除故障驱动器。
+      url: "/storage/task_troubleshoot_remove_failed_drives.html"
+    - title: MDSS驱动器基本故障排除
+      url: "/storage/concept_troubleshoot_basic_mdss_drive_troubleshooting.html"
+    - title: 添加 MDSS 驱动器
+      url: "/storage/task_troubleshoot_add_mdss_drives.html"
+    - title: 移除 MDSS 驱动器
+      url: "/storage/task_troubleshoot_remove_mdss_drives.html"
+  - title: 排查节点故障
+    entries:
+    - title: 从集群中移除节点
+      url: "/storage/concept_remove_nodes_from_cluster.html"
+    - title: 关闭集群电源
+      url: "/storage/task_troubleshoot_power_down_a_cluster.html"
+  - title: 使用每个节点的存储节点实用程序
+    entries:
+    - title: 学习如何使用每个节点的实用程序
+      url: "/storage/concept_per_node_work_with_utilities.html"
+    - title: 使用节点级用户界面访问每个节点的设置。
+      url: "/storage/task_per_node_access_settings.html"
+    - title: 从每个节点的用户界面查看网络设置详情。
+      url: "/storage/reference_per_node_network_settings_details.html"
+    - title: 从每个节点的用户界面查看集群设置详情
+      url: "/storage/reference_per_node_cluster_settings_details.html"
+    - title: 使用节点级用户界面运行系统测试。
+      url: "/storage/task_per_node_run_system_tests.html"
+    - title: 使用节点级用户界面运行系统实用程序
+      url: "/storage/task_per_node_run_system_utilities.html"
+    - title: 与管理节点交互
+      url: "/storage/concept_mnode_work_with_the_management_node.html"
+  - title: 了解集群填充程度
+    url: "/storage/concept_monitor_understand_cluster_fullness_levels.html"

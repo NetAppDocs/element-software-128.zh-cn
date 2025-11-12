@@ -1,0 +1,86 @@
+---
+permalink: storage/task-element-replication-create-replication-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, relationship, element, source, destination 
+summary: 您可以使用SnapMirror将 Element 卷的快照副本复制到ONTAP目标系统。如果 Element 站点发生灾难，您可以从ONTAP系统向客户端提供数据，然后在服务恢复后重新激活 Element 源卷。 
+---
+= 创建从元素源到ONTAP目标的关联
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+主存储器中的源卷与辅助存储器中的目标卷之间的关系称为_数据保护关系_。你可以使用 `snapmirror create`用于创建从 Element 源到ONTAP目标，或从ONTAP源到 Element 目标的数据保护关系的命令。
+
+您可以使用SnapMirror将 Element 卷的快照副本复制到ONTAP目标系统。如果 Element 站点发生灾难，您可以从ONTAP系统向客户端提供数据，然后在服务恢复后重新激活 Element 源卷。
+
+.开始之前
+* 包含要复制的卷的 Element 节点必须已对ONTAP开放。
+* Element 卷必须已启用SnapMirror复制功能。
+* 如果您使用的是“`mirror-vault`”策略类型，则必须配置SnapMirror标签才能复制 Element 快照副本。
++
+[NOTE]
+====
+你只能在以下情况下执行此任务：link:concept_snapmirror_labels.html["Element 软件 Web 用户界面"]或使用link:../api/concept_element_api_snapshots_overview.html["API 方法"]。
+
+====
+
+
+.关于此任务
+您必须在表单中指定元素源路径。 `<hostip:>/lun/<name>`其中“`lun`”是实际的字符串“`lun`”， `name`是元素卷的名称。
+
+Element 容量大致相当于ONTAP LUN。当 Element 软件和ONTAP之间建立数据保护关系时， SnapMirror会创建一个与 Element 卷同名的 LUN。如果 LUN 满足从 Element 软件复制到ONTAP 的要求， SnapMirror会将数据复制到现有的 LUN。
+
+复制规则如下：
+
+* 一个ONTAP卷只能包含来自一个 Element 卷的数据。
+* 您无法将ONTAP卷中的数据复制到多个 Element 卷。
+
+
+在ONTAP 9.3 及更早版本中，一个目标卷最多可以包含 251 个快照副本。在ONTAP 9.4 及更高版本中，目标卷最多可以包含 1019 个快照副本。
+
+.步骤
+. 从目标集群，创建从 Element 源到ONTAP目标的复制关系：
++
+`snapmirror create -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -schedule schedule -policy <policy>`
+
++
+有关完整的命令语法，请参见手册页。
+
++
+以下示例使用默认值创建SnapMirror灾难恢复关系。 `MirrorLatest`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy MirrorLatest
+----
++
+以下示例使用默认值创建统一复制关系。 `MirrorAndVault`政策：
+
++
+[listing]
+----
+cluster_dst:> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy MirrorAndVault
+----
++
+以下示例使用以下方式创建统一复制关系： `Unified7year`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy Unified7year
+----
++
+以下示例使用自定义创建统一复制关系。 `my_unified`政策：
+
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst -type XDP -schedule my_daily -policy my_unified
+----
+
+
+.完成后
+使用 `snapmirror show`命令用于验证SnapMirror关系是否已创建。有关完整的命令语法，请参见手册页。

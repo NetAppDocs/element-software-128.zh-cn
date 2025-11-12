@@ -1,0 +1,36 @@
+---
+permalink: storage/task_data_protection_restore_volume_from_backup_on_openstack_swift.html 
+sidebar: sidebar 
+keywords: volume restore, openstack swift object store 
+summary: 您可以从 OpenStack Swift 对象存储的备份中恢复卷。 
+---
+= 从备份恢复 OpenStack Swift 对象存储中的卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以从 OpenStack Swift 对象存储的备份中恢复卷。
+
+. 点击“报告”>“事件日志”。
+. 找到创建所需恢复备份的备份事件。
+. 在事件的“详细信息”列中，单击“显示详细信息”。
+. 将清单信息复制到剪贴板。
+. 点击“管理”>“卷”。
+. 单击要恢复的卷对应的“操作”图标。
+. 在出现的菜单中，单击“从……恢复”。
+. 在“集成还原”对话框的“还原来源”下，选择“Swift”。
+. 在“数据格式”下选择与备份文件匹配的选项：
++
+** *原生格式*：一种仅能被SolidFire存储系统读取的压缩格式。
+** *未压缩*：一种与其他系统兼容的未压缩格式。
+
+
+. 在 *URL* 字段中输入用于访问对象存储的 URL。
+. 请在“用户名”字段中输入帐户的用户名。
+. 在“身份验证密钥”字段中输入帐户的身份验证密钥。
+. 在“容器”字段中输入存储备份的容器名称。
+. 将清单信息粘贴到“清单”字段中。
+. 点击“开始写作”。
+

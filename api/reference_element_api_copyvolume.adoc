@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_copyvolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,CopyVolume,overwrite,overwriting,data 
+summary: 您可以使用 CopyVolume 方法将现有卷的数据内容替换为另一个卷（或快照）的数据内容。目标卷的属性，例如 IQN、QoS 设置、大小、帐户和卷访问组成员身份，均不会更改。目标卷必须已存在，且大小必须与源卷相同。 
+---
+= 复制卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CopyVolume`使用另一个卷（或快照）的数据内容覆盖现有卷的数据内容的方法。目标卷的属性，例如 IQN、QoS 设置、大小、帐户和卷访问组成员身份，均不会更改。目标卷必须已存在，且大小必须与源卷相同。
+
+最好让客户端在操作开始前卸载目标卷。如果在操作过程中修改了目标卷，则更改将丢失。完成此操作所需时间可能不固定。你可以使用xref:reference_element_api_getasyncresult.adoc[获取异步结果]确定过程何时完成的方法，以及xref:reference_element_api_listsyncjobs.adoc[列表同步作业]查看复制进度。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+目标卷 ID
+ a| 
+要覆盖的卷的卷 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+volumeID
+ a| 
+要读取的卷的卷ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+snapshotID
+ a| 
+用作克隆源的快照 ID。如果没有提供 ID，则使用当前活动卷。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+异步句柄
+ a| 
+用于获取运算结果的句柄值。
+ a| 
+整数
+
+
+
+ a| 
+克隆ID
+ a| 
+新克隆卷的克隆ID。
+ a| 
+整数
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "CopyVolume",
+   "params": {
+      "volumeID" : 3,
+      "dstVolumeID" : 2
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "asyncHandle": 9,
+    "cloneID": 5
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[获取异步结果]
+* xref:reference_element_api_listsyncjobs.adoc[列表同步作业]
+

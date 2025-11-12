@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: element-plug-in-index.html 
+keywords: element, plug-in, plugin, vcenter, server 
+summary: 使用NetApp Element插件 for vCenter Server（VMware vSphere 界面的插件）来管理和监控运行NetApp Element软件的存储集群。 
+---
+= NetApp Element vCenter Server 插件
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Element vCenter Server 插件为 VMware vSphere 界面提供了一个插件，以便您可以管理和监控运行NetApp Element软件的存储集群。
+
+要了解有关 vCenter Server 的 Element 插件的信息，请参阅 https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件文档"^]。
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_createstoragecontainer.html 
+sidebar: sidebar 
+keywords: create,creating,storage,container,virtual,volume,volumes,vvol,vvols,CreateStorageContainer 
+summary: '您可以使用 CreateStorageContainer 方法创建虚拟卷 (VVol) 存储容器。您可以使用存储容器进行报表生成和资源分配。要使用虚拟卷功能，您需要至少创建一个存储容器。' 
+---
+= 创建存储容器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreateStorageContainer`创建虚拟卷 (VVol) 存储容器的方法。您可以使用存储容器进行报表生成和资源分配。要使用虚拟卷功能，您需要创建至少一个存储容器。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+name
+ a| 
+存储容器的名称。遵循 Element 软件账户命名规则。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+accountID
+ a| 
+原本不是存储容器的账户，现在将成为存储容器。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+发起者密钥
+ a| 
+发起方的 CHAP 认证密钥。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+目标密钥
+ a| 
+目标的 CHAP 认证密钥。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+存储容器
+ a| 
+包含有关新创建的存储容器的信息的对象。
+ a| 
+xref:reference_element_api_storagecontainer.adoc[存储容器]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "CreateStorageContainer",
+    "params": {
+        "name" : "example"
+    },
+    "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "storageContainer": {
+      "accountID": 8,
+      "initiatorSecret": "rVTOi25^H.d;cP}l",
+      "name": "example",
+      "protocolEndpointType": "SCSI",
+      "status": "active",
+      "storageContainerID": "a9ec1138-e386-4a44-90d7-b9acbbc05176",
+      "targetSecret": "6?AEIxWpvo6,!boM"
+    }
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

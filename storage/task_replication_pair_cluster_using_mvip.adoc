@@ -1,0 +1,36 @@
+---
+permalink: storage/task_replication_pair_cluster_using_mvip.html 
+sidebar: sidebar 
+keywords: pair clusters, mvip, connection 
+summary: 你可以使用一个集群的 MVIP 与另一个集群建立连接，从而将两个集群配对以实现实时复制。使用此方法需要对两个集群都具有集群管理员权限。在集群配对之前，需要使用集群管理员用户名和密码来验证集群访问权限。 
+---
+= 使用MVIP进行配对聚类
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用一个集群的 MVIP 与另一个集群建立连接，从而将两个集群配对以实现实时复制。使用此方法需要对两个集群都具有集群管理员权限。在集群配对之前，需要使用集群管理员用户名和密码来验证集群访问权限。
+
+. 在本地集群上，选择“数据保护”>“集群对”。
+. 点击“配对集群”。
+. 单击“开始配对”，然后单击“是”，以表明您有权访问远程集群。
+. 输入远程集群MVIP地址。
+. 点击“完成远程集群配对”。
++
+在“需要身份验证”窗口中，输入远程集群的集群管理员用户名和密码。
+
+. 在远程集群上，选择“数据保护”>“集群对”。
+. 点击“配对集群”。
+. 点击“完成配对”。
+. 点击“完成配对”按钮。
+
+
+
+
+== 查找更多信息
+
+* xref:task_replication_pair_cluster_using_pairing_key.adoc[使用配对密钥配对簇]
+* https://www.youtube.com/watch?v=HbKxPZnNvn4&feature=youtu.be["使用MVIP（视频）进行集群配对"]
+

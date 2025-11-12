@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_remove_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, remove, multi-drive slice service 
+summary: '您可以删除多驱动器切片服务 (MDSS) 驱动器。此步骤仅适用于节点具有多个切片驱动器的情况。' 
+---
+= 移除 MDSS 驱动器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以移除多驱动器切片服务 (MDSS) 驱动器。此步骤仅适用于节点具有多个切片驱动器的情况。
+
+
+NOTE: 如果系统切片驱动器和插槽 2 驱动器发生故障，系统将关闭切片服务并移除驱动器。如果没有发生故障，要移除硬盘，则必须同时移除两个硬盘。
+
+. 点击“集群”>“驱动器”。
+. 在“可用驱动器”选项卡中，单击要移除的切片驱动器的复选框。
+. 点击“批量操作”。
+. 单击“*删除*”。
+. 确认此操作。
+

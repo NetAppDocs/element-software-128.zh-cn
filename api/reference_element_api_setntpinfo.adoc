@@ -1,0 +1,98 @@
+---
+permalink: api/reference_element_api_setntpinfo.html 
+sidebar: sidebar 
+keywords: ntp,info,set,setting,setntpinfo 
+summary: 您可以使用 SetNtpInfo 方法在集群节点上配置 NTP。您通过此界面设置的值将应用于集群中的所有节点。如果 NTP 广播服务器定期在您的网络上广播时间信息，您可以选择将节点配置为广播客户端。 
+---
+= 设置Ntp信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetNtpInfo`在集群节点上配置 NTP 的方法。您通过此界面设置的值将应用于集群中的所有节点。如果 NTP 广播服务器定期在您的网络上广播时间信息，您可以选择将节点配置为广播客户端。
+
+
+
+== 参数
+
+
+NOTE: 请确保使用网络内部的 NTP 服务器，而不是安装默认的 NTP 服务器。
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+服务器
+ a| 
+要添加到每个节点 NTP 配置中的 NTP 服务器列表。
+ a| 
+字符串数组
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+广播客户端
+ a| 
+使集群中的每个节点都成为广播客户端。
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "SetNtpInfo",
+   "params": {
+     "servers"  : [
+       "ntpserver1.example.org",
+       "ntpserver2.example.org",
+       "ntpserver3.example.org"
+     ],
+     "broadcastclient" : false
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

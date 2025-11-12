@@ -1,0 +1,67 @@
+---
+permalink: storage/task-element-replication-make-destination-volume-writeable.html 
+sidebar: sidebar 
+keywords: ontap, cli, make, destination, volume, write 
+summary: 在能够从目标卷向客户端提供数据之前，需要将目标卷设置为可写。您可以使用 snapmirror quiesce 命令停止计划传输到目标位置，使用 snapmirror abort 命令停止正在进行的传输，以及使用 snapmirror break 命令使目标位置可写。 
+---
+= 使目标卷可写。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+当灾难导致SnapMirror DR 关系的主站点无法工作时，您可以从目标卷提供数据，从而最大限度地减少中断。当主站点的服务恢复后，您可以重新激活源卷。
+
+在能够将数据从卷提供给客户端之前，需要将目标卷设置为可写。你可以使用 `snapmirror quiesce`停止向目的地发送预定传输的命令 `snapmirror abort`下令停止正在进行的转账，以及 `snapmirror break`使目标位置可写的命令。
+
+.关于此任务
+您必须在表单中指定元素源路径。 `<hostip:>/lun/<name>`其中“`lun`”是实际的字符串“`lun`”， `name`是元素卷的名称。
+
+.步骤
+. 停止前往目的地的预定接送服务：
++
+`snapmirror quiesce -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+有关完整的命令语法，请参见手册页。
+
++
+以下示例停止源卷之间的计划传输 `0005`IP地址为10.0.0.11，目标卷为 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror quiesce -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. 停止向目的地的持续转账：
++
+`snapmirror abort -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+有关完整的命令语法，请参见手册页。
+
++
+以下示例停止源卷之间的正在进行的传输 `0005`IP地址为10.0.0.11，目标卷为 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror abort -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. 终止与SnapMirror DR 的合作关系：
++
+`snapmirror break -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+有关完整的命令语法，请参见手册页。
+
++
+以下示例打破了源卷之间的关系 `0005`IP 地址为 10.0.0.11，目标卷为 `volA_dst`在 `svm_backup`以及目的地数量 `volA_dst`在 `svm_backup`：
+
++
+[listing]
+----
+cluster_dst::> snapmirror break -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

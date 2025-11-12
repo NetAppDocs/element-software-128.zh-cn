@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_remote_support_connections.html 
+summary: 您可以使用管理节点启用NetApp支持访问权限以进行故障排除。 
+keywords: netapp, mnode, management node, connect to support, support tunnel, rst 
+---
+= 启动远程NetApp支持会话
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您需要SolidFire全闪存存储系统的技术支持， NetApp支持团队可以远程连接到您的系统。要启动会话并获得远程访问权限， NetApp支持人员可以打开到您环境的反向安全外壳 (SSH) 连接。
+
+您可以联系NetApp支持部门，为 SSH 反向隧道连接打开 TCP 端口。此连接允许NetApp支持人员登录到您的管理节点。
+
+.开始之前
+* 对于管理服务 2.18 及更高版本，管理节点上的远程访问功能默认处于禁用状态。要启用远程访问功能，请参阅 https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["管理管理节点上的 SSH 功能"]。
+* 如果您的管理节点位于代理服务器之后，则需要在 sshd.config 文件中配置以下 TCP 端口：
++
+[cols="15,25,60"]
+|===
+| TCP 端口 | 描述 | 连接方向 
+
+
+| 443 | 通过开放支持隧道进行反向端口转发的 API 调用/HTTPS 连接到 Web UI | 管理节点到存储节点 
+
+
+| 22 | SSH登录访问 | 管理节点到存储节点或从存储节点到管理节点 
+|===
+
+
+.步骤
+* 登录到管理节点并打开终端会话。
+* 根据提示，输入以下内容：
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* 要关闭远程支持通道，请输入以下命令：
++
+`rst --killall`
+
+* （可选）禁用 https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["远程访问功能"]再次。
++
+
+NOTE: 如果您不禁用 SSH，管理节点上的 SSH 将保持启用状态。启用 SSH 的配置会在管理节点上持续存在，即使经过更新和升级，直到手动禁用为止。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

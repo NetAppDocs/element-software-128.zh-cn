@@ -1,0 +1,252 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_manage_storage_cluster_assets.html 
+summary: 您可以使用 REST API UI 添加、删除和更改管理节点存储集群资产。 
+keywords: netapp, mnode, management node, rest api, Element, assets 
+---
+= 创建和管理存储集群资产
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 REST API 向管理节点添加新的存储集群资产，编辑已知存储集群资产的已存储凭据，以及从管理节点删除存储集群资产。
+
+.你需要什么
+* 请确保您的存储集群版本运行的是NetApp Element软件 11.3 或更高版本。
+* 请确保您已部署运行 11.3 或更高版本的管理节点。
+
+
+.存储集群资产管理选项
+从下列选项中选择一项：
+
+* <<获取存储集群资产的安装 ID 和集群 ID>>
+* <<添加新的存储集群资产>>
+* <<编辑存储集群资产的已存储凭据>>
+* <<删除存储集群资产>>
+
+
+
+
+== 获取存储集群资产的安装 ID 和集群 ID
+
+您可以使用 REST API 获取安装 ID 和存储集群 ID。要添加新的存储集群资产，需要安装 ID；要修改或删除特定的存储集群资产，需要集群 ID。
+
+.步骤
+. 通过输入管理节点 IP 地址，然后输入以下内容，即可访问库存服务的 REST API 用户界面： `/inventory/1/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+. 选择“授权”或任意锁形图标，然后完成以下步骤：
++
+.. 请输入集群用户名和密码。
+.. 请输入客户端 ID `mnode-client` 。
+.. 选择“授权”以开始会话。
+.. 关闭窗口。
+
+
+. 选择 *GET /installations*。
+. 选择*试用一下*。
+. 选择*执行*。
++
+API会返回所有已知安装的列表。
+
+. 从 200 响应正文中，保存该值。 `id`该字段可在安装列表中找到。这是安装 ID。例如：
++
+[listing, subs="+quotes"]
+----
+"installations": [
+    {
+      *"id": "1234a678-12ab-35dc-7b4a-1234a5b6a7ba",*
+      "name": "my-sf-installation",
+      "_links": {
+        "collection": "https://localhost/inventory/1/installations",
+        "self": "https://localhost/inventory/1/installations/1234a678-12ab-35dc-7b4a-1234a5b6a7ba"
+      }
+    }
+  ]
+----
+. 通过输入管理节点 IP 地址，然后输入以下内容，即可访问存储服务的 REST API 用户界面： `/storage/1/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. 选择“授权”或任意锁形图标，然后完成以下步骤：
++
+.. 请输入集群用户名和密码。
+.. 请输入客户端 ID `mnode-client` 。
+.. 选择“授权”以开始会话。
+.. 关闭窗口。
+
+
+. 选择 *GET /clusters*。
+. 选择*试用一下*。
+. 输入您之前保存的安装 ID。 `installationId`范围。
+. 选择*执行*。
++
+API 返回此安装中所有已知存储集群的列表。
+
+. 从 200 响应正文中找到正确的存储集群，并将值保存到该集群中。 `storageId`场地。这是存储集群 ID。
+
+
+
+
+== 添加新的存储集群资产
+
+您可以使用 REST API 将一个或多个新的存储集群资产添加到管理节点清单中。添加新的存储集群资产时，它会自动向管理节点注册。
+
+.你需要什么
+* 你复制了<<获取存储集群资产的安装 ID 和集群 ID,存储集群 ID 和安装 ID>>对于您想要添加的任何存储集群。
+* 如果您要添加多个存储节点，则说明您已阅读并理解了以下限制：link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["权威集群"]支持多存储集群。
++
+
+NOTE: 在权威集群上定义的所有用户都被定义为与NetApp Hybrid Cloud Control 实例关联的所有其他集群上的用户。
+
+
+
+.步骤
+. 通过输入管理节点 IP 地址，然后输入以下内容，即可访问存储服务的 REST API 用户界面： `/storage/1/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. 选择“授权”或任意锁形图标，然后完成以下步骤：
++
+.. 请输入集群用户名和密码。
+.. 请输入客户端 ID `mnode-client` 。
+.. 选择“授权”以开始会话。
+.. 关闭窗口。
+
+
+. 选择 *POST /clusters*。
+. 选择*试用一下*。
+. 请在“请求正文”字段中输入新存储集群的以下参数信息：
++
+[listing]
+----
+{
+  "installationId": "a1b2c34d-e56f-1a2b-c123-1ab2cd345d6e",
+  "mvip": "10.0.0.1",
+  "password": "admin",
+  "userId": "admin"
+}
+----
++
+|===
+| 参数 | 类型 | 描述 
+
+
+| `installationId` | string | 要添加新存储集群的安装位置。请将您之前保存的安装 ID 输入到此参数中。 
+
+
+| `mvip` | string | 存储集群的 IPv4 管理虚拟 IP 地址 (MVIP)。 
+
+
+| `password` | string | 用于与存储集群通信的密码。 
+
+
+| `userId` | string | 用于与存储集群通信的用户 ID（该用户必须具有管理员权限）。 
+|===
+. 选择*执行*。
++
+API 返回一个对象，其中包含有关新添加的存储集群资产的信息，例如名称、版本和 IP 地址信息。
+
+
+
+
+
+== 编辑存储集群资产的已存储凭据
+
+您可以编辑管理节点用于登录存储集群的已存储凭据。您选择的用户必须具有集群管理员权限。
+
+
+NOTE: 请确保您已按照以下步骤操作。<<获取存储集群资产的安装 ID 和集群 ID>>继续之前。
+
+.步骤
+. 通过输入管理节点 IP 地址，然后输入以下内容，即可访问存储服务的 REST API 用户界面： `/storage/1/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. 选择“授权”或任意锁形图标，然后完成以下步骤：
++
+.. 请输入集群用户名和密码。
+.. 请输入客户端 ID `mnode-client` 。
+.. 选择“授权”以开始会话。
+.. 关闭窗口。
+
+
+. 选择 *PUT /clusters/{storageId}*。
+. 选择*试用一下*。
+. 将之前复制的存储集群 ID 粘贴到此处。 `storageId`范围。
+. 更改“请求正文”字段中的以下一个或两个参数：
++
+[listing]
+----
+{
+  "password": "adminadmin",
+  "userId": "admin"
+}
+----
++
+|===
+| 参数 | 类型 | 描述 
+
+
+| `password` | string | 用于与存储集群通信的密码。 
+
+
+| `userId` | string | 用于与存储集群通信的用户 ID（该用户必须具有管理员权限）。 
+|===
+. 选择*执行*。
+
+
+
+
+== 删除存储集群资产
+
+如果存储集群不再处于服务状态，则可以删除存储集群资产。删除存储集群资产时，它会自动从管理节点中注销。
+
+
+NOTE: 请确保您已按照以下步骤操作。<<获取存储集群资产的安装 ID 和集群 ID>>继续之前。
+
+.步骤
+. 通过输入管理节点 IP 地址，然后输入以下内容，即可访问存储服务的 REST API 用户界面： `/storage/1/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. 选择“授权”或任意锁形图标，然后完成以下步骤：
++
+.. 请输入集群用户名和密码。
+.. 请输入客户端 ID `mnode-client` 。
+.. 选择“授权”以开始会话。
+.. 关闭窗口。
+
+
+. 选择 *删除 /clusters/{storageId}*。
+. 选择*试用一下*。
+. 输入您之前复制的存储集群 ID。 `storageId`范围。
+. 选择*执行*。
++
+API 成功后，将返回一个空响应。
+
+
+
+[discrete]
+== 查找更多信息
+
+* link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["权威集群"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

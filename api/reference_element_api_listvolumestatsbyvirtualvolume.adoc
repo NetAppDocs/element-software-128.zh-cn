@@ -1,0 +1,131 @@
+---
+permalink: api/reference_element_api_listvolumestatsbyvirtualvolume.html 
+sidebar: sidebar 
+keywords: volumes,volume,virtual,stats,list,listing,listvolumestatsbyvirtualvolume,activity 
+summary: 您可以使用 ListVolumeStatsByVirtualVolume 方法列出系统中与虚拟卷关联的任何卷的卷统计信息。统计数据自该卷创建以来不断累积。 
+---
+= 按虚拟卷列出卷统计信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListVolumeStatsByVirtualVolume`列出系统中与虚拟卷关联的任何卷的卷统计信息的方法。统计数据自该卷创建以来不断累积。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+虚拟卷 ID
+ a| 
+要检索信息的一个或多个虚拟卷 ID 的列表。如果指定此参数，该方法将仅返回有关这些虚拟卷的信息。
+ a| 
+UUID 字符串数组
+ a| 
+否
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+销量统计
+ a| 
+包含系统中每个虚拟卷活动信息的对象列表。
+ a| 
+xref:reference_element_api_volumestats.adoc[销量统计]大批
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "ListVolumeStatsByVirtualVolume",
+  "params": {},
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeStats": [
+      {
+        "accountID": 17,
+        "actualIOPS": 0,
+        "asyncDelay": null,
+        "averageIOPSize": 1074265444,
+        "burstIOPSCredit": 0,
+        "clientQueueDepth": 0,
+        "desiredMetadataHosts": null,
+        "latencyUSec": 0,
+        "metadataHosts": {
+          "deadSecondaries": [],
+          "liveSecondaries": [
+            26
+          ],
+          "primary": 56
+        },
+        "nonZeroBlocks": 36,
+        "readBytes": 18366464,
+        "readBytesLastSample": 0,
+        "readLatencyUSec": 0,
+        "readOps": 156,
+        "readOpsLastSample": 0,
+        "samplePeriodMSec": 500,
+        "throttle": 0,
+        "timestamp": "2016-10-10T17:46:35.914642Z",
+        "unalignedReads": 156,
+        "unalignedWrites": 185,
+        "virtualVolumeID": "070ac0ba-f344-4f4c-b79c-142efa3642e8",
+        "volumeAccessGroups": [],
+        "volumeID": 12518,
+        "volumeSize": 91271200768,
+        "volumeUtilization": 0,
+        "writeBytes": 23652213248,
+        "writeBytesLastSample": 0,
+        "writeLatencyUSec": 0,
+        "writeOps": 185,
+        "writeOpsLastSample": 0,
+        "zeroBlocks": 22282972
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

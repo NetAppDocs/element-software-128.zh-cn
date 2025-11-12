@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_drive_api_methods.html 
+sidebar: sidebar 
+keywords: drive,API,methods,method 
+summary: 您可以使用驱动器 API 方法添加和管理存储集群中可用的驱动器。当您向存储集群添加存储节点或在现有存储节点中安装新驱动器时，这些驱动器即可添加到存储集群中。 
+---
+= 驱动 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用驱动器 API 方法添加和管理存储集群中可用的驱动器。当您向存储集群添加存储节点或在现有存储节点中安装新驱动器时，这些驱动器即可添加到存储集群中。
+
+* xref:reference_element_api_adddrives.adoc[AddDrives]
+* xref:reference_element_api_getdrivehardwareinfo.adoc[获取驱动硬件信息]
+* xref:reference_element_api_getdrivestats.adoc[获取驾驶统计数据]
+* xref:reference_element_api_listdrives.adoc[列表驱动器]
+* xref:reference_element_api_listdrivestats.adoc[ListDriveStats]
+* xref:reference_element_api_removedrives.adoc[RemoveDrives]
+* xref:reference_element_api_secureerasedrives.adoc[SecureEraseDrives]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

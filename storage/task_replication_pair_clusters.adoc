@@ -1,0 +1,47 @@
+---
+permalink: storage/task_replication_pair_clusters.html 
+sidebar: sidebar 
+keywords: pair clusters, replication, connect clusters, data protection 
+summary: '要使用实时复制功能，首先必须将两个集群配对。将两个集群配对并连接后，您可以配置一个集群上的活动卷，使其持续复制到第二个集群，从而提供持续数据保护 (CDP)。' 
+---
+= 复制的成对集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+要使用实时复制功能，首先必须将两个集群配对。将两个集群配对连接后，您可以配置一个集群上的活动卷，使其持续复制到第二个集群，从而提供持续数据保护 (CDP)。
+
+.你需要什么
+* 您必须拥有配对集群中一个或两个集群的集群管理员权限。
+* 所有节点的 MIP 和 SIP 都相互路由。
+* 集群间往返延迟小于 2000 毫秒。
+* 两个存储集群都应该具有唯一的集群名称、MVIP、SVIP 和所有节点 IP 地址。
+* 集群上 Element 软件版本之间的差异不超过一个主版本。如果差异较大，则必须升级其中一个集群以执行数据复制。
+
+
+
+NOTE: 集群配对需要管理网络上的节点之间完全连通。复制需要存储集群网络上各个节点之间的连接。
+
+您可以将一个集群与最多四个其他集群配对，以复制卷。您还可以将集群组内的不同集群相互配对。
+
+
+
+== 使用 MVIP 或配对密钥对集群进行配对
+
+如果两个集群都有集群管理员访问权限，则可以使用目标集群的 MVIP 将源集群和目标集群配对。如果集群管理员访问权限仅在集群对中的一个集群上可用，则可以在目标集群上使用配对密钥来完成集群配对。
+
+. 选择以下方法之一进行聚类配对：
++
+** link:task_replication_pair_cluster_using_mvip.html["使用MVIP进行配对聚类"]如果两个集群都有集群管理员访问权限，则使用此方法。该方法利用远程集群的 MVIP 来配对两个集群。
+** link:task_replication_pair_cluster_using_pairing_key.html["使用配对密钥配对簇"]如果集群管理员只能访问其中一个集群，则可以使用此方法。该方法生成一个配对密钥，该密钥可用于目标集群以完成集群配对。
+
+
+
+
+
+
+== 查找更多信息
+
+xref:reference_prereq_network_port_requirements.adoc[网络端口要求]

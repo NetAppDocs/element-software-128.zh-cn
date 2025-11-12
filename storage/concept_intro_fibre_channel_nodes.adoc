@@ -1,0 +1,22 @@
+---
+permalink: storage/concept_intro_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords: fibre channel nodes, fibre channel switch, clients, protcols, iSCSi protocols, clusters, interconnections, fc, FC, connectivity, fibre channel connectivity, fibre channel nodes, fibre channel protocol 
+summary: SolidFire光纤通道节点提供与光纤通道交换机的连接，您可以将光纤通道客户端连接到该交换机。光纤通道节点充当光纤通道和 iSCSI 协议之间的协议转换器；这使您可以将光纤通道连接添加到任何新的或现有的SolidFire集群。 
+---
+= 光纤通道节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire光纤通道节点提供与光纤通道交换机的连接，您可以将光纤通道客户端连接到该交换机。光纤通道节点充当光纤通道和 iSCSI 协议之间的协议转换器；这使您可以将光纤通道连接添加到任何新的或现有的SolidFire集群。
+
+光纤通道节点具有以下特点：
+
+* 光纤通道交换机管理光纤网络状态，提供优化的互连。
+* 两个端口之间的流量仅通过交换机传输；不会传输到任何其他端口。
+* 单个端口故障是孤立的，不会影响其他端口的运行。
+* 在一个网络结构中，多对端口可以同时进行通信。
+

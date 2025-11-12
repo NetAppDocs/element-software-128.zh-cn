@@ -1,0 +1,96 @@
+---
+permalink: api/reference_element_api_keyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,keys 
+summary: 'keyServerKmip 对象描述了密钥管理互操作协议 (KMIP) 密钥服务器，该服务器用于检索用于集群功能（例如静态加密）的身份验证密钥。' 
+---
+= keyServerKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+keyServerKmip 对象描述了密钥管理互操作协议 (KMIP) 密钥服务器，该服务器用于检索用于集群功能（例如静态加密）的身份验证密钥。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+密钥提供程序ID
+ a| 
+如果此 KMIP 密钥服务器已分配给某个提供商，则此成员包含分配给它的 KMIP 密钥提供商的 ID。否则，该成员为空。
+ a| 
+整数
+
+
+
+ a| 
+密钥服务器ID
+ a| 
+KMIP密钥服务器的ID。这是集群在创建密钥服务器期间分配的唯一值。此值无法更改。
+ a| 
+整数
+
+
+
+ a| 
+kmipAssignedProviderIsActive
+ a| 
+如果此 KMIP 密钥服务器已分配给提供商（keyProviderID 不为空），则此成员指示该提供商是否处于活动状态（提供当前正在使用的密钥）。否则，该成员为空。
+ a| 
+布尔值
+
+
+
+ a| 
+kmipCa证书
+ a| 
+外部密钥服务器根 CA 的公钥证书。这是用于验证外部密钥服务器在 TLS 通信中提供的证书。对于关键服务器集群，其中各个服务器使用不同的 CA，此成员包含所有 CA 的根证书的连接字符串。
+ a| 
+string
+
+
+
+ a| 
+kmipClientCertificate
+ a| 
+Element 存储 KMIP 客户端使用的 PEM 格式 Base64 编码 PKCS#10 X.509 证书。
+ a| 
+string
+
+
+
+ a| 
+kmipKeyServerHostnames
+ a| 
+与此 KMIP 密钥服务器关联的主机名或 IP 地址。
+ a| 
+字符串数组
+
+
+
+ a| 
+kmipKeyServerName
+ a| 
+KMIP密钥服务器的名称。此名称仅用于显示目的，无需唯一。
+ a| 
+string
+
+
+
+ a| 
+kmipKeyServerPort
+ a| 
+与此 KMIP 密钥服务器关联的端口号（通常为 5696）。
+ a| 
+整数
+
+|===

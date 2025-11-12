@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_snapmirrorvolume.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVolume 
+summary: snapMirrorVolume 对象包含有关ONTAP卷的信息。 
+---
+= snapMirrorVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVolume 对象包含有关ONTAP卷的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目标ONTAP系统的 ID。
+ a| 
+整数
+
+
+
+ a| 
+name
+ a| 
+卷的名称。
+ a| 
+string
+
+
+
+ a| 
+type
+ a| 
+音量类型。可能值：
+
+* rw：读写卷
+* ls：负载均衡卷
+* dp：数据保护卷
+
+ a| 
+string
+
+
+
+ a| 
+vserver
+ a| 
+拥有此卷的虚拟服务器的名称。
+ a| 
+string
+
+
+
+ a| 
+聚合名称
+ a| 
+包含聚合的名称。
+ a| 
+string
+
+
+
+ a| 
+状态
+ a| 
+体积状态。可能值：
+
+* 联机
+* 受限制的
+* 脱机
+* 混合
+
+ a| 
+string
+
+
+
+ a| 
+大小
+ a| 
+卷的文件系统总大小（以字节为单位）。
+ a| 
+string
+
+
+
+ a| 
+可用尺寸
+ a| 
+卷中可用空间的大小（以字节为单位）。
+ a| 
+string
+
+|===

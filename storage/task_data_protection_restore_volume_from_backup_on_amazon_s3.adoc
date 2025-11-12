@@ -1,0 +1,36 @@
+---
+permalink: storage/task_data_protection_restore_volume_from_backup_on_amazon_s3.html 
+sidebar: sidebar 
+keywords: volume restore, amazon s3 object store 
+summary: 您可以从 Amazon S3 对象存储中的备份恢复卷。 
+---
+= 从 Amazon S3 对象存储的备份恢复卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以从 Amazon S3 对象存储中的备份恢复卷。
+
+. 点击“报告”>“事件日志”。
+. 找到创建所需恢复备份的备份事件。
+. 在事件的“详细信息”列中，单击“显示详细信息”。
+. 将清单信息复制到剪贴板。
+. 点击“管理”>“卷”。
+. 单击要恢复的卷对应的“操作”图标。
+. 在出现的菜单中，单击“从……恢复”。
+. 在“集成还原”对话框的“还原来源”下，选择“S3”。
+. 在“数据格式”下选择与备份文件匹配的选项：
++
+** *原生格式*：一种仅能被SolidFire存储系统读取的压缩格式。
+** *未压缩*：一种与其他系统兼容的未压缩格式。
+
+
+. 在“主机名”字段中输入用于访问对象存储的主机名。
+. 在“访问密钥 ID”字段中输入帐户的访问密钥 ID。
+. 在“密钥”字段中输入帐户的密钥。
+. 在“S3 存储桶”字段中输入要存储备份的 S3 存储桶。
+. 将清单信息粘贴到“清单”字段中。
+. 点击“开始写作”。
+

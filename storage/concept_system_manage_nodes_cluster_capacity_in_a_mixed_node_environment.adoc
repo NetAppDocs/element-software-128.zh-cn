@@ -1,0 +1,50 @@
+---
+permalink: storage/concept_system_manage_nodes_cluster_capacity_in_a_mixed_node_environment.html 
+sidebar: sidebar 
+keywords: nodes, mixed environment, capacity, cluster capacity, mixed nodes, encrypted, non-encrypted, threshold 
+summary: 集群中可以混合使用不同类型的节点。  SF系列2405、3010、4805、6010、9605、9010、19210、38410和H系列可以在集群中共存。 
+---
+= 混合节点环境下的集群容量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+集群中可以混合使用不同类型的节点。  SF系列2405、3010、4805、6010、9605、9010、19210、38410和H系列可以在集群中共存。
+
+H 系列包括 H610S-1、H610S-2、H610S-4 和 H410S 节点。这些节点同时支持 10GbE 和 25GbE。
+
+最好不要将未加密节点和加密节点混用。在混合节点集群中，任何节点的容量都不能超过集群总容量的 33%。例如，在一个包含四个 SF 系列 4805 节点的集群中，可以单独添加的最大节点是 SF 系列 9605。集群容量阈值是根据此情况下最大节点可能发生的损失来计算的。
+
+根据您的 Element 软件版本，以下 SF 系列存储节点不受支持：
+
+[cols="40,40"]
+|===
+| 从……开始 | 不支持存储节点... 
+
+
+| 元素 12.8  a| 
+* SF4805
+* SF9605
+* SF19210
+* SF38410
+
+
+
+
+| 元素 12.7  a| 
+* SF2405
+* SF9608
+
+
+
+
+| 元素 12.0  a| 
+* SF3010
+* SF6010
+* SF9010
+
+
+|===
+如果您尝试将这些节点之一升级到不受支持的 Element 版本，您将看到一条错误消息，指出 Element 12.x 不支持该节点。

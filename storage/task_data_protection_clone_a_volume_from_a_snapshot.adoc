@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_protection_clone_a_volume_from_a_snapshot.html 
+sidebar: sidebar 
+keywords: clone volume from snapshot, volume snapshots, clone 
+summary: 您可以从卷的快照创建新卷。执行此操作时，系统会使用快照信息，利用创建快照时卷上包含的数据克隆一个新卷。此过程会将有关该卷其他快照的信息存储在新创建的卷中。 
+---
+= 从快照克隆卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以从卷的快照创建新卷。执行此操作时，系统会使用快照信息，利用创建快照时卷上包含的数据克隆一个新卷。此过程会将有关该卷其他快照的信息存储在新创建的卷中。
+
+. 点击“数据保护”>“快照”。
+. 单击要用于卷克隆的快照的“操作”图标。
+. 在出现的菜单中，单击“从快照克隆卷”。
+. 在“从快照克隆卷”对话框中输入“卷名称”。
+. 选择新卷的*总大小*和大小单位。
+. 为卷选择*访问*类型。
+. 从列表中选择一个*帐户*来关联新卷。
+. 点击“开始克隆”。
+

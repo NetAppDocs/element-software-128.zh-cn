@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_administrator_api_methods.html 
+sidebar: sidebar 
+keywords: API,administration,method,administrator 
+summary: 您可以使用管理员 API 方法创建、修改、查看和删除存储集群管理员，并为有权访问存储集群的用户分配访问级别和权限。 
+---
+= 管理员 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用管理员 API 方法创建、修改、查看和删除存储集群管理员，并为有权访问存储集群的用户分配访问级别和权限。
+
+* xref:reference_element_api_addclusteradmin.adoc[添加集群管理员]
+* xref:reference_element_api_getcurrentclusteradmin.adoc[获取当前集群管理员]
+* xref:reference_element_api_getloginbanner.adoc[获取登录横幅]
+* xref:reference_element_api_listclusteradmins.adoc[列出集群管理员]
+* xref:reference_element_api_modifyclusteradmin.adoc[修改集群管理员]
+* xref:reference_element_api_removeclusteradmin.adoc[移除集群管理员]
+* xref:reference_element_api_setloginbanner.adoc[设置登录横幅]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

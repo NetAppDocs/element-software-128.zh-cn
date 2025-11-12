@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_clusterpair.html 
+sidebar: sidebar 
+keywords: objects,object,clusterPair 
+summary: clusterPair 对象包含与本地集群配对的集群的信息。您可以使用 ListClusterPairs 方法检索本地集群的 clusterPair 对象列表。 
+---
+= clusterPair
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterPair 对象包含与本地集群配对的集群的信息。您可以使用 ListClusterPairs 方法检索本地集群的 clusterPair 对象列表。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群名称
+ a| 
+这对簇中另一个簇的名称。
+ a| 
+string
+
+
+
+ a| 
+集群对ID
+ a| 
+为配对中的每个聚类分配一个唯一的 ID。
+ a| 
+整数
+
+
+
+ a| 
+集群对 UUID
+ a| 
+聚类对的通用唯一标识符。
+ a| 
+string
+
+
+
+ a| 
+UUID
+ a| 
+集群对中远程集群的唯一标识符。
+ a| 
+整数
+
+
+
+ a| 
+延迟
+ a| 
+集群之间的延迟，以毫秒为单位。
+ a| 
+整数
+
+
+
+ a| 
+贵宾
+ a| 
+配对集群的管理连接的 IP 地址。
+ a| 
+string
+
+
+
+ a| 
+状态
+ a| 
+配对集群之间的连接状态。可能值：
+
+* 未配置
+* 已连接
+* 配置错误
+* 断开连接
+
+ a| 
+string
+
+
+
+ a| 
+version
+ a| 
+该对集群中另一个集群的 Element 版本。
+ a| 
+string
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listclusterpairs.adoc[列出聚类对]

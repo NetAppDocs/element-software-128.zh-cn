@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_fipserrornodereport.html 
+sidebar: sidebar 
+keywords: objects,object,fipsErrorNodeReport 
+summary: fipsErrorNodeReport 对象包含每个节点的错误信息，该节点在使用 GetFipsReport 方法查询时，不会响应有关 FIPS 140-2 支持的信息。 
+---
+= fips错误节点报告
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fipsErrorNodeReport 对象包含每个节点的错误信息，这些节点在您使用以下方式查询时未响应有关 FIPS 140-2 支持的信息： `GetFipsReport`方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+nodeID
+ a| 
+未响应节点的 ID。
+ a| 
+整数
+
+
+
+ a| 
+错误
+ a| 
+包含错误信息的JSON对象。
+ a| 
+JSON 对象
+
+|===

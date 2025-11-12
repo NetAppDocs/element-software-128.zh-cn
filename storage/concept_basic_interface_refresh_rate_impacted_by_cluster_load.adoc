@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_basic_interface_refresh_rate_impacted_by_cluster_load.html 
+sidebar: sidebar 
+keywords: data refresh interval, cluster, interval controls, API requests, heavy load cluster, cluster credentials 
+summary: 根据 API 响应时间，集群可能会自动调整您正在查看的NetApp Element软件页面某些部分的数据刷新间隔。 
+---
+= 集群负载会影响接口刷新率。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+根据 API 响应时间，集群可能会自动调整您正在查看的NetApp Element软件页面某些部分的数据刷新间隔。
+
+当您在浏览器中重新加载页面时，刷新间隔将重置为默认值。点击页面右上角的集群名称，即可查看当前的刷新间隔。请注意，间隔控制的是 API 请求的频率，而不是服务器返回数据的速度。
+
+当集群负载过重时，它可能会将来自 Element UI 的 API 请求排队。在极少数情况下，当系统响应严重延迟时（例如网络连接缓慢且集群繁忙），如果系统未能及时响应排队的 API 请求，您可能会被从 Element UI 中注销。如果您被重定向到注销屏幕，您可以在忽略任何初始浏览器身份验证提示后再次登录。返回概览页面时，如果您的浏览器未保存集群凭据，系统可能会提示您输入集群凭据。

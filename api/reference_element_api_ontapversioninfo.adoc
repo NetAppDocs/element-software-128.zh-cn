@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_ontapversioninfo.html 
+sidebar: sidebar 
+keywords: object,objects,ontapVersionInfo 
+summary: ontapVersionInfo 对象包含有关SnapMirror关系中ONTAP集群的 API 版本的信息。  Element Web UI 使用 GetOntapVersionInfo API 方法获取此信息。 
+---
+= ontapVersionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+ontapVersionInfo 对象包含有关SnapMirror关系中ONTAP集群的 API 版本的信息。  Element Web UI 使用 `GetOntapVersionInfo`获取此信息的 API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目标ONTAP系统的 ID。
+ a| 
+整数
+
+
+
+ a| 
+客户端 API 主要版本
+ a| 
+Element API 客户端使用的ONTAP API 主版本。
+ a| 
+string
+
+
+
+ a| 
+客户端 API 次版本
+ a| 
+Element API 客户端使用的ONTAP API 次要版本。
+ a| 
+string
+
+
+
+ a| 
+ontapAPI主版本
+ a| 
+ONTAP系统当前支持的 API 主版本。
+ a| 
+string
+
+
+
+ a| 
+ontapAPI次版本
+ a| 
+ONTAP系统当前支持的 API 次要版本。
+ a| 
+string
+
+
+
+ a| 
+ontap版本
+ a| 
+ONTAP集群上当前运行的软件版本。
+ a| 
+string
+
+|===

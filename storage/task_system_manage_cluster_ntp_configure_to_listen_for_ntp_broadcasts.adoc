@@ -1,0 +1,38 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html 
+sidebar: sidebar 
+keywords: ntp, broadcasts, server, config, server list, broadcast client 
+summary: '通过使用广播模式，您可以指示集群中的每个节点在网络上监听来自特定服务器的网络时间协议 (NTP) 广播消息。' 
+---
+= 配置集群监听 NTP 广播。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过使用广播模式，您可以指示集群中的每个节点在网络上监听来自特定服务器的网络时间协议 (NTP) 广播消息。
+
+NTP用于通过网络同步时钟。连接到内部或外部 NTP 服务器应该是集群初始设置的一部分。
+
+.你需要什么
+* 您必须拥有集群管理员权限才能配置此设置。
+* 您必须在网络上将 NTP 服务器配置为广播服务器。
+
+
+.步骤
+. 点击“集群”>“设置”。
+. 将使用广播模式的 NTP 服务器添加到服务器列表中。
+. 在网络时间协议设置中，选择“是”以使用广播客户端。
+. 要设置广播客户端，请在“服务器”字段中输入您在广播模式下配置的 NTP 服务器。
+. 点击“保存更改”。
+
+
+
+
+== 查找更多信息
+
+* link:../storage/task_system_manage_cluster_ntp_configure.html["配置集群要查询的网络时间协议服务器"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

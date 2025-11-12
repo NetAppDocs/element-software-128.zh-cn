@@ -1,0 +1,32 @@
+---
+permalink: storage/task_data_protection_back_up_a_volume_snapshot_to_an_amazon_s3_object_store.html 
+sidebar: sidebar 
+keywords: volume snapshot, backup, amazon S3 object store 
+summary: 您可以将SolidFire快照备份到与 Amazon S3 兼容的外部对象存储。 
+---
+= 将卷快照备份到 Amazon S3 对象存储
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将SolidFire快照备份到与 Amazon S3 兼容的外部对象存储。
+
+. 点击**数据保护** > *快照*。
+. 点击要备份的快照旁边的“操作”图标。
+. 在出现的菜单中，单击“备份到”。
+. 在“集成备份”对话框的“备份到”下，选择“S3”。
+. 在“数据格式”下选择一个选项：
++
+** *原生格式*：一种仅能被SolidFire存储系统读取的压缩格式。
+** *未压缩*：一种与其他系统兼容的未压缩格式。
+
+
+. 在“主机名”字段中输入用于访问对象存储的主机名。
+. 在“访问密钥 ID”字段中输入帐户的访问密钥 ID。
+. 在“密钥”字段中输入帐户的密钥。
+. 在“S3 存储桶”字段中输入要存储备份的 S3 存储桶。
+. *可选*：在“姓名标签”字段中输入要附加到前缀的姓名标签。
+. 点击“开始阅读”。
+

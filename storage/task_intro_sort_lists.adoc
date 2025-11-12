@@ -1,0 +1,35 @@
+---
+permalink: storage/task_intro_sort_lists.html 
+sidebar: sidebar 
+keywords: sort lists, sorting on a single column, sorting on multiple columns, sort button, column selections, using sort criteria 
+summary: 在 Element UI 的某些页面上，您可以按一个或多个条件对列表信息进行排序。这可以帮助你将所需信息排列在屏幕上。 
+---
+= 排序列表
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在 Element UI 的某些页面上，您可以按一个或多个条件对列表信息进行排序。这可以帮助你将所需信息排列在屏幕上。
+
+. 要按单列排序，请单击列标题，直到信息按所需顺序排序为止。
+. 要按多列排序，请单击要排序的每一列的列标题，直到每一列中的信息按所需顺序排序为止。
++
+当您使用多列进行排序时，将显示“排序”按钮。
+
+. 要重新排列排序条件，请执行以下步骤：
++
+.. 点击“排序”。
++
+系统会根据您选择的列自动填充“排序依据”字段。
+
+.. 在“排序依据”字段中，按照您希望列表排序的顺序排列列。
++
+系统会对列表信息进行排序。
+
+
+
+. 要删除单个排序条件，请单击排序条件名称旁边的“删除”图标。
+. 要移除所有排序条件，请点击“全部清除”。
+

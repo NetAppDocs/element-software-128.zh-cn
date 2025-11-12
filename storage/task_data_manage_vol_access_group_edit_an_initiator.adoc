@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_manage_vol_access_group_edit_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator, edit, change alias, chap, credentials 
+summary: 您可以更改现有发起程序的别名，或者在别名尚不存在时添加别名。 
+---
+= 编辑发起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以更改现有发起程序的别名，或者在别名尚不存在时添加别名。
+
+要为每个发起方添加 CHAP 帐户名称和凭据，您必须使用 `ModifyInitiator`调用 API 来移除和添加 CHAP 访问权限和属性。
+
+看link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存储"]。
+
+.步骤
+. 点击“管理”>“发起者”。
+. 点击要编辑的发起者的“操作”图标。
+. 单击“*编辑*”。
+. 在“别名”字段中输入发起者的新别名。
+. 点击“保存更改”。
+

@@ -1,0 +1,53 @@
+---
+settings:
+  name: Element Software
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  versions:
+  - version-number: '12.8'
+    url: "/element-software"
+  - version-number: '12.7'
+    url: "/element-software-127"
+  - version-number: '12.5'
+    url: "/element-software-125"
+  - version-number: '12.3'
+    url: "/element-software-123"
+  langs: zh-cn,us-en,de-de,es-es,fr-fr,it-it,pt-br,ja-jp,ko-kr,zh-tw
+sidebar:
+  entries:
+  - title: SolidFire和 Element 软件文档 12.8
+    url: "/index.html"
+  - title: 发行说明
+    entries:
+    - title: 当前和以前的版本说明
+      url: "/concepts/concept_rn_relatedrn_element.html"
+    - title: 什么是新的
+      url: "/concepts/concept_rn_whats_new_element.html"
+  - section: concepts
+  - title: 要求
+    entries:
+    - title: 网络要求
+      url: "/storage/concept_prereq_networking.html"
+    - title: 运行 Element 软件的集群的交换机配置
+      url: "/storage/concept_prereq_switch_configuration_for_solidfire_clusters.html"
+    - title: 网络端口要求
+      url: "/storage/reference_prereq_network_port_requirements.html"
+  - section: try
+  - section: hardware
+  - section: setup
+  - section: storage
+  - section: hccstorage
+  - section: api
+  - title: 使用适用于 vCenter Server 的 Element 插件管理存储
+    url: "/element-plug-in-index.html"
+  - title: 使用NetApp SolidFire Active IQ监控存储
+    url: "/monitor-storage-active-iq.html"
+  - section: mnode
+  - section: upgrade
+  - title: 早期版本
+    url: "/element-earlierversions.html"
+  - title: 法律声明
+    url: "/legal-notices.html"

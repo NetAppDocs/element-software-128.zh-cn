@@ -1,0 +1,214 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_vcp_upgrade_plugin.html 
+summary: 作为NetApp SolidFire存储系统升级的一部分，您可以升级 vCenter Server 的 Element 插件。 
+keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 5.0 
+---
+= 升级 vCenter Server 的 Element 插件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+对于已注册NetApp Element Plug-in for VMware vCenter Server 的现有 vSphere 环境，您可以在首次更新包含该插件服务的管理服务包后，更新插件注册。
+
+您可以使用注册实用程序更新 vCenter Server Virtual Appliance (vCSA) 或 Windows 上的插件注册。您必须在每个需要使用该插件的 vCenter Server 上更改 vCenter 插件的注册信息。
+
+[NOTE]
+====
+管理服务 2.27 捆绑包包含适用于 vCenter Server 5.5 的 Element Plug-in，该插件仅与管理节点 12.8 兼容。当您更新到管理服务 2.27 时，您必须更改升级顺序并在升级到 Element 12.8 之后更新管理服务包，以使管理节点和管理服务之间兼容。
+
+管理服务 2.22.7 版本包含适用于 vCenter Server 5.0 的 Element 插件，其中包含远程插件。如果您使用 Element 插件，则应升级到管理服务 2.22.7 或更高版本，以符合 VMware 移除对本地插件支持的指令。 https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere-sdks-tools/8-0/developing-local-plug-ins-client-sdk/about-this-book-local/deprecation-of-local-plug-in-architecture.html["了解更多"^]。
+
+====
+[role="tabbed-block"]
+====
+.Element vCenter 插件 5.0 或更高版本
+--
+此升级流程涵盖以下升级场景：
+
+* 您正在升级到适用于 vCenter Server 5.5、5.4、5.3、5.2、5.1 或 5.0 的 Element 插件。
+* 您正在升级到 8.0 或 7.0 HTML5 vSphere Web Client。
++
+
+IMPORTANT: 适用于 vCenter 5.0 或更高版本的 Element 插件与 vCenter Server 6.7 和 6.5 不兼容。
+
+
+
+
+NOTE: 当您将 Element Plug-in for vCenter Server 4.x 升级到 5.x 时，已使用该插件配置的集群将会丢失，因为数据无法从 vCenter 实例复制到远程插件。您必须将这些集群重新添加到远程插件。从本地插件升级到远程插件时，只需执行一次此操作。
+
+--
+.Element vCenter 插件 4.10 或更早版本
+--
+此升级流程涵盖以下升级场景：
+
+* 您正在升级到 vCenter Server 4.10、4.9、4.8、4.7、4.6、4.5 或 4.4 的 Element 插件。
+* 您正在升级到 7.0、6.7 或 6.5 版 HTML5 vSphere Web Client。
++
+[IMPORTANT]
+====
+** 该插件与 VMware vCenter Server 8.0 不兼容，Element Plug-in for VMware vCenter Server 4.x 不兼容。
+** 该插件与 VMware vCenter Server 6.5 不兼容，Element Plug-in for VMware vCenter Server 4.6、4.7 和 4.8 不兼容。
+
+
+====
+* 您正在升级到 6.7 Flash vSphere Web Client。
++
+
+IMPORTANT: 该插件与 vSphere Web Client 版本 6.7 U2（Flash）、6.7 U3（Flash 和 HTML5）以及 7.0 U1 兼容。该插件与 HTML5 vSphere Web Client 的 6.7 U2 版本 13007421 以及在更新 2a（版本 13643870）之前发布的其他 6.7 U2 版本不兼容。有关受支持的 vSphere 版本的更多信息，请参阅发行说明。 https://docs.netapp.com/us-en/vcp/rn_relatedrn_vcp.html#netapp-element-plug-in-for-vcenter-server["你的插件版本"^] 。
+
+
+
+--
+====
+.你需要什么
+* *管理员权限*：您拥有 vCenter 管理员角色权限来安装插件。
+* *vSphere 升级*：在升级NetApp Element插件 for vCenter Server 之前，您已执行所有必需的 vCenter 升级。此过程假设 vCenter 升级已经完成。
+* *vCenter Server*：您的 vCenter 插件版本 4.x 或 5.x 已注册到 vCenter Server。从注册实用程序(`https://<ManagementNodeIP>:9443`选择“注册状态”，填写必要的字段，然后选择“检查状态”以验证 vCenter 插件是否已注册以及当前安装的版本号。
+* *管理服务更新*：您已更新您的 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理服务包"^]更新到最新版本。  vCenter 插件的更新是通过管理服务更新分发的，这些更新是在NetApp SolidFire全闪存存储的主要产品版本之外发布的。
+* *管理节点升级*：
++
+[role="tabbed-block"]
+====
+.Element vCenter 插件 5.0 或更高版本
+--
+您正在运行一个管理节点，该节点已link:task_hcc_upgrade_management_node.html["升级"]升级到 12.3.x 或更高版本。
+
+--
+.Element vCenter 插件 4.10 或更早版本
+--
+对于 Element vCenter 插件 4.4 至 4.10 版本，您正在运行一个管理节点，该节点已……link:task_hcc_upgrade_management_node.html["升级"]版本需升级至 11.3 或更高版本。vCenter 插件 4.4 或更高版本需要一个版本为 11.3 或更高版本的管理节点，该节点应采用模块化架构，并提供独立的服务。您的管理节点必须已通电并配置了其 IP 地址或 DHCP 地址。
+
+--
+====
+* *元素存储升级*：
++
+** 从 Element vCenter 插件 5.0 开始，您的集群将运行NetApp Element软件 12.3.x 或更高版本。
+** 对于 Element vCenter 插件 4.10 或更早版本，您的集群运行的是NetApp Element软件 11.3 或更高版本。
+
+
+* *vSphere Web Client*：在开始任何插件升级之前，您已从 vSphere Web Client 注销。如果您不注销，Web 客户端将无法识别在此过程中对您的插件所做的更新。
+
+
+.步骤
+. 请在浏览器中输入管理节点的 IP 地址，包括用于注册的 TCP 端口：
+`https://<ManagementNodeIP>:9443`注册实用程序 UI 打开后会显示插件的“管理 QoSSIOC 服务凭据”页面。
++
+image::vcp_registration_utility_ui_qossioc.png[展示了插件的注册实用程序用户界面]
+
+. 选择“vCenter插件注册”。
++
+[role="tabbed-block"]
+====
+.Element vCenter 插件 5.0 或更高版本
+--
+显示 vCenter 插件注册页面：
+
+image::vcp_remote_plugin_registration_ui.png[展示了插件的注册实用程序用户界面]
+
+--
+.Element vCenter 插件 4.10 或更早版本
+--
+显示 vCenter 插件注册页面：
+
+image::vcp_registration_utility_ui.png[展示了插件的注册实用程序用户界面]
+
+--
+====
+. 在“管理 vCenter 插件”中，选择“更新插件”。
+. 请确认或更新以下信息：
++
+.. 您要注册插件的 vCenter 服务的 IPv4 地址或 FQDN。
+.. vCenter 管理员用户名。
++
+
+NOTE: 您输入的用户名和密码必须是具有 vCenter 管理员角色权限的用户的用户名和密码。
+
+.. vCenter 管理员密码。
+.. （适用于内部服务器/暗网）根据您的 vCenter Element 插件版本，插件 JSON 文件或插件 ZIP 文件的自定义 URL：
++
+[role="tabbed-block"]
+====
+.Element vCenter 插件 5.0 或更高版本
+--
+插件 JSON 文件的自定义 URL。
+
+
+NOTE: 如果您使用的是 HTTP 或 HTTPS 服务器（暗网）或已修改 JSON 文件名或网络设置，则可以选择“自定义 URL”来自定义 URL。如果您打算自定义 URL，请参阅有关修改内部（暗站）HTTP 服务器的 vCenter Server 属性的 Element Plug-in for vCenter Server 文档，了解其他配置步骤。
+
+--
+.Element vCenter 插件 4.10 或更早版本
+--
+插件 ZIP 文件的自定义 URL。
+
+
+NOTE: 如果您使用的是 HTTP 或 HTTPS 服务器（暗网）或已修改 ZIP 文件名或网络设置，则可以选择“自定义 URL”来自定义 URL。如果您打算自定义 URL，请参阅有关修改内部（暗站）HTTP 服务器的 vCenter Server 属性的 Element Plug-in for vCenter Server 文档，了解其他配置步骤。
+
+--
+====
+
+
+. 选择*更新*。
++
+注册成功后，注册工具界面上会出现横幅。
+
+. 以 vCenter 管理员身份登录 vSphere Web Client。如果您已登录 vSphere Web Client，则必须先注销，等待两到三分钟，然后再重新登录。
++
+
+NOTE: 此操作将创建一个新数据库，并完成 vSphere Web Client 中的安装。
+
+. 在 vSphere Web Client 中，查看任务监视器中是否已完成以下任务，以确保安装已完成： `Download plug-in`和 `Deploy plug-in`。
+. 确认插件扩展点出现在 vSphere Web Client 的“快捷方式”选项卡和侧面板中。
++
+[role="tabbed-block"]
+====
+.Element vCenter 插件 5.0 或更高版本
+--
+NetApp Element Remote Plugin 扩展点出现：
+
+image::vcp_remote_plugin_icons_home_page.png[图中显示了成功升级或安装 Element Plug-in 5.1 或更高版本后的插件扩展点。]
+
+--
+.Element vCenter 插件 4.10 或更早版本
+--
+NetApp Element配置和管理扩展点如下：
+
+image::vcp_shortcuts_page_accessing_plugin.png[图中显示了成功升级或安装 Element Plug-in 4.10 或更早版本后的插件扩展点。]
+
+--
+====
++
+[NOTE]
+====
+如果 vCenter 插件图标不可见，请参阅link:https://docs.netapp.com/us-en/vcp/vcp_reference_troubleshoot_vcp.html#plug-in-registration-successful-but-icons-do-not-appear-in-web-client["vCenter Server 的 Element 插件"^]插件故障排除文档。
+
+将NetApp Element Plug-in for vCenter Server 升级到 4.8 或更高版本（VMware vCenter Server 版本为 6.7U1）后，如果NetApp Element配置的“集群”和“QoSSIOC 设置”部分中未列出存储集群或出现服务器错误，请参阅link:https://docs.netapp.com/us-en/vcp/vcp_reference_troubleshoot_vcp.html#error_vcp48_67u1["vCenter Server 的 Element 插件"^]有关解决这些错误的文档。
+
+====
+. 在插件的“NetApp Element配置”扩展点的“关于”选项卡中验证版本更改。
++
+您应该会看到以下版本详细信息：
+
++
+[listing]
+----
+NetApp Element Plug-in Version: 5.5
+NetApp Element Plug-in Build Number: 16
+----
+
+
+
+NOTE: vCenter 插件包含在线帮助内容。为确保您的帮助包含最新内容，请在升级插件后清除浏览器缓存。
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

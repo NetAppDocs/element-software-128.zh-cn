@@ -1,0 +1,110 @@
+---
+permalink: api/reference_element_api_authsessioninfo.html 
+sidebar: sidebar 
+keywords: objects,object,authSessionInfo 
+summary: authSessionInfo 对象包含有关身份验证会话的信息。 
+---
+= authSessionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+这 `authSessionInfo`对象包含有关身份验证会话的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+`accessGroupList`
+ a| 
+用户访问组列表。
+ a| 
+字符串数组
+
+
+
+ a| 
+`authMethod`
+ a| 
+集群管理员用户拥有的授权类型。可能值：
+
+* LDAP - 通过 LDAP 进行身份验证。
+* 集群 - 通过存储在集群数据库中的用户名和密码进行身份验证。
+* IdP - 通过第三方身份提供商进行身份验证。
+
+ a| 
+string
+
+
+
+ a| 
+`clusterAdminIDs`
+ a| 
+与此会话关联的集群管理员 ID 列表。对于与 LDAP 或第三方身份提供商 (IdP) 相关的会话，这将是与此会话关联的匹配集群管理员 ID 的汇总列表。
+ a| 
+整数数组
+
+
+
+ a| 
+`finalTimeout`
+ a| 
+会话失效的时间。此值在创建会话时设置，无法更改。
+ a| 
+string
+
+
+
+ a| 
+`idpConfigVersion`
+ a| 
+创建会话时的身份提供商配置版本。
+ a| 
+整数
+
+
+
+ a| 
+`lastAccessTimeout`
+ a| 
+会话因不活动而失效的时间。当会话被访问使用时，它会被设置为一个新值，直到会话因 finalTimeout 达到而失效为止。
+ a| 
+string
+
+
+
+ a| 
+`sessionCreationTime`
+ a| 
+会话创建时间。
+ a| 
+string
+
+
+
+ a| 
+`sessionID`
+ a| 
+此会话的 UUID。
+ a| 
+UUID
+
+
+
+ a| 
+`username`
+ a| 
+与此会话关联的用户名。对于与 LDAP 相关的会话，这将是用户的 LDAP DN。对于与第三方身份提供商相关的会话，这将是一个任意的名称-值对，用于审计会话内的操作。它不一定与集群上的集群管理员名称匹配。例如，SAML 主题名称 ID，但这取决于 IdP 的配置和 SAML 断言的最终内容。
+ a| 
+string
+
+|===

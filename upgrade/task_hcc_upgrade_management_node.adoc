@@ -1,0 +1,195 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_management_node.html 
+summary: 作为NetApp SolidFire存储系统升级的一部分，您需要升级管理节点。 
+keywords: netapp, cluster, management node, mNode, upgrade, 10, 11.0, 11.1, 11.3, 11.5, 11.7, 12.0, 12.2, 12.3, 12.3.1, 12.3.2, 12.3.x, 12.5, 12.7, 12.8 
+---
+= 升级管理节点
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以将管理节点从 12.3.x 或更高版本升级到管理节点 12.5 或更高版本。
+
+升级存储集群上的 Element 软件不再需要升级管理节点操作系统。您只需将管理服务升级到最新版本，即可使用NetApp Hybrid Cloud Control 执行 Element 升级。如果您出于其他原因（例如安全修复）想要升级管理节点操作系统，请按照适用于您场景的管理节点升级程序进行操作。
+
+
+NOTE: 如果您需要有关将管理节点升级到 12.2 或更早版本的信息，请参阅以下内容： https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_management_node.html["Element 12.3.x 管理节点升级文档"^] 。
+
+
+
+== 步骤 1：升级管理节点上的虚拟机硬件版本
+
+如果您要将现有管理节点就地升级到 Element 12.8，则在升级之前，必须确保管理节点上的 VM 硬件版本与您的环境兼容 ESXi 6.7（VM 硬件版本 14）或更高版本。
+
+.步骤
+. 以 vCenter 管理员身份登录 vSphere Web Client。
+. 从 vSphere Client 菜单中选择“虚拟机和模板”。
+. 右键单击虚拟机 (VM)，然后选择“电源”>“关闭客户操作系统”。
++
+等待虚拟机完全关闭电源。
+
+. 右键单击虚拟机，然后选择“兼容性”>“升级虚拟机兼容性”。
+. 选择“是”。
+. 根据您的 vSphere 环境版本，选择 ESXi 6.7 或更高版本。
+. 选择“确定”。
+. 升级完成后，右键单击虚拟机，然后选择“电源”>“开机”。
+. 选择“vSphere 客户端刷新”，并验证虚拟机兼容性是否为所需版本。
+
+
+
+
+== 步骤 2：将管理节点升级到 Element 12.5 或更高版本
+
+请选择以下升级选项之一：
+
+* <<将管理节点从 12.3.x 或更高版本升级到 12.5 或更高版本>>
+* <<使用管理节点 REST API 重新配置身份验证>>
++
+如果您已按顺序更新了 (1) 管理服务版本和 (2) Element 存储版本，并且想要保留现有的管理节点，请选择此选项：
+
+
+
+
+NOTE: 如果您没有按顺序更新管理服务，然后再更新 Element 存储，则无法使用此过程重新配置重新身份验证。请按照正确的升级步骤进行操作。
+
+
+
+=== 将管理节点从 12.3.x 或更高版本升级到 12.5 或更高版本
+
+您可以将管理节点从 12.3.x 或更高版本就地升级到 12.5 或更高版本，而无需配置新的管理节点 VM。
+
+
+NOTE: Element 12.5 或更高版本的管理节点是可选升级。现有部署不需要此功能。
+
+.开始之前
+* 管理节点虚拟机的内存为 24GB。
+* 您打算升级的管理节点版本为 12.0，使用 IPv4 网络。管理节点版本 12.5 或更高版本不支持 IPv6。
++
+
+TIP: 要查看管理节点的版本，请登录管理节点并在登录横幅中查看 Element 版本号。
+
+* 您已使用NetApp Hybrid Cloud Control 将管理服务包更新到最新版本。您可以通过以下 IP 地址访问NetApp Hybrid Cloud Control： `\https://<ManagementNodeIP>`
+* 如果您要将管理节点更新到 12.5 或更高版本，则需要管理服务 2.21.61 或更高版本才能继续。
+* 您已按照以下说明配置了额外的网络适配器（如果需要）：link:../mnode/task_mnode_install_add_storage_NIC.html["配置额外的存储网卡"] 。
++
+
+NOTE: 如果 eth0 无法路由到 SVIP，则持久卷可能需要额外的网络适配器。在 iSCSI 存储网络上配置新的网络适配器，以允许配置持久卷。
+
+* 存储节点运行的是 Element 12.3.x 或更高版本。
+
+
+.步骤
+. 使用 SSH 或控制台访问登录到管理节点 VM。
+. 下载 https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["管理节点 ISO"^]从NetApp支持站点到管理节点 VM 的 Element 软件。
++
+
+NOTE: ISO的名称与……类似 `solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso`
+
+. 通过对下载的文件运行 md5sum 来检查下载文件的完整性，并将输出结果与NetApp支持网站上 Element 软件提供的内容进行比较，如下例所示：
++
+`sudo md5sum -b <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso`
+
+. 使用以下命令挂载管理节点 ISO 镜像并将内容复制到文件系统：
++
+[listing]
+----
+sudo mkdir -p /upgrade
+----
++
+[listing]
+----
+sudo mount <solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso> /mnt
+----
++
+[listing]
+----
+sudo cp -r /mnt/* /upgrade
+----
+. 切换到用户主目录，然后从该目录卸载 ISO 文件。 `/mnt` ：
++
+[listing]
+----
+sudo umount /mnt
+----
+. 删除 ISO 文件以节省管理节点上的空间：
++
+[listing]
+----
+sudo rm <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. 在要升级的管理节点上，运行以下命令来升级管理节点的操作系统版本。升级后，脚本会保留所有必要的配置文件，例如Active IQ收集器和代理设置。
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1
+----
++
+升级过程完成后，管理节点将重启并安装新的操作系统。
+
++
+
+NOTE: 执行本步骤中描述的 sudo 命令后，SSH 会话将被终止。需要访问控制台才能继续监控。如果在执行升级时无法访问控制台，请在 15 到 30 分钟后重试 SSH 登录并验证连接。登录后，您可以在 SSH 横幅中确认新的操作系统版本，该横幅表明升级已成功。
+
+. 在管理节点上，运行 `redeploy-mnode`用于保留先前管理服务配置设置的脚本：
++
+
+NOTE: 该脚本保留先前的管理服务配置，包括来自Active IQ收集器服务、控制器（vCenter）或代理的配置，具体取决于您的设置。
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode -mu <mnode user>
+----
+
+
+
+IMPORTANT: 如果您之前已在管理节点上禁用 SSH 功能，则需要：link:../mnode/task_mnode_ssh_management.html["再次禁用 SSH"]在已恢复的管理节点上。提供 SSH 功能link:../mnode/task_mnode_enable_remote_support_connections.html["NetApp支持远程支持隧道 (RST) 会话访问"]默认情况下在管理节点上启用。
+
+
+
+=== 使用管理节点 REST API 重新配置身份验证
+
+如果您已按顺序升级了（1）管理服务和（2）元素存储，则可以保留现有的管理节点。如果您遵循了不同的升级顺序，请参阅就地管理节点升级的步骤。
+
+.开始之前
+* 您的管理服务已更新至 2.20.69 或更高版本。
+* 您的存储集群正在运行 Element 12.3 或更高版本。
+* 您已按顺序更新了管理服务，然后升级了 Element 存储。除非您已按所述顺序完成升级，否则无法使用此过程重新配置身份验证。
+
+
+.步骤
+. 在管理节点上打开管理节点 REST API 用户界面：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. 选择“授权”，然后完成以下步骤：
++
+.. 请输入集群用户名和密码。
+.. 请输入客户端 ID `mnode-client`如果该值尚未填充。
+.. 选择“授权”以开始会话。
+
+
+. 从 REST API UI 中选择 *POST /services/reconfigure-auth*。
+. 选择*试用一下*。
+. 对于 *load_images* 参数，请选择 `true`。
+. 选择*执行*。
++
+响应主体表明重新配置成功。
+
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

@@ -1,0 +1,40 @@
+---
+permalink: storage/reference_data_manage_volumes_qos_policies_details.html 
+sidebar: sidebar 
+keywords: qos policies 
+summary: 您可以在“管理”选项卡中查看 QoS 策略的详细信息。 
+---
+= QoS策略详情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在“管理”选项卡中查看 QoS 策略的详细信息。
+
+* *ID*
++
+系统生成的 QoS 策略 ID。
+
+* *姓名*
++
+用户自定义的 QoS 策略名称。
+
+* *最低IOPS*
++
+该卷保证的最低 IOPS 数。
+
+* *最大IOPS*
++
+该卷允许的最大 IOPS 数。
+
+* *突发IOPS*
++
+在短时间内允许该卷的最大 IOPS 数。默认值 = 15,000。
+
+* *卷*
++
+显示使用该策略的卷数。该数字链接到一个表格，其中列出了已应用该策略的卷册。
+
+

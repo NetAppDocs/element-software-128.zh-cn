@@ -1,0 +1,91 @@
+---
+indexpage:
+  title: SolidFire和 Element 软件文档
+  summary: SolidFire全闪存存储系统由驱动器和节点等硬件组件组成，这些组件组合成一个存储资源池。作为单一存储系统，该统一集群由NetApp Element软件进行管理。
+  keywords: solidfire, all-flash, storage, hardware, install, maintain, element software,
+    esos, element cli
+  lead: SolidFire全闪存存储系统由驱动器和节点等硬件组件组成，这些组件组合成一个存储资源池。使用 Element 界面、API 或其他管理工具，您可以使用NetApp
+    Element软件管理这些存储资源集群。本网站包含 Element 软件 12.8 的文档。
+  tiles:
+  - title: 开始使用
+    links:
+    - title: 产品概述
+      url: "/concepts/concept_intro_product_overview.html"
+    - title: 发行说明
+      url: "/concepts/concept_rn_relatedrn_element.html"
+    - title: 什么是新的
+      url: "/concepts/concept_rn_whats_new_element.html"
+    - title: 要求
+      url: "/storage/concept_prereq_networking.html"
+    - title: 设置概览
+      url: "/setup/concept_setup_overview.html"
+  - title: 安装和维护硬件
+    links:
+    - title: H410S 和 H610S 硬件信息
+      url: "/hardware/task_h410s_h610s_install.html"
+    - title: SF系列硬件信息
+      url: "/hardware/task_sfseries_chassisrepl.html"
+    - title: 返回工厂图像信息
+      url: "/hardware/concept_rtfi_configure.html"
+    - title: NetApp H 系列存储节点支持的固件版本
+      url: "/hardware/fw_storage_nodes.html"
+  - title: 管理存储
+    links:
+    - title: 使用 Element 软件用户界面
+      url: "/storage/index.html"
+    - title: 使用NetApp混合云控制
+      url: "/hccstorage/task-hcc-manage-storage-clusters.html"
+    - title: 使用 Element 软件 API
+      url: "/api/concept_element_api_about_the_api.html"
+    - title: 使用 vCenter Server 的 Element 插件
+      url: https://docs.netapp.com/us-en/vcp/
+    - title: 使用NetApp SolidFire Active IQ
+      url: https://docs.netapp.com/us-en/solidfire-active-iq/
+    - title: 与管理节点交互
+      url: "/mnode/task_mnode_work_overview.html"
+  - title: 使用集成工具（需要登录）
+    links:
+    - title: Element CLI
+      url: https://mysupport.netapp.com/site/tools/tool-eula/elem-cli
+    - title: Element PowerShell Tools
+      url: https://mysupport.netapp.com/site/tools/tool-eula/elem-powershell-tools
+    - title: Element SDK（Java、.NET、Python）
+      url: https://mysupport.netapp.com/site/products/all/details/netapphci-solidfire-elementsoftware/tools-tab
+    - title: SolidFire Postman API 测试套件
+      url: https://github.com/solidfire/postman
+    - title: SolidFire存储复制适配器
+      url: https://mysupport.netapp.com/site/products/all/details/elementsra/downloads-tab
+    - title: SolidFire vRO
+      url: https://mysupport.netapp.com/site/products/all/details/solidfire-vro/downloads-tab
+    - title: SolidFire VSS 提供程序
+      url: https://mysupport.netapp.com/site/products/all/details/solidfire-vss-provider/downloads-tab
+  - title: 解决方案
+    links:
+    - title: NetApp解决方案
+      url: https://docs.netapp.com/us-en/netapp-solutions/index.html
+  - title: 演示和教程
+    links:
+    - title: NetApp University SolidFire培训（需要登录）
+      url: https://netapp.sabacloud.com/Saba/Web_spf/NA1PRD0047/common/searchresults/solidfire/LEARNINGEVENT%2COFFERINGTEMPLATE%2CCERTIFICATION%2CCURRICULUM%2COFFERING%2CPACKAGE
+    - title: 如何安装和扩展NetApp Solidfire 集群（视频）
+      url: https://www.youtube.com/watch?v=JOe-zwxIZR4
+    - title: NetApp SolidFire安装（视频）
+      url: https://youtu.be/YKGK5nNSL68
+  - title: 博客和社区
+    links:
+    - title: NetApp社区
+      url: https://community.netapp.com/t5/AFF-NVMe-EF-Series-and-SolidFire-Discussions/bd-p/flash-storage-systems-discussions
+    - title: 哪里可以获得帮助
+      url: https://mysupport.netapp.com/site/products/all/details/element-software/guideme-tab
+  - title: 早期版本
+    links:
+    - title: 元素 12.2.1 文档
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63945&language=en-US
+    - title: 元素 12.2 文档
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63593&language=en-US
+    - title: Element 12.0.1 文档
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63946&language=en-US
+    - title: Element 12.0 文档
+      url: https://mysupport.netapp.com/documentation/docweb/index.html?productID=63368&language=en-US
+    - title: 元素 11.8.2 及更早版本文档
+      url: "/element-earlierversions.html"

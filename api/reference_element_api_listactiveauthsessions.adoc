@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_listactiveauthsessions.html 
+sidebar: sidebar 
+keywords: active,sessions,authentication session,list 
+summary: 您可以使用 ListActiveAuthSessions 方法列出所有已验证的活动会话。只有具有管理员权限的用户才能调用此方法。 
+---
+= 列出活动身份验证会话
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListActiveAuthSessions`列出所有已验证的活动会话的方法。只有具有管理员权限的用户才能调用此方法。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+会议
+ a| 
+身份验证会话的会话信息。
+ a| 
+link:reference_element_api_authsessioninfo.html["authSessionInfo"]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "ListActiveAuthSessions"
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+"sessions": [
+      {
+        "accessGroupList": [
+          "administrator"
+        ],
+        "authMethod": "Cluster",
+        "clusterAdminIDs": [
+          1
+        ],
+        "finalTimeout": "2020-03-14T19:21:24Z",
+        "idpConfigVersion": 0,
+        "lastAccessTimeout": "2020-03-11T19:51:24Z",
+        "sessionCreationTime": "2020-03-11T19:21:24Z",
+        "sessionID": "b12bfc64-f233-44df-8b9f-6fb6c011abf7",
+        "username": "admin"
+      }
+    ]
+}
+----
+
+
+== 自版本以来的新版本
+
+12.0

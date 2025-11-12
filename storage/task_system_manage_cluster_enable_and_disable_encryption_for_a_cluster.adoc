@@ -1,0 +1,78 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html 
+sidebar: sidebar 
+keywords: enable, disable, encryption at rest, cluster, sed, hardware-based, encryption settings, software-based 
+summary: 使用SolidFire集群，您可以对存储在集群上的所有数据进行静态加密，可以使用软件或硬件加密。 
+---
+= 启用和禁用集群的静态数据加密
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用SolidFire集群，您可以加密存储在集群驱动器上的所有静态数据。您可以使用以下任一方式启用对自加密驱动器 (SED) 的集群级保护link:../concepts/concept_solidfire_concepts_security.html["静态数据采用硬件或软件加密"]。
+
+您可以使用 Element UI 或 API 启用静态硬件加密。启用静态数据硬件加密功能不会影响集群的性能或效率。您只能使用 Element API 启用静态软件加密。
+
+在集群创建期间，默认情况下不会启用基于硬件的静态加密，可以通过 Element UI 启用和禁用。
+
+
+WARNING: 对于SolidFire全闪存存储集群，必须在创建集群期间启用静态软件加密，并且集群创建后不能禁用。
+
+.你需要什么
+* 您拥有集群管理员权限，可以启用或更改加密设置。
+* 对于基于硬件的静态加密，在更改加密设置之前，您已确保集群处于健康状态。
+* 如果要禁用加密，则必须有两个节点参与集群才能访问密钥以禁用驱动器上的加密。
+
+
+
+
+== 检查静态加密状态
+
+要查看集群上静态加密和/或静态软件加密的当前状态，请使用以下方法：link:../api/reference_element_api_getclusterinfo.html["获取集群信息"^]方法。你可以使用link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["获取静态软件加密信息"^]获取集群用于加密静态数据的信息的方法。
+
+
+NOTE: Element软件用户界面仪表板 `https://<MVIP>/`目前仅显示基于硬件的加密的静态加密状态。
+
+.选项
+* <<启用基于硬件的静态数据加密>>
+* <<启用静态数据软件加密>>
+* <<禁用静态数据的硬件加密>>
+
+
+
+
+== 启用基于硬件的静态数据加密
+
+
+NOTE: 要使用外部密钥管理配置启用静态加密，您必须通过以下方式启用静态加密：link:../api/reference_element_api_enableencryptionatrest.html["API"] 。启用使用现有 Element UI 按钮后，将恢复使用内部生成的密钥。
+
+. 从元素用户界面中，选择“集群”>“设置”。
+. 选择“启用静态数据加密”。
+
+
+
+
+== 启用静态数据软件加密
+
+
+NOTE: 软件静态加密在集群上启用后无法禁用。
+
+. 在集群创建期间，运行link:../api/reference_element_api_createcluster.html["创建集群方法"]和 `enableSoftwareEncryptionAtRest`设置为 `true`。
+
+
+
+
+== 禁用静态数据的硬件加密
+
+. 从元素用户界面中，选择“集群”>“设置”。
+. 选择“禁用静态数据加密”。
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

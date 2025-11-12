@@ -1,0 +1,300 @@
+---
+permalink: api/reference_element_api_getclusterfullthreshold.html 
+sidebar: sidebar 
+keywords: cluster,get,getting,full,threshold,level,fullness,storage,capacity,getclusterfullthreshold 
+summary: 您可以使用 GetClusterFullThreshold 方法查看为集群填充级别设置的阶段。此方法返回集群的所有饱和度指标。 
+---
+= 获取集群完整阈值
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterFullThreshold`查看集群填充程度阶段设置的方法。此方法返回集群的所有饱和度指标。
+
+
+NOTE: 当集群达到块集群饱和的错误阶段时，随着集群接近临界阶段，所有卷上的最大 IOPS 将线性减少到卷的最小 IOPS。这有助于防止集群达到块集群已满的临界阶段。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+块满
+ a| 
+集群当前计算出的块填充度级别。
+
+* stage1Happy：无警报或错误情况。对应于网页用户界面中的“健康”状态。
+* stage2Aware：无警报或错误情况。对应于网页用户界面中的“健康”状态。
+* stage3Low：您的系统无法提供冗余数据保护，以应对两个非同时发生的节点故障。对应于网页用户界面中的*警告*状态。您可以在 Web UI 中配置此级别（默认情况下，系统会在容量低于错误状态 3% 时触发此警报）。
+* stage4严重：系统无法提供来自单个节点故障的冗余数据保护。无法创建任何新卷或克隆。对应于元素用户界面中的*错误*状态。
+* stage5完全消耗：完全消耗。集群为只读，iSCSI 连接保持连接，但所有写入操作均已暂停。对应于元素用户界面中的*严重*状态。
+
+ a| 
+string
+
+
+
+ a| 
+饱腹感
+ a| 
+反映了“块完整性”和“元数据完整性”之间的最高完整性级别。
+ a| 
+string
+
+
+
+ a| 
+最大元数据超配额因子
+ a| 
+该值代表元数据空间相对于可用空间可以超额配置的次数。例如，如果元数据空间足以存储 100 TiB 的卷，并且该数字设置为 5，则可以创建 500 TiB 的卷。
+ a| 
+整数
+
+
+
+ a| 
+元数据完整性
+ a| 
+集群当前元数据完整性的计算级别。
+
+* stage1Happy：无警报或错误情况。对应于网页用户界面中的“健康”状态。
+* stage2Aware：无警报或错误情况。对应于网页用户界面中的“健康”状态。
+* stage3Low：您的系统无法提供冗余数据保护，以应对两个非同时发生的节点故障。对应于网页用户界面中的*警告*状态。您可以在 Web UI 中配置此级别（默认情况下，系统会在容量低于错误状态 3% 时触发此警报）。
+* stage4严重：系统无法提供来自单个节点故障的冗余数据保护。无法创建任何新卷或克隆。对应于元素用户界面中的*错误*状态。
+* stage5完全消耗：完全消耗。集群为只读，iSCSI 连接保持连接，但所有写入操作均已暂停。对应于元素用户界面中的*严重*状态。
+
+ a| 
+string
+
+
+
+ a| 
+切片储备已用阈值百分比
+ a| 
+错误情况。如果预留切片利用率大于此值，则会触发系统警报。
+ a| 
+整数
+
+
+
+ a| 
+stage2AwareThreshold
+ a| 
+意识状态。为第二阶段聚类阈值级别设置的值。
+ a| 
+整数
+
+
+
+ a| 
+stage2BlockThresholdBytes
+ a| 
+集群使用的字节数达到 2 级条件时，就会出现该条件。
+ a| 
+整数
+
+
+
+ a| 
+stage2MetadataThresholdBytes
+ a| 
+集群使用的元数据字节数，达到 2 阶段满负荷状态时，集群将达到该状态。
+ a| 
+
+
+
+ a| 
+stage3BlockThresholdBytes
+ a| 
+集群使用的存储字节数，达到 3 级满负荷状态时，集群将达到该状态。
+ a| 
+整数
+
+
+
+ a| 
+stage3BlockThresholdPercent
+ a| 
+第三阶段设定的百分比值。当达到此使用百分比时，警报日志中会发布警告。
+ a| 
+整数
+
+
+
+ a| 
+stage3LowThreshold
+ a| 
+错误情况。集群容量不足时触发系统警报的阈值。
+ a| 
+整数
+
+
+
+ a| 
+stage3MetadataThresholdBytes
+ a| 
+集群使用的元数据字节数，达到 3 级满状态时，集群将达到该状态。
+ a| 
+整数
+
+
+
+ a| 
+stage3MetadataThresholdPercent
+ a| 
+元数据完整性第三阶段设定的百分比值。当达到此使用百分比时，警报日志中将发布警告。
+ a| 
+整数
+
+
+
+ a| 
+stage4BlockThresholdBytes
+ a| 
+集群使用的存储字节数，达到 4 级满负荷状态时，集群将达到该存储字节数。
+ a| 
+整数
+
+
+
+ a| 
+stage4CriticalThreshold
+ a| 
+错误情况。当集群容量严重不足时，系统会发出警报以发出警告。
+ a| 
+整数
+
+
+
+ a| 
+stage4MetadataThresholdBytes
+ a| 
+集群使用的元数据字节数，达到 4 级满状态时，集群将达到该状态。
+ a| 
+整数
+
+
+
+ a| 
+stage5BlockThresholdBytes
+ a| 
+集群使用的存储字节数，达到 5 级满负荷状态时，集群将达到该状态。
+ a| 
+整数
+
+
+
+ a| 
+stage5MetadataThresholdBytes
+ a| 
+集群使用的元数据字节数，达到 5 级满状态时，集群将达到该状态。
+ a| 
+整数
+
+
+
+ a| 
+sumTotalClusterBytes
+ a| 
+集群的物理容量，以字节为单位。
+ a| 
+整数
+
+
+
+ a| 
+sumTotalMetadataClusterBytes
+ a| 
+可用于存储元数据的总空间量。
+ a| 
+整数
+
+
+
+ a| 
+已用簇字节总和
+ a| 
+集群上使用的存储字节数。
+ a| 
+整数
+
+
+
+ a| 
+sumUsedMetadataClusterBytes
+ a| 
+用于存储元数据的卷驱动器空间量。
+ a| 
+整数
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method" : "GetClusterFullThreshold",
+   "params" : {},
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+    "blockFullness":"stage1Happy",
+    "fullness":"stage3Low",
+    "maxMetadataOverProvisionFactor":5,
+    "metadataFullness":"stage3Low",
+    "sliceReserveUsedThresholdPct":5,
+    "stage2AwareThreshold":3,
+    "stage2BlockThresholdBytes":2640607661261,
+    "stage3BlockThresholdBytes":8281905846682,
+    "stage3BlockThresholdPercent":5,
+    "stage3LowThreshold":2,
+    "stage4BlockThresholdBytes":8641988709581,
+    "stage4CriticalThreshold":1,
+    "stage5BlockThresholdBytes":12002762096640,
+    "sumTotalClusterBytes":12002762096640,
+    "sumTotalMetadataClusterBytes":404849531289,
+    "sumUsedClusterBytes":45553617581,
+    "sumUsedMetadataClusterBytes":31703113728
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_modifyclusterfullthreshold.adoc[修改集群完整阈值]

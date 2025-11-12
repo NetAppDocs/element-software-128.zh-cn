@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_networkinterfacestats.html 
+sidebar: sidebar 
+keywords: object,objects,stats,statistics,networkInterfacestats 
+summary: networkInterfaceStats 对象包含存储节点上各个网络接口的网络统计信息和错误信息。 
+---
+= 网络接口统计信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+networkInterfaceStats 对象包含存储节点上各个网络接口的网络统计信息、已发送和已接收的数据包总数以及错误信息。你可以使用 `ListNetworkInterfaceStats`用于列出存储节点上网络接口信息的 API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+| 碰撞 | 检测到的碰撞次数。 | 整数 
+
+
+| name | 网络接口名称。 | string 
+
+
+| rxBytes | 接收到的总字节数。 | 整数 
+
+
+| rxCrcErrors | 接收到的出现 CRC 错误的包的数量。 | 整数 
+
+
+| rxDropped | 接收到的数据包中被丢弃的数量。 | 整数 
+
+
+| rxErrors | 接收到的错误或格式错误的数据包数量。 | 整数 
+
+
+| rxFifoErrors | 接收到的数据中 FIFO 溢出错误的数量。 | 整数 
+
+
+| rxFrameErrors | 接收到的帧对齐错误的包的数量。 | 整数 
+
+
+| rxLengthErrors | 接收到的长度错误的包的数量。 | 整数 
+
+
+| rxMissedErrors | 接收器丢失的数据包数量。 | 整数 
+
+
+| rxOverErrors | 此接口的接收器环形缓冲区溢出错误次数。 | 整数 
+
+
+| 接收包 | 接收到的数据包总数。 | 整数 
+
+
+| txBytes | 传输的总字节数。 | 整数 
+
+
+| 传输载波错误 | 发射端的载波错误次数。 | 整数 
+
+
+| txErrors | 数据包传输错误次数。 | 整数 
+
+
+| txFifoErrors | 发送端 FIFO 溢出错误次数。 | 整数 
+
+
+| 发送包 | 已传输数据包的总数。 | 整数 
+|===

@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_createsnapmirrorendpoint.html 
+sidebar: sidebar 
+keywords: SnapMirror,endpoints,endpoint,creating,create,CreateSnapMirrorEndpoint 
+summary: Element Web UI 使用 CreateSnapMirrorEndpoint 方法与远程SnapMirror端点建立关系。 
+---
+= 创建快照镜像端点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element Web UI 使用 `CreateSnapMirrorEndpoint`与远程SnapMirror端点建立关系的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+管理IP
+ a| 
+远程SnapMirror端点的管理 IP 地址。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+用户名
+ a| 
+ONTAP系统的管理用户名。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+password
+ a| 
+ONTAP系统的管理密码。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpoint
+ a| 
+新创建的SnapMirror端点。
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[snapMirrorEndpoint]
+
+|===
+
+
+== 自版本以来的新版本
+
+10.0

@@ -1,0 +1,67 @@
+---
+permalink: api/concept_element_api_volume_api_methods.html 
+sidebar: sidebar 
+keywords: volume,API,method,methods 
+summary: Element 软件卷 API 方法使您能够管理位于存储节点上的卷。您可以使用这些方法创建、修改、克隆和删除卷。您还可以使用卷 API 方法来收集和显示卷的数据测量结果。 
+---
+= 容量 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 软件卷 API 方法使您能够管理位于存储节点上的卷。您可以使用这些方法创建、修改、克隆和删除卷。您还可以使用卷 API 方法来收集和显示卷的数据测量结果。
+
+* xref:reference_element_api_cancelclone.adoc[取消克隆]
+* xref:reference_element_api_cancelgroupclone.adoc[取消组克隆]
+* xref:reference_element_api_clonemultiplevolumes.adoc[克隆多个卷]
+* xref:reference_element_api_clonevolume.adoc[CloneVolume]
+* xref:reference_element_api_copyvolume.adoc[复制卷]
+* xref:reference_element_api_createqospolicy.adoc[创建QoS策略]
+* xref:reference_element_api_createvolume.adoc[创建卷]
+* xref:reference_element_api_createbackuptarget.adoc[创建备份目标]
+* xref:reference_element_api_deleteqospolicy.adoc[删除QoS策略]
+* xref:reference_element_api_deletevolume.adoc[删除卷]
+* xref:reference_element_api_deletevolumes.adoc[删除卷]
+* xref:reference_element_api_getbackuptarget.adoc[获取备份目标]
+* xref:reference_element_api_getvolumestats.adoc[获取成交量统计]
+* xref:reference_element_api_getdefaultqos.adoc[获取默认服务质量]
+* xref:reference_element_api_getqospolicy.adoc[获取QoS策略]
+* xref:reference_element_api_getvolumecount.adoc[获取卷数]
+* xref:reference_element_api_getvolumeefficiency.adoc[获取容量效率]
+* xref:reference_element_api_listactivevolumes.adoc[列出活动卷]
+* xref:reference_element_api_listbackuptargets.adoc[列出备份目标]
+* xref:reference_element_api_listbulkvolumejobs.adoc[批量作业列表]
+* xref:reference_element_api_listdeletedvolumes.adoc[列出已删除卷]
+* xref:reference_element_api_listqospolicies.adoc[列出QoS策略]
+* xref:reference_element_api_listsyncjobs.adoc[列表同步作业]
+* xref:reference_element_api_listvolumeqoshistograms.adoc[列出卷 QoS 直方图]
+* xref:reference_element_api_listvolumes.adoc[列表卷]
+* xref:reference_element_api_listvolumestats.adoc[列表卷统计]
+* xref:reference_element_api_listvolumesforaccount.adoc[ListVolumesForAccount]
+* xref:reference_element_api_listvolumestatsbyaccount.adoc[按账户列出交易量统计信息]
+* xref:reference_element_api_listvolumestatsbyvirtualvolume.adoc[按虚拟卷列出卷统计信息]
+* xref:reference_element_api_listvolumestatsbyvolume.adoc[按成交量列出成交量统计数据]
+* xref:reference_element_api_listvolumestatsbyvolumeaccessgroup.adoc[按卷访问组列出卷统计信息]
+* xref:reference_element_api_modifybackuptarget.adoc[修改备份目标]
+* xref:reference_element_api_modifyqospolicy.adoc[修改QoS策略]
+* xref:reference_element_api_modifyvolume.adoc[修改音量]
+* xref:reference_element_api_modifyvolumes.adoc[修改卷]
+* xref:reference_element_api_purgedeletedvolume.adoc[已清除/已删除卷]
+* xref:reference_element_api_purgedeletedvolumes.adoc[已清除已删除卷]
+* xref:reference_element_api_removebackuptarget.adoc[移除备份目标]
+* xref:reference_element_api_restoredeletedvolume.adoc[恢复已删除卷]
+* xref:reference_element_api_setdefaultqos.adoc[设置默认服务质量]
+* xref:reference_element_api_startbulkvolumeread.adoc[启动批量读取]
+* xref:reference_element_api_startbulkvolumewrite.adoc[启动批量卷写入]
+* xref:reference_element_api_updatebulkvolumestatus.adoc[更新批量卷状态]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

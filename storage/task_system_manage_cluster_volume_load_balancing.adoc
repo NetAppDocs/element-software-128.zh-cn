@@ -1,0 +1,43 @@
+---
+permalink: storage/task_system_manage_cluster_volume_load_balancing.html 
+sidebar: sidebar 
+keywords: cluster, volume, volumes, load, balancing, actual, IOPS 
+summary: 从 Element 12.8 开始，您可以启用卷负载均衡，根据每个卷的实际 IOPS 而不是 QoS 策略中配置的最小 IOPS 来平衡节点间的卷。 
+---
+= 启用和禁用卷负载均衡
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+从 Element 12.8 开始，您可以使用卷负载均衡，根据每个卷的实际 IOPS 而不是 QoS 策略中配置的最小 IOPS，在节点之间平衡卷。您可以使用 Element UI 或 API 启用和禁用卷负载均衡（默认情况下处于禁用状态）。
+
+.步骤
+. 选择“集群”>“设置”。
+. 在“集群特定”部分，更改卷负载均衡的状态：
++
+[role="tabbed-block"]
+====
+.启用卷负载均衡
+--
+选择“启用基于实际 IOPS 的负载均衡”，并确认您的选择。
+
+--
+.禁用卷负载均衡：
+--
+选择“禁用基于实际 IOPS 的负载均衡”，并确认您的选择。
+
+--
+====
+. （可选）选择“报告”>“概览”以确认“实际 IOPS 余额”的状态更改。您可能需要向下滚动集群健康信息才能查看状态。
+
+
+
+
+== 查找更多信息
+
+* link:../api/reference_element_api_enablefeature.html["使用 API 启用卷负载均衡"]
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablefeature.html["使用 API 禁用卷负载均衡"]
+* link:../hccstorage/task-hcc-qos-policies.html["创建和管理卷 QoS 策略"]
+

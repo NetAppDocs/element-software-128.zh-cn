@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_removeclusteradmin.html 
+sidebar: sidebar 
+keywords: cluster,admin,remove,removing,removeclusteradmin 
+summary: '您可以使用 RemoveClusterAdmin 方法来删除集群管理员、LDAP 集群管理员或第三方身份提供商 (IdP) 集群管理员。您无法删除“admin”集群管理员帐户。' 
+---
+= 移除集群管理员
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RemoveClusterAdmin`删除集群管理员、LDAP 集群管理员或第三方身份提供商 (IdP) 集群管理员的方法。您无法删除“admin”集群管理员帐户。
+
+
+
+== 参数
+
+当移除与第三方身份提供商 IdP 关联的已验证会话的 IdP 集群管理员时，这些会话要么会注销，要么可能会失去当前会话的访问权限。访问权限的丢失取决于被移除的 IdP 集群管理员是否与给定用户的 SAML 属性中的多个 IdP 集群管理员之一匹配。剩余的匹配 IdP 集群管理员集合导致聚合访问权限集合减少。当集群管理员被移除时，其他集群管理员用户类型将被注销。
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+集群管理员ID
+ a| 
+集群管理员要删除的 ClusterAdminID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "RemoveClusterAdmin",
+   "params": {
+     "clusterAdminID"  : 2
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+ "id" : 1
+ "result" : { }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

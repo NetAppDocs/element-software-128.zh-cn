@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_clusteradmin.html 
+sidebar: sidebar 
+keywords: objects,object,clusterAdmin 
+summary: clusterAdmin 对象包含有关当前集群管理员用户的信息。您可以使用 GetCurrentClusterAdmin API 方法检索管理员用户信息。 
+---
+= 集群管理员
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterAdmin 对象包含有关当前集群管理员用户的信息。您可以使用 GetCurrentClusterAdmin API 方法检索管理员用户信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+access
+ a| 
+集群管理员可以使用的方法。
+ a| 
+字符串数组
+
+
+
+ a| 
+认证方法
+ a| 
+集群管理员用户拥有的授权类型。可能值：
+
+* LDAP
+* 集群
+* 本地
+
+ a| 
+string
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+
+
+
+ a| 
+集群管理员ID
+ a| 
+此集群管理员用户的集群管理员 ID。
+ a| 
+整数
+
+
+
+ a| 
+用户名
+ a| 
+此集群管理员的用户名。
+ a| 
+string
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_getcurrentclusteradmin.adoc[获取当前集群管理员]

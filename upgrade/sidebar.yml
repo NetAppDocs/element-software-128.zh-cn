@@ -1,0 +1,22 @@
+---
+section: upgrade
+title: 升级您的NetApp SolidFire全闪存存储系统
+entries:
+- title: 升级顺序概述
+  url: "/upgrade/concept_element_upgrade_overview.html"
+- title: 系统升级流程
+  entries:
+  - title: 在升级存储之前，请运行 Element 存储健康检查
+    url: "/upgrade/task_hcc_upgrade_element_prechecks.html"
+  - title: 升级管理节点
+    url: "/upgrade/task_hcc_upgrade_management_node.html"
+  - title: 更新管理服务
+    url: "/upgrade/task_hcc_update_management_services.html"
+  - title: 升级 Element 软件
+    url: "/upgrade/task_hcc_upgrade_element_software.html"
+  - title: 升级存储固件
+    url: "/upgrade/task_hcc_upgrade_storage_firmware.html"
+  - title: 升级 vCenter Server 的 Element 插件
+    url: "/upgrade/task_vcp_upgrade_plugin.html"
+- title: 使用适用于 vCenter Server 的 Element 插件升级您的 vSphere 组件，以支持NetApp SolidFire存储系统。
+  url: "/upgrade/task_sf_upgrade_all_vsphere.html"

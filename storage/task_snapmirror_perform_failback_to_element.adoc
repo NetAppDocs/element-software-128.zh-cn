@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_perform_failback_to_element.html 
+sidebar: sidebar 
+keywords: failback, perform a failbacl, Element, snapmirror 
+summary: 当主端的问题得到缓解后，您必须重新同步原始源卷并回退到NetApp Element软件。根据原始源卷是否存在，或者是否需要回退到新创建的卷，您需要执行的步骤会有所不同。 
+---
+= 了解如何执行故障恢复到 Element 模式
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+当主端的问题得到缓解后，您必须重新同步原始源卷并回退到NetApp Element软件。根据原始源卷是否存在，或者是否需要回退到新创建的卷，您需要执行的步骤会有所不同。
+
+
+
+== SnapMirror故障恢复场景
+
+SnapMirror灾难恢复功能通过两种故障恢复场景进行说明。这些假设是原有的关系已经破裂（失败）。
+
+为便于参考，已将相应流程中的步骤列出。
+
+
+NOTE: 在此示例中，R1 = 原始关系，其中运行NetApp Element软件的集群是原始源卷 (Element)，而ONTAP是原始目标卷 (ONTAP)。  R2 和 R3 代表通过反向重新同步操作创建的反向关系。
+
+下图显示了源卷仍然存在时的故障恢复场景：
+
+image::../media/snapmirror_element_failback1.gif[源卷仍然存在时的故障恢复场景示意图]
+
+下图显示了源卷不存在时的故障恢复方案：
+
+image::../media/snapmirror_element_failback2.png[源卷不存在时的故障恢复场景示意图]
+
+
+
+== 查找更多信息
+
+* xref:task_snapmirror_perform_failback_when_source_volume_exists.adoc[如果源卷仍然存在，则执行故障恢复。]
+* xref:task_snapmirror_performing_failback_when_source_volume_no_longer_exists.adoc[当源卷不存在时，执行故障恢复。]
+* xref:concept_snapmirror_failback_scenarios.adoc[SnapMirror故障恢复场景]
+

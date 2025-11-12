@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeaccessgroupefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,access,group,efficiency,GetVolumeAccessGroupEfficiency 
+summary: 您可以使用 GetVolumeAccessGroupEfficiency 方法获取有关卷访问组的效率信息。只有您在此 API 方法中作为参数提供的卷访问组才会用于计算容量。 
+---
+= 获取卷访问组效率
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetVolumeAccessGroupEfficiency`获取卷访问组效率信息的方法。只有您在此 API 方法中作为参数提供的卷访问组才会用于计算容量。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+卷访问组ID
+ a| 
+指定要计算容量的卷访问组。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+数据压缩
+ a| 
+通过数据压缩为卷访问组中的所有卷节省的空间量。以比率表示，其中值为 1 表示数据存储时未进行压缩。
+ a| 
+浮点型
+
+
+
+ a| 
+重复数据删除
+ a| 
+通过不对卷访问组中的所有卷重复数据来节省空间。以比率形式表示。
+ a| 
+浮点型
+
+
+
+ a| 
+精简配置
+ a| 
+已用空间与分配给数据存储的空间之比。以比率形式表示。
+ a| 
+浮点型
+
+
+
+ a| 
+时间戳
+ a| 
+最后一次收集时间效率数据是在垃圾回收之后。
+ a| 
+ISO 8601 数据字符串
+
+
+
+ a| 
+缺失卷
+ a| 
+无法查询效率数据的卷。卷丢失可能是由于最近的垃圾回收、暂时的网络中断或垃圾回收周期后重新启动的服务造成的。
+ a| 
+整数数组
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "GetVolumeAccessGroupEfficiency",
+   "params": {
+      "volumeAccessGroupID": 1
+   },
+   "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.006012925331075,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T17:05:27Z"
+   }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

@@ -1,0 +1,28 @@
+---
+permalink: storage/concept_system_manage_key_get_started_with_external_key_management.html 
+sidebar: sidebar 
+keywords: kmip, master key, key management, encryption at rest, software encryption at rest, ekm, ak, eks, seds 
+summary: '外部密钥管理 (EKM) 与集群外外部密钥服务器 (EKS) 配合使用，提供安全的身份验证密钥 (AK) 管理。当集群上启用静态加密时，AK 用于锁定和解锁自加密驱动器 (SED)。' 
+---
+= 开始使用外部密钥管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+外部密钥管理 (EKM) 结合集群外外部密钥服务器 (EKS) 提供安全的身份验证密钥 (AK) 管理。  AK 用于在需要时锁定和解锁自加密驱动器 (SED)。link:../concepts/concept_solidfire_concepts_security.html["静态加密"]已在集群上启用。 EKS 提供 AK 的安全生成和存储。该集群利用密钥管理互操作协议 (KMIP)（OASIS 定义的标准协议）与 EKS 通信。
+
+* link:task_system_manage_key_set_up_external_key_management.html["建立外部管理"]
+* link:task_system_manage_rekey_software_ear_master_key.html["重新密钥软件加密静态主密钥"]
+* link:concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys["恢复无法访问或无效的身份验证密钥"]
+* link:concept_system_manage_key_external_key_management_api_commands.html["外部密钥管理 API 命令"]
+
+
+[discrete]
+== 查找更多信息
+
+* link:../api/reference_element_api_createcluster.html["CreateCluster API 可用于启用静态软件加密。"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

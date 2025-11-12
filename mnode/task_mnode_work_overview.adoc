@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview.html 
+summary: '您可以使用管理节点 (mNode) 来使用系统服务、管理集群资产和设置、运行系统测试和实用程序、配置Active IQ以进行系统监控，以及启用NetApp支持访问权限以进行故障排除。' 
+keywords: netapp, mnode, api, rest api, mnode ui, management node ui 
+---
+= 管理节点概览
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用管理节点 (mNode) 来使用系统服务、管理集群资产和设置、运行系统测试和实用程序、配置Active IQ以进行系统监控，以及启用NetApp支持访问权限以进行故障排除。
+
+
+NOTE: 最佳实践是，只将一个管理节点与一个 VMware vCenter 实例关联，并避免在多个管理节点中定义相同的存储和计算资源或 vCenter 实例。
+
+对于运行 Element 软件版本 11.3 或更高版本的集群，您可以使用以下两个界面之一来操作管理节点：
+
+* 通过管理节点用户界面(`https://[mNode IP]:442`您可以更改网络和集群设置、运行系统测试或使用系统实用程序。
+* 内置 REST API 用户界面(`https://[mNode IP]/mnode`），您可以运行或了解与管理节点服务相关的 API，包括代理服务器配置、服务级别更新或资产管理。
+
+
+安装或恢复管理节点：
+
+* link:task_mnode_install.html["安装管理节点"]
+* link:task_mnode_install_add_storage_NIC.html["配置存储网络接口控制器（NIC）"]
+* link:task_mnode_recover.html["恢复管理节点"]
+
+
+访问管理节点：
+
+* link:task_mnode_access_ui.html["访问管理节点（用户界面或 REST API）"]
+
+
+更改默认 SSL 证书：
+
+* link:reference_change_mnode_default_ssl_certificate.html["更改管理节点默认 SSL 证书"]
+
+
+使用管理节点用户界面执行任务：
+
+* link:task_mnode_work_overview_UI.html["管理节点 UI 概览"]
+
+
+使用管理节点 REST API 执行任务：
+
+* link:task_mnode_work_overview_API.html["管理节点 REST API UI 概览"]
+
+
+禁用或启用远程 SSH 功能，或者与NetApp支持团队建立远程支持隧道会话，以帮助您进行故障排除：
+
+* link:task_mnode_enable_node_troubleshooting_sessions.html["使用 SSH 访问存储节点进行基本故障排除"]
++
+** link:task_mnode_enable_remote_support_connections.html["启用远程NetApp支持连接"]
+** link:task_mnode_ssh_management.html["管理管理节点上的 SSH 功能"]
+
+
+
+
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

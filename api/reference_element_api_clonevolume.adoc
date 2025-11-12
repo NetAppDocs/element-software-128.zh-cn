@@ -1,0 +1,299 @@
+---
+permalink: api/reference_element_api_clonevolume.html 
+sidebar: sidebar 
+keywords: volumes,volume,cloning,clone,CloneVolume 
+summary: 您可以使用 CloneVolume 方法创建卷的副本。此方法是异步的，完成时间可能不固定。 
+---
+= CloneVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CloneVolume`创建卷副本的方法。此方法是异步的，完成时间可能不固定。
+
+克隆过程在你创建文件后立即开始。 `CloneVolume`请求并代表发出 API 方法时的容量状态。你可以使用xref:reference_element_api_getasyncresult.adoc[获取异步结果]确定克隆过程何时完成且新卷可用于连接的方法。您可以使用xref:reference_element_api_listsyncjobs.adoc[列表同步作业]查看克隆创建的进度。卷的初始属性和服务质量设置继承自被克隆的卷。您可以使用以下命令更改这些设置：xref:reference_element_api_modifyvolume.adoc[修改音量] 。
+
+
+NOTE: 克隆卷不会继承源卷的卷访问组成员身份。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+access
+ a| 
+已允许访问新卷。如果未指定值，则访问值不会改变。可能值：
+
+* `readOnly`（可选）仅允许读取操作。
+* `readWrite`（可选）允许读写操作。
+* `locked`（可选）不允许任何读取或写入操作。如果未指定，则使用被克隆卷的访问值。
+* `replicationTarget`（可选）将一个体积指定为一组成对体积的目标体积。如果卷未配对，则访问状态将被锁定。
+
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 对象
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+enable512e
+ a| 
+指定新卷是否应使用 512 字节扇区模拟。如果未指定，则使用被克隆卷的设置。
+ a| 
+布尔值
+ a| 
+原卷
+ a| 
+否
+
+
+
+ a| 
+启用 SnapMirror 复制
+ a| 
+确定该卷是否可用于与SnapMirror端点进行复制。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+
+
+ a| 
+name
+ a| 
+新克隆卷的名称；长度必须为 1 到 64 个字符。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+新帐户ID
+ a| 
+新卷所有者的帐户ID。如果未指定，则使用被克隆卷的所有者的帐户 ID。
+ a| 
+整数
+ a| 
+原始卷所有者的帐户 ID
+ a| 
+否
+
+
+
+ a| 
+新尺寸
+ a| 
+卷的新大小，以字节为单位。可能大于或小于被克隆卷的大小。如果未指定，则卷大小保持不变。文件大小向上取整至最接近的 1MB。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+snapshotID
+ a| 
+用作克隆源的快照 ID。如果没有提供 ID，则使用当前活动卷。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+volumeID
+ a| 
+要克隆的卷的卷 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+异步句柄
+ a| 
+用于获取运算结果的句柄值。
+ a| 
+整数
+
+
+
+ a| 
+克隆ID
+ a| 
+新克隆卷的 cloneID。
+ a| 
+整数
+
+
+
+ a| 
+曲线
+ a| 
+应用于克隆体的QoS曲线值。
+ a| 
+JSON 对象
+
+
+
+ a| 
+volume
+ a| 
+包含有关新克隆卷的信息的对象。
+ a| 
+xref:reference_element_api_volume.adoc[volume]
+
+
+
+ a| 
+volumeID
+ a| 
+新克隆卷的卷 ID。
+ a| 
+整数
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "CloneVolume",
+   "params": {
+      "volumeID" : 5,
+      "name"  : "mysqldata-snapshot1",
+      "access" : "readOnly"
+   },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+      "asyncHandle": 42,
+      "cloneID": 37,
+      "volume": {
+          "access": "readOnly",
+          "accountID": 1,
+          "attributes": {},
+          "blockSize": 4096,
+          "createTime": "2016-03-31T22:26:03Z",
+          "deleteTime": "",
+          "enable512e": true,
+          "iqn": "iqn.2010-01.com.solidfire:jyay.mysqldata-snapshot1.680",
+          "name": "mysqldata-snapshot1",
+          "purgeTime": "",
+          "qos": {
+              "burstIOPS": 100,
+              "burstTime": 60,
+              "curve": {
+                  "4096": 100,
+                  "8192": 160,
+                  "16384": 270,
+                  "32768": 500,
+                  "65536": 1000,
+                  "131072": 1950,
+                  "262144": 3900,
+                  "524288": 7600,
+                  "1048576": 15000
+              },
+              "maxIOPS": 100,
+              "minIOPS": 50
+          },
+          "scsiEUIDeviceID": "6a796179000002a8f47acc0100000000",
+          "scsiNAADeviceID": "6f47acc1000000006a796179000002a8",
+          "sliceCount": 0,
+          "status": "init",
+          "totalSize": 1000341504,
+          "virtualVolumeID": null,
+          "volumeAccessGroups": [],
+          "volumeID": 680,
+          "volumePairs": []
+      },
+      "volumeID": 680
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_getasyncresult.adoc[获取异步结果]
+* xref:reference_element_api_listsyncjobs.adoc[列表同步作业]
+* xref:reference_element_api_modifyvolume.adoc[修改音量]
+

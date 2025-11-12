@@ -1,0 +1,45 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure.html 
+sidebar: sidebar 
+keywords: ntp, cluster, query, fqdn, dns server 
+summary: '您可以指示集群中的每个节点向网络时间协议 (NTP) 服务器查询更新。集群仅联系已配置的服务器，并向这些服务器请求 NTP 信息。' 
+---
+= 配置集群要查询的网络时间协议服务器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以指示集群中的每个节点向网络时间协议 (NTP) 服务器查询更新。集群仅联系已配置的服务器，并向这些服务器请求 NTP 信息。
+
+NTP用于通过网络同步时钟。连接到内部或外部 NTP 服务器应该是集群初始设置的一部分。
+
+在集群上配置 NTP，使其指向本地 NTP 服务器。您可以使用 IP 地址或 FQDN 主机名。创建集群时默认的 NTP 服务器设置为 us.pool.ntp.org；但是，根据SolidFire集群的物理位置，有时可能无法连接到此站点。
+
+使用 FQDN 取决于各个存储节点的 DNS 设置是否已就位并正常运行。为此，请在每个存储节点上配置 DNS 服务器，并通过查看“网络端口要求”页面确保端口已打开。
+
+您最多可以输入五个不同的 NTP 服务器。
+
+
+NOTE: 你可以同时使用 IPv4 地址和 IPv6 地址。
+
+.你需要什么
+您必须拥有集群管理员权限才能配置此设置。
+
+.步骤
+. 在服务器设置中配置 IP 地址和/或 FQDN 列表。
+. 确保节点上的 DNS 设置正确。
+. 点击“集群”>“设置”。
+. 在“网络时间协议设置”下，选择“否”，即使用标准 NTP 配置。
+. 点击“保存更改”。
+
+
+
+
+== 查找更多信息
+
+* link:../storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html["配置集群监听 NTP 广播。"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

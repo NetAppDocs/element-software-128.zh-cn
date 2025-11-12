@@ -1,0 +1,36 @@
+---
+permalink: storage/task_monitor_volume_performance.html 
+sidebar: sidebar 
+keywords: volume performance, view, view alerts 
+summary: 您可以查看集群中所有卷的详细性能信息。您可以按卷 ID 或任何性能列排序信息。您还可以按特定条件筛选信息。 
+---
+= 查看音量表现
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看集群中所有卷的详细性能信息。您可以按卷 ID 或任何性能列排序信息。您还可以按特定条件筛选信息。
+
+您可以通过单击“刷新间隔”列表并选择不同的值来更改系统刷新页面上性能信息的频率。如果集群的卷少于 1000 个，则默认刷新间隔为 10 秒；否则，默认刷新间隔为 60 秒。如果选择“从不”，则禁用自动页面刷新。
+
+您可以点击“*开启自动刷新*”重新启用自动刷新功能。
+
+. 在 Element UI 中，选择“报告”>“音量性能”。
+. 在音量列表中，单击音量对应的“操作”图标。
+. 单击“查看详细信息”。
++
+页面底部会显示一个托盘，其中包含有关该卷的一般信息。
+
+. 要查看有关销量的更多详细信息，请点击*查看更多详情*。
++
+该系统会显示详细信息以及音量性能图表。
+
+
+
+
+
+== 查找更多信息
+
+xref:reference_monitor_volume_performance_details.adoc[销量表现详情]

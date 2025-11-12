@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_edit_vcenter_assets.html 
+summary: 您可以使用 REST API UI 编辑 vCenter 管理节点控制器。 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= 查看或编辑现有控制器资产
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 REST API 在管理节点配置中查看和编辑现有 VMware vCenter 控制器的信息。控制器是注册到NetApp SolidFire安装管理节点的 VMware vCenter 实例。
+
+.开始之前
+* 请确保您的集群版本运行的是NetApp Element软件 11.3 或更高版本。
+* 请确保您已部署运行 11.3 或更高版本的管理节点。
+
+
+
+
+== 访问管理服务 REST API
+
+.步骤
+. 通过输入管理节点 IP 地址，然后输入以下内容，即可访问管理服务的 REST API 用户界面： `/vcenter/1/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/vcenter/1/
+----
+. 选择“授权”或任意锁形图标，然后完成以下步骤：
++
+.. 请输入集群用户名和密码。
+.. 请输入客户端 ID `mnode-client` 。
+.. 选择“授权”以开始会话。
+.. 关闭窗口。
+
+
+
+
+
+
+== 查看已存储的关于现有控制器的信息
+
+您可以使用 REST API 列出已注册到管理节点的现有 vCenter 控制器，并查看有关它们的存储信息。
+
+.步骤
+. 选择 *GET /compute/controllers*。
+. 选择*试用一下*。
+. 选择*执行*。
++
+API 返回所有已知 vCenter 控制器的列表，以及用于与每个控制器通信的 IP 地址、控制器 ID、主机名和用户 ID。
+
+. 如果要获取特定控制器的连接状态，请从以下位置复制控制器 ID： `id`将该控制器字段复制到剪贴板并查看<<查看现有控制器的状态>>。
+
+
+
+
+== 查看现有控制器的状态
+
+您可以查看已注册到管理节点的任何现有 vCenter 控制器的状态。  API 返回一个状态，指示NetApp Hybrid Cloud Control 是否可以连接到 vCenter 控制器，以及该状态的原因。
+
+.步骤
+. 选择 *GET /compute/controllers/{controller_id}/status*。
+. 选择*试用一下*。
+. 输入您之前复制的控制器 ID。 `controller_id`范围。
+. 选择*执行*。
++
+API 会返回此特定 vCenter 控制器的状态，以及导致该状态的原因。
+
+
+
+
+
+== 编辑控制器的存储属性
+
+您可以编辑已注册到管理节点的任何现有 vCenter 控制器的已存储用户名或密码。您无法编辑现有 vCenter 控制器的已存储 IP 地址。
+
+.步骤
+. 选择 *PUT /compute/controllers/{controller_id}*。
+. 输入 vCenter 控制器的控制器 ID `controller_id`范围。
+. 选择*试用一下*。
+. 更改“请求正文”字段中的以下任一参数：
++
+|===
+| 参数 | 类型 | 描述 
+
+
+| `userId` | string | 更改用于与 vCenter 控制器通信的用户 ID（该用户必须具有管理员权限）。 
+
+
+| `password` | string | 更改用于与 vCenter 控制器通信的密码。 
+|===
+. 选择*执行*。
++
+API返回更新后的控制器信息。
+
+
+
+[discrete]
+== 查找更多信息
+
+* link:task_mnode_add_assets.html["将控制器资产添加到管理节点"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

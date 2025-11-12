@@ -1,0 +1,37 @@
+---
+permalink: setup/task_setup_add_drives_to_a_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: 当您向集群添加节点或在现有节点中安装新驱动器时，这些驱动器会自动注册为可用。必须先使用 Element UI 或 API 将驱动器添加到集群中，然后它们才能参与集群。 
+---
+= 将驱动器添加到集群
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+当您向集群添加节点或在现有节点中安装新驱动器时，这些驱动器会自动注册为可用。必须先使用 Element UI 或 API 将驱动器添加到集群中，然后它们才能参与集群。
+
+当存在以下情况时，驱动器不会显示在“可用驱动器”列表中：
+
+* 驱动器处于活动、移除、擦除或故障状态。
+* 驱动器所属的节点处于待处理状态。
+
+
+.步骤
+. 从 Element 用户界面中，选择“集群”>“驱动器”。
+. 点击“可用”查看可用驱动器列表。
+. 执行以下操作之一：
++
+** 要添加单个驱动器，请单击要添加的驱动器的“操作”图标，然后单击“添加”。
+** 要添加多个驱动器，请选中要添加的驱动器的复选框，单击“批量操作”，然后单击“添加”。
++
+....
+== Find more information
+* https://docs.netapp.com/us-en/element-software/index.html[SolidFire and Element Software Documentation]
+* https://docs.netapp.com/us-en/vcp/index.html[NetApp Element Plug-in for vCenter Server^]
+....
+
+
+

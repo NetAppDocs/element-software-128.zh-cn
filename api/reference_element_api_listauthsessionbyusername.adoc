@@ -1,0 +1,122 @@
+---
+permalink: api/reference_element_api_listauthsessionbyusername.html 
+sidebar: sidebar 
+keywords: username,sessions,authentication sessions,list 
+summary: 您可以使用 ListAuthSessionsByUsername 方法列出指定用户的所有身份验证会话。不具有 AccessGroup ClusterAdmins / Administrator 权限的调用者只能列出自己的会话。具有 ClusterAdmins / Administrator 权限的调用者可以列出属于任何用户的会话。 
+---
+= 按用户名列出身份验证会话
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListAuthSessionsByUsername`列出指定用户的所有身份验证会话的方法。不具有 AccessGroup ClusterAdmins / Administrator 权限的调用者只能列出自己的会话。具有 ClusterAdmins / Administrator 权限的调用者可以列出属于任何用户的会话。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+认证方法
+ a| 
+要列出的用户会话的身份验证方法。只有属于 ClusterAdmins/Administrator AccessGroup 的调用者才能提供此参数。可能的值有：
+
+* *authMethod=Cluster* 指定集群管理员用户名。
+* *authMethod=Ldap* 指定用户的 LDAP DN。
+* *authMethod=Idp* 指定用户的 IdP UUID 或 NameID。如果 IdP 未配置为返回任一选项，则此设置会指定在创建会话时颁发的随机 UUID。
+
+ a| 
+认证方法
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+用户名
+ a| 
+用户的唯一标识符。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+会议
+ a| 
+身份验证会话的会话信息列表。
+ a| 
+link:reference_element_api_authsessioninfo.html["authSessionInfo"]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+    "method": "ListAuthSessionsByUsername",
+    "authMethod": "Cluster",
+    "username": "admin"
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+"sessions": [
+      {
+        "accessGroupList": [
+          "administrator"
+        ],
+        "authMethod": "Cluster",
+        "clusterAdminIDs": [
+          1
+        ],
+        "finalTimeout": "2020-03-14T19:21:24Z",
+        "idpConfigVersion": 0,
+        "lastAccessTimeout": "2020-03-11T19:51:24Z",
+        "sessionCreationTime": "2020-03-11T19:21:24Z",
+        "sessionID": "b12bfc64-f233-44df-8b9f-6fb6c011abf7",
+        "username": "admin"
+      }
+    ]
+}
+----
+
+
+== 自版本以来的新版本
+
+12.0

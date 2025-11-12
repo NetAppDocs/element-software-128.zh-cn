@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_fipsreport.html 
+sidebar: sidebar 
+keywords: object,objects,fipsReport,FIPS,140-2 
+summary: fipsReport 对象包含有关存储集群中所有节点对 FIPS 140-2 的支持情况的信息。您可以使用 GetFipsReport 方法检索此信息。 
+---
+= fips报告
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fipsReport 对象包含有关存储集群中所有节点对 FIPS 140-2 的支持情况的信息。您可以使用以下方法检索此信息： `GetFipsReport`方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+节点
+ a| 
+存储集群中每个节点的 FIPS 140-2 支持状态报告。
+ a| 
+fips节点报告
+
+
+
+ a| 
+错误节点
+ a| 
+对于未响应 FIPS 140-2 支持状态的每个节点，存在错误信息。
+ a| 
+fips错误节点报告
+
+|===

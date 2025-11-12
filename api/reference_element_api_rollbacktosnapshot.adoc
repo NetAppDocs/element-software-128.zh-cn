@@ -1,0 +1,202 @@
+---
+permalink: api/reference_element_api_rollbacktosnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktosnapshot,snapshot,creating,create,roll,back,rollback,roll back,existing 
+summary: 您可以使用 RollbackToSnapshot 方法创建活动卷映像的现有快照。此方法从现有快照创建新快照。 
+---
+= 回滚到快照
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RollbackToSnapshot`对现有活动体图像进行快照的方法。此方法从现有快照创建新快照。
+
+新快照生效，现有快照将保留，直到手动删除为止。除非将 saveCurrentState 参数设置为 true，否则先前活动的快照将被删除。
+
+*集群满度*
+
+[NOTE]
+====
+* 如果集群容量处于第 1、2 或 3 阶段，则可以创建快照。当集群容量达到 4 或 5 级时，无法创建快照。
+* 当切片同步正在进行时，将卷回滚到快照可能会失败。重试 `RollbackToSnapshot`同步完成后。
+
+
+====
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+volumeID
+ a| 
+卷的 VolumeID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+属性
+ a| 
+JSON 对象格式的名称-值对列表。
+ a| 
+JSON 属性
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+name
+ a| 
+快照名称。如果没有指定名称，则使用要回滚到的快照的名称，并在名称末尾附加“-copy”。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+snapshotID
+ a| 
+给定卷上先前创建的快照的 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+保存当前状态
+ a| 
+指定是否保存先前活动卷映像。有效值：
+
+* 正确：保留先前的活动卷映像。
+* 错误：先前的活动卷映像已被删除。
+
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+校验和
+ a| 
+存储快照中数据的简短字符串表示形式。
+ a| 
+string
+
+
+
+ a| 
+snapshotID
+ a| 
+如果 saveCurrentState 设置为 false，则此值为 null。
+
+如果 saveCurrentState 设置为 true，则返回新创建的快照的唯一 ID。
+ a| 
+整数
+
+
+
+ a| 
+Snapshot
+ a| 
+如果 saveCurrentState 设置为 false，则此值为 null。
+
+如果 saveCurrentState 设置为 true，则返回一个包含有关新创建的快照信息的对象。
+ a| 
+xref:reference_element_api_snapshot.adoc[Snapshot]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+ "method": "RollbackToSnapshot",
+ "params": {
+    "volumeID": 1,
+    "snapshotID": 3114,
+    "saveCurrentState": true
+  },
+  "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "checksum": "0x0",
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:27:32Z",
+      "enableRemoteReplication": false,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1-copy",
+      "snapshotID": 1,
+      "snapshotUUID": "30d7e3fe-0570-4d94-a8d5-3cc8097a6bfb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    },
+    "snapshotID": 1
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

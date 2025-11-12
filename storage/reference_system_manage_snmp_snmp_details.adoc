@@ -1,0 +1,39 @@
+---
+permalink: storage/reference_system_manage_snmp_snmp_details.html 
+sidebar: sidebar 
+keywords: snmp, overview, reference, mib, settings, trap 
+summary: 在集群选项卡的 SNMP 页面上，您可以查看以下信息。 
+---
+= 了解 SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在集群中配置简单网络管理协议 (SNMP)。
+
+您可以选择 SNMP 请求者、选择要使用的 SNMP 版本、识别 SNMP 基于用户的安全模型 (USM) 用户，并配置陷阱来监控SolidFire集群。您还可以查看和访问管理信息库文件。
+
+
+NOTE: 你可以同时使用 IPv4 地址和 IPv6 地址。
+
+
+
+== SNMP 详细信息
+
+在集群选项卡的 SNMP 页面上，您可以查看以下信息。
+
+* *SNMP MIB*
++
+您可以查看或下载的 MIB 文件。
+
+* *常规SNMP设置*
++
+您可以启用或禁用SNMP。启用 SNMP 后，您可以选择要使用的版本。如果使用版本 2，您可以添加请求者；如果使用版本 3，您可以设置 USM 用户。
+
+* *SNMP陷阱设置*
++
+您可以确定要捕获哪些陷阱。您可以为每个陷阱接收者设置主机、端口和团体字符串。
+
+

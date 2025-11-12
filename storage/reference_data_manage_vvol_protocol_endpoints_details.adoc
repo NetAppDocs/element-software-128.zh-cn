@@ -1,0 +1,52 @@
+---
+permalink: storage/reference_data_manage_vvol_protocol_endpoints_details.html 
+sidebar: sidebar 
+keywords: protocol endpoints, details, vvols, state, type, id 
+summary: VVols 选项卡上的“协议端点”页面提供协议端点信息。 
+---
+= 协议端点详情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VVols 选项卡上的“协议端点”页面提供协议端点信息。
+
+* *主提供者 ID*
++
+主协议端点提供程序的 ID。
+
+* *辅助提供者 ID*
++
+辅助协议端点提供程序的 ID。
+
+* *协议端点 ID*
++
+协议端点的 UUID。
+
+* *协议端点状态*
++
+协议端点的状态。可能的值如下：
+
++
+** 已激活：协议端点正在使用中。
+** 开始：协议端点正在启动。
+** 故障转移：协议端点已发生故障转移。
+** 保留：协议端点已保留。
+
+
+* *提供商类型*
++
+协议端点提供程序的类型。可能的值如下：
+
++
+** 主云
+** 二级
+
+
+* *SCSI NAA 设备 ID*
++
+NAA IEEE 注册扩展格式中协议端点的全球唯一 SCSI 设备标识符。
+
+

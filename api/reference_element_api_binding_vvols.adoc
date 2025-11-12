@@ -1,0 +1,94 @@
+---
+permalink: api/reference_element_api_binding_vvols.html 
+sidebar: sidebar 
+keywords: binding,object,objects,volume,volumes,virtual 
+summary: 绑定对象包含有关虚拟卷绑定的信息。您可以使用 ListVirtualVolumeBindings API 方法检索所有虚拟卷的此信息列表。 
+---
+= 装订（虚拟卷）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+绑定对象包含有关虚拟卷绑定的信息。您可以使用以下命令检索所有虚拟卷的此信息列表： `ListVirtualVolumeBindings` API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+`protocolEndpointID`
+ a| 
+协议端点的唯一标识符。
+ a| 
+UUID
+
+
+
+ a| 
+`protocolEndpointInBandID`
+ a| 
+协议端点的 scsiNAADeviceID。
+ a| 
+string
+
+
+
+ a| 
+`protocolEndpointType`
+ a| 
+协议端点的类型。  SCSI 是协议端点类型返回的唯一值。
+ a| 
+string
+
+
+
+ a| 
+`virtualVolumeBindingID`
+ a| 
+虚拟卷绑定对象的唯一 ID。
+ a| 
+整数
+
+
+
+ a| 
+`virtualVolumeHostID`
+ a| 
+虚拟卷主机的唯一标识符。
+ a| 
+UUID
+
+
+
+ a| 
+`virtualVolumeID`
+ a| 
+虚拟卷的唯一标识符。
+ a| 
+UUID
+
+
+
+ a| 
+`virtualVolumeSecondaryID`
+ a| 
+虚拟卷的辅助 ID。
+ a| 
+string
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listvirtualvolumebindings.adoc[列出虚拟卷绑定]
+* xref:reference_element_api_protocolendpoint.adoc[协议端点]
+

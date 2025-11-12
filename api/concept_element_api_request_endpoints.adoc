@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_request_endpoints.html 
+sidebar: sidebar 
+keywords: request,endpoints 
+summary: API 中使用了三种类型的请求端点（存储集群、存储集群创建和每个节点）。您应该始终使用您的 Element 软件版本支持的最新端点。 
+---
+= 请求端点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+API 中使用了三种类型的请求端点（存储集群、存储集群创建和每个节点）。您应该始终使用您的 Element 软件版本支持的最新端点。
+
+API 中的三个请求端点按以下方式指定：
+
+
+
+== 集群 API 方法
+
+用于存储集群范围 API 请求的 HTTPS 端点是 `+https://<mvip>/json-rpc/<api-version>+`， 在哪里：
+
+* `<mvip>`是存储集群的管理虚拟 IP 地址。
+* `<api-version>`是您正在使用的 API 版本。
+
+
+
+
+== 集群创建和引导 API 方法
+
+用于创建存储集群和访问引导 API 请求的 HTTPS 端点是 `+https://<nodeIP>/json-rpc/<api-version>+`， 在哪里：
+
+* `<nodeIP>`是您要添加到集群中的节点的 IP 地址。
+* `<api-version>`是您正在使用的 API 版本。
+
+
+
+
+== 每个节点的 API 方法
+
+单个存储节点 API 请求的 HTTPS 端点是 `+https://<nodeIP>:442/json-rpc/<api-version>+`， 在哪里：
+
+* `<nodeIP>`是存储节点的管理 IP 地址；442 是 HTTPS 服务器运行的端口。
+* `<api-version>`是您正在使用的 API 版本。
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

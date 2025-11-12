@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: bulkVolumeJob 对象包含有关批量卷读取或写入操作的信息，例如克隆或快照创建。 
+---
+= 批量作业
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+这 `bulkVolumeJob`该对象包含有关批量卷读取或写入操作的信息，例如克隆或快照创建。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+`attributes`
+ a| 
+批量作业的 JSON 属性。
+ a| 
+JSON 对象
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+内部批量作业 ID。
+ a| 
+整数
+
+
+
+ a| 
+`createTime`
+ a| 
+为批量作业创建的时间戳，格式为 UTC+0。
+ a| 
+ISO 8601 日期字符串
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+自任务开始以来的秒数。
+ a| 
+string
+
+
+
+ a| 
+`format`
+ a| 
+批量交易操作的格式。可能值：
+
+* 本国的
+* 未压缩
+
+ a| 
+string
+
+
+
+ a| 
+`key`
+ a| 
+由批量交易会话创建的唯一密钥。
+ a| 
+string
+
+
+
+ a| 
+`percentComplete`
+ a| 
+该手术报告的完成百分比。
+ a| 
+整数
+
+
+
+ a| 
+`remainingTime`
+ a| 
+剩余时间（以秒为单位）的估计值。
+ a| 
+整数
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+源卷 ID。
+ a| 
+整数
+
+
+
+ a| 
+`status`
+ a| 
+手术状态。可能值：
+
+* 准备
+* 跑步
+* 完全的
+* 失败
+
+ a| 
+string
+
+
+
+ a| 
+`script`
+ a| 
+如果有脚本，则填写脚本名称。
+ a| 
+string
+
+
+
+ a| 
+`snapshotID`
+ a| 
+如果批量卷作业的源中存在快照，则此快照的 ID 为快照 ID。
+ a| 
+整数
+
+
+
+ a| 
+`type`
+ a| 
+大宗作业类型。可能值：
+
+* read
+* write
+
+ a| 
+string
+
+|===

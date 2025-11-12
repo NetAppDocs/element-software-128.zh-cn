@@ -1,0 +1,23 @@
+---
+permalink: storage/task_monitor_node_performance_activity.html 
+sidebar: sidebar 
+keywords: performance activity, nodes, view 
+summary: '您可以以图形格式查看每个节点的性能活动。该信息提供节点上每个驱动器的 CPU 和每秒读/写 I/O 操作数 (IOPS) 的实时统计信息。利用率图表每五秒更新一次，驱动器统计信息图表每十秒更新一次。' 
+---
+= 查看节点性能活动
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以以图形格式查看每个节点的性能活动。该信息提供节点上每个驱动器的 CPU 和每秒读/写 I/O 操作数 (IOPS) 的实时统计信息。利用率图表每五秒更新一次，驱动器统计信息图表每十秒更新一次。
+
+. 点击“集群”>“节点”。
+. 点击要查看的节点的“操作”按钮。
+. 单击“查看详细信息”。
++
+
+NOTE: 将光标悬停在折线图或柱状图上，即可查看折线图和柱状图上的特定时间点。
+
+

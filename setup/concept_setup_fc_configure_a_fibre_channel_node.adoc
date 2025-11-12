@@ -1,0 +1,38 @@
+---
+permalink: setup/concept_setup_fc_configure_a_fibre_channel_node.html 
+sidebar: sidebar 
+keywords:  
+summary: 光纤通道节点使您可以将集群连接到光纤通道网络结构。光纤通道节点成对添加，并以主动-主动模式运行（所有节点都主动处理集群的流量）。运行 Element 软件版本 9.0 及更高版本的集群最多支持四个节点；运行先前版本的集群最多支持两个节点。 
+---
+= 配置光纤通道节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+光纤通道节点使您可以将集群连接到光纤通道网络结构。光纤通道节点成对添加，并以主动-主动模式运行（所有节点都主动处理集群的流量）。运行 Element 软件版本 9.0 及更高版本的集群最多支持四个节点；运行先前版本的集群最多支持两个节点。
+
+配置光纤通道节点之前，必须确保满足以下条件：
+
+* 至少有两个光纤通道节点连接到光纤通道交换机。
+* 所有SolidFire光纤通道端口都应连接到您的光纤通道网络。四个SolidFire Bond10G 网络连接应该在交换机级别连接成一个 LACP 绑定组。这将使光纤通道系统发挥最佳整体性能。
+* 审阅并验证本文（NetApp知识库文章）中包含的所有光纤通道集群最佳实践。
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/SolidFire_FC_cluster_best_practice["SolidFire FC 集群最佳实践"]
+
+
+
+光纤通道节点和存储节点的网络和集群配置步骤相同。
+
+当您使用光纤通道节点和SolidFire存储节点创建新集群时，节点的全球端口名称 (WWPN) 地址可在 Element UI 中找到。您可以使用 WWPN 地址对光纤通道交换机进行区域划分。
+
+当您创建包含节点的新集群时，WWPN 会在系统中注册。在 Element UI 中，您可以从“集群”选项卡访问的“FC 端口”选项卡的“WWPN”列中找到 WWPN 地址。
+
+
+
+== 查找更多信息
+
+xref:task_setup_fc_add_fibre_channel_nodes_to_a_cluster.adoc[将光纤通道节点添加到集群]
+
+xref:task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.adoc[创建包含光纤通道节点的新集群]

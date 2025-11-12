@@ -1,0 +1,45 @@
+---
+permalink: storage/task_data_manage_vol_access_group_delete_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator delete, deleted multiple initiators 
+summary: 不再需要启动器时，您可以将其删除。删除启动器时，系统会将其从所有关联的卷访问组中移除。使用该发起程序建立的任何连接都将保持有效，直到连接被重置为止。 
+---
+= 删除发起者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+不再需要启动器时，您可以将其删除。删除启动器时，系统会将其从所有关联的卷访问组中移除。使用该发起程序建立的任何连接都将保持有效，直到连接被重置为止。
+
+.步骤
+. 点击“管理”>“发起者”。
+. 执行以下步骤删除单个或多个启动器：
++
+[cols="25,75"]
+|===
+| 选项 | 步骤 
+
+
+ a| 
+删除单个发起者
+ a| 
+.. 点击要删除的发起者的“操作”图标。
+.. 单击“*删除*”。
+.. 确认此操作。
+
+
+
+
+ a| 
+删除多个发起者
+ a| 
+.. 选中要删除的发起者旁边的复选框。
+.. 点击“批量操作”按钮。
+.. 在出现的菜单中，选择“删除”。
+.. 确认此操作。
+
+
+|===
+

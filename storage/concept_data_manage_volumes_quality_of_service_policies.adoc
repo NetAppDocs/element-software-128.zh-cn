@@ -1,0 +1,83 @@
+---
+permalink: storage/concept_data_manage_volumes_quality_of_service_policies.html 
+sidebar: sidebar 
+keywords: qos policies, manage, volumes, create, edit, delete 
+summary: '服务质量 (QoS) 策略允许您创建和保存可应用于多个卷的标准化服务质量设置。您可以在“管理”选项卡的“QoS 策略”页面中创建、编辑和删除 QoS 策略。' 
+---
+= 管理服务质量政策
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+服务质量 (QoS) 策略允许您创建和保存可应用于多个卷的标准化服务质量设置。您可以在“管理”选项卡的“QoS 策略”页面中创建、编辑和删除 QoS 策略。
+
+
+NOTE: 如果您正在使用 QoS 策略，请不要在卷上使用自定义 QoS。自定义 QoS 将覆盖和调整卷 QoS 设置的 QoS 策略值。
+
+https://www.youtube.com/embed/q9VCBRDtrnI?rel=0["NetApp视频： SolidFire服务质量策略"]
+
+看link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html["服务性能和质量"]。
+
+* 创建 QoS 策略
+* 编辑 QoS 策略
+* 删除 QoS 策略
+
+
+
+
+== 创建 QoS 策略
+
+您可以创建 QoS 策略，并在创建卷时应用这些策略。
+
+. 选择“管理”>“QoS策略”。
+. 点击“创建QoS策略”。
+. 请输入*保单名称*。
+. 输入**最小 IOPS**、*最大 IOPS* 和 *突发 IOPS* 值。
+. 点击“创建QoS策略”。
+
+
+
+
+== 编辑 QoS 策略
+
+您可以更改现有 QoS 策略的名称或编辑与该策略关联的值。更改 QoS 策略会影响与该策略关联的所有卷。
+
+. 选择“管理”>“QoS策略”。
+. 单击要编辑的 QoS 策略的“操作”图标。
+. 在出现的菜单中，选择**编辑**。
+. 在“编辑 QoS 策略”对话框中，根据需要修改以下属性：
++
+** 策略名称
+** 最小 IOPS
+** 最大 IOPS
+** 突发 IOPS
+
+
+. 点击“保存更改”。
+
+
+
+
+== 删除 QoS 策略
+
+如果不再需要 QoS 策略，您可以将其删除。删除 QoS 策略时，与该策略关联的所有卷将保留 QoS 设置，但会与该策略解除关联。
+
+
+NOTE: 如果您要尝试将卷与 QoS 策略解除关联，则可以将该卷的 QoS 设置更改为自定义。
+
+. 选择“管理”>“QoS策略”。
+. 单击要删除的 QoS 策略旁边的“操作”图标。
+. 在出现的菜单中，选择“删除”。
+. 确认此操作。
+
+
+
+
+== 查找更多信息
+
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["移除卷的 QoS 策略关联"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

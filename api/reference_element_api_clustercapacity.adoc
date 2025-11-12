@@ -1,0 +1,227 @@
+---
+permalink: api/reference_element_api_clustercapacity.html 
+sidebar: sidebar 
+keywords: objects,object,clusterCapacity 
+summary: clusterCapacity 对象包含集群的高级容量测量值。您可以使用 GetClusterCapacity API 方法获取集群容量信息。对象成员中的空间度量以字节为单位计算。 
+---
+= 集群容量
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterCapacity 对象包含集群的高级容量测量值。您可以使用 GetClusterCapacity API 方法获取集群容量信息。对象成员中的空间度量以字节为单位计算。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+活动块空间
+ a| 
+硬盘驱动器上的可用空间。这包括元数据条目和可以清理的空间等附加信息。
+ a| 
+整数
+
+
+
+ a| 
+活跃会话
+ a| 
+与集群通信的活动 iSCSI 会话数。
+ a| 
+整数
+
+
+
+ a| 
+平均IOPS
+ a| 
+自协调世界时 (UTC) 午夜以来，集群的平均 IOPS。
+ a| 
+整数
+
+
+
+ a| 
+集群最近 I/O 大小
+ a| 
+集群中所有卷的平均 IOPS 大小。
+ a| 
+整数
+
+
+
+ a| 
+当前IOPS
+ a| 
+集群中所有卷在过去 5 秒内的平均 IOPS。
+ a| 
+整数
+
+
+
+ a| 
+最大IOPS
+ a| 
+当前集群的估计最大 IOPS 能力。
+ a| 
+整数
+
+
+
+ a| 
+最大超额配置空间
+ a| 
+可分配空间的最大量。这是一个计算值。如果当前已配置空间加上新卷的大小超过此数值，则无法创建新卷。该值按以下方式计算： `maxOverProvisionableSpace = maxProvisionedSpace * maxMetadataOverProvisionFactor`
+ a| 
+整数
+
+
+
+ a| 
+最大预留空间
+ a| 
+如果所有卷都 100% 填充（没有精简配置元数据），则可配置空间的总量。
+ a| 
+整数
+
+
+
+ a| 
+最大已用元数据空间
+ a| 
+用于存储元数据的卷驱动器上的字节数。
+ a| 
+整数
+
+
+
+ a| 
+最大已用空间
+ a| 
+所有活动块驱动器上的总空间量。
+ a| 
+整数
+
+
+
+ a| 
+非零块
+ a| 
+最后一次垃圾回收操作完成后，包含数据的 4KiB 数据块的总数。
+ a| 
+整数
+
+
+
+ a| 
+峰值活跃会话
+ a| 
+自UTC午夜以来iSCSI连接数的峰值。
+ a| 
+整数
+
+
+
+ a| 
+峰值IOPS
+ a| 
+currentIOPS 达到 UTC 午夜以来的最高值。
+ a| 
+整数
+
+
+
+ a| 
+预留空间
+ a| 
+集群上所有卷中预留的总空间量。
+ a| 
+整数
+
+
+
+ a| 
+时间戳
+ a| 
+以 UTC+0 格式表示此次集群容量样本的采集日期和时间。
+ a| 
+ISO 8601字符串
+
+
+
+ a| 
+总运营
+ a| 
+集群在其生命周期内执行的 I/O 操作总数。
+ a| 
+整数
+
+
+
+ a| 
+独特的方块
+ a| 
+存储在块驱动器上的块总数。该值包含复制块。
+ a| 
+整数
+
+
+
+ a| 
+唯一已用方块空间
+ a| 
+uniqueBlocks 在块驱动器上占用的数据总量。有关此数字与 uniqueBlocks 值的关系，请参阅 GetclusterCapacity 方法。
+ a| 
+整数
+
+
+
+ a| 
+已使用的元数据空间
+ a| 
+用于存储元数据的卷驱动器上的总字节数。
+ a| 
+整数
+
+
+
+ a| 
+快照中使用的元数据空间
+ a| 
+用于在快照中存储唯一数据的卷驱动器上的字节数。该数字估算出删除系统上的所有快照后可以回收多少元数据空间。
+ a| 
+整数
+
+
+
+ a| 
+已用空间
+ a| 
+系统中所有块驱动器使用的空间总量。
+ a| 
+整数
+
+
+
+ a| 
+零块
+ a| 
+最后一轮垃圾回收操作完成后，没有数据的 4KiB 空块的总数。
+ a| 
+整数
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_getclustercapacity.adoc[获取集群容量]

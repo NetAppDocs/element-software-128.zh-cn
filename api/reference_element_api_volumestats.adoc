@@ -1,0 +1,434 @@
+---
+permalink: api/reference_element_api_volumestats.html 
+sidebar: sidebar 
+keywords: object,objects,volumeStats 
+summary: volumeStats 对象包含单个卷的统计数据。 
+---
+= 销量统计
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+volumeStats 对象包含单个卷的统计数据。
+
+
+
+== 对象成员
+
+您可以使用以下方法获取部分或全部卷的 volumeStats 对象：
+
+* xref:reference_element_api_getvolumestats.adoc[获取成交量统计]
+* xref:reference_element_api_listvolumestatsbyaccount.adoc[按账户列出交易量统计信息]
+* xref:reference_element_api_listvolumestatsbyvolume.adoc[按成交量列出成交量统计数据]
+* xref:reference_element_api_listvolumestatsbyvolumeaccessgroup.adoc[按卷访问组列出卷统计信息]
+
+
+该对象包含以下成员：
+
+[cols="20,50,15,15"]
+|===
+| 名称 | 描述 | 计算方式 | 类型 
+
+
+ a| 
+accountID
+ a| 
+卷所有者的帐户 ID。
+ a| 
+不适用
+ a| 
+整数
+
+
+
+ a| 
+实际IOPS
+ a| 
+过去 500 毫秒内该卷的实际 IOPS。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+异步延迟
+ a| 
+自上次与远程集群同步以来经过的时间。如果卷未配对，则此值为空。 *注意：* 处于活动复制状态的目标卷的 asyncDelay 始终为 0（零）。目标卷在复制过程中具有系统感知能力，并假定 asyncDelay 始终准确。
+ a| 
+不适用
+ a| 
+ISO 8601 持续时间字符串或空值
+
+
+
+ a| 
+平均 IOP 大小
+ a| 
+最近 500 毫秒内对卷进行的最新 I/O 的平均大小（以字节为单位）。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+爆发IOPS信用
+ a| 
+用户可用的 IOP 积分总数。当卷未达到配置的最大 IOPS 时，将累积积分。
+ a| 
+不适用
+ a| 
+整数
+
+
+
+ a| 
+客户端队列深度
+ a| 
+卷上未完成的读取和写入操作的数量。
+ a| 
+不适用
+ a| 
+整数
+
+
+
+ a| 
+所需元数据主机
+ a| 
+如果卷元数据在元数据服务之间迁移，则要迁移到的元数据（切片）服务。  “null”值表示该卷未进行迁移。
+ a| 
+不适用
+ a| 
+JSON 对象
+
+
+
+ a| 
+延迟（秒）
+ a| 
+在过去 500 毫秒内完成对卷操作的平均时间（以微秒为单位）。  “0”（零）值表示该卷没有 I/O 操作。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+元数据主机
+ a| 
+卷元数据所在的元数据（切片）服务。可能值：
+
+* 主卷：托管该卷的主要元数据服务。
+* liveSecondaries：当前处于“运行”状态的辅助元数据服务。
+* deadSecondaries：处于停止状态的辅助元数据服务。
+
+ a| 
+不适用
+ a| 
+JSON 对象
+
+
+
+ a| 
+标准化IOPS
+ a| 
+过去 500 毫秒内整个集群的平均 IOPS 数。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+非零块
+ a| 
+最后一次垃圾回收操作完成后，包含数据的 4KiB 数据块的总数。
+ a| 
+不适用
+ a| 
+整数
+
+
+
+ a| 
+readBytes
+ a| 
+自卷创建以来从该卷读取的总累计字节数。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+readBytesLastSample
+ a| 
+在上一个采样周期内从卷中读取的总字节数。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+读取延迟（单位：秒）
+ a| 
+在过去 500 毫秒内完成对卷的读取操作的平均时间（以微秒为单位）。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+读取延迟（单位：秒）总计
+ a| 
+从卷中执行读取操作所花费的总时间。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+readOps
+ a| 
+自卷创建以来对该卷执行的总读取操作数。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+readOpsLastSample
+ a| 
+上一个采样周期内的读取操作总数。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+采样周期毫秒
+ a| 
+采样周期长度，以毫秒为单位。
+ a| 
+不适用
+ a| 
+整数
+
+
+
+ a| 
+sliceIopsStats
+ a| 
+卷的 I/O 使用情况统计信息。从 Element 12.8 版本开始可用。  sliceIopsStats 的可能值：
+
+* 大型统计信息：在较长时间段内（通常为最近 24 小时）测量的 I/O 容量统计信息。
+* smallStatistics：在较短时间段内（通常是最近一小时）测量的 I/O 流量统计信息。
+
+
+largeStatistics 和 smallStatistics 的可能取值：
+
+* averageReadIOPS：卷的平均读取 IOPS。
+* averageTotalIops：卷的平均总（读取+写入）IOPS。
+* averageWriteIOPS：卷的平均写入 IOPS。
+* nSamples：统计计算中包含的样本数量。
+* peakReadIOPS：在统计间隔内观察到的最大读取IOPS。
+* peakTotalIOPS：在统计区间内观察到的最大总IOPS。
+* peakWriteIOPS：在统计间隔内观察到的最大写入IOPS。
+* sliceID：卷 ID 或切片 ID
+
+ a| 
+时间点
+ a| 
+JSON 对象
+
+
+
+ a| 
+风门
+ a| 
+介于 0 和 1 之间的浮点值，表示由于数据重新复制、瞬态错误和快照，系统将客户端限制在低于其最大 IOPS 的程度。
+ a| 
+不适用
+ a| 
+浮点型
+
+
+
+ a| 
+时间戳
+ a| 
+当前时间，格式为UTC+0。
+ a| 
+不适用
+ a| 
+ISO 8601 日期字符串
+
+
+
+ a| 
+未对齐的读取
+ a| 
+自卷创建以来，对该卷的累计未对齐读取操作总数。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+未对齐的写入
+ a| 
+自卷创建以来，对卷执行的累计未对齐写入操作总数。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+卷访问组
+ a| 
+卷所属的卷访问组 ID 列表。
+ a| 
+不适用
+ a| 
+整数数组
+
+
+
+ a| 
+volumeID
+ a| 
+卷的ID。
+ a| 
+不适用
+ a| 
+整数
+
+
+
+ a| 
+容量大小
+ a| 
+总配置容量（字节）。
+ a| 
+不适用
+ a| 
+整数
+
+
+
+ a| 
+容量利用率
+ a| 
+一个浮点值，用于描述客户端与该卷的最大 IOPS QoS 设置相比，对卷的输入/输出功能的使用程度。可能值：
+
+* 0：客户端未使用该卷。
+* 0.01 至 0.99：客户端未充分利用卷的 IOPS 能力。
+* 1.00：客户端已充分利用卷，达到 maxIOPS 设置设定的 IOPS 限制。
+* > 1.00：客户端使用的资源超过了 maxIOPS 设置的限制。当 burstIOPS QoS 设置高于 maxIOPS 时，这种情况是可能发生的。例如，如果 maxIOPS 设置为 1000，burstIOPS 设置为 2000，则 `volumeUtilization`如果客户充分利用容量，则值为 2.00。
+
+ a| 
+不适用
+ a| 
+浮点型
+
+
+
+ a| 
+writeBytes
+ a| 
+自创建该卷以来写入该卷的总累计字节数。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+writeBytesLastSample
+ a| 
+上一个采样周期内写入卷的总字节数。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+写入延迟（单位：秒）
+ a| 
+在过去 500 毫秒内完成对卷的写入操作的平均时间（以微秒为单位）。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+写入延迟（单位：秒）总计
+ a| 
+对卷执行写入操作所花费的总时间。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+writeOps
+ a| 
+自卷创建以来，对该卷执行的累计写入操作总数。
+ a| 
+单调递增
+ a| 
+整数
+
+
+
+ a| 
+writeOpsLastSample
+ a| 
+上个采样周期内的写入操作总数。
+ a| 
+时间点
+ a| 
+整数
+
+
+
+ a| 
+零块
+ a| 
+最后一轮垃圾回收操作完成后，没有数据的 4KiB 空块的总数。
+ a| 
+时间点
+ a| 
+整数
+
+|===

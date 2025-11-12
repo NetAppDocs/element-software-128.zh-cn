@@ -1,0 +1,206 @@
+---
+permalink: api/reference_element_api_clonemultiplevolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,clone,cloning,multiple,CloneMultipleVolumes 
+summary: 您可以使用 CloneMultipleVolumes 方法创建一组指定卷的克隆。您可以为克隆在一起的多个卷组分配一组一致的特征。 
+---
+= 克隆多个卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CloneMultipleVolumes`创建一组指定卷的克隆的方法。您可以为克隆在一起的多个卷组分配一组一致的特征。
+
+在使用 groupSnapshotID 参数克隆组快照中的卷之前，必须先使用以下方法创建组快照：xref:reference_element_api_creategroupsnapshot.adoc[创建组快照] API 方法或 Web 用户界面。克隆多个卷时，使用 groupSnapshotID 是可选的。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+access
+ a| 
+如果卷数组中传递的信息没有覆盖此默认访问方法，则新卷的默认访问方法。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+启用 SnapMirror 复制
+ a| 
+确定该卷是否可用于与SnapMirror端点进行复制。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+
+
+ a| 
+组快照ID
+ a| 
+要用作克隆基础的组快照的 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+新帐户ID
+ a| 
+如果卷数组中传递的信息没有覆盖现有帐户 ID，则为卷分配新的帐户 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+卷
+ a| 
+您为新卷指定的成员集合。成员:
+
+* volumeID：（必填）
+* 访问权限：（可选）可以是 readOnly、readWrite、locked 或 replicationTarget 之一。
+* 属性：（可选）JSON 对象格式的名称-值对列表。
+* 名称：（可选）克隆体的新名称。
+* newAccountID：（可选）新卷的帐户 ID。
+* newSize:（可选）卷的总大小，以字节为单位。文件大小向上取整到最接近的兆字节。
+
+
+如果未指定可选成员，则从源卷继承这些值。
+ a| 
+JSON 对象数组
+ a| 
+无
+ a| 
+是的（卷 ID）
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+异步句柄
+ a| 
+异步方法调用返回的值。
+ a| 
+整数
+
+
+
+ a| 
+groupCloneID
+ a| 
+新克隆组的唯一ID。
+ a| 
+整数
+
+
+
+ a| 
+members
+ a| 
+源卷和目标卷对的卷 ID 列表。
+ a| 
+JSON 对象数组
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "CloneMultipleVolumes",
+   "params": {
+       "volumes": [
+           {
+              "volumeID": 5
+              "name":"foxhill",
+              "access":"readOnly"
+              },
+           {
+              "volumeID": 18
+              },
+           {
+             "volumeID": 20
+              }
+     ]
+   },
+   "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "asyncHandle": 12,
+    "groupCloneID": 4,
+    "members": [
+     {
+      "srcVolumeID": 5,
+      "volumeID": 29
+     },
+     {
+      "srcVolumeID": 18,
+      "volumeID": 30
+     },
+     {
+      "srcVolumeID": 20,
+      "volumeID": 31
+      }
+    ]
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

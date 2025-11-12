@@ -1,0 +1,41 @@
+---
+permalink: storage/concept_data_manage_vvol_work_virtual_volumes.html 
+sidebar: sidebar 
+keywords: virtual volume, configure vvols, use UI to manage 
+summary: 您可以使用 Element UI 查看虚拟卷及其关联的存储容器、协议端点、绑定和主机的信息并执行相关任务。 
+---
+= 使用虚拟卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 Element UI 查看虚拟卷及其关联的存储容器、协议端点、绑定和主机的信息并执行相关任务。
+
+NetApp Element软件存储系统出厂时默认禁用虚拟卷 (VVols) 功能。您必须通过 Element UI 手动启用 vSphere VVol 功能，此操作为一次性任务。
+
+启用 VVol 功能后，用户界面中会出现一个 VVols 选项卡，提供与 VVols 相关的监控和有限的管理选项。此外，一个名为 VASA Provider 的存储端软件组件充当 vSphere 的存储感知服务。大多数 VVols 命令（例如 VVol 创建、克隆和编辑）由 vCenter Server 或 ESXi 主机发起，并由 VASA Provider 转换为 Element 软件存储系统的 Element API。可以使用 Element UI 发起创建、删除和管理存储容器以及删除虚拟卷的命令。
+
+使用 Element 软件存储系统的虚拟卷功能所需的大部分配置都在 vSphere 中完成。请参阅《VMware vSphere Virtual Volumes for SolidFire Storage Configuration Guide》以在 vCenter 中注册 VASA Provider、创建和管理 VVol 数据存储以及根据策略管理存储。
+
+
+NOTE: 对于 Element 12.5 及更早版本，请勿向单个 vCenter 实例注册多个NetApp Element VASA 提供程序。如果添加了第二个NetApp Element VASA 提供程序，则所有 VVOL 数据存储都将无法访问。
+
+
+NOTE: 如果您已将 VASA 提供商注册到 vCenter，则可通过升级补丁获得对多个 vCenter 的 VASA 支持。要安装，请从以下位置下载 VASA39 .tar.gz 文件： https://mysupport.netapp.com/products/element_software/VASA39/index.html["NetApp软件下载"]前往现场并按照清单上的说明进行操作。 NetApp Element VASA 提供程序使用NetApp证书。通过此补丁，vCenter 可以直接使用未经修改的证书，以支持多个 vCenter 用于 VASA 和 VVols。请勿修改证书。  VASA 不支持自定义 SSL 证书。
+
+
+
+== 查找更多信息
+
+* xref:task_data_manage_vvol_enable_virtual_volumes.adoc[启用虚拟卷]
+* xref:task_data_manage_vvol_view_virtual_volume_details.adoc[查看虚拟卷详情]
+* xref:task_data_manage_vvol_delete_a_virtual_volume.adoc[删除虚拟卷]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[创建一个存储容器]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[编辑存储容器]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[删除存储容器]
+* xref:concept_data_manage_vvol_protocol_endpoints.adoc[协议端点]
+* xref:concept_data_manage_vvol_bindings.adoc[绑定]
+* xref:reference_data_manage_vvol_host_details.adoc[房东详情]
+

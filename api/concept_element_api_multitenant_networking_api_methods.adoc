@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_multitenant_networking_api_methods.html 
+sidebar: sidebar 
+keywords: multitenant,network,networking,api,prerequisites,requirements,virtual,tenant 
+summary: Element 存储集群中的多租户网络允许位于不同逻辑网络上的多个客户端之间的流量连接到同一个 Element 存储集群，而无需 3 层路由。 
+---
+= 多租户网络 API 方法
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 存储集群中的多租户网络允许位于不同逻辑网络上的多个客户端之间的流量连接到同一个 Element 存储集群，而无需 3 层路由。
+
+通过使用 VLAN 标记，与存储集群的连接在网络堆栈中进行了隔离。
+
+
+
+== 建立多租户虚拟网络的前提条件
+
+* 您必须已经确定要分配给存储节点上虚拟网络的客户端网络 IP 地址块。
+* 您必须确定一个客户端存储网络 IP (SVIP) 地址，该地址将用作所有存储流量的端点。
+
+
+
+
+== 虚拟网络操作顺序
+
+. 使用 AddVirtualNetwork 方法批量配置您输入的 IP 地址。
++
+添加虚拟网络后，集群会自动执行以下操作：
+
++
+** 每个存储节点都会创建一个虚拟网络接口。
+** 每个存储节点都被分配一个 VLAN 地址，可以使用虚拟 SVIP 进行路由。
+** 即使节点重启，VLAN IP 地址也会保留在每个节点上。
+
+
+. 分配虚拟网络接口和 VLAN 地址后，即可将客户端网络流量分配给虚拟 SVIP。
+
+
+
+
+== 查找更多信息
+
+* xref:concept_element_api_virtual_network_naming_conventions.adoc[虚拟网络命名规则]
+* xref:reference_element_api_addvirtualnetwork.adoc[添加虚拟网络]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[修改虚拟网络]
+* xref:reference_element_api_listvirtualnetworks.adoc[ListVirtualNetworks]
+* xref:reference_element_api_removevirtualnetwork.adoc[移除虚拟网络]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

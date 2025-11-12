@@ -1,0 +1,251 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_prechecks.html 
+summary: 作为NetApp SolidFire存储系统升级的一部分，您需要对NetApp Element软件运行健康检查。 
+keywords: netapp, storage prechecks, element upgrade, sfupgradecheck 
+---
+= 在升级存储之前，请运行 Element 存储健康检查
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在升级 Element 存储之前，必须运行健康检查，以确保集群中的所有存储节点都已准备好进行下一次 Element 存储升级。
+
+.你需要什么
+* *管理服务*：您已更新到最新的管理服务包（2.10.27 或更高版本）。
++
+
+IMPORTANT: 您必须先升级到最新的管理服务包，然后才能升级 Element 软件。
+
+* *管理节点*：您正在运行管理节点 11.3 或更高版本。
+* *Element 软件*：您的集群版本正在运行NetApp Element软件 11.3 或更高版本。
+* *最终用户许可协议 (EULA)*：从管理服务 2.20.69 版本开始，您必须接受并保存 EULA，然后才能使用NetApp Hybrid Cloud Control UI 或 API 运行 Element 存储运行状况检查：
++
+.. 在网页浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 使用存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+.. 在界面右上角附近选择“升级”。
+.. 最终用户许可协议弹出。向下滚动，选择“我接受当前及所有未来的更新”，然后选择“保存”。
+
+
+
+
+.健康检查选项
+您可以使用NetApp Hybrid Cloud Control UI 或NetApp Hybrid Cloud Control API 运行运行状况检查：
+
+* <<在升级存储之前，请使用NetApp Hybrid Cloud Control 运行 Element 存储运行状况检查。>>（首选方法）
+
+
+您还可以了解更多关于该服务运行的存储健康检查的信息：
+
+* <<服务执行的存储健康检查>>
+
+
+
+
+== 在升级存储之前，请使用NetApp Hybrid Cloud Control 运行 Element 存储运行状况检查。
+
+使用NetApp Hybrid Cloud Control，您可以验证存储集群是否已准备好进行升级。
+
+.步骤
+. 在网页浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 使用存储集群管理员凭据登录NetApp Hybrid Cloud Control。
+. 在界面右上角附近选择“升级”。
+. 在“升级”页面上，选择“存储”选项卡。
+. 选择健康检查image:hcc_healthcheck_icon.png["图标"]您要检查集群的升级准备情况。
+. 在“存储健康检查”页面上，选择“运行健康检查”。
+. 如果出现问题，请执行以下操作：
++
+.. 请前往每个问题对应的知识库文章或执行指定的解决方法。
+.. 如果指定了知识库文章，请按照相关知识库文章中描述的步骤完成操作。
+.. 解决集群问题后，选择“重新运行健康检查”。
+
+
+
+
+健康检查完成后，如果未出现任何错误，存储集群即可进行升级。请参阅存储节点升级link:task_hcc_upgrade_element_software.html["指示"]继续。
+
+
+
+== 在升级存储之前，使用 API 运行 Element 存储健康检查
+
+您可以使用 REST API 来验证存储集群是否已准备好进行升级。健康检查会验证升级过程中是否存在障碍，例如待处理的节点、磁盘空间问题和集群故障。
+
+.步骤
+. 找到存储集群 ID：
++
+.. 在管理节点上打开管理节点 REST API 用户界面：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. 选择“授权”，然后完成以下步骤：
++
+... 请输入集群用户名和密码。
+... 请输入客户端 ID `mnode-client`如果该值尚未填充。
+... 选择“授权”以开始会话。
+... 关闭授权窗口。
+
+
+.. 从 REST API 用户界面中选择 `GET /assets`。
+.. 选择*试用一下*。
+.. 选择*执行*。
+.. 从回复中复制以下内容 `"id"`从 `"storage"`您打算检查集群中哪些部分是否已准备好升级。
++
+
+NOTE: 不要使用 `"parent"`本节中的值是因为这是管理节点的 ID，而不是存储集群的 ID。
+
++
+[listing, subs="+quotes"]
+----
+"config": {},
+"credentialid": "12bbb2b2-f1be-123b-1234-12c3d4bc123e",
+"host_name": "SF_DEMO",
+*"id": "12cc3a45-e6e7-8d91-a2bb-0bdb3456b789",*
+"ip": "10.123.12.12",
+"parent": "d123ec42-456e-8912-ad3e-4bd56f4a789a",
+"sshcredentialid": null,
+"ssl_certificate": null
+----
+
+
+. 对存储集群运行健康检查：
++
+.. 在管理节点上打开存储 REST API 用户界面：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. 选择“授权”，然后完成以下步骤：
++
+... 请输入集群用户名和密码。
+... 请输入客户端 ID `mnode-client`如果该值尚未填充。
+... 选择“授权”以开始会话。
+... 关闭授权窗口。
+
+
+.. 选择 *POST /health-checks*。
+.. 选择*试用一下*。
+.. 在参数字段中，输入在步骤 1 中获得的存储集群 ID。
++
+[listing]
+----
+{
+  "config": {},
+  "storageId": "123a45b6-1a2b-12a3-1234-1a2b34c567d8"
+}
+----
+.. 选择“执行”以对指定的存储集群运行健康检查。
++
+响应应表明状态为 `initializing`：
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://10.117.149.231/storage/1/health-checks",
+    "log": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc/log",
+    "self": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc"
+  },
+  "config": {},
+  "dateCompleted": null,
+  "dateCreated": "2020-02-21T22:11:15.476937+00:00",
+  "healthCheckId": "358f073f-896e-4751-ab7b-ccbb5f61f9fc",
+  "state": "initializing",
+  "status": null,
+  "storageId": "c6d124b2-396a-4417-8a47-df10d647f4ab",
+  "taskId": "73f4df64-bda5-42c1-9074-b4e7843dbb77"
+}
+----
+.. 复制 `healthCheckID`这是回应的一部分。
+
+
+. 核实健康检查结果：
++
+.. 选择 *GET /health-checks/{healthCheckId}*。
+.. 选择*试用一下*。
+.. 在参数字段中输入健康检查 ID。
+.. 选择*执行*。
+.. 滚动到回复正文底部。
++
+如果所有健康检查均成功，则返回结果类似于以下示例：
+
++
+[listing]
+----
+"message": "All checks completed successfully.",
+"percent": 100,
+"timestamp": "2020-03-06T00:03:16.321621Z"
+----
+
+
+. 如果 `message`返回结果表明集群健康状况存在问题，请执行以下操作：
++
+.. 选择 *GET /health-checks/{healthCheckId}/log*
+.. 选择*试用一下*。
+.. 在参数字段中输入健康检查 ID。
+.. 选择*执行*。
+.. 查看具体错误并获取其相关的知识库文章链接。
+.. 请前往每个问题对应的知识库文章或执行指定的解决方法。
+.. 如果指定了知识库文章，请按照相关知识库文章中描述的步骤完成操作。
+.. 解决集群问题后，再次运行 *GET /health-checks/{healthCheckId}/log*。
+
+
+
+
+
+
+== 服务执行的存储健康检查
+
+存储健康检查会对每个集群执行以下检查。
+
+|===
+| 检查名称 | 节点/集群 | 描述 
+
+
+| 检查异步结果 | 集群 | 验证数据库中异步结果的数量是否低于阈值。 
+
+
+| 检查集群故障 | 集群 | 验证是否存在阻止升级的集群故障（如元素源中所定义）。 
+
+
+| 检查上传速度 | 节点 | 测量存储节点和管理节点之间的上传速度。 
+
+
+| 连接速度检查 | 节点 | 验证节点是否与提供升级包的管理节点有连接，并估算连接速度。 
+
+
+| 检查核心 | 节点 | 检查节点上的内核崩溃转储和核心转储文件。如果最近一段时间（阈值 7 天）内发生任何崩溃，则检查失败。 
+
+
+| 检查根磁盘空间 | 节点 | 验证根文件系统是否有足够的可用空间来执行升级。 
+
+
+| 检查变量日志磁盘空间 | 节点 | 确认 `/var/log`空闲空间达到一定的百分比阈值。如果未达到阈值，检查程序将轮换并清除较旧的日志，以使日志数量低于阈值。如果未能创建足够的可用空间，则检查失败。 
+
+
+| 检查待处理节点 | 集群 | 验证集群中是否存在待处理的节点。 
+|===
+[discrete]
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

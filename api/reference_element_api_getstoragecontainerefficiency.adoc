@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getstoragecontainerefficiency.html 
+sidebar: sidebar 
+keywords: volume,virtual,container,volumes,get,getting,efficiency,vvol,GetStorageContainerEfficiency 
+summary: 您可以使用 GetStorageContainerEfficiency 方法检索有关虚拟卷存储容器的效率信息。 
+---
+= 获取存储容器效率
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetStorageContainerEfficiency`获取虚拟卷存储容器效率信息的方法。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+存储容器ID
+ a| 
+要检索效率信息的存储容器的 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+数据压缩
+ a| 
+存储容器中所有虚拟卷通过数据压缩节省的空间量。以比率表示，其中值为 1 表示数据存储时未进行压缩。
+ a| 
+浮点型
+
+
+
+ a| 
+重复数据删除
+ a| 
+存储容器中所有虚拟卷不重复存储数据所节省的空间量。以比率形式表示。
+ a| 
+浮点型
+
+
+
+ a| 
+缺失卷
+ a| 
+无法查询效率数据的虚拟卷。卷丢失可能是由于垃圾回收 (GC) 周期不足一小时、网络连接暂时中断或 GC 周期后重新启动服务造成的。
+ a| 
+整数数组
+
+
+
+ a| 
+精简配置
+ a| 
+已用空间与分配给数据存储的空间之比。以比率形式表示。
+ a| 
+浮点型
+
+
+
+ a| 
+时间戳
+ a| 
+最后一次时间效率数据是在 GC 之后收集的。
+ a| 
+ISO 8601 数据字符串
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "GetStorageContainerEfficiency",
+  "params": {
+    "storageContainerID" : "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1"
+  },
+  "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "compression": 1,
+    "deduplication": 1,
+    "missingVolumes": [],
+    "thinProvisioning": 1,
+    "timestamp": "2016-04-12T15:39:49Z"
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

@@ -1,0 +1,35 @@
+---
+permalink: storage/task_system_manage_snmp_configure_an_snmp_requestor.html 
+sidebar: sidebar 
+keywords: SNMP requestor, config, enable, disable, snmp requests 
+summary: 启用 SNMP 版本 2 后，您可以启用或禁用请求者，并配置请求者以接收授权的 SNMP 请求。 
+---
+= 配置 SNMP 请求器
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+启用 SNMP 版本 2 后，您可以启用或禁用请求者，并配置请求者以接收授权的 SNMP 请求。
+
+. 点击菜单：集群[SNMP]。
+. 在“常规 SNMP 设置”下，单击“是”以启用 SNMP。
+. 从“版本”列表中选择“版本 2”。
+. 在“请求者”部分，输入“社区字符串”和“网络”信息。
++
+
+NOTE: 默认情况下，团体字符串为 public，网络为 localhost。您可以更改这些默认设置。
+
+. *可选：*要添加另一个请求者，请单击*添加请求者*并输入*社区字符串*和*网络*信息。
+. 点击“保存更改”。
+
+
+
+
+== 查找更多信息
+
+* xref:task_system_manage_snmp_configure_snmp_traps.adoc[配置SNMP陷阱]
+* xref:task_system_manage_snmp_view_managed_object_data.adoc[使用管理信息库文件查看托管对象数据]
+

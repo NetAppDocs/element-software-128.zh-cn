@@ -1,0 +1,29 @@
+---
+permalink: concepts/concept_solidfire_concepts_volumes.html 
+sidebar: sidebar 
+keywords: what is, element, volume, storage volume, persistent volume 
+summary: NetApp SolidFire存储系统使用卷来配置存储。卷是可通过网络由 iSCSI 或光纤通道客户端访问的块设备。 
+---
+= 卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element存储系统使用卷来配置存储。卷是可通过网络由 iSCSI 或光纤通道客户端访问的块设备。
+
+Element 存储允许您为用户帐户创建、查看、编辑、删除、克隆、备份或恢复卷。您还可以管理集群上的每个卷，并在卷访问组中添加或删除卷。
+
+
+
+== 持续性卷
+
+持久卷允许将管理节点配置数据存储在指定的存储集群上，而不是存储在本地虚拟机上，以便在管理节点丢失或移除时可以保留数据。持久卷是管理节点上可选但推荐的配置。
+
+安装和升级脚本中包含启用持久卷的选项。link:../mnode/task_mnode_install.html["部署新的管理节点"] 。持久卷是 Element 软件存储集群上的卷，其中包含主机管理节点 VM 的管理节点配置信息，这些信息在 VM 生命周期结束后仍然存在。如果管理节点丢失，替代的管理节点虚拟机可以重新连接到丢失的虚拟机并恢复其配置数据。
+
+如果在安装或升级过程中启用持久卷功能，则会自动创建多个卷。这些卷与任何基于 Element 软件的卷一样，可以使用 Element 软件 Web UI、 NetApp Element vCenter Server 插件或 API 查看，具体取决于您的偏好和安装情况。持久卷必须通过 iSCSI 连接到管理节点并正常运行，才能维护可用于恢复的最新配置数据。
+
+
+NOTE: 在安装或升级过程中，会创建与管理服务关联的持久卷并将其分配给新帐户。如果您使用的是持久卷，请勿修改或删除该卷或其关联的帐户。

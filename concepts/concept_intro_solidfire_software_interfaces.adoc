@@ -1,0 +1,122 @@
+---
+permalink: concepts/concept_intro_solidfire_software_interfaces.html 
+sidebar: sidebar 
+keywords: interfaces, integration, user interface, Plug-in, vCenter, API, node UIs, command line, snapshots, shadow copies, Element software, Element, Element UI, UI, manage storage, utilities, integration utilities 
+summary: 您可以使用NetApp Element软件接口和集成实用程序来管理SolidFire存储系统。 
+---
+= SolidFire软件接口
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用不同的NetApp Element软件接口和集成实用程序来管理SolidFire存储系统。
+
+.选项
+* <<NetApp Element软件用户界面>>
+* <<NetApp Element软件 API>>
+* <<NetApp Element vCenter Server 插件>>
+* <<NetApp Hybrid Cloud Control>>
+* <<管理节点用户界面>>
+* <<其他集成实用程序和工具>>
+
+
+
+
+== NetApp Element软件用户界面
+
+使您能够设置 Element 存储、监控集群容量和性能，以及管理跨多租户基础架构的存储活动。  Element 是SolidFire集群的核心存储操作系统。  Element 软件在集群中的所有节点上独立运行，使集群中的节点能够将资源组合起来，以单一存储系统的形式呈现给外部客户端。 Element 软件负责整个系统的集群协调、扩展和管理。该软件接口基于 Element API 构建。
+
+link:../storage/index.html["使用 Element 软件管理存储"]
+
+
+
+== NetApp Element软件 API
+
+使您能够使用一组对象、方法和例程来管理 Element 存储。 Element API 基于 HTTPS 上的 JSON-RPC 协议。您可以通过启用 API 日志在 Element UI 中监控 API 操作；这样您就可以看到向系统发出的方法。您可以同时启用请求和响应，以查看系统如何响应发出的方法。
+
+link:../api/concept_element_api_about_the_api.html["使用 Element API 管理存储"]
+
+
+
+== NetApp Element vCenter Server 插件
+
+使您能够使用 VMware vSphere 中 Element UI 的替代界面来配置和管理运行 Element 软件的存储集群。
+
+https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+
+
+
+== NetApp Hybrid Cloud Control
+
+使您能够升级 Element 存储和管理服务，并使用NetApp Hybrid Cloud Control 界面管理存储资产。
+
+link:../hccstorage/task-hcc-manage-storage-clusters.html["使用NetApp Hybrid Cloud Control 管理和监控存储"]
+
+
+
+== 管理节点用户界面
+
+管理节点包含两个用户界面：一个用于管理基于 REST 的服务的用户界面，以及一个用于管理网络和集群设置以及操作系统测试和实用程序的节点用户界面。通过 REST API UI，您可以访问与服务相关的 API 菜单，这些 API 可以从管理节点控制基于服务的系统功能。
+
+
+
+== 其他集成实用程序和工具
+
+虽然您通常使用NetApp Element、 NetApp Element API 和NetApp Element vCenter Server 插件来管理存储，但您也可以使用其他集成实用程序和工具来访问存储。
+
+
+
+=== Element CLI
+
+https://mysupport.netapp.com/site/tools/tool-eula/elem-cli["Element CLI"^]使您能够使用命令行界面控制SolidFire存储系统，而无需使用 Element API。
+
+
+
+=== Element PowerShell Tools
+
+https://mysupport.netapp.com/site/tools/tool-eula/elem-powershell-tools["Element PowerShell Tools"^]使您能够使用一系列使用 Element API 的 Microsoft Windows PowerShell 函数来管理SolidFire存储系统。
+
+
+
+=== 元素 SDK
+
+https://mysupport.netapp.com/site/products/all/details/netapphci-solidfire-elementsoftware/tools-tab["元素 SDK"^]您可以使用以下工具管理您的SolidFire集群：
+
+* Element Java SDK：使程序员能够将 Element API 与 Java 编程语言集成。
+* Element .NET SDK：使程序员能够将 Element API 与 .NET 编程平台集成。
+* Element Python SDK：使程序员能够将 Element API 与 Python 编程语言集成。
+
+
+
+
+=== SolidFire Postman API 测试套件
+
+使程序员能够使用一系列link:https://github.com/solidfire/postman["邮差"^]测试 Element API 调用的函数。
+
+
+
+=== SolidFire存储复制适配器
+
+https://mysupport.netapp.com/site/products/all/details/elementsra/downloads-tab["SolidFire存储复制适配器"^]与 VMware Site Recovery Manager (SRM) 集成，以实现与复制的SolidFire存储集群的通信并执行受支持的工作流程。
+
+
+
+=== SolidFire vRO
+
+https://mysupport.netapp.com/site/products/all/details/solidfire-vro/downloads-tab["SolidFire vRO"^]提供了一种便捷的方式，可以使用 Element API 通过 VMware vRealize Orchestrator 管理SolidFire存储系统。
+
+
+
+=== SolidFire VSS 提供程序
+
+https://mysupport.netapp.com/site/products/all/details/solidfire-vss-provider/downloads-tab["SolidFire VSS 提供程序"^]将 VSS 卷影副本与 Element 快照和克隆集成在一起。
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_setconfig.html 
+sidebar: sidebar 
+keywords: config,configuration,set,setting,node,setconfig,network,cluster 
+summary: 您可以使用 SetConfig 方法设置节点的网络和集群信息。此方法在一个 API 方法中包含了与 SetClusterConfig 和 SetNetworkConfig 方法相同的设置。此方法只需包含您想要更改的字段即可。 
+---
+= 设置配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `SetConfig`设置节点网络和集群信息的方法。此方法在一个 API 方法中包含了相同的设置，这两种方法均可用。 `SetClusterConfig`和 `SetNetworkConfig`方法。此方法只需包含您想要更改的字段即可。
+
+
+
+== 参数
+
+小心：
+
+更改节点上的绑定模式可能会导致网络连接暂时中断。
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+集群
+ a| 
+集群信息，用于标识存储节点如何与其关联的存储集群进行通信。
+ a| 
+xref:reference_element_api_cluster.adoc[集群]
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+network
+ a| 
+节点的每个网络接口的网络连接类型和当前设置。
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[网络（所有接口）]
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+config
+ a| 
+节点的新配置和当前配置。此对象包含：
+
+* xref:reference_element_api_cluster.adoc[集群]：集群信息，用于标识存储节点如何与其关联的存储集群进行通信。
+* xref:reference_element_api_network_all_interfaces.adoc[网络（所有接口）]：节点的每个网络接口的网络连接类型和当前设置。
+
+ a| 
+JSON 对象
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+	"method": "SetConfig",
+	"params": {
+		"cluster": {
+			"name": "MyHostname"
+		},
+		"network": {
+			"Bond10G": {
+				"bond-mode": "ALB"
+			}
+		}
+	}
+}
+----
+
+
+== 响应示例
+
+此方法的响应与 GetConfig 方法的返回值相同。使用 SetConfig 时，可以看到对象显示的所有字段和更新后的值。
+
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+* xref:reference_element_api_setclusterconfig.adoc[设置集群配置]
+* xref:reference_element_api_setnetworkconfig.adoc[设置网络配置]
+* xref:reference_element_api_response_example_getconfig.adoc[GetConfig]
+

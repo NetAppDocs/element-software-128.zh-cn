@@ -1,0 +1,40 @@
+---
+permalink: storage/reference_replication_cluster_pair_details.html 
+sidebar: sidebar 
+keywords: cluster pairs, replication, data protection 
+summary: 数据保护选项卡上的“集群配对”页面提供有关已配对或正在配对的集群的信息。系统会在“状态”列中显示配对和进度消息。 
+---
+= 簇对详情
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+数据保护选项卡上的“集群配对”页面提供有关已配对或正在配对的集群的信息。系统会在“状态”列中显示配对和进度消息。
+
+* *ID*
++
+系统为每个集群对生成一个ID。
+
+* *远程集群名称*
++
+这对簇中另一个簇的名称。
+
+* *远程MVIP*
++
+集群对中另一集群的管理虚拟 IP 地址。
+
+* *地位*
++
+远程集群的复制状态
+
+* *正在复制卷*
++
+集群中包含的用于复制的卷的数量。
+
+* *UUID*
++
+为配对中的每个聚类分配一个唯一的 ID。
+
+

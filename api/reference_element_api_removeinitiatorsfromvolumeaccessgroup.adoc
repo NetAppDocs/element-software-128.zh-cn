@@ -1,0 +1,134 @@
+---
+permalink: api/reference_element_api_removeinitiatorsfromvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: initiators,initiator,volume,access,group,remove,removing,removeinitiatorsfromvolumeaccessgroup 
+summary: 您可以使用 RemoveInitiatorsFromVolumeAccessGroup 方法从指定的卷访问组中移除启动器。 
+---
+= 从卷访问组中移除发起程序
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `RemoveInitiatorsFromVolumeAccessGroup`从指定的卷访问组中移除发起程序的方法。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+卷访问组ID
+ a| 
+从中移除发起程序的卷访问组的 ID。
+ a| 
+整数
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+发起者
+ a| 
+要包含在卷访问组中的发起程序 ID 或名称（IQN 和 WWPN）列表。如果传递一个启动器名称列表，则当启动器尚不存在时，将创建这些启动器。如果传递一个发起者 ID 列表，则如果其中任何发起者尚不存在，该方法将返回错误。传递发起者名称已被弃用；应尽可能使用发起者 ID。
+ a| 
+整数数组（推荐）或字符串数组（已弃用）
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+删除孤儿发起者
+ a| 
+指定在从卷访问组中移除启动器对象后是否将其删除。可能值：
+
+* true：从卷访问组中移除启动器对象后，将其删除。
+* false：从卷访问组中删除启动器对象后，不要将其删除。这是默认设置。
+
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+卷访问组
+ a| 
+包含有关新修改的卷访问组信息的对象。
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[卷访问组]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "id": 13171,
+  "method": "RemoveInitiatorsFromVolumeAccessGroup",
+  "params": {
+    "initiators": [114,115],
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 13171,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        327
+      ],
+      "initiatorIDs": [],
+      "initiators": [],
+      "name": "test",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        346
+      ]
+    }
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

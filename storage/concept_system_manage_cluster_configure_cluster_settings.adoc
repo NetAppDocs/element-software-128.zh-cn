@@ -1,0 +1,41 @@
+---
+permalink: storage/concept_system_manage_cluster_configure_cluster_settings.html 
+sidebar: sidebar 
+keywords: configure, cluster, threshold, support access, encryption at rest, virtual volumes, ntp broadcast, client, snapmirror 
+summary: 您可以从 Element UI 的“集群”选项卡查看和更改集群范围的设置，并执行集群特定的任务。 
+---
+= 配置集群设置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以从 Element UI 的“集群”选项卡查看和更改集群范围的设置，并执行集群特定的任务。
+
+您可以配置集群满度阈值、支持访问、静态加密、虚拟卷、 SnapMirror和 NTP 广播客户端等设置。
+
+.选项
+* xref:concept_data_manage_vvol_work_virtual_volumes.adoc[使用虚拟卷]
+* xref:task_snapmirror_use_replication_between_element_and_ontap_clusters.adoc[在 Element 和ONTAP集群之间使用SnapMirror复制]
+* xref:task_system_manage_cluster_set_the_cluster_full_threshold.adoc[设置集群满阈值]
+* xref:task_system_manage_cluster_volume_load_balancing.adoc[启用和禁用卷负载均衡]
+* xref:task_system_manage_cluster_enable_and_disable_support_access.adoc[启用和禁用支持访问]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["元素的块空间阈值是如何计算的"]
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[启用和禁用集群加密]
+* xref:concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.adoc[管理使用条款横幅]
+* xref:task_system_manage_cluster_ntp_configure.adoc[配置集群要查询的网络时间协议服务器]
+* xref:concept_system_manage_snmp_manage_snmp.adoc[管理 SNMP]
+* xref:concept_system_manage_drives_managing_drives.adoc[管理驱动器]
+* xref:concept_system_manage_nodes_manage_nodes.adoc[管理节点]
+* xref:task_system_manage_fc_view_fibre_channel_ports_details.adoc[查看光纤通道端口详情]
+* xref:concept_system_manage_virtual_manage_virtual_networks.adoc[管理虚拟网络]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

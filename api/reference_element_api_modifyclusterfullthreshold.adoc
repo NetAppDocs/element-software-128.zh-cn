@@ -1,0 +1,343 @@
+---
+permalink: api/reference_element_api_modifyclusterfullthreshold.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,cluster,full,fullness,threshold,modifyclusterfullthreshold 
+summary: 您可以使用 ModifyClusterFullThreshold 方法来更改存储集群接近特定容量利用率时系统生成事件的级别。您可以使用阈值设置来指示系统发出警告之前可接受的已用块存储量。 
+---
+= 修改集群完整阈值
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ModifyClusterFullThreshold`用于改变系统在存储集群接近一定容量利用率时生成事件的级别的方法。您可以使用阈值设置来指示系统发出警告之前可接受的已用块存储量。
+
+例如，如果您希望在系统块存储利用率低于“错误”级别 3% 时收到警报，请为 stage3BlockThresholdPercent 参数输入值“3”。如果达到此级别，系统将向集群管理控制台中的事件日志发送警报。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+
+NOTE: 您必须至少选择一个参数。
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+最大元数据超配额因子
+ a| 
+该值代表元数据空间相对于可用空间可以超额配置的次数。例如，如果元数据空间足以存储 100 TiB 的卷，并且该数字设置为 5，则可以创建 500 TiB 的卷。
+ a| 
+整数
+ a| 
+5
+ a| 
+否
+
+
+
+ a| 
+stage2AwareThreshold
+ a| 
+系统触发容量通知前，集群中剩余容量的节点数。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+stage3BlockThresholdPercent
+ a| 
+低于“错误”阈值的块存储利用率百分比，会导致系统触发集群“警告”警报。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+stage3MetadataThresholdPercent
+ a| 
+元数据存储利用率低于“`错误`”阈值的百分比，会导致系统触发集群“`警告`”警报。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+块满
+ a| 
+集群当前计算出的块填充度级别。
+
+* stage1Happy：无警报或错误情况。对应于网页用户界面中的“健康”状态。
+* stage2Aware：无警报或错误情况。对应于网页用户界面中的“健康”状态。
+* stage3Low：您的系统无法提供冗余数据保护，以应对两个非同时发生的节点故障。对应于网页用户界面中的*警告*状态。您可以在 Web UI 中配置此级别（默认情况下，系统会在容量低于错误状态 3% 时触发此警报）。
+* stage4严重：系统无法提供来自单个节点故障的冗余数据保护。无法创建任何新卷或克隆。对应于元素用户界面中的*错误*状态。
+* stage5完全消耗：完全消耗。集群为只读，iSCSI 连接保持连接，但所有写入操作均已暂停。对应于元素用户界面中的*严重*状态。
+
+ a| 
+string
+
+
+
+ a| 
+饱腹感
+ a| 
+反映了“块完整性”和“元数据完整性”之间的最高完整性级别。
+ a| 
+string
+
+
+
+ a| 
+最大元数据超配额因子
+ a| 
+该值代表元数据空间相对于可用空间可以超额配置的次数。例如，如果元数据空间足以存储 100 TiB 的卷，并且该数字设置为 5，则可以创建 500 TiB 的卷。
+ a| 
+整数
+
+
+
+ a| 
+元数据完整性
+ a| 
+集群当前元数据完整性的计算级别。
+
+* stage1Happy：无警报或错误情况。对应于网页用户界面中的“健康”状态。
+* stage2Aware：无警报或错误情况。对应于网页用户界面中的“健康”状态。
+* stage3Low：您的系统无法提供冗余数据保护，以应对两个非同时发生的节点故障。对应于网页用户界面中的*警告*状态。您可以在 Web UI 中配置此级别（默认情况下，系统会在容量低于错误状态 3% 时触发此警报）。
+* stage4严重：系统无法提供来自单个节点故障的冗余数据保护。无法创建任何新卷或克隆。对应于元素用户界面中的*错误*状态。
+* stage5完全消耗：完全消耗。集群为只读，iSCSI 连接保持连接，但所有写入操作均已暂停。对应于元素用户界面中的*严重*状态。
+
+ a| 
+string
+
+
+
+ a| 
+切片储备已用阈值百分比
+ a| 
+错误情况。如果预留切片利用率大于返回的 sliceReserveUsedThresholdPct 值，则会触发系统警报。
+ a| 
+整数
+
+
+
+ a| 
+stage2AwareThreshold
+ a| 
+意识状态。为“阶段 2”集群阈值级别设置的值。
+ a| 
+整数
+
+
+
+ a| 
+stage2BlockThresholdBytes
+ a| 
+集群使用的字节数，达到 2 阶段满负荷状态时即为该字节数。
+ a| 
+整数
+
+
+
+ a| 
+stage2MetadataThresholdBytes
+ a| 
+集群使用的元数据字节数，达到 2 阶段满负荷状态时，集群将达到该状态。
+ a| 
+
+
+
+ a| 
+stage3BlockThresholdBytes
+ a| 
+集群使用的存储字节数，达到 3 级满负荷状态时，集群将达到该状态。
+ a| 
+整数
+
+
+
+ a| 
+stage3BlockThresholdPercent
+ a| 
+第三阶段设定的百分比值。当达到此使用百分比时，警报日志中会发布警告。
+ a| 
+整数
+
+
+
+ a| 
+stage3LowThreshold
+ a| 
+错误情况。集群容量不足时触发系统警报的阈值。
+ a| 
+整数
+
+
+
+ a| 
+stage3MetadataThresholdBytes
+ a| 
+集群使用的元数据字节数，达到 3 级满状态时，集群将达到该状态。
+ a| 
+
+
+
+ a| 
+stage4BlockThresholdBytes
+ a| 
+集群使用的存储字节数，达到 4 级满负荷状态时，集群将达到该存储字节数。
+ a| 
+整数
+
+
+
+ a| 
+stage4CriticalThreshold
+ a| 
+错误情况。当集群容量严重不足时，系统会发出警报以发出警告。
+ a| 
+整数
+
+
+
+ a| 
+stage4MetadataThresholdBytes
+ a| 
+集群使用的元数据字节数，达到 4 级满状态时，集群将达到该状态。
+ a| 
+
+
+
+ a| 
+stage5BlockThresholdBytes
+ a| 
+集群使用的存储字节数，达到 5 级满负荷状态时，集群将达到该状态。
+ a| 
+整数
+
+
+
+ a| 
+stage5MetadataThresholdBytes
+ a| 
+集群使用的元数据字节数，达到 5 级满状态时，集群将达到该状态。
+ a| 
+
+
+
+ a| 
+sumTotalClusterBytes
+ a| 
+集群的物理容量，以字节为单位。
+ a| 
+整数
+
+
+
+ a| 
+sumTotalMetadataClusterBytes
+ a| 
+可用于存储元数据的总空间量。
+ a| 
+整数
+
+
+
+ a| 
+已用簇字节总和
+ a| 
+集群上使用的存储字节数。
+ a| 
+整数
+
+
+
+ a| 
+sumUsedMetadataClusterBytes
+ a| 
+用于存储元数据的卷驱动器空间量。
+ a| 
+整数
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method" : "ModifyClusterFullThreshold",
+   "params" : {
+              "stage3BlockThresholdPercent" : 3
+              },
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "blockFullness": "stage1Happy",
+    "fullness": "stage3Low",
+    "maxMetadataOverProvisionFactor": 5,
+    "metadataFullness": "stage3Low",
+    "sliceReserveUsedThresholdPct": 5,
+    "stage2AwareThreshold": 3,
+    "stage2BlockThresholdBytes": 2640607661261,
+    "stage3BlockThresholdBytes": 8281905846682,
+    "stage3BlockThresholdPercent": 3,
+    "stage3LowThreshold": 2,
+    "stage4BlockThresholdBytes": 8641988709581,
+    "stage4CriticalThreshold": 1,
+    "stage5BlockThresholdBytes": 12002762096640,
+    "sumTotalClusterBytes": 12002762096640,
+    "sumTotalMetadataClusterBytes": 404849531289,
+    "sumUsedClusterBytes": 45553617581,
+    "sumUsedMetadataClusterBytes": 31703113728
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

@@ -1,0 +1,113 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicy.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicy 
+summary: snapMirrorPolicy 对象包含有关存储在ONTAP系统上的SnapMirror策略的信息。 
+---
+= snapMirrorPolicy
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorPolicy 对象包含有关存储在ONTAP系统上的SnapMirror策略的信息。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+目标ONTAP系统的 ID。
+ a| 
+整数
+
+
+
+ a| 
+策略名称
+ a| 
+分配给该保单的唯一名称。
+ a| 
+string
+
+
+
+ a| 
+策略类型
+ a| 
+保单类型。可能值：
+
+* 异步镜像
+* 镜像库
+
+ a| 
+string
+
+
+
+ a| 
+评论
+ a| 
+与SnapMirror策略相关的易于理解的描述。
+ a| 
+string
+
+
+
+ a| 
+转移优先级
+ a| 
+SnapMirror传输的优先级。可能值：
+
+* 普通：默认优先级。这些调拨任务的安排优先于大多数低优先级调拨任务。
+* 低优先级：这些转账优先级最低，会在大多数正常优先级转账之后安排。
+
+ a| 
+string
+
+
+
+ a| 
+策略规则
+ a| 
+描述策略规则的对象列表。
+ a| 
+xref:reference_element_api_snapmirrorpolicyrule.adoc[snapMirrorPolicyRule]大批
+
+
+
+ a| 
+总保留计数
+ a| 
+策略中所有规则的总保留计数。
+ a| 
+整数
+
+
+
+ a| 
+总规则
+ a| 
+策略中的规则总数。
+ a| 
+整数
+
+
+
+ a| 
+虚拟服务器名称
+ a| 
+SnapMirror策略的虚拟服务器名称。
+ a| 
+string
+
+|===

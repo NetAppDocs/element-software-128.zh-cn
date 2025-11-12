@@ -1,0 +1,539 @@
+---
+permalink: api/reference_element_api_createschedule.html 
+sidebar: sidebar 
+keywords: CreateSchedule,create,creating,schedule,schedules,snapshot,snapshots,scheduling,automatic,volume,volumes 
+summary: 您可以使用 CreateSchedule 来安排按定义的时间间隔自动创建卷的快照。 
+---
+= 创建日程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 `CreateSchedule`按预定时间间隔自动创建卷的快照。
+
+您可以稍后使用创建的快照作为备份或回滚，以确保卷或卷组上的数据在创建快照的时间点保持一致。如果您安排快照运行的时间段不能被 5 分钟整除，则快照将在下一个能被 5 分钟整除的时间段运行。例如，如果您安排快照在 UTC 时间 12:42:00 运行，它将在 UTC 时间 12:45:00 运行。您无法安排快照运行的间隔小于 5 分钟。
+
+
+NOTE: 如果集群容量处于第 1、2 或 3 阶段，则可以创建快照。当集群容量达到 4 或 5 级时，无法创建快照。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+`attributes`
+ a| 
+使用“`frequency`”字符串来指示快照的频率。可能值：
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+JSON 对象
+ a| 
+无
+ a| 
+否
+
+
+
+| `hasError` | *需要协助添加描述* | 布尔值 | `false` | 否 
+
+
+ a| 
+`hours`
+ a| 
+在“星期”或“月份”模式下，两次重复快照之间的间隔小时数或 GMT 时间的小时数，即快照发生的日期。有效值为 0 到 23。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+| `lastRunStatus` | 上次计划快照创建的结果或状态。 | string | 无 | 否 
+
+
+ a| 
+`name`
+ a| 
+快照的名称。如果没有输入姓名，则使用拍摄群组快照的日期和时间。名称长度上限为 244 个字符。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+`minutes`
+ a| 
+周期性快照之间的分钟数，或者在“星期”或“月份”模式下，快照发生的格林威治标准时间分钟数。有效值为 5 到 59。
+ a| 
+整数
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+`paused`
+ a| 
+指示是否应暂停日程安排。有效值：
+
+* `true`
+* `false`
+
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+`recurring`
+ a| 
+指示该日程安排是否会定期重复。有效值包括：
+
+* `true`
+* `false`
+
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+| `runNextInterval`  a| 
+指定调度程序下次运行时是否运行快照。设置为 true 时，计划快照将在调度程序下次激活时运行，并重置为 false。有效值包括：
+
+* `true`
+* `false`
+
+| 布尔值 | `false` | 否 
+
+
+ a| 
+`scheduleName`
+ a| 
+为日程表起一个独特的名称。允许的最大日程名称长度为 244 个字符。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+`scheduleType`
+ a| 
+指示要创建的日程类型。有效值为 snapshot。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+为计划赋予的唯一名称、创建的快照的保留期限以及创建快照的卷的卷 ID。有效值：
+
+* `volumeID`：要包含在快照中的卷的 ID。  （整数）
+* `volumes`：要包含在组快照中的卷 ID 列表。  （整数数组）
+* `name`要使用的快照名称。  （细绳）
+* `enableRemoteReplication`：指示是否应将快照包含在远程复制中。  （布尔值）
+* `retention`快照将保留的时间，格式为 HH:mm:ss。如果快照为空，则永久保留。  （细绳）
+* `fifo`快照按先进先出 (FIFO) 原则保留。  （细绳）
+* `ensureSerialCreation`：指定如果先前的快照复制正在进行中，是否应允许创建新的快照。  （布尔值）
+
+ a| 
+JSON 对象
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+`snapMirrorLabel`
+ a| 
+SnapMirror软件用于指定SnapMirror端点上的快照保留策略的标签。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+`startingDate`
+ a| 
+之后的时间将决定该日程的运行。如果未设置，则立即开始计时。时间格式为UTC时间。
+ a| 
+ISO 8601 日期字符串
+ a| 
+无
+ a| 
+否
+
+
+
+| `toBeDeleted` | 指定在快照创建完成后删除此快照计划。 | 布尔值 | `false` | 否 
+
+
+ a| 
+`monthdays`
+ a| 
+每月拍摄快照的日期。有效值为 1 到 31。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+是的（如果安排在每月的特定日期）
+
+
+
+ a| 
+`weekdays`
+ a| 
+创建快照的日期是星期几。必填值（如果使用）：
+
+* `Day`：0 至 6（周日至周六）
+* `Offset`：对于一个月中的每一周，1 到 6（如果大于 1，则只匹配该周的第 N-1 天）。例如，偏移量为 3 表示星期日是该月的第三个星期日，偏移量为 4 表示星期三是该月的第四个星期三。偏移量：0 表示不执行任何操作。偏移量：1（默认值）表示无论当天是星期几还是月份中的哪一天，都会创建该日期的快照。
+
+ a| 
+JSON 对象数组
+ a| 
+无
+ a| 
+是的（如果安排在一周中的某一天）
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+计划ID
+ a| 
+已创建日程的 ID。
+ a| 
+整数
+
+
+
+ a| 
+日程
+ a| 
+包含有关新创建的日程安排信息的对象。
+ a| 
+xref:reference_element_api_schedule.adoc[日程]
+
+|===
+
+
+== 请求示例 1
+
+以下示例日程表具有以下参数：
+
+* 没有指定开始时间或分钟，因此日程安排尽可能接近午夜（00:00:00Z）开始。
+* 它不会重复出现（只会运行一次）。
+* 它会在 2015 年 6 月 1 日 UTC 19:17:15Z 之后的第一个星期日或星期三运行一次（以先到者为准）。
+* 它仅包含一个卷（volumeID = 1）。
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+  "params":{
+    "hours":0,
+    "minutes":0,
+    "paused":false,
+    "recurring":false,
+    "scheduleName":"MCAsnapshot1",
+    "scheduleType":"snapshot",
+    "attributes":{
+      "frequency":"Days Of Week"
+    },
+    "scheduleInfo":{
+      "volumeID":"1",
+      "name":"MCA1"
+    },
+    "monthdays":[],
+    "weekdays":[
+      {
+        "day":0,
+        "offset":1
+      },
+      {
+        "day":3,
+        "offset":1
+      }
+    ],
+    "startingDate":"2015-06-01T19:17:54Z"
+  },
+   "id":1
+}
+}
+}
+----
+
+
+== 响应示例 1
+
+上述请求返回的响应类似于以下示例：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+      },
+      "hasError": false,
+      "hours": 0,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": false,
+      "runNextInterval": false,
+      "scheduleID": 4,
+      "scheduleInfo": {
+        "name": "MCA1",
+        "volumeID": "1"
+      },
+      "scheduleName": "MCAsnapshot1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-06-01T19:17:54Z",
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 0,
+          "offset": 1
+        },
+        {
+          "day": 3,
+          "offset": 1
+        }
+      ]
+    },
+    "scheduleID": 4
+  }
+}
+----
+
+
+== 请求示例 2
+
+以下示例日程表具有以下参数：
+
+* 它是周期性的（将在每个月的每个预定时间间隔内按指定时间运行）。
+* 活动在活动开始日期后的每个月的1日、10日、15日和30日举行。
+* 它会在预定举行的每一天的下午 12:15 运行。
+* 它仅包含一个卷（volumeID = 1）。
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+    "params":{
+      "hours":12,
+      "minutes":15,
+      "paused":false,
+      "recurring":true,
+      "scheduleName":"MCASnapshot1",
+      "scheduleType":"snapshot",
+      "attributes":{
+        "frequency":"Days Of Month"
+      },
+      "scheduleInfo":{
+        "volumeID":"1"
+      },
+      "weekdays":[
+      ],
+      "monthdays":[
+        1,
+        10,
+        15,
+        30
+      ],
+      "startingDate":"2015-04-02T18:03:15Z"
+    },
+    "id":1
+}
+----
+
+
+== 响应示例 2
+
+上述请求返回的响应类似于以下示例：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Month"
+      },
+      "hasError": false,
+      "hours": 12,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 15,
+      "monthdays": [
+        1,
+        10,
+        15,
+        30
+      ],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 5,
+      "scheduleInfo": {
+        "volumeID": "1"
+      },
+      "scheduleName": "MCASnapshot1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-04-02T18:03:15Z",
+      "toBeDeleted": false,
+      "weekdays": []
+    },
+      "scheduleID": 5
+  }
+}
+----
+
+
+== 请求示例 3
+
+以下示例日程表具有以下参数：
+
+* 它于 2015 年 4 月 2 日预定时间间隔后 5 分钟内开始。
+* 它是周期性的（将在每个月的每个预定时间间隔内按指定时间运行）。
+* 它在开始日期后的每个月的第二个、第三个和第四天运行。
+* 它会在预定举行的每一天的下午 14:45 运行。
+* 它包括一组卷（卷 = 1 和 2）。
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+  "params":{
+    "hours":14,
+    "minutes":45,
+    "paused":false,
+    "recurring":true,
+    "scheduleName":"MCASnapUser1",
+    "scheduleType":"snapshot",
+    "attributes":{
+      "frequency":"Days Of Month"
+    },
+    "scheduleInfo":{
+      "volumes":[1,2]
+    },
+    "weekdays":[],
+    "monthdays":[2,3,4],
+    "startingDate":"2015-04-02T20:38:23Z"
+  },
+  "id":1
+}
+----
+
+
+== 响应示例 3
+
+上述请求返回的响应类似于以下示例：
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Month"
+      },
+      "hasError": false,
+      "hours": 14,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 45,
+      "monthdays": [
+        2,
+        3,
+        4
+      ],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 6,
+      "scheduleInfo": {
+        "volumes": [
+          1,
+          2
+        ]
+      },
+      "scheduleName": "MCASnapUser1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-04-02T20:38:23Z",
+      "toBeDeleted": false,
+      "weekdays": []
+    },
+    "scheduleID": 6
+  }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

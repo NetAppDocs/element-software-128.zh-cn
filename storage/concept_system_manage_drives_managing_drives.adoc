@@ -1,0 +1,69 @@
+---
+permalink: storage/concept_system_manage_drives_managing_drives.html 
+sidebar: sidebar 
+keywords: drives, manage, cluster, element ui, remove drives 
+summary: 每个节点包含一个或多个物理驱动器，用于存储集群的一部分数据。将硬盘成功添加到集群后，集群即可利用硬盘的容量和性能。您可以使用 Element UI 来管理驱动器。 
+---
+= 管理驱动器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+每个节点包含一个或多个物理驱动器，用于存储集群的一部分数据。将硬盘成功添加到集群后，集群即可利用硬盘的容量和性能。您可以使用 Element UI 来管理驱动器。
+
+
+
+== 驱动细节
+
+“集群”选项卡上的“驱动器”页面提供了集群中活动驱动器的列表。您可以通过选择“活动”、“可用”、“移除”、“擦除”和“失败”选项卡来筛选页面。
+
+首次初始化集群时，活动驱动器列表为空。创建新的SolidFire集群后，您可以添加未分配给集群且列在“可用”选项卡中的驱动器。
+
+活动驱动器列表中包含以下元素。
+
+* *驱动器 ID*
++
+分配给硬盘的顺序编号。
+
+* *节点 ID*
++
+节点添加到集群时分配的节点编号。
+
+* *节点名称*
++
+存放驱动器的节点的名称。
+
+* *投币口*
++
+硬盘实际所在的插槽编号。
+
+* *容量*
++
+硬盘容量，单位为 GB。
+
+* *序列号*
++
+硬盘的序列号。
+
+* *剩余磨损量*
++
+磨损程度指示器。
+
++
+存储系统会报告每个固态硬盘 (SSD) 可用于写入和擦除数据的大致磨损量。硬盘使用完其设计写入和擦除周期的 5% 后，报告剩余磨损量为 95%。系统不会自动刷新硬盘磨损信息；您可以刷新或关闭并重新加载页面来刷新信息。
+
+* *类型*
++
+驱动类型。类型可以是块或元数据。
+
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

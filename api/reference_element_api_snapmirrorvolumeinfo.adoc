@@ -1,0 +1,64 @@
+---
+permalink: api/reference_element_api_snapmirrorvolumeinfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVolumeInfo 
+summary: snapMirrorVolumeInfo 对象包含有关SnapMirror关系中卷位置的信息，例如其名称和类型。 
+---
+= snapMirrorVolumeInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVolumeInfo 对象包含有关SnapMirror关系中卷位置的信息，例如其名称和类型。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+type
+ a| 
+音量类型。可能值：
+
+* solidfire：该卷位于运行 Element 软件的存储集群上。
+* ONTAP：该卷位于远程ONTAP集群上。
+
+ a| 
+string
+
+
+
+ a| 
+volumeID
+ a| 
+卷的ID。仅当“type”为solidfire时有效。
+ a| 
+整数
+
+
+
+ a| 
+vserver
+ a| 
+拥有此卷的虚拟服务器的名称。仅当“type”为 ontap 时有效。
+ a| 
+string
+
+
+
+ a| 
+name
+ a| 
+卷的名称。
+ a| 
+string
+
+|===

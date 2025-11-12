@@ -1,0 +1,23 @@
+---
+sidebar: sidebar 
+permalink: sample-article.html 
+keywords:  
+summary:  
+---
+= 此处显示页面标题
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+将此模板用于文章、主题，无论您如何称呼它们。index.adoc 文件没有文章页面的正确关键字，将其用作模板可能会导致以后的发布问题。
+
+
+NOTE: 首次发布之前删除此文件，因为即使该文件未链接到侧边栏，它也会发布。创建几篇文章后，您可以将它们用作入门文章。
+
+如果您的文章位于内容子文件夹中，则需要对上面显示的符号进行两处调整：
+
+* `:imagesdir:../media/`
+* `permalink: folder-name/sample-article.html`
+

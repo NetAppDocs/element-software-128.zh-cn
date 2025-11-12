@@ -1,0 +1,121 @@
+---
+permalink: api/reference_element_api_checkproposednodeadditions.html 
+sidebar: sidebar 
+keywords: proposed,node,additions,CheckProposedNodeAdditions,storage,checking 
+summary: 您可以使用 CheckProposedNodeAdditions 方法测试一组存储节点，以查看是否可以将它们添加到存储集群而不会出现错误或违反最佳实践的情况。 
+---
+= 检查拟议节点添加
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CheckProposedNodeAdditions`测试一组存储节点的方法，以查看是否可以将它们添加到存储集群中而不会出现错误或违反最佳实践的情况。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+节点
+ a| 
+存储集群中已准备好添加的存储节点的存储 IP 地址列表。
+ a| 
+字符串数组
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+提议的集群有效性
+ a| 
+指示所提议的存储节点是否可以构成有效的存储集群。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+提议的聚类错误
+ a| 
+使用建议的存储节点创建存储集群时将会出现的错误。可能的错误代码：
+
+* `nodesNoCapacity`节点没有任何可用容量。
+* `nodesTooLarge`：节点在集群容量中所占比例过大，不适合采用主动保护方案。
+* `nodesConnectFailed`无法连接到节点以查询硬件配置。
+* `nodesQueryFailed`无法查询节点的硬件配置。
+* `nodesClusterMember`集群中节点的 IP 地址已被占用。
+* `nonFipsNodeCapable`启用 FIPS 140-2 驱动器加密功能时，无法将不支持 FIPS 的节点添加到存储集群。
+* `nonFipsDrivesCapable`启用 FIPS 140-2 驱动器加密功能时，无法将具有非 FIPS 功能驱动器的节点添加到集群中。
+
+ a| 
+字符串数组
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+	"method": "CheckProposedNodeAdditions",
+	"params": {
+	"nodes": [
+		"192.168.1.11",
+		"192.168.1.12",
+		"192.168.1.13",
+		"192.168.1.14"
+	]
+},
+	"id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"proposedClusterValid": true,
+		"proposedClusterErrors": [ ]
+	}
+}
+----
+
+
+== 自版本以来的新版本
+
+11.0

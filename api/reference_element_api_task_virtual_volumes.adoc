@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_task_virtual_volumes.html 
+sidebar: sidebar 
+keywords: object,objects,task 
+summary: 任务对象包含有关系统中当前正在运行或已完成的虚拟卷任务的信息。您可以使用 ListVirtualVolumeTasks 方法检索所有虚拟卷任务的此信息。 
+---
+= 任务（虚拟卷）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+任务对象包含有关系统中当前正在运行或已完成的虚拟卷任务的信息。你可以使用 `ListVirtualVolumeTasks`检索所有虚拟卷任务的此信息的方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+cancelled
+ a| 
+指示任务是否已取消。可能值：
+
+* true
+* false
+
+ a| 
+布尔值
+
+
+
+ a| 
+克隆虚拟卷ID
+ a| 
+被克隆的虚拟卷的唯一虚拟卷 ID（用于克隆任务）。
+ a| 
+UUID
+
+
+
+ a| 
+父元数据
+ a| 
+包含克隆或创建虚拟卷快照的任务的父任务元数据的对象。
+ a| 
+JSON 对象
+
+
+
+ a| 
+父级总大小
+ a| 
+父节点上可用于克隆或快照任务的总空间（以字节为单位）。
+ a| 
+整数
+
+
+
+ a| 
+父级已用大小
+ a| 
+父级用于克隆或快照任务的空间（以字节为单位）。
+ a| 
+整数
+
+
+
+ a| 
+operation
+ a| 
+任务正在执行的操作类型。可能值：
+
+* 未知：任务操作未知。
+* 准备：任务是准备一个虚拟体积。
+* 快照：该任务是创建虚拟卷的快照。
+* 回滚：该任务是将虚拟卷回滚到快照。
+* 克隆：该任务是创建虚拟卷的克隆。
+* fastClone：该任务是创建虚拟卷的快速克隆。
+* copyDiffs：该任务是将不同的数据块复制到虚拟卷。
+
+ a| 
+string
+
+
+
+ a| 
+状态
+ a| 
+虚拟卷任务的当前状态。可能值：
+
+* 错误：任务执行失败并返回错误。
+* 已排队：任务正在等待运行。
+* 正在运行：该任务当前正在运行。
+* 成功：任务已成功完成。
+
+ a| 
+string
+
+
+
+ a| 
+虚拟卷主机ID
+ a| 
+启动任务的主机的唯一 ID。
+ a| 
+UUID
+
+
+
+ a| 
+虚拟卷 ID
+ a| 
+新的唯一虚拟卷 ID（用于创建新虚拟卷的任务）。
+ a| 
+UUID
+
+
+
+ a| 
+虚拟卷任务ID
+ a| 
+任务的唯一标识符。
+ a| 
+UUID
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listvirtualvolumetasks.adoc[列出虚拟卷任务]

@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_enablesnmp.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableSNMP 
+summary: 您可以使用 EnableSnmp 方法在集群节点上启用 SNMP。启用 SNMP 时，该操作将应用于集群中的所有节点，并且传递的值将替换之前对 EnableSnmp 的任何调用中设置的所有值。 
+---
+= 启用 SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `EnableSnmp`在集群节点上启用SNMP的方法。启用 SNMP 后，该操作将应用于集群中的所有节点，并且传递的值将替换之前任何调用中设置的所有值。 `EnableSnmp` 。
+
+
+
+== 参数
+
+该方法具有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+snmpV3Enabled
+ a| 
+如果设置为 true，则在集群中的每个节点上启用 SNMP v3。如果设置为 false，则启用 SNMP v2。
+ a| 
+布尔值
+ a| 
+false
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "EnableSnmp",
+  "params": {
+      "snmpV3Enabled"  : "true"
+  },
+  "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

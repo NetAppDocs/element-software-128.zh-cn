@@ -1,0 +1,30 @@
+---
+permalink: storage/task_snapmirror_enable_on_the_cluster.html 
+sidebar: sidebar 
+keywords: element, snapmirror, enable, cluster, ui, manually enable 
+summary: 您必须通过NetApp Element UI 在集群级别手动启用SnapMirror功能。系统默认禁用SnapMirror功能，并且在新安装或升级时不会自动启用该功能。启用SnapMirror功能只需进行一次配置。 
+---
+= 在集群上启用SnapMirror。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您必须通过NetApp Element UI 在集群级别手动启用SnapMirror功能。系统默认禁用SnapMirror功能，并且在新安装或升级时不会自动启用该功能。启用SnapMirror功能只需进行一次配置。
+
+SnapMirror只能在运行 Element 软件的集群上启用，并且该软件必须与NetApp ONTAP系统上的卷一起使用。只有当您的集群连接到NetApp ONTAP卷以使用时，才应启用SnapMirror功能。
+
+.你需要什么
+存储集群必须运行NetApp Element软件。
+
+.步骤
+. 点击“集群”>“设置”。
+. 查找SnapMirror的集群特定设置。
+. 点击“启用SnapMirror”。
++
+
+NOTE: 启用SnapMirror功能会永久更改 Element 软件配置。只有将集群恢复到出厂映像，才能禁用SnapMirror功能并恢复默认设置。
+
+. 点击“是”确认SnapMirror配置更改。
+

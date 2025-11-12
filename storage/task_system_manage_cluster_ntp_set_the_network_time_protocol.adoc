@@ -1,0 +1,16 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_set_the_network_time_protocol.html 
+sidebar: sidebar 
+keywords: set, ntp, broadcasts, query, updates, clocks, synchronize, 
+summary: '设置网络时间协议 (NTP) 可以通过两种方式之一实现：要么指示集群中的每个节点监听广播，要么指示每个节点向 NTP 服务器查询更新。' 
+---
+= 设置网络时间协议
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+设置网络时间协议 (NTP) 可以通过两种方式之一来实现：要么指示集群中的每个节点监听广播，要么指示每个节点向 NTP 服务器查询更新。
+
+NTP用于通过网络同步时钟。连接到内部或外部 NTP 服务器应该是集群初始设置的一部分。

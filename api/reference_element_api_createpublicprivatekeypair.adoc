@@ -1,0 +1,158 @@
+---
+permalink: api/reference_element_api_createpublicprivatekeypair.html 
+sidebar: sidebar 
+keywords: SSL keys,public and private keys,certificate signing request,creating key pair 
+summary: 您可以使用 CreatePublicPrivateKeyPair 方法创建公钥和私钥。您可以使用这些密钥生成证书签名请求。每个存储集群只能使用一对密钥。使用此方法替换现有密钥之前，请确保密钥不再被任何提供商使用。 
+---
+= 创建公钥/私钥对
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreatePublicPrivateKeyPair`创建公钥和私钥的方法。您可以使用这些密钥生成证书签名请求。每个存储集群只能使用一对密钥。使用此方法替换现有密钥之前，请确保密钥不再被任何提供商使用。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+通用名
+ a| 
+X.509 可分辨名称 *通用名称* 字段 (CN)。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+国家
+ a| 
+X.509 可分辨名称 *国家* 字段 (C)。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+电子邮件地址
+ a| 
+X.509 专有名称 *电子邮件地址* 字段 (MAIL)。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+地点
+ a| 
+X.509 可分辨名称 *本地名称* 字段 (L)。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+组织
+ a| 
+X.509 可分辨名称 *组织名称* 字段 (O)。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+组织单位
+ a| 
+X.509 可分辨名称 *组织单元名称* 字段 (OU)。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+状态
+ a| 
+X.509 可分辨名称 *州* 或 *省名称* 字段（ST 或SP或 S）。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。如果没有错误，则密钥创建被视为成功。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+  "method": "CreatePublicPrivateKeyPair",
+  "params": {
+    "commonName": "Name",
+    "country": "US",
+    "emailAddress" : "email@domain.com"
+   },
+"id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== 自版本以来的新版本
+
+11.7

@@ -1,0 +1,143 @@
+---
+permalink: api/reference_element_api_listvolumeqoshistograms.html 
+sidebar: sidebar 
+keywords: qos,usage,volume,histogram,generate,listvolumeqoshistograms,histograms 
+summary: 您可以使用 ListVolumeQoSHistograms 方法生成一个或多个卷的卷 QoS 使用情况直方图。这使您能够更好地了解流量是如何使用 QoS 的。 
+---
+= 列出卷 QoS 直方图
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `ListVolumeQoSHistograms`生成一个或多个卷的卷 QoS 使用情况直方图的方法。这使您能够更好地了解流量是如何使用 QoS 的。
+
+
+
+== 参数
+
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+卷 ID
+ a| 
+一个可选的卷 ID 列表，用于指定应该为哪些卷生成 QoS 直方图。
+ a| 
+整数数组
+ a| 
+无
+ a| 
+否
+
+|===
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+
+
+| 名称 | 描述 | 类型 
+
+
+ a| 
+qos直方图
+ a| 
+描述一个或多个卷的卷使用情况的对象列表。
+ a| 
+JSON 对象数组
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+	"method": "ListVolumeQoSHistograms",
+		"params": {
+			"volumeIDs": [1]
+		},
+	"id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"qosHistograms": [
+		{
+			"histograms": {
+			"belowMinIopsPercentages": {
+				"Bucket1To19": 2406,
+				"Bucket20To39": 3,
+				"Bucket40To59": 0,
+				"Bucket60To79": 4,
+				"Bucket80To100": 0
+			},
+				"minToMaxIopsPercentages": {
+				"Bucket101Plus": 0,
+				"Bucket1To19": 0,
+				"Bucket20To39": 0,
+				"Bucket40To59": 2,
+				"Bucket60To79": 0,
+				"Bucket80To100": 0
+			},
+				"readBlockSizes": {
+				"Bucket131072Plus": 0,
+				"Bucket16384To32767": 0,
+				"Bucket32768To65535": 0,
+				"Bucket4096To8191": 0,
+				"Bucket65536To131071": 0,
+				"Bucket8192To16383": 0
+			},
+				"targetUtilizationPercentages": {
+				"Bucket0": 134943,
+				"Bucket101Plus": 0,
+				"Bucket1To19": 2409,
+				"Bucket20To39": 4,
+				"Bucket40To59": 0,
+				"Bucket60To79": 2,
+				"Bucket80To100": 0
+			},
+				"throttlePercentages": {
+				"Bucket0": 137358,
+				"Bucket1To19": 0,
+				"Bucket20To39": 0,
+				"Bucket40To59": 0,
+				"Bucket60To79": 0,
+				"Bucket80To100": 0
+			},
+				"writeBlockSizes": {
+				"Bucket131072Plus": 0,
+				"Bucket16384To32767": 0,
+				"Bucket32768To65535": 0,
+				"Bucket4096To8191": 0,
+				"Bucket65536To131071": 0,
+				"Bucket8192To16383": 0
+			}
+		},
+			"timestamp": "2018-06-21T18:45:52.010844Z",
+			"volumeID": 1
+		}
+	]
+}
+}
+----

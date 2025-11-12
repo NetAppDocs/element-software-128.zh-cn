@@ -1,0 +1,55 @@
+---
+permalink: storage/task_replication_assign_replication_source_and_target_to_paired_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, paired volumes, replication source, assign 
+summary: 卷配对完成后，必须指定源卷及其复制目标卷。复制源或目标可以是卷对中的任何一个卷。如果源卷不可用，您还可以使用此过程将发送到源卷的数据重定向到远程目标卷。 
+---
+= 为配对卷分配复制源和目标
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+卷配对完成后，必须指定源卷及其复制目标卷。复制源或目标可以是卷对中的任何一个卷。如果源卷不可用，您还可以使用此过程将发送到源卷的数据重定向到远程目标卷。
+
+.你需要什么
+您可以访问包含源卷和目标卷的集群。
+
+.步骤
+. 准备源卷：
++
+.. 从包含要指定为源的卷的集群中，选择“管理”>“卷”。
+.. 点击要指定为音源的音量旁边的“操作”图标，然后点击“编辑”。
+.. 在“访问”下拉列表中，选择“读/写”。
++
+
+IMPORTANT: 如果要反转源和目标分配，此操作将导致卷对显示以下消息，直到分配新的复制目标为止： `PausedMisconfigured`
+
++
+更改访问权限会暂停卷复制，并导致数据传输停止。请务必协调好两个站点上的这些变更。
+
+.. 点击“保存更改”。
+
+
+. 准备目标体积：
++
+.. 从包含要指定为目标的卷的集群中，选择“管理”>“卷”。
+.. 单击要指定为目标的卷的“操作”图标，然后单击“编辑”。
+.. 在“访问”下拉列表中，选择“复制目标”。
++
+
+IMPORTANT: 如果将现有卷指定为复制目标，则该卷上的数据将被覆盖。您应该使用一个不包含任何数据的新目标卷，该目标卷具有与源卷完全相同的特征，例如大小、512e 设置和 QoS 配置。目标体积可以大于或等于源体积，但不能小于源体积。
+
+.. 点击“保存更改”。
+
+
+
+
+
+
+== 查找更多信息
+
+* xref:task_replication_pair_volumes_using_a_volume_id.adoc[使用卷 ID 配对卷]
+* xref:task_replication_pair_volumes_using_a_pairing_key.adoc[使用配对密钥配对卷]
+

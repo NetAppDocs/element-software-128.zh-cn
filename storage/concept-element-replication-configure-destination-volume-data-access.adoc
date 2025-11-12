@@ -1,0 +1,19 @@
+---
+permalink: storage/concept-element-replication-configure-destination-volume-data-access.html 
+sidebar: sidebar 
+keywords: ontap, cli, configure, destination, volume, data access 
+summary: 将目标卷设置为可写后，必须配置该卷以进行数据访问。在源卷重新激活之前，SAN 主机可以访问目标卷中的数据。 
+---
+= 配置数据访问的目标卷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+将目标卷设置为可写后，必须配置该卷以进行数据访问。在源卷重新激活之前，SAN 主机可以访问目标卷中的数据。
+
+. 将元素 LUN 映射到相应的启动器组。
+. 从 SAN 主机发起程序创建到 SAN LIF 的 iSCSI 会话。
+. 在 SAN 客户端上，执行存储重新扫描以检测连接的 LUN。
+

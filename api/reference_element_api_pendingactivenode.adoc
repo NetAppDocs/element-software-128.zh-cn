@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_pendingactivenode.html 
+sidebar: sidebar 
+keywords: object,objects,pendingActiveNode 
+summary: pendingActiveNode 对象包含有关当前处于 pendingActive 状态（介于 pending 状态和 active 状态之间）的节点的信息。这些节点目前正在恢复到出厂软件镜像。使用 ListPendingActiveNodes API 方法返回所有 pendingActive 节点的此信息列表。 
+---
+= 待处理活动节点
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+pendingActiveNode 对象包含有关当前处于 pendingActive 状态（介于 pending 状态和 active 状态之间）的节点的信息。这些节点目前正在恢复到出厂软件镜像。使用 `ListPendingActiveNodes`API 方法，用于返回所有 pendingActive 节点的此信息列表。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+活动节点键
+ a| 
+一个唯一的密钥，允许节点在软件成功安装后自动加入集群。
+ a| 
+string
+
+
+
+ a| 
+已分配节点 ID
+ a| 
+节点的分配节点 ID。
+ a| 
+string
+
+
+
+ a| 
+异步句柄
+ a| 
+可用于查询操作状态的异步方法句柄。
+ a| 
+整数
+
+
+
+ a| 
+cip
+ a| 
+分配给该节点的集群 IP 地址。
+ a| 
+string
+
+
+
+ a| 
+mip
+ a| 
+分配给节点的管理 IP 地址。
+ a| 
+string
+
+
+
+ a| 
+节点槽
+ a| 
+对于 HCI 平台，此节点所在的机箱插槽对应的字母（“A”、“B”、“C”或“D”）。对于存储平台，此值为空。
+ a| 
+string
+
+
+
+ a| 
+待处理活动节点ID
+ a| 
+节点的待处理节点 ID。
+ a| 
+整数
+
+
+
+ a| 
+platformInfo
+ a| 
+节点的硬件信息。成员:
+
+* chassisType：节点的硬件平台。
+* cpuModel：硬件平台的 CPU 型号。
+* nodeMemoryGB：物理平台上安装的内存量（以 GB 为单位）。
+* nodeType：节点模型名称。
+* platformConfigVersion：为此节点硬件配置的软件版本。
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+角色
+ a| 
+节点在集群中的角色。可能值：
+
+* 管理
+* 存储
+* 计算
+* 证人
+
+ a| 
+
+
+
+ a| 
+啜饮
+ a| 
+分配给节点的存储（iSCSI）IP 地址。
+ a| 
+string
+
+
+
+ a| 
+软件版本
+ a| 
+节点上运行的 Element 软件的当前版本。
+ a| 
+string
+
+|===
+
+
+== 查找更多信息
+
+xref:reference_element_api_listpendingactivenodes.adoc[列出待处理活动节点]

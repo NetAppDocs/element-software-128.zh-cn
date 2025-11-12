@@ -1,0 +1,40 @@
+---
+permalink: storage/task_snapmirror_perform_failback_when_source_volume_exists.html 
+sidebar: sidebar 
+keywords: element, ui, failback, perform, source volume, snapmirror 
+summary: 您可以使用NetApp Element UI 重新同步原始源卷并进行故障恢复。此程序适用于原始源卷仍然存在的情况。 
+---
+= 如果源卷仍然存在，则执行故障恢复。
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用NetApp Element UI 重新同步原始源卷并进行故障恢复。此程序适用于原始源卷仍然存在的情况。
+
+. 在 Element UI 中，找到您为了执行故障转移而断开的关系。
+. 点击操作图标，然后点击*反向重新同步*。
+. 确认此操作。
++
+
+NOTE: 反向同步操作会创建一个新的关系，其中原始源卷和目标卷的角色互换（这将导致两个关系，因为原始关系仍然存在）。作为反向重新同步操作的一部分，来自原始目标卷的任何新数据都会传输到原始源卷。您可以继续访问目标端的活动卷并向其写入数据，但您需要断开所有主机与源卷的连接，并在重定向回原始主卷之前执行SnapMirror更新。
+
+. 点击刚刚创建的反向关系的“操作”图标，然后点击“更新”。
++
+现在您已完成反向同步，并确保目标端的卷上没有活动会话，且最新数据位于原始主卷上，您可以执行以下步骤来完成故障恢复并重新激活原始主卷：
+
+. 点击反向关系的“操作”图标，然后点击“断开”。
+. 点击原始关系的操作图标，然后点击“重新同步”。
++
+
+NOTE: 现在可以挂载原始主卷，以恢复原始主卷上的生产工作负载。原始SnapMirror复制将根据为该关系配置的策略和计划恢复。
+
+. 确认原始关系状态为“已镜像”后，点击反向关系的“操作”图标，然后点击“删除”。
+
+
+
+
+== 查找更多信息
+
+xref:concept_snapmirror_failback_scenarios.adoc[SnapMirror故障恢复场景]

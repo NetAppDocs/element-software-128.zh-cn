@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_snapshots_overview.html 
+sidebar: sidebar 
+keywords: snapshot,overview 
+summary: 卷快照是卷在特定时间点的副本。您可以使用快照将卷回滚到创建快照时的状态。 
+---
+= 快照概览
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+卷快照是卷在特定时间点的副本。您可以使用快照将卷回滚到创建快照时的状态。
+
+您可以将卷快照分组在一起，以便以一致的方式备份或回滚相关卷。组快照捕获所有体积切片文件的某一时刻图像。然后，您可以使用该映像将一组卷回滚到某个时间点的状态，并确保该组所有卷中的所有数据都一致。
+
+您可以安排卷快照按定义的时间间隔自动执行。您可以按时间、星期几或月份几来定义时间间隔。您还可以使用定时快照来确保快照备份到远程存储以进行归档。
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

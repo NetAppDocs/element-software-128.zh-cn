@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_volumepair.html 
+sidebar: sidebar 
+keywords: object,objects,volumePair 
+summary: volumePair 对象包含有关与不同集群上的另一个卷配对的卷的信息。如果音量未配对，则此对象为空。您可以使用 ListActivePairedVolumes 和 ListActiveVolumes API 方法返回有关配对卷的信息。 
+---
+= 体积对
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+volumePair 对象包含有关与不同集群上的另一个卷配对的卷的信息。如果音量未配对，则此对象为空。你可以使用 `ListActivePairedVolumes`和 `ListActiveVolumes`用于返回配对卷信息的 API 方法。
+
+
+
+== 对象成员
+
+该对象包含以下成员：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群对ID
+ a| 
+该卷与簇配对。
+ a| 
+整数
+
+
+
+ a| 
+远程复制
+ a| 
+卷复制详情。成员:
+
+* mode: (字符串) 可以是“Async”、“Sync”或“SnapshotsOnly”之一。
+* pauseLimit: (整数) 仅供内部使用。
+* remoteServiceID: (整数) 远程切片服务 ID。
+* resumeDetails: (字符串) 保留供将来使用。
+* snapshotReplication（JSON 对象）
++
+** state: (字符串) 正在进行的快照复制的状态（如果正在进行）。
+** stateDetails: (字符串) 保留供将来使用。
+
+
+* 状态：（字符串）卷复制的状态。
+* stateDetails: (字符串) 保留供将来使用。
+
+ a| 
+JSON 对象
+
+
+
+ a| 
+远程切片ID
+ a| 
+远程集群上集群定义的切片 ID。
+ a| 
+整数
+
+
+
+ a| 
+远程卷 ID
+ a| 
+与本地卷配对的远程集群上的卷的 ID。
+ a| 
+整数
+
+
+
+ a| 
+远程卷名称
+ a| 
+远程卷的名称。
+ a| 
+string
+
+
+
+ a| 
+volumePairUUID
+ a| 
+以规范格式表示此配对的通用唯一、集群定义的标识符。
+ a| 
+string
+
+|===
+
+
+== 查找更多信息
+
+* xref:reference_element_api_listactivepairedvolumes.adoc[列出活动配对卷]
+* xref:reference_element_api_listactivevolumes.adoc[列出活动卷]
+

@@ -1,0 +1,80 @@
+---
+permalink: concepts/concept_solidfire_concepts_security.html 
+sidebar: sidebar 
+keywords: solidfire security, element security, encryption at rest, software encryption at rest, external key management, fips 140-2, mfa 
+summary: 使用NetApp Element软件时，您的数据将受到行业标准安全协议的保护。 
+---
+= 安全性
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+当您使用SolidFire全闪存存储系统时，您的数据将受到行业标准安全协议的保护。
+
+
+
+== 静态数据加密（硬件）
+
+存储节点中的所有驱动器都能够进行加密，在驱动器级别利用 AES 256 位加密。每个硬盘都有自己的加密密钥，该密钥在硬盘首次初始化时创建。启用加密功能后，将创建一个集群范围的密码，然后将密码分段分发到集群中的所有节点。没有哪个节点会存储完整的密码。然后使用该密码对驱动器的所有访问进行密码保护。密码用于解锁硬盘，解锁后除非断电或硬盘被锁定，否则不需要密码。
+
+link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["启用静态数据硬件加密功能"^]不影响集群的性能或效率。如果使用 Element API 或 Element UI 从集群配置中删除启用加密的驱动器或节点，则驱动器上的静态加密将被禁用。取出硬盘后，可以使用以下方法对硬盘进行安全擦除： `SecureEraseDrives` API 方法。如果物理驱动器或节点被强制移除，数据仍受集群范围密码和驱动器的单独加密密钥保护。
+
+
+
+== 静态加密（软件）
+
+另一种静态数据加密方式是软件静态数据加密，它能够对写入存储集群中 SSD 的所有数据进行加密。link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["启用"^]它对所有写入的数据进行加密，并对所有读取的数据进行解密，所有操作均在软件中自动完成。软件静态加密与硬件中的自加密驱动器 (SED) 实现方式类似，可在没有 SED 的情况下提供数据安全。
+
+
+WARNING: 对于SolidFire全闪存存储集群，必须在创建集群期间启用静态软件加密，并且集群创建后不能禁用。
+
+软件加密和硬件加密都可以单独使用，也可以结合使用。
+
+
+
+== 外部密钥管理
+
+您可以配置 Element 软件，使其使用符合 KMIP 标准的第三方密钥管理服务 (KMS) 来管理存储集群加密密钥。启用此功能后，存储集群的集群范围驱动器访问密码加密密钥将由您指定的 KMS 进行管理。
+
+Element 可以使用以下密钥管理服务：
+
+* 金雅拓 SafeNet KeySecure
+* SafeNet AT KeySecure
+* HyTrust KeyControl
+* Vormetric 数据安全管理器
+* IBM 安全密钥生命周期管理器
+
+
+有关配置外部密钥管理的更多信息，请参阅link:../storage/concept_system_manage_key_get_started_with_external_key_management.html["开始使用外部密钥管理"]文档。
+
+
+
+== 多因素身份验证
+
+多因素身份验证 (MFA) 允许您要求用户在登录时提供多种类型的证据，以便通过NetApp Element Web UI 或存储节点 UI 进行身份验证。您可以配置 Element，使其仅接受多因素身份验证登录，并与您现有的用户管理系统和身份提供商集成。您可以配置 Element 与现有的 SAML 2.0 身份提供程序集成，该提供程序可以强制执行多种身份验证方案，例如密码和短信、密码和电子邮件或其他方法。
+
+您可以将多因素身份验证与常见的 SAML 2.0 兼容身份提供商 (IdP) 结合使用，例如 Microsoft Active Directory Federation Services (ADFS) 和 Shibboleth。
+
+要配置 MFA，请参阅 link:../storage/task_system_manage_mfa_set_up_multi_factor_authentication.html["启用多因素身份验证"] 文档。
+
+
+
+== FIPS 140-2 标准适用于 HTTPS 和静态数据加密
+
+NetApp SolidFire存储集群支持符合联邦信息处理标准 (FIPS) 140-2 对加密模块要求的加密功能。您可以为SolidFire集群启用 FIPS 140-2 合规性，以支持 HTTPS 通信和驱动器加密。
+
+当您在集群上启用 FIPS 140-2 操作模式时，集群将激活NetApp加密安全模块 (NCSM)，并利用 FIPS 140-2 1 级认证加密，通过 HTTPS 与NetApp Element UI 和 API 进行所有通信。你使用 `EnableFeature`元素 API 与 `fips`启用 FIPS 140-2 HTTPS 加密的参数。在具有 FIPS 兼容硬件的存储集群上，您还可以使用以下方法为静态数据启用 FIPS 驱动器加密： `EnableFeature`元素 API 与 `FipsDrives`范围。
+
+有关为 FIPS 140-2 加密准备新存储集群的更多信息，请参阅link:../storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["创建支持 FIPS 驱动器的集群"]。
+
+有关在现有已准备的集群上启用 FIPS 140-2 的更多信息，请参阅link:../api/reference_element_api_enablefeature.html["EnableFeature Element API"]。
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+

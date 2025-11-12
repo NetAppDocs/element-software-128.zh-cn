@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_virtual_network_naming_conventions.html 
+sidebar: sidebar 
+keywords: storage,system,naming,convention,virtual,network 
+summary: NetApp Element存储系统使用单调递增的数字作为系统中所有对象的唯一标识符。 
+---
+= 虚拟网络命名规则
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element存储系统使用单调递增的数字作为系统中所有对象的唯一标识符。
+
+创建新卷时，新的卷 ID 将正好加 1。这一约定同样适用于运行 Element 软件的存储集群中的虚拟网络。在 Element 集群中创建的第一个虚拟网络的 VirtualNetworkID 为 1。这个ID与VLAN标签号并不相同。
+
+在 API 方法中注明的情况下，您可以交替使用 VirtualNetworkID 和 VirtualNetworkTag（VLAN 标签）。
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire和 Element 产品早期版本的文档"^]
+

@@ -1,0 +1,173 @@
+---
+permalink: api/reference_element_api_getbootstrapconfig.html 
+sidebar: sidebar 
+keywords: cluster,getting,bootstrap,information,node,GetBootstrapConfig 
+summary: 您可以使用 GetBootstrapConfig 方法从引导配置文件中获取集群和节点信息。在单个节点加入集群之前，对其使用此 API 方法。此方法返回的信息用于创建集群时的集群配置界面。 
+---
+= 获取引导配置
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetBootstrapConfig`从引导配置文件中获取集群和节点信息的方法。在单个节点加入集群之前，对其使用此 API 方法。此方法返回的信息用于创建集群时的集群配置界面。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+此方法具有以下返回值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群名称
+ a| 
+集群名称。
+ a| 
+string
+
+
+
+ a| 
+贵宾
+ a| 
+集群MVIP地址。如果节点不属于任何集群，则返回空值。
+ a| 
+string
+
+
+
+ a| 
+节点名称
+ a| 
+节点名称。
+ a| 
+string
+
+
+
+ a| 
+节点
+ a| 
+列出所有正在等待加入集群的节点的相关信息。可能值：
+
+* chassisType: (字符串) 节点的硬件平台。
+* cip: (字符串) 节点的集群 IP 地址。
+* compatible: (boolean) 指示节点是否与执行 API 调用的节点兼容。
+* hostname: (字符串) 节点的主机名。
+* mip: (字符串) 节点的 IPv4 管理 IP 地址。
+* mipV6: (字符串) 节点的 IPv6 管理 IP 地址。
+* nodeType: (string)节点的模型名称。
+* version: (字符串)节点上当前安装的软件版本。
+
+ a| 
+JSON 对象数组
+
+
+
+ a| 
+svip
+ a| 
+集群 SVIP 地址。如果节点不属于集群，则返回 null。
+ a| 
+string
+
+
+
+ a| 
+version
+ a| 
+当前安装在被此 API 方法调用的节点上的 Element 软件版本。
+ a| 
+string
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "GetBootstrapConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+	"id":1,
+	"result":{
+		"clusterName":"testname",
+		"nodeName":"testnode",
+		"svip": "10.117.1.5",
+		"mvip": "10.117.1.6",
+		"nodes":[
+			{
+				"chassisType":"R630",
+				"cip":"10.117.115.16",
+				"compatible":true,
+				"hostname":"NLABP1132",
+				"mip":"10.117.114.16",
+				"mipV6":"fd20:8b1e:b256:45a::16",
+				"nodeType":"SF2405",
+				"role":"Storage",
+				"version":"11.0"
+			},
+			{
+				"chassisType":"R630",
+				"cip":"10.117.115.17",
+				"compatible":true,
+				"hostname":"NLABP1133",
+				"mip":"10.117.114.17",
+				"mipV6":"fd20:8b1e:b256:45a::17",
+				"nodeType":"SF2405",
+				"role":"Storage",
+				"version":"11.0"
+			},
+			{
+				"chassisType":"R630",
+				"cip":"10.117.115.18",
+				"compatible":true,
+				"hostname":"NLABP1134",
+				"mip":"10.117.114.18",
+				"mipV6":"fd20:8b1e:b256:45a::18",
+				"nodeType":"SF2405",
+				"role":"Storage",
+				"version":"11.0"
+			}
+		],
+		"version":"11.0"
+	}
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6
+
+
+
+== 查找更多信息
+
+xref:reference_element_api_createcluster.adoc[CreateCluster]

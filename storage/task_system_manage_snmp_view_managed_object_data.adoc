@@ -1,0 +1,31 @@
+---
+permalink: storage/task_system_manage_snmp_view_managed_object_data.html 
+sidebar: sidebar 
+keywords: snmp, view, management information base files, download, mib, statistics, oids 
+summary: '您可以查看和下载用于定义每个受管对象的管理信息库 (MIB) 文件。  SNMP 功能支持对SolidFire-StorageCluster-MIB 中定义的对象进行只读访问。' 
+---
+= 使用管理信息库文件查看托管对象数据
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以查看和下载用于定义每个受管对象的管理信息库 (MIB) 文件。  SNMP 功能支持对SolidFire-StorageCluster-MIB 中定义的对象进行只读访问。
+
+MIB中提供的统计数据显示了以下系统活动：
+
+* 聚类统计
+* 成交量统计
+* 按账户统计的交易量
+* 节点统计信息
+* 其他数据，例如报告、错误和系统事件
+
+
+该系统还支持访问包含 SF 系列产品上层访问点 (OID) 的 MIB 文件。
+
+.步骤
+. 点击“集群”>“SNMP”。
+. 在“SNMP MIB”下，单击要下载的 MIB 文件。
+. 在弹出的下载窗口中，打开或保存 MIB 文件。
+

@@ -1,0 +1,162 @@
+---
+permalink: api/reference_element_api_createclustersupportbundle.html 
+sidebar: sidebar 
+keywords: CreateClusterSupportBundle,create,cluster,support,bundle,creating 
+summary: 您可以使用管理节点上的 CreateClusterSupportBundle 从集群中的所有节点收集支持包。创建捆绑包时，它会以 .tar.gz 文件的形式存储在节点上。此方法只能在管理节点上运行；在存储节点上运行无效。 
+---
+= 创建集群支持包
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `CreateClusterSupportBundle`在管理节点上收集集群中所有节点的支持包。各个节点支持包被压缩为 tar.gz 文件。集群支持包是一个包含节点支持包的 tar 文件。此方法只能在管理节点上运行；在存储节点上运行无效。
+
+
+
+== 参数
+
+
+NOTE: 必须对管理节点调用此方法。例如：
+
+[listing]
+----
+https://<management node IP>:442/json-rpc/10.0
+----
+该方法有以下输入参数：
+
+|===
+| 名称 | 描述 | 类型 | 默认值 | 必填项 
+
+
+ a| 
+允许不完整
+ a| 
+如果无法从一个或多个节点收集捆绑包，则允许脚本继续运行。
+ a| 
+布尔值
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+捆绑包名称
+ a| 
+每个创建的支持包都有一个唯一的名称。如果未提供名称，则使用“supportbundle”和节点名称作为文件名。
+ a| 
+string
+ a| 
+无
+ a| 
+否
+
+
+
+ a| 
+贵宾
+ a| 
+集群的MVIP。从集群中的所有节点收集数据包。如果未指定节点参数，则此参数为必填项。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+节点
+ a| 
+要从中收集数据包的节点的 IP 地址。使用 nodes 或 mvip，但不能同时使用两者，来指定要从中收集捆绑包的节点。如果未指定 mvip，则此参数为必填项。
+ a| 
+字符串数组
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+password
+ a| 
+集群管理员密码。  *注意：*此密码输入后会以文本形式显示。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+
+
+ a| 
+用户名
+ a| 
+集群管理员用户名。
+ a| 
+string
+ a| 
+无
+ a| 
+是
+
+|===
+
+
+== 返回值
+
+此方法没有返回值。
+
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+"method": "CreateClusterSupportBundle",
+"params": {
+          "bundlename": "clusterbundle",
+          "mvip": "132.119.120.100"
+     }
+   },
+ "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+   "details":{
+      "bundleName":"clusterbundle",
+      "extraArgs":"",
+      "files":[
+          "/tmp/supportbundles/clusterbundle.cl-4SD5.tar"
+      ],
+      "output":"timeout -s KILL 1790s /usr/local/bin/sfclustersupportbundle --quiet --name=\"clusterbundle\" --target-directory=\"/tmp/solidfire-dtemp.MM7f0m\" --user=\"admin\" --pass=\"admin\" --mvip=132.119.120.100"
+       },
+       "duration":"00:00:24.938127",
+       "result":"Passed"
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

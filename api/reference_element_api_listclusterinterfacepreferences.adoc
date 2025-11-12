@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_listclusterinterfacepreferences.html 
+sidebar: sidebar 
+keywords:  
+summary: ListClusterInterfacePreference 方法使与运行 Element 软件的存储集群集成的系统能够列出存储在系统上的现有集群接口首选项。此方法仅供内部使用。 
+---
+= 列出集群接口首选项
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+这 `ListClusterInterfacePreference`该方法使与运行 Element 软件的存储集群集成的系统能够列出存储在系统中的现有集群接口首选项。此方法仅供内部使用。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+首选项
+ a| 
+当前存储在存储集群上的集群接口对象列表，每个对象包含首选项的名称和值。
+ a| 
+JSON 对象数组
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+	"method": "ListClusterInterfacePreferences",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"preferences": [
+			{
+				"name": "prefname",
+				"value": "testvalue"
+			}
+		]
+	}
+}
+----
+
+
+== 自版本以来的新版本
+
+11.0

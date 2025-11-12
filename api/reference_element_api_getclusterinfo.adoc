@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_getclusterinfo.html 
+sidebar: sidebar 
+keywords: cluster,get,info,getting,getclusterinfo 
+summary: 您可以使用 GetClusterInfo 方法返回有关集群的配置信息。 
+---
+= 获取集群信息
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+你可以使用 `GetClusterInfo`返回集群配置信息的方法。
+
+
+
+== 参数
+
+此方法没有输入参数。
+
+
+
+== 返回值
+
+该方法返回以下值：
+
+|===
+| 名称 | 描述 | 类型 
+
+
+ a| 
+集群信息
+ a| 
+集群信息。
+ a| 
+xref:reference_element_api_clusterinfo.adoc[集群信息]
+
+|===
+
+
+== 请求示例
+
+该方法的请求类似于以下示例：
+
+[listing]
+----
+{
+   "method": "GetClusterInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 响应示例
+
+此方法返回类似于以下示例的响应：
+
+[listing]
+----
+{
+    "id": null,
+    "result": {
+        "clusterInfo": {
+            "attributes": {},
+            "defaultProtectionScheme": "doubleHelix",
+            "enabledProtectionSchemes": [
+                "doubleHelix"
+            ],
+            "encryptionAtRestState": "disabled",
+            "ensemble": [
+                "10.10.10.32",
+                "10.10.10.33",
+                "10.10.10.34",
+                "10.10.10.35",
+                "10.10.10.36"
+            ],
+            "mvip": "10.10.11.225",
+            "mvipInterface": "Bond1G",
+            "mvipNodeID": 1,
+            "mvipVlanTag": "0",
+            "name": "ClusterName",
+            "repCount": 2,
+            "softwareEncryptionAtRestState": "disabled",
+            "supportedProtectionSchemes": [
+                "doubleHelix"
+            ],
+            "svip": "10.10.10.111",
+            "svipInterface": "Bond10G",
+            "svipNodeID": 1,
+            "svipVlanTag": "0",
+            "uniqueID": "ahf7",
+            "uuid": "bcfd04b6-9151-4b3a-a6fa-bca22dd145cd",
+            "volumeLoadBalanceOnActualIopsState": "enabled"
+        }
+    }
+}
+----
+
+
+== 自版本以来的新版本
+
+9.6

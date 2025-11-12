@@ -1,0 +1,26 @@
+---
+permalink: setup/concept_requirements_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: 在开始之前，您应该先查看一下先决条件。 
+---
+= 要求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在开始之前，您应该查看部署NetApp Element软件的先决条件，包括网络和端口要求。
+
+* link:../storage/concept_prereq_networking.html["网络要求"]
+* link:../storage/concept_prereq_switch_configuration_for_solidfire_clusters.html["交换机配置"]
+* link:../storage/reference_prereq_network_port_requirements.html["网络端口要求"]
+
+
+
+
+== 查找更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+

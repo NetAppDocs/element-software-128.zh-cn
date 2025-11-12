@@ -1,0 +1,67 @@
+---
+permalink: setup/task_setup_determine_which_solidfire_components_to_install.html 
+sidebar: sidebar 
+keywords: setup, element, solidfire active iq 
+summary: '根据配置和部署选择，您可能需要检查应该安装哪些SolidFire组件，例如管理节点、 Active IQ和NetApp Monitoring Agent (NMA)。' 
+---
+= 确定要安装哪些SolidFire组件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+根据配置和部署选择，您可能需要检查应该安装哪些SolidFire组件，例如管理节点、 Active IQ和NetApp Monitoring Agent (NMA)。
+
+下表列出了其他组件，并指出是否应该安装它们。
+
+[cols="3*"]
+|===
+| 组件 | 独立SolidFire存储集群 | NetApp HCI集群 
+
+
+ a| 
+管理节点
+ a| 
+建议
+ a| 
+默认安装，必需
+
+
+
+ a| 
+Active IQ
+ a| 
+受到推崇的*
+ a| 
+受到推崇的*
+
+
+
+ a| 
+NetApp监控代理
+ a| 
+不支持
+ a| 
+建议
+
+|===
+* 容量许可的SolidFire存储集群需要Active IQ 。
+
+.步骤
+. 确定需要安装哪些组件。
+. 按照说明完成安装。link:../mnode/task_mnode_install.html["安装管理节点"]程序。
++
+
+NOTE: 要设置Active IQ，请使用以下方法： `--telemetry_active`设置脚本中的参数，用于启用Active IQ的数据收集以进行分析。
+
+. 有关NetApp监控代理的信息，请参阅此文档。link:../mnode/task_mnode_enable_activeIQ.html["程序"] 。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire和 Element 软件文档"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element vCenter Server 插件"^]
+
