@@ -189,7 +189,6 @@
   <block id="be4ce5f5b863230b071a1e9bbc6b526f" category="paragraph">SVM DR 配置中的ONTAP卷不受支持。</block>
   <block id="1749d12df3df2319d3eee218a277ff83" category="paragraph">MetroCluster</block>
   <block id="a3bcdc002e42a770c83a4edb29da0f53" category="paragraph">MetroCluster配置中的ONTAP卷不受支持。</block>
-  <block id="b4de17ead867a3cf0b9d11e57e562672" category="doc">机器翻译</block>
   <block id="bfe7c7a765c1b0371de30f5fd4765eaf" category="paragraph">使用 Element 软件设置SolidFire存储，监控集群容量和性能，并管理跨多租户基础架构的存储活动。</block>
   <block id="d54074f88b0164ba9c4afe3077e869dc" category="paragraph">Element 是SolidFire集群的核心存储操作系统。  Element 软件在集群中的所有节点上独立运行，使集群中的节点能够组合资源，并作为单一存储系统呈现给外部客户端。  Element 软件负责整个系统的集群协调、扩展和管理。</block>
   <block id="250f00e8767222db89298f946f97e517" category="paragraph">该软件接口基于 Element API 构建。</block>
@@ -203,14 +202,6 @@
   <block id="b1d9f91038721e8f8e298ac364db6778" category="list-text"><block ref="b1d9f91038721e8f8e298ac364db6778" category="inline-link-macro-rx"></block></block>
   <block id="58a3460b6f080dc34224f11288e2e013" category="list-text"><block ref="58a3460b6f080dc34224f11288e2e013" category="inline-link-macro-rx"></block></block>
   <block id="a2d14fa572c5c0a4fbc8457f2a28d53a" category="list-text"><block ref="a2d14fa572c5c0a4fbc8457f2a28d53a" category="inline-link-macro-rx"></block></block>
-  <block id="e10b5b38785c3a24ec75723ab75b4360" category="paragraph">版权所有 © 2021 NetApp, Inc.。保留所有权利。中国印刷。</block>
-  <block id="2275e007ee598cef266c877f9c52ee25" category="paragraph">未经版权所有者事先书面许可，不得以任何形式或任何方式（包括图形、电子或机械方式，例如复印、录音、录像或存储在电子检索系统中）复制本文档中受版权保护的任何部分。</block>
-  <block id="ce4ad2236c56cc11a838f29c8c261bf7" category="paragraph">从受版权保护的 NetApp 资料派生的软件受以下许可和免责声明的约束：</block>
-  <block id="b110bc9db113b3149cb9e2ed905d4c6c" category="paragraph">本软件由 NetApp 按“原样”提供，不含任何明示或暗示担保，包括但不限于适销性以及针对特定用途的适用性的隐含担保，特此声明不承担任何责任。在任何情况下，对于因使用本软件而以任何方式造成的任何直接性、间接性、偶然性、特殊性、惩罚性或后果性损失（包括但不限于购买替代商品或服务；使用、数据或利润方面的损失；或者业务中断），无论原因如何以及基于何种责任理论，无论出于合同、严格责任或侵权行为（包括疏忽或其他行为），NetApp 均不承担责任，即使已被告知存在上述损失的可能性。</block>
-  <block id="4fc9b260d15698bbd988f76ca839c5b6" category="paragraph">NetApp 保留在不另行通知的情况下随时对本文档所述的任何产品进行更改的权利。除非 NetApp 以书面形式明确同意，否则 NetApp 不承担因使用本文档所述产品而产生的任何责任或义务。使用或购买本产品不表示获得 NetApp 的任何专利权、商标权或任何其他知识产权许可。</block>
-  <block id="87bfcb691f34a9e3fdda83480f0acf78" category="paragraph">本手册中所描述的产品可受到一项或更多项美国专利、外国专利或未决申请的保护。</block>
-  <block id="464821ce353b86f770de0d09b5f5aabe" category="paragraph">本文所含数据属于商业项目（如 FAR 2.101 中所定义），且为NetApp, Inc. 的专有数据。美国政府拥有非独占、不可转让、不可再许可的全球性、有限的、不可撤销的许可，仅可将数据用于与交付该数据的美国政府合同相关的用途，并支持该合同的履行。除非本文另有规定，否则未经 NetApp, Inc. 事先书面批准，不得使用、披露、再现、修正、执行或显示此类数据。美国国防部享有的美国政府许可权利仅限于 DFARS 第 252.227-7015(b) 条中规定的权利。</block>
-  <block id="e9f56eb126455869bdb213c6b8827217" category="doc">版权、商标和机器翻译</block>
   <block id="b2bbf180648d021cfbf74f62ccf04949" category="summary">管理选项卡上的“帐户”页面提供了系统中每个帐户的信息，例如 ID、用户名以及分配给每个帐户的卷的效率详细信息。</block>
   <block id="8bc212f48680748479bbd322d4d73d3f" category="doc">账户详情</block>
   <block id="5bf592d3c6ab0296f3e1392898bf6db8" category="list-text">*ID*</block>
@@ -5981,10 +5972,8 @@
   <block id="56bb1086d311276932b932008551faad" category="paragraph">你可以使用<block ref="7f3b1babd1f170f73cb0ff4719c65294" prefix=" " category="inline-code"></block>使用以下方法移除先前应用于集群的加密：<block ref="b0a869229fda0716942c6afbaa26ba2a" prefix=" " category="inline-code"></block>方法。此禁用方法是异步的，会在禁用加密之前返回响应。你可以使用<block ref="8edcd7780c99fc7a69b6f53d8748b0af" prefix=" " category="inline-code"></block>用于轮询系统以查看进程何时完成的方法。</block>
   <block id="b6da302462725db65b08725e21534c35" category="inline-link-macro">获取集群信息方法</block>
   <block id="df55ce8d5994202037ca7f6b8add22fc" category="inline-link-macro">获取集群用于加密静态数据的信息的方法</block>
-  <block id="86a3fd1d57afd97d844a89fbf1e29622" category="admonition">要查看集群上静态加密和/或静态软件加密的当前状态，请使用以下方法：<block ref="2bef0ec70d57052e77ae0a5c3f56c732" category="inline-link-macro-rx"></block> 。你可以使用<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
   <block id="f706c2c9f764a1928af56503f593ce7c" category="inline-link-macro">创建一个新集群</block>
   <block id="03c723d3c658548008f592aa302e8409" category="admonition">您不能使用此方法禁用静态软件加密。要禁用静态软件加密，您需要……<block ref="dd0348ec8bd8a2d5cdfad96177d0413b" category="inline-link-macro-rx"></block>已禁用静态软件加密。</block>
-  <block id="ed098de7c85d42c63667264da460dda3" category="list-text"><block ref="ed098de7c85d42c63667264da460dda3" category="inline-link-macro-rx"></block></block>
   <block id="41f5226364942217920c4da7dac4fdef" category="summary">您可以使用 DisableIdpAuthentication 方法来禁用集群使用第三方 IdP 进行身份验证的支持。一旦禁用，通过第三方身份提供商 (IdP) 进行身份验证的用户将无法再访问集群，并且任何活动的已验证会话都将失效/断开连接。  LDAP 和集群管理员可以通过受支持的用户界面访问集群。</block>
   <block id="f7782cee0150831210cb8b1d663487e5" category="paragraph">你可以使用<block ref="19212cd9e0ef02383305a27bb4236251" prefix=" " category="inline-code"></block>禁用集群使用第三方身份提供商进行身份验证支持的方法。一旦禁用，通过第三方身份提供商 (IdP) 进行身份验证的用户将无法再访问集群，并且任何活动的已验证会话都将失效/断开连接。  LDAP 和集群管理员可以通过受支持的用户界面访问集群。</block>
   <block id="bfd29fa5d21f9a9583846d6e7975aa03" category="summary">您可以使用 DisableLdapAuthentication 方法来禁用 LDAP 身份验证并删除所有 LDAP 配置设置。此方法不会删除任何已配置的用户或组集群管理员帐户。  LDAP 身份验证禁用后，配置为使用 LDAP 身份验证的集群管理员将无法再访问集群。</block>
@@ -11590,12 +11579,6 @@
   <block id="b192e422c8f0ec986ad4daabba6ad856" category="list-text"><block ref="b192e422c8f0ec986ad4daabba6ad856" category="inline-link-macro-rx"></block></block>
   <block id="94d480649ef42bd92d3854f04aa2aab9" category="list-text"><block ref="94d480649ef42bd92d3854f04aa2aab9" category="inline-link-macro-rx"></block></block>
   <block id="469eaba8a7048afa0ba6f8eb91801de9" category="doc">使用SolidFire Active IQ监控存储</block>
-  <block id="b56253bf92505bda20b38657c778bccf" category="doc">此处显示页面标题</block>
-  <block id="5d9328ee3f628e51f1a4f871ccff7313" category="paragraph">将此模板用于文章、主题，无论您如何称呼它们。index.adoc 文件没有文章页面的正确关键字，将其用作模板可能会导致以后的发布问题。</block>
-  <block id="26739de98ff2a207a5c145caf27c2508" category="admonition">首次发布之前删除此文件，因为即使该文件未链接到侧边栏，它也会发布。创建几篇文章后，您可以将它们用作入门文章。</block>
-  <block id="38b255c5af258b1f086fb7c9aa4f252c" category="paragraph">如果您的文章位于内容子文件夹中，则需要对上面显示的符号进行两处调整：</block>
-  <block id="df25e29acec650a07b41041946158355" category="list-text"><block ref="abc9d0bfc8d5688ddd4babf6a5402ee4" prefix="" category="inline-code"></block></block>
-  <block id="97df5ffadc97296dc727ffddf2d2e1fe" category="list-text"><block ref="ff695bd1637208b4929c7ae2085cd551" prefix="" category="inline-code"></block></block>
   <block id="8db92719c4d9f37b39025b1a2a231511" category="summary">在开始之前，您应该先查看一下先决条件。</block>
   <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="doc">要求</block>
   <block id="0d4f5f9dd0b25c466de7756fec34503e" category="paragraph">在开始之前，您应该查看部署NetApp Element软件的先决条件，包括网络和端口要求。</block>
@@ -12446,4 +12429,6 @@
   <block id="f01ab7a5082dba0b14f15d3b2e71f12b" category="list-text">SF9010</block>
   <block id="6c7b496a2d02d11880156e116d65fdae" category="paragraph">如果您尝试将这些节点之一升级到不受支持的 Element 版本，您将看到一条错误消息，指出 Element 12.x 不支持该节点。</block>
   <block id="428b7755325d17c48c70b8ede83fbd03" category="summary">您可以从集群选项卡的“节点”页面管理SolidFire存储和光纤通道节点。</block>
+  <block id="0aa7fde71cfb5413015e45fa45075fd0" category="admonition">要查看集群上静态加密和/或静态软件加密的当前状态，请使用以下方法：<block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block> 。你可以使用<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
+  <block id="4ba6dd2d59030fb9ee4b6523df69086c" category="list-text"><block ref="4ba6dd2d59030fb9ee4b6523df69086c" category="inline-link-macro-rx"></block></block>
 </blocks>
