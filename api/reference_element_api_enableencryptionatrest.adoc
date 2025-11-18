@@ -13,12 +13,13 @@ summary: '您可以使用 EnableEncryptionAtRest 方法在集群上启用高级�
 [role="lead"]
 你可以使用 `EnableEncryptionAtRest`启用集群上静态高级加密标准 (AES) 256 位加密的方法，以便集群可以管理每个节点上驱动器使用的加密密钥。默认情况下不会启用此功能。
 
+[NOTE]
+====
+* 要查看集群上静态加密和/或静态软件加密的当前状态，请使用以下方法：link:../api/reference_element_api_getclusterinfo["获取集群信息方法"^] 。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["获取集群用于加密静态数据的信息的方法"^]。
+* 此方法无法实现静态软件加密。这只能通过使用以下方式完成：link:../api/reference_element_api_createcluster.html["创建集群方法"^]和 `enableSoftwareEncryptionAtRest`设置为 `true`。
 
-TIP: 要查看集群上静态加密和/或静态软件加密的当前状态，请使用以下方法：link:../api/reference_element_api_getclusterinfo["获取集群信息方法"^] 。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["获取集群用于加密静态数据的信息的方法"^]。
 
-
-NOTE: 此方法无法实现静态软件加密。这只能通过使用以下方式完成：link:../api/reference_element_api_createcluster.html["创建集群方法"^]和 `enableSoftwareEncryptionAtRest`设置为 `true`。
-
+====
 启用静态加密后，集群会自动在内部管理集群中每个节点上驱动器的加密密钥。
 
 如果指定了 keyProviderID，则会根据密钥提供程序的类型生成和检索密码。对于 KMIP 密钥提供程序，这通常是通过密钥管理互操作协议 (KMIP) 密钥服务器来实现的。此操作完成后，指定的提供程序将被视为处于活动状态，并且只有在使用以下命令禁用静态加密后才能删除。 `DisableEncryptionAtRest`方法。

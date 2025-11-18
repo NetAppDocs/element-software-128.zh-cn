@@ -3893,8 +3893,6 @@
   <block id="00ae1f75b0c9cec52e9827d766f2a9f0" category="paragraph"><block ref="00ae1f75b0c9cec52e9827d766f2a9f0" category="inline-link-macro-rx"></block></block>
   <block id="a0ccd69fa0bf592109e0896c3f9257e9" category="section-title">集群创建 API 方法</block>
   <block id="df40a0d48604ceb446509f54dd53d965" category="paragraph">您可以使用这些 API 方法创建存储集群。所有这些方法都需要在单个节点上针对 API 端点使用。</block>
-  <block id="0308f0d51b4ba54593f1e96114c69c11" category="inline-link-macro">了解集群创建 API 方法</block>
-  <block id="1bed70a38ca13f48bede345dc001e2c9" category="paragraph"><block ref="1bed70a38ca13f48bede345dc001e2c9" category="inline-link-macro-rx"></block></block>
   <block id="6a67229ead1343c9647798cef324176a" category="section-title">驱动 API 方法</block>
   <block id="81edb4223e14439aae2b852f3ff5fa9b" category="paragraph">您可以使用驱动器 API 方法添加和管理存储集群中可用的驱动器。当您向存储集群添加存储节点或在现有存储节点中安装新驱动器时，这些驱动器即可添加到存储集群中。</block>
   <block id="d9d1e170360eff3d6edce6bc5ac15a96" category="inline-link-macro">了解驱动 API 方法</block>
@@ -12429,6 +12427,9 @@
   <block id="f01ab7a5082dba0b14f15d3b2e71f12b" category="list-text">SF9010</block>
   <block id="6c7b496a2d02d11880156e116d65fdae" category="paragraph">如果您尝试将这些节点之一升级到不受支持的 Element 版本，您将看到一条错误消息，指出 Element 12.x 不支持该节点。</block>
   <block id="428b7755325d17c48c70b8ede83fbd03" category="summary">您可以从集群选项卡的“节点”页面管理SolidFire存储和光纤通道节点。</block>
-  <block id="0aa7fde71cfb5413015e45fa45075fd0" category="admonition">要查看集群上静态加密和/或静态软件加密的当前状态，请使用以下方法：<block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block> 。你可以使用<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
   <block id="4ba6dd2d59030fb9ee4b6523df69086c" category="list-text"><block ref="4ba6dd2d59030fb9ee4b6523df69086c" category="inline-link-macro-rx"></block></block>
+  <block id="57a0b277e5bc33fa133ed50fee2e39c7" category="section-title">集群创建 API 方法</block>
+  <block id="ed23ae983fdf44661032ebde203dc482" category="inline-link-macro">了解集群创建 API 方法</block>
+  <block id="124da988a52d4207ceb89c16326011cd" category="paragraph"><block ref="124da988a52d4207ceb89c16326011cd" category="inline-link-macro-rx"></block></block>
+  <block id="e7d0e70ab185af3096a889f5850e7526" category="list-text">要查看集群上静态加密、静态软件加密或两者的当前状态，请使用以下方法： <block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block>。你可以使用<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>。</block>
 </blocks>

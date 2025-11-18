@@ -13,12 +13,13 @@ summary: 您可以使用 DisableEncryptionAtRest 方法移除之前使用 Enable
 [role="lead"]
 你可以使用 `DisableEncryptionAtRest`使用以下方法移除先前应用于集群的加密： `EnableEncryptionAtRest`方法。此禁用方法是异步的，会在禁用加密之前返回响应。你可以使用 `GetClusterInfo`用于轮询系统以查看进程何时完成的方法。
 
+[NOTE]
+====
+* 您不能使用此方法禁用静态软件加密。要禁用静态软件加密，您需要……link:reference_element_api_createcluster.html["创建一个新集群"]已禁用静态软件加密。
+* 要查看集群上静态加密、静态软件加密或两者的当前状态，请使用以下方法： link:../api/reference_element_api_getclusterinfo.html["获取集群信息方法"]。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["获取集群用于加密静态数据的信息的方法"]。
 
-TIP: 要查看集群上静态加密和/或静态软件加密的当前状态，请使用以下方法：link:../api/reference_element_api_getclusterinfo.html["获取集群信息方法"] 。你可以使用 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["获取集群用于加密静态数据的信息的方法"]。
 
-
-NOTE: 您不能使用此方法禁用静态软件加密。要禁用静态软件加密，您需要……link:reference_element_api_createcluster.html["创建一个新集群"]已禁用静态软件加密。
-
+====
 
 
 == 参数
